@@ -42,4 +42,34 @@ public class UserDAO extends DBContext {
         }
         return u;
     }
+    public boolean createUser(User u) {
+
+        String sql = "  INSERT INTO dbo.[User]\n"
+                + "  (Username, Password, RoleID, Avatar, FullName, Gender, Email)\n"
+                + "  VALUES(?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, u.getUsername());
+            st.setString(2, u.getPassword());
+            st.setString(3, "4");
+            st.setString(4, u.getAvatar());
+            st.setString(5, u.getFullName());
+            st.setString(6, u.getGender());
+            st.setString(7, u.getEmail());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public Object getByEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Object getByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

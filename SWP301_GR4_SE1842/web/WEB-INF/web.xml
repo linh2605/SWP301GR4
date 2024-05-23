@@ -4,8 +4,24 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controller.auth.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Header</servlet-name>
+        <servlet-class>controller.customer.Header</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>controller.auth.Register</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/auth/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Header</servlet-name>
+        <url-pattern>/Header</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/auth/register</url-pattern>
     </servlet-mapping>
 </web-app>
