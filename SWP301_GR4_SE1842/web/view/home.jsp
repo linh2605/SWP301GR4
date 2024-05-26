@@ -46,6 +46,7 @@
             <!-- header-top-area-start -->
             <jsp:include page= "common/header-top-area.jsp"></jsp:include>
                 <!-- header-top-area-end -->
+            <jsp:include page= "common/ProfileHeader.jsp"></jsp:include>                
                 <!-- header-min-area-start -->
             <jsp:include page= "common/header-min-area.jsp"></jsp:include>
                 <!-- header-min-area-start -->

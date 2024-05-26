@@ -3,7 +3,7 @@
     Created on : May 13, 2024, 11:22:53?PM
     Author     : pcdau
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="header-top-area">
                 <div class="container">
                     <div class="row">
