@@ -12,6 +12,18 @@
         <servlet-name>Register</servlet-name>
         <servlet-class>controller.auth.Register</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgotPassword</servlet-name>
+        <servlet-class>controller.auth.ForgotPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValidateOtp</servlet-name>
+        <servlet-class>controller.auth.ValidateOtp</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewPassword</servlet-name>
+        <servlet-class>controller.auth.NewPassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/auth/login</url-pattern>
@@ -23,5 +35,17 @@
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/auth/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotPassword</servlet-name>
+        <url-pattern>/auth/forgotPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidateOtp</servlet-name>
+        <url-pattern>/auth/ValidateOtp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPassword</servlet-name>
+        <url-pattern>/auth/newPassword</url-pattern>
     </servlet-mapping>
 </web-app>

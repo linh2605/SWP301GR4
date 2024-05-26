@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         password = Encode.toSHA1(password);
-        
+
         UserDAO ud = new UserDAO();
         User u = ud.getUser(username, password);
         if (u == null) {

@@ -4,6 +4,7 @@
  */
 package dal;
 
+import controller.auth.NewPassword;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ import model.User;
  * @author zzako
  */
 public class UserDAO extends DBContext {
+
     public User getUser(String username, String password) {
         String sql = "SELECT * FROM dbo.[User] WHERE Username=? AND Password=?";
         User u = null;
@@ -42,6 +44,7 @@ public class UserDAO extends DBContext {
         }
         return u;
     }
+
     public boolean createUser(User u) {
 
         String sql = "  INSERT INTO dbo.[User]\n"
@@ -65,11 +68,67 @@ public class UserDAO extends DBContext {
         return true;
     }
 
-    public Object getByEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public User updateUser(String email, String newPassword) {
+        String sql = "UPDATE [User]\n"
+                + "SET Password = ?\n"
+                + "WHERE Email = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, newPassword);
+	    st.setString(2, email);
+            st.execute();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return getByEmail(email);
+    }
+    
+
+        public User getByEmail(String email) {
+        String sql = "SELECT * FROM dbo.[User] WHERE Email = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return new User(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10)
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public Object getByUsername(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+    public User getByUsername(String username) {
+        String sql = "SELECT * FROM dbo.[User] WHERE username = ?";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, username);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                User u = new User();
+                u.setId(rs.getInt(1));
+                u.setUsername(rs.getString(2));
+                u.setPassword(rs.getString(3));
+                u.setRoleID(rs.getInt(4));
+                return u;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

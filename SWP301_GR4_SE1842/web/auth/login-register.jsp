@@ -164,7 +164,7 @@
                                                    placeholder="Enter your password">
                                             <span class="form-message"></span>
                                         </div>
-                                        <a href="${pageContext.request.contextPath}/reset-password">Forgot password?</a>
+                                        <a href="${pageContext.request.contextPath}/auth/forgotPassword.jsp">Forgot password?</a>
                                         <div class="col-md-12">
                                             <button type="submit" class="btn btn-outlined">Login</button>
                                         </div>
