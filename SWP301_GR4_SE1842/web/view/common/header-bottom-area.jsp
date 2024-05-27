@@ -11,19 +11,11 @@
                 <div class="main-menu-area">
                     <ul>
                         <li class="active"><a href="home">Home<i class="fa fa-angle-down"></i></a>
-                            <div class="sub-menu">
-                                <ul>
-                                    <li><a href="home">Home-1</a></li>
-                                    <li><a href="index-2.html">Home-2</a></li>
-                                    <li><a href="index-3.html">Home-3</a></li>
-                                    <li><a href="index-4.html">Home-4</a></li>
-                                </ul>
-                            </div>
                         </li>
                         <li><a href="#">page<i class="fa fa-angle-down"></i></a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li><a href="shop.html">shop</a></li>
+                                    <li><a href="products">shop</a></li>
                                     <li><a href="product-details.html">product-details</a></li>
                                     <li><a href="blog">blog</a></li>
                                     <li><a href="contact.html">contact</a></li>

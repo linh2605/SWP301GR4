@@ -33,8 +33,9 @@ public class ProductDAO extends DBContext {
 
     // Read a product by its ID
     public Product getProductById(int productID) {
-        String sql = "SELECT * FROM Product WHERE ProductID = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        String sql = "SELECT * FROM Product\n"
+                + ",images where Product.ProductID = images.ProductID and Product.ProductID = ?";
+        try (PreparedStatement ps = new DBContext().getConnection().prepareStatement(sql)) {
             ps.setInt(1, productID);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -47,6 +48,7 @@ public class ProductDAO extends DBContext {
                 product.setProductDesc(rs.getString("ProductDesc"));
                 product.setBrandID(rs.getInt("BrandID"));
                 product.setSupplierID(rs.getInt("SupplierID"));
+                product.setImage(rs.getString("Image"));
                 return product;
             }
         } catch (SQLException e) {
@@ -76,7 +78,7 @@ public class ProductDAO extends DBContext {
             }
             query.append(" ORDER BY p.ProductID DESC");
             PreparedStatement preparedStatement;
-            preparedStatement = connection.prepareStatement(query.toString());
+            preparedStatement = new DBContext().getConnection().prepareStatement(query.toString());
             mapParams(preparedStatement, list);
             try (ResultSet rs = preparedStatement.executeQuery()) {
                 while (rs.next()) {
@@ -159,10 +161,11 @@ public class ProductDAO extends DBContext {
 
         return products.subList(fromIndex, toIndex);
     }
+
     public static void main(String[] args) {
         ProductDAO pdao = new ProductDAO();
-        List<Product> l = pdao.getAllProducts("",null);
-        for(Product p : l){
+        List<Product> l = pdao.getAllProducts("", null);
+        for (Product p : l) {
             System.out.println(p);
         }
     }

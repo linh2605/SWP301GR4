@@ -7,19 +7,19 @@ import java.sql.SQLException;
 public class DBContext {
     protected Connection connection;
     
-//    public Connection getConnection() {
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            String url = "jdbc:mysql://localhost:3306/SportShopOnline";
-//            String user = "root";
-//            String password = "123456";
-//            connection = DriverManager.getConnection(url, user, password);
-//            return connection;
-//        } catch (SQLException | ClassNotFoundException e) {
-//            System.err.println("Error " + e.getMessage() + " at DBContext");
-//            return null;
-//        }
-//    }
+    public Connection getConnection() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/SportShopOnline";
+            String user = "root";
+            String password = "123456";
+            connection = DriverManager.getConnection(url, user, password);
+            return connection;
+        } catch (SQLException | ClassNotFoundException e) {
+            System.err.println("Error " + e.getMessage() + " at DBContext");
+            return null;
+        }
+    }
     public DBContext() {
         try {
             String url = "jdbc:mysql://localhost:3306/SportShopOnline";

@@ -11,7 +11,8 @@ import java.math.BigDecimal;
  * @author ADMIN
  */
 public class Product {
-     private int productID;
+
+    private int productID;
     private String productName;
     private BigDecimal productPrice;
     private int stock;
@@ -107,7 +108,5 @@ public class Product {
         this.supplierID = supplierID;
         this.image = image;
     }
-    
-    
-    
+
 }
