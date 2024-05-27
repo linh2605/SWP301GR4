@@ -11,9 +11,9 @@
                                 <nav id="mobile-menu-active">
                                     <ul id="nav">
                                        
-                                        <li><a href="index.html">Home</a>
+                                        <li><a href="home">Home</a>
                                             <ul>
-                                                <li><a href="index.html">Home-1</a></li>
+                                                <li><a href="home">Home-1</a></li>
                                                 <li><a href="index-2.html">Home-2</a></li>
                                                 <li><a href="index-3.html">Home-3</a></li>
                                                 <li><a href="index-4.html">Home-4</a></li>
@@ -24,8 +24,7 @@
                                                 <ul>
                                                     <li><a href="shop.html">shop</a></li>
                                                     <li><a href="product-details.html">product-details</a></li>
-                                                    <li><a href="blog.html">blog</a></li>
-                                                    <li><a href="blog-details.html">blog-details</a></li>
+                                                    <li><a href="blog">blog</a></li>
                                                     <li><a href="contact.html">contact</a></li>
                                                     <li><a href="about.html">about</a></li>
                                                     <li><a href="login.html">login</a></li>
@@ -39,8 +38,8 @@
                                         </li>
                                         <li><a href="contact.html">Blog</a>
                                             <ul>
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="blog-details.html">blog-details</a></li>
+                                                <li><a href="blog">blog</a></li>
+                                                 
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">Contact Us</a></li>

@@ -4,7 +4,7 @@
             <div class="col-lg-3 col-md-3  col-12">
                 <!-- logo-area-start -->
                 <div class="logo-area">
-                    <a href="index.html"><img src="${pageContext.request.contextPath}/img/logo/1.png" alt="logo" /></a>
+                    <a href="home"><img src="${pageContext.request.contextPath}/img/logo/1.png" alt="logo" /></a>
                 </div>
                 <!-- logo-area-end -->
             </div>

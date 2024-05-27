@@ -21,7 +21,7 @@ import model.Product;
 public class BlogDAO extends DBContext {
 
     public Blog getBlogById(int id) {
-        String sql = "select b.*, u.FullName from blog b JOIN [User] u On b.createBy = u.UserID WHERE blogId = ?";
+        String sql = "select b.*, u.FullName from blog b JOIN User u On b.createBy = u.UserID WHERE blogId = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -49,7 +49,7 @@ public class BlogDAO extends DBContext {
         try {
             StringBuilder query = new StringBuilder();
             query.append("""
-                         select b.*, u.FullName from blog b JOIN [User] u On b.createBy = u.UserID  where 1=1""");
+                         select b.*, u.FullName from blog b JOIN User u On b.createBy = u.UserID  where 1=1""");
             if (searchParam != null && !searchParam.trim().isEmpty()) {
                 query.append(" AND b.blog_title LIKE ? ");
                 list.add("%" + searchParam + "%");
