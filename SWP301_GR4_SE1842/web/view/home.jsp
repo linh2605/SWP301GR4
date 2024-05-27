@@ -176,7 +176,7 @@
                                             <div class="row">
                                                 <div class="col-lg-2 col-md-3  col-12">
                                                     <div class="left-menu">
-                                                         <c:set var="searchQuery" value="${param.search != null ? param.search : ''}" />
+                                                        <c:set var="searchQuery" value="${param.search != null ? param.search : ''}" />
                                                         <c:forEach items="${listC}" var="c">
                                                             <a href="?category=${c.categoryID}&search=${searchQuery}" class="mr">${c.categoryName}</a>
                                                         </c:forEach>
@@ -191,7 +191,7 @@
                                                                 <!-- single-product-start -->
                                                                 <div class="single-product">
                                                                     <div class="product-img">
-                                                                        <a href="#"><img style="max-height: 270px" src="${pageContext.request.contextPath}/img/product/${p.image}.jpg" alt="img" /></a>
+                                                                        <a href="#"><img style="width: 270px;height: 270px; object-fit: contain" src="${p.image}" alt="img" /></a>
                                                                     </div>
                                                                     <div class="product-text">
                                                                         <h3><a href="product-details-2.html">${p.productName}</a></h3>
@@ -225,29 +225,29 @@
             </div>
         </div>
         <nav class="mt-3" aria-label="Page navigation example">
-       <c:set var="currentCategory" value="${param.category != null ? param.category : ''}" />
+            <c:set var="currentCategory" value="${param.category != null ? param.category : ''}" />
 
-<ul class="pagination justify-content-center">
-    <c:if test="${currentPage > 1}">
-        <li class="page-item">
-            <a class="page-link" href="?search=${param.search}&category=${currentCategory}&amp;page=${currentPage - 1}">Previous</a>
-        </li>
-    </c:if>
+            <ul class="pagination justify-content-center">
+                <c:if test="${currentPage > 1}">
+                    <li class="page-item">
+                        <a class="page-link" href="?search=${param.search}&category=${currentCategory}&amp;page=${currentPage - 1}">Previous</a>
+                    </li>
+                </c:if>
 
-    <!-- Display the page numbers as links -->
-    <c:forEach var="pageNum" begin="1" end="${totalPages}">
-        <li class="page-item <c:if test='${pageNum == currentPage}'>active</c:if>">
-            <a class="page-link" href="?search=${param.search}&category=${currentCategory}&amp;page=${pageNum}">${pageNum}</a>
-        </li>
-    </c:forEach>
+                <!-- Display the page numbers as links -->
+                <c:forEach var="pageNum" begin="1" end="${totalPages}">
+                    <li class="page-item <c:if test='${pageNum == currentPage}'>active</c:if>">
+                        <a class="page-link" href="?search=${param.search}&category=${currentCategory}&amp;page=${pageNum}">${pageNum}</a>
+                    </li>
+                </c:forEach>
 
-    <!-- Disable the "Next" link if on the last page -->
-    <c:if test="${currentPage < totalPages}">
-        <li class="page-item">
-            <a class="page-link" href="?search=${param.search}&category=${currentCategory}&amp;page=${currentPage + 1}">Next</a>
-        </li>
-    </c:if>
-</ul>
+                <!-- Disable the "Next" link if on the last page -->
+                <c:if test="${currentPage < totalPages}">
+                    <li class="page-item">
+                        <a class="page-link" href="?search=${param.search}&category=${currentCategory}&amp;page=${currentPage + 1}">Next</a>
+                    </li>
+                </c:if>
+            </ul>
 
         </nav>
         <div class="newsletter-area ptb-35">
