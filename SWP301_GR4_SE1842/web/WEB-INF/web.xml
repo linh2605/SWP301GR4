@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <servlet>
@@ -49,3 +50,65 @@
         <url-pattern>/auth/newPassword</url-pattern>
     </servlet-mapping>
 </web-app>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>controller.auth.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Header</servlet-name>
+        <servlet-class>controller.customer.Header</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>controller.auth.Register</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgotPassword</servlet-name>
+        <servlet-class>controller.auth.ForgotPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValidateOtp</servlet-name>
+        <servlet-class>controller.auth.ValidateOtp</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewPassword</servlet-name>
+        <servlet-class>controller.auth.NewPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>controller.auth.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/auth/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Header</servlet-name>
+        <url-pattern>/Header</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/auth/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+
+        <servlet-name>ForgotPassword</servlet-name>
+        <url-pattern>/auth/forgotPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidateOtp</servlet-name>
+        <url-pattern>/auth/ValidateOtp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPassword</servlet-name>
+        <url-pattern>/auth/newPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/ProfileServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
+>>>>>>> origin/main

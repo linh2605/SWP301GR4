@@ -75,16 +75,15 @@ public class UserDAO extends DBContext {
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, newPassword);
-	    st.setString(2, email);
+            st.setString(2, email);
             st.execute();
         } catch (SQLException e) {
             System.out.println(e);
         }
         return getByEmail(email);
     }
-    
 
-        public User getByEmail(String email) {
+    public User getByEmail(String email) {
         String sql = "SELECT * FROM dbo.[User] WHERE Email = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -105,11 +104,88 @@ public class UserDAO extends DBContext {
                 );
             }
         } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    public User GetUserById(int id) {
+        String sql = "SELECT * FROM dbo.[User] WHERE UserID=?";
+        User u = null;
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                u = new User(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10)
+                );
+            }
+        } catch (SQLException e) {
+
             e.printStackTrace();
         }
         return null;
     }
 
+    public boolean ValidateUserID(int id) {
+        if (GetUserById(id) == null) {
+            return false; // khong tồn tại user
+        }
+        return true; // tồn tại user
+    }
+
+    public boolean ChangePassword(int userId, String newPass, String olPass) {
+        if (!ValidateUserID(userId)) {
+            return false;
+        }
+
+        if (!validateOldPass(userId, olPass)) {
+            return false;
+        }
+
+        String sqlQuery = "UPDATE [dbo].[User] SET [Password] = ? WHERE UserID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sqlQuery);
+            st.setString(1, newPass);
+            st.setInt(2, userId);
+            return st.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public boolean validateOldPass(int uId, String oldPass) {
+        String sql = "SELECT * FROM dbo.[User] WHERE UserID = ? AND Password = ?";
+        User u = null;
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, uId);
+            st.setString(2, oldPass);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
+    }
 
     public User getByUsername(String username) {
         String sql = "SELECT * FROM dbo.[User] WHERE username = ?";
