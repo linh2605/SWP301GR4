@@ -238,12 +238,16 @@ VALUES ('Running Shoes', 'Shoes designed for running.', 1),
 -- Insert sample data into Product Table
 INSERT INTO Product (ProductName, ProductPrice, Stock, ProductRating, ProductDesc, BrandID, SupplierID)
 VALUES ('Nike Air Zoom Pegasus', 120.00, 50, 5, 'Versatile and comfortable running shoes.', 1, 1),
-       ('Adidas Ultraboost', 180.00, 30, 4, 'High-performance running shoes with responsive cushioning.', 2, 2);
+       ('Adidas Ultraboost', 180.00, 30, 4, 'High-performance running shoes with responsive cushioning.', 2, 2),
+       ('Lining shirt', 180.00, 30, 4, 'High-performance running shoes with responsive cushioning.', 1, 2),
+       ('Lining ningli', 180.00, 30, 4, 'High-performance running shoes with responsive cushioning.', 2, 2);
 
 -- Insert sample data into ProductCategory Table
 INSERT INTO ProductCategory (ProductID, CategoryID, SubCategoryID)
 VALUES (1, 1, 1),
-       (2, 1, 1);
+       (2, 1, 1),
+       (3, 2, 3),
+       (4, 2, 3);
 
 -- Insert sample data into Contact Table
 INSERT INTO Contact (Name, Email, Message)
@@ -252,8 +256,10 @@ VALUES ('John Doe', 'john.doe@example.com', 'I would like to know more about you
 
 -- Insert sample data into Images Table
 INSERT INTO Images (Image, ProductID)
-VALUES ('36', 1),
-       ('37', 2);
+VALUES ('https://d.scdn.gr/images/sku_main_images/010754/10754027/20170404133057_adidas_ultraboost_ba8844.jpeg', 1),
+       ('https://th.bing.com/th/id/OIP.qIe6PQWXWum7NQrgoPEOPQHaFj?rs=1&pid=ImgDetMain', 2),
+       ('https://ae01.alicdn.com/kf/HTB1bHUKw5CYBuNkHFCcq6AHtVXa2/Li-Ning-Men-Badminton-T-shirts-AT-DRY-Breathable-Comfort-LiNing-Sports-Competition-Tees-Tops-T.jpg', 3),
+       ('https://th.bing.com/th/id/OIP.BzId_96BWNPjaZYXKwu9KQHaHa?w=800&h=800&rs=1&pid=ImgDetMain', 4);
 
 -- Insert sample data into Role Table
 INSERT INTO Role (RoleName, RoleDesc)
