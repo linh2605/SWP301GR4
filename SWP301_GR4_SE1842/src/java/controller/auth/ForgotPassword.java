@@ -66,8 +66,7 @@ public class ForgotPassword extends HttpServlet {
             Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
                     return new PasswordAuthentication("ninjaanhem@gmail.com", "avogglzrkklxnvtr");// Put your email
-                    // id and
-                    // password here
+                    
                 }
             });
             // compose message
