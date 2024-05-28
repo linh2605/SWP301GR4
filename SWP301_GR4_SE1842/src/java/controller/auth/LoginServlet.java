@@ -31,11 +31,10 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Hello");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         password = Encode.toSHA1(password);
-
+        
         UserDAO ud = new UserDAO();
         User u = ud.getUser(username, password);
         if (u == null) {
@@ -44,10 +43,10 @@ public class LoginServlet extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("usersession", u);
-            if (u.getRoleID() != 4) {
+            if (u.getRoleID() != 2) {
                 response.sendRedirect("../dashboard");
             } else {
-                response.sendRedirect("../homepage");
+                response.sendRedirect("../view/home");
             }
         }
     }
