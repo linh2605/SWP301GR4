@@ -15,7 +15,7 @@
                         <div class="col-lg-8 col-md-8  col-12">
                             <div class="header-link ">
                                 <ul>
-                                    <li><a href="register.html">My Account</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#myModalProfile">My Account</a></li>
                                     <li><a href="wishlist.html">My Wish List</a></li>
                                     <li><a href="/SWP301_GR4_SE1842/auth/login">Sign In</a></li>
                                     <li class=""><a href="#">US Dollar<i class="fa fa-angle-down"> </i></a>
@@ -25,6 +25,11 @@
                                             </ul>
                                         </div>
                                     </li>
+                                    <c:if test="${sessionScope.usersession != null}">
+                                        <li>
+                                            <button type="button" class="btn btn-primary" onclick="logout()"> Logout </button>
+                                        </li>
+                                    </c:if>
                                 </ul>
                             </div>
                         </div>

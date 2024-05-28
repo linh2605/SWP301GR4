@@ -80,6 +80,14 @@ public class User {
         this.address = address;
     }
 
+    public User(int id, String fullName, String gender, String phone, String address) {
+        this.id = id;
+        this.fullName = fullName;
+        this.gender = gender;
+        this.phone = phone;
+        this.address = address;
+    }
+    
     public int getId() {
         return id;
     }

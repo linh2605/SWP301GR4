@@ -12,14 +12,14 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     </head>
     <body>
-        <c:if test="${sessionScope.usersession != null}"> <!-- nếu chưa đăng nhập thì session = null không hiện ra -->
+        <c:if test="${sessionScope.usersession != null}">
             <div class="d-flex border container justify-content-end">
-                <h1>Welcome
+<!--                <h1>
                     <button type="button" class="btn btn-primary ml-5 text-secondary bg-white textFullName" data-toggle="modal" data-target="#myModalProfile">
                         ${sessionScope.usersession.fullName}
                     </button>
-                </h1>
-                <button type="button" onclick="logout()"> Logout </button>
+                </h1>-->
+<!--                <button type="button" class="btn btn-primary" onclick="logout()"> Logout </button>-->
 
                 <!-- Modal -->
                 <div class="modal fade" id="myModalProfile" tabindex="-1" role="dialog" aria-labelledby="myModalProfileLabel" aria-hidden="true">
@@ -111,7 +111,7 @@
                                                             <h6 class="mb-0">Email</h6>
                                                         </div>
                                                         <div class="col-sm-9 text-secondary">
-                                                            <input id="email" type="email" class="form-control" value="${sessionScope.usersession.email}" readonly>
+                                                            <input disabled="true" id="email" type="email" class="form-control" value="${sessionScope.usersession.email}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
@@ -127,7 +127,7 @@
                                                             <h6 class="mb-0">Gender</h6>
                                                         </div>
                                                         <div class="form-check col-sm-9 ">
-                                                            <select class="form-select-lg w-100" id="gender">
+                                                            <select class="form-select-lg w-100" id="Gender">
                                                                 <option <c:if test="${sessionScope.usersession.gender == 'Male'}">selected=""</c:if> value="Male">Male</option>
                                                                 <option <c:if test="${sessionScope.usersession.gender == 'Female'}">selected=""</c:if> value="Female">Female</option>
                                                                 <option <c:if test="${sessionScope.usersession.gender == 'Other'}">selected=""</c:if> value="Other">Other</option>
@@ -169,6 +169,6 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> <!-- thư viện hỗ trợ js -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- thư viện css boostrap -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="../assets/js/profile.js"></script>
+        <script src="../js/profile.js"></script>
     </body>
 </html>

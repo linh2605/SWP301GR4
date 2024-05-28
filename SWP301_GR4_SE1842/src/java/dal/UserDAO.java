@@ -110,7 +110,7 @@ public class UserDAO extends DBContext {
     }
 
     public User GetUserById(int id) {
-        String sql = "SELECT * FROM dbo.[User] WHERE UserID=?";
+        String sql = "SELECT * FROM User WHERE UserID=?";
         User u = null;
 
         try {
@@ -154,7 +154,7 @@ public class UserDAO extends DBContext {
             return false;
         }
 
-        String sqlQuery = "UPDATE [dbo].[User] SET [Password] = ? WHERE UserID = ?";
+        String sqlQuery = "UPDATE User SET Password = ? WHERE UserID = ?";
         try {
             PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlQuery);
             st.setString(1, newPass);
@@ -168,7 +168,7 @@ public class UserDAO extends DBContext {
     }
 
     public boolean validateOldPass(int uId, String oldPass) {
-        String sql = "SELECT * FROM dbo.[User] WHERE UserID = ? AND Password = ?";
+        String sql = "SELECT * FROM User WHERE UserID = ? AND Password = ?";
         User u = null;
 
         try {
@@ -184,9 +184,27 @@ public class UserDAO extends DBContext {
         }
         return false;
     }
+    
+    public boolean UpdateProfile(User u){
+        
+        String sqlQuery = "UPDATE User SET FullName = ?,Gender = ?,Phone = ?,Address = ? WHERE UserID=?";
+        try {
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlQuery);
+            st.setString(1, u.getFullName());
+            st.setString(2, u.getGender());
+            st.setString(3, u.getPhone());
+            st.setString(4, u.getAddress());
+            st.setInt(5, u.getId());
+            return st.executeUpdate() > 0;
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
+    }
 
     public User getByUsername(String username) {
-        String sql = "SELECT * FROM dbo.[User] WHERE username = ?";
+        String sql = "SELECT * FROM User WHERE username = ?";
 
         try {
             PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
