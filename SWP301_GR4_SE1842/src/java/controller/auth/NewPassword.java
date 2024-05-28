@@ -25,6 +25,7 @@ public class NewPassword extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String pass = request.getParameter("password");
+        pass = Encode.toSHA1(pass);
         String email = (String) request.getSession().getAttribute("email");
         System.out.println(pass + "/n" + email);
         new UserDAO().updateUser(email, pass);
