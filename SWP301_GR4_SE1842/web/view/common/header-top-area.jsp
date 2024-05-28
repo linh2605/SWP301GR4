@@ -8,16 +8,16 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 col-md-4  ">
-                            <div class="header-top-left">
-                                <p>England's Fastest Online Shopping Destination</p>
-                            </div>
+                            <a href="${pageContext.request.contextPath}/view/home" class="header-top-left">
+                                <p>Home</p>
+                            </a>
                         </div>
                         <div class="col-lg-8 col-md-8  col-12">
                             <div class="header-link ">
                                 <ul>
                                     <li><a href="register.html">My Account</a></li>
                                     <li><a href="wishlist.html">My Wish List</a></li>
-                                    <li><a href="login.html">Sign In</a></li>
+                                    <li><a href="../auth/login">Sign In</a></li>
                                     <li class=""><a href="#">US Dollar<i class="fa fa-angle-down"> </i></a>
                                         <div class="dollar-submenu">
                                             <ul>
