@@ -204,9 +204,9 @@ CREATE TABLE Refund (
 
 -- Blog Table
 CREATE TABLE Blog (
-    BlogID INT AUTO_INCREMENT PRIMARY KEY,
-    BlogTitle VARCHAR(200),
-    Content TEXT,
+    blogiD INT AUTO_INCREMENT PRIMARY KEY,
+    blog_title VARCHAR(200),
+    content TEXT,
     CreateAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     CreateBy INT,
     Img TEXT,
