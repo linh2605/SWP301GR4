@@ -17,11 +17,11 @@ import model.User;
 public class UserDAO extends DBContext {
 
     public User getUser(String username, String password) {
-        String sql = "SELECT * FROM dbo.[User] WHERE Username=? AND Password=?";
+        String sql = "SELECT * FROM User WHERE Username=? AND Password=?";
         User u = null;
 
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setString(1, username);
             st.setString(2, password);
             ResultSet rs = st.executeQuery();
@@ -47,15 +47,13 @@ public class UserDAO extends DBContext {
 
     public boolean createUser(User u) {
 
-        String sql = "  INSERT INTO dbo.[User]\n"
-                + "  (Username, Password, RoleID, Avatar, FullName, Gender, Email)\n"
-                + "  VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO User (Username, Password, RoleID, Avatar, FullName, Gender, Email) VALUES (?,?,?,?,?,?,?)";
 
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setString(1, u.getUsername());
             st.setString(2, u.getPassword());
-            st.setString(3, "4");
+            st.setString(3, "2");
             st.setString(4, u.getAvatar());
             st.setString(5, u.getFullName());
             st.setString(6, u.getGender());
@@ -73,7 +71,7 @@ public class UserDAO extends DBContext {
                 + "SET Password = ?\n"
                 + "WHERE Email = ? ";
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setString(1, newPassword);
             st.setString(2, email);
             st.execute();
@@ -86,7 +84,7 @@ public class UserDAO extends DBContext {
     public User getByEmail(String email) {
         String sql = "SELECT * FROM dbo.[User] WHERE Email = ?";
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setString(1, email);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -116,7 +114,7 @@ public class UserDAO extends DBContext {
         User u = null;
 
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
@@ -158,7 +156,7 @@ public class UserDAO extends DBContext {
 
         String sqlQuery = "UPDATE [dbo].[User] SET [Password] = ? WHERE UserID = ?";
         try {
-            PreparedStatement st = connection.prepareStatement(sqlQuery);
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlQuery);
             st.setString(1, newPass);
             st.setInt(2, userId);
             return st.executeUpdate() > 0;
@@ -174,7 +172,7 @@ public class UserDAO extends DBContext {
         User u = null;
 
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setInt(1, uId);
             st.setString(2, oldPass);
             ResultSet rs = st.executeQuery();
@@ -191,7 +189,7 @@ public class UserDAO extends DBContext {
         String sql = "SELECT * FROM dbo.[User] WHERE username = ?";
 
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setString(1, username);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
