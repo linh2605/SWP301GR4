@@ -403,6 +403,14 @@ INSERT INTO Blog (BlogTitle, Content, CreateBy, Img)
 VALUES ('Top 10 Running Shoes', 'A review of the top 10 running shoes for 2024.', 1, '1'),
        ('How to Choose the Right Sportswear', 'Tips and tricks for selecting the best sportswear.', 2, '2');
 
+INSERT INTO productcategory (ProductID, CategoryID) Values 
+(1, 1), (2, 1), (3, 1), (4, 1), (5, 2), (6, 2), (7, 1), 
+(8, 2), (9, 1), (10, 1), (11, 2), (12, 1), (13, 1), (14, 1), 
+(15, 1), (16, 2), (17, 2), (18, 1), (19, 1), (20, 2), (21, 1), 
+(22, 1), (23, 2), (24, 1), (25, 1), (26, 2), (27, 1), (28, 1), 
+(29, 2), (30, 1);
+
+
 -- Queries to verify data
 SELECT p.*, c.CategoryName, i.Image 
 FROM Product p
