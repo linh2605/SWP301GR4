@@ -15,6 +15,8 @@
                         <div class="input-group" style="width: 80%">
                             <input style="width: 80%" type="text" class="form-control" name="search" placeholder="Enter name to search" value="${param.search}">
                             <input type="hidden" name="page" value="${currentPage}">
+                            <input type="hidden" name="brandId" value="${sessionScope.currBrand}" />
+                            <input type="hidden" name="catId" value="${sessionScope.currCate}" />
                         </div>
                     </form>
                 </div>
