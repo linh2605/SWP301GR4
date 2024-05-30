@@ -89,14 +89,14 @@ CREATE TABLE Role (
 );
 
 -- User Table
-CREATE TABLE `User` (
+CREATE TABLE User (
     UserID INT AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(50) NOT NULL UNIQUE,
     Password VARCHAR(50) NOT NULL,
     RoleID INT NOT NULL,
     Avatar TEXT,
     FullName VARCHAR(50),
-    Gender ENUM('Male', 'Female', 'Other') CHECK (Gender IN ('Male', 'Female', 'Other')),
+    Gender ENUM('Male', 'Female', 'Other'),
     Phone VARCHAR(20),  -- Increased length
     Email VARCHAR(50) UNIQUE,
     Address VARCHAR(50),
@@ -160,7 +160,7 @@ CREATE TABLE `Order` (
     DeliverDate DATE,
     Phone VARCHAR(11),  
     Email TEXT,
-    `Address` TEXT,
+    Address TEXT,
     PaymentMethodID INT,
     TotalPrice DECIMAL(10, 2),
     StatusID INT NOT NULL,
@@ -237,39 +237,93 @@ VALUES ('Running Shoes', 'Shoes designed for running.', 1),
 
 -- Insert sample data into Product Table
 INSERT INTO Product (ProductName, ProductPrice, Stock, ProductRating, ProductDesc, BrandID, SupplierID)
-VALUES ('Nike Air Zoom Pegasus', 120.00, 50, 5, 'Versatile and comfortable running shoes.', 1, 1),
-       ('Adidas Ultraboost', 180.00, 30, 4, 'High-performance running shoes with responsive cushioning.', 2, 2),
-       ('Lining shirt', 180.00, 30, 4, 'High-performance running shoes with responsive cushioning.', 1, 2),
-       ('Lining ningli', 180.00, 30, 4, 'High-performance running shoes with responsive cushioning.', 2, 2);
+VALUES 
+('Adidas Shirt 1', 180.00, 50, 4, 'Adidas Shirt', 2, 2),
+('Adidas Shirt 2', 185.00, 50, 4, 'Adidas Shirt', 2, 2),
+('Adidas Shirt 3', 190.00, 50, 4, 'Adidas Shirt', 2, 2),
+('Adidas Shirt 4', 195.00, 50, 4, 'Adidas Shirt', 2, 2),
+('Adidas Shirt 5', 200.00, 50, 4, 'Adidas Shirt', 2, 2),
+('Nike Shirt 1', 180.00, 50, 4, 'Nike Shirt', 1, 1),
+('Nike Shirt 2', 185.00, 50, 4, 'Nike Shirt', 1, 1),
+('Nike Shirt 3', 190.00, 50, 4, 'Nike Shirt', 1, 1),
+('Nike Shirt 4', 195.00, 50, 4, 'Nike Shirt', 1, 1),
+('Nike Shirt 5', 200.00, 50, 4, 'Nike Shirt', 1, 1),
+('Puma Shirt 1', 180.00, 50, 4, 'Puma Shirt', 3, 1),
+('Puma Shirt 2', 185.00, 50, 4, 'Puma Shirt', 3, 1),
+('Puma Shirt 3', 190.00, 50, 4, 'Puma Shirt', 3, 1),
+('Puma Shirt 4', 195.00, 50, 4, 'Puma Shirt', 3, 1),
+('Puma Shirt 5', 200.00, 50, 4, 'Puma Shirt', 3, 1),
+('Adidas Shoes 1', 220.00, 50, 5, 'Adidas Shoes', 2, 2),
+('Adidas Shoes 2', 225.00, 50, 5, 'Adidas Shoes', 2, 2),
+('Adidas Shoes 3', 230.00, 50, 5, 'Adidas Shoes', 2, 2),
+('Adidas Shoes 4', 235.00, 50, 5, 'Adidas Shoes', 2, 2),
+('Adidas Shoes 5', 240.00, 50, 5, 'Adidas Shoes', 2, 2),
+('Nike Shoes 1', 220.00, 50, 5, 'Nike Shoes', 1, 1),
+('Nike Shoes 2', 225.00, 50, 5, 'Nike Shoes', 1, 1),
+('Nike Shoes 3', 230.00, 50, 5, 'Nike Shoes', 1, 1),
+('Nike Shoes 4', 235.00, 50, 5, 'Nike Shoes', 1, 1),
+('Nike Shoes 5', 240.00, 50, 5, 'Nike Shoes', 1, 1),
+('Puma Shoes 1', 220.00, 50, 5, 'Puma Shoes', 3, 1),
+('Puma Shoes 2', 225.00, 50, 5, 'Puma Shoes', 3, 1),
+('Puma Shoes 3', 230.00, 50, 5, 'Puma Shoes', 3, 1),
+('Puma Shoes 4', 235.00, 50, 5, 'Puma Shoes', 3, 1),
+('Puma Shoes 5', 240.00, 50, 5, 'Puma Shoes', 3, 1);
 
--- Insert sample data into ProductCategory Table
-INSERT INTO ProductCategory (ProductID, CategoryID, SubCategoryID)
-VALUES (1, 1, 1),
-       (2, 1, 1),
-       (3, 2, 3),
-       (4, 2, 3);
-
--- Insert sample data into Contact Table
-INSERT INTO Contact (Name, Email, Message)
-VALUES ('John Doe', 'john.doe@example.com', 'I would like to know more about your running shoes.'),
-       ('Jane Smith', 'jane.smith@example.com', 'Do you have any discounts on basketball shoes?');
-
--- Insert sample data into Images Table
+-- Insert sample data into Images Table with provided URLs
 INSERT INTO Images (Image, ProductID)
-VALUES ('https://d.scdn.gr/images/sku_main_images/010754/10754027/20170404133057_adidas_ultraboost_ba8844.jpeg', 1),
-       ('https://th.bing.com/th/id/OIP.qIe6PQWXWum7NQrgoPEOPQHaFj?rs=1&pid=ImgDetMain', 2),
-       ('https://ae01.alicdn.com/kf/HTB1bHUKw5CYBuNkHFCcq6AHtVXa2/Li-Ning-Men-Badminton-T-shirts-AT-DRY-Breathable-Comfort-LiNing-Sports-Competition-Tees-Tops-T.jpg', 3),
-       ('https://th.bing.com/th/id/OIP.BzId_96BWNPjaZYXKwu9KQHaHa?w=800&h=800&rs=1&pid=ImgDetMain', 4);
+VALUES 
+('https://vinsport.vn/wp-content/uploads/2020/09/Bo-quan-ao-the-thao-thoi-trang-khong-logo-adidas-3-ba-la-nhieu-mau-xanh.jpg', 1),
+('https://vinsport.vn/wp-content/uploads/2020/09/Bo-quan-ao-the-thao-thoi-trang-khong-logo-adidas-3-ba-la-nhieu-mau-trang-tui.jpg', 2),
+('https://vn-test-11.slatic.net/p/1a1f9f9e41c4466efd5c7f525be5a531.jpg', 3),
+('https://s4.shopbay.vn/files/285/ao-training-tuyen-duc-euro-2021-60f2633744fdd.jpg', 4),
+('https://filebroker-cdn.lazada.vn/kf/S4a20d1b337bd477c941ef4d0941d2f06u.jpg', 5),
+('https://vinsport.vn/my_uploads/2022/06/Bo-do-quan-ao-da-bong-hang-da-banh-clb-bara-barcelona-soc-xanh-vang-cam-logo-theu-me-thai-0.jpg', 6),
+('https://vinsport.vn/wp-content/uploads/2023/09/Bo-quan-ao-bong-da-Chelsea-23-24-san-nha-mau-xanh-tim-than-full-logo-nike-nam-2023-2024.jpg', 7),
+('https://www.sport9.vn/images/thumbs/002/0021514_bo-quan-ao-bong-da-doi-tuyen-quoc-gia-italia-mau-trang-xanh.jpeg?preset=large&watermark=default', 8),
+('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX3IMmKcKmcTGp_D77ZMzIGFOS4wcRh2jgvA&s', 9),
+('https://vn-live-01.slatic.net/p/6438dc96529edd2a5cf1f8695bb21a2a.jpg', 10),
+('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgPhK6GcA9gsh8UU7St-0TZtoXPB5Jp5zxCQ&s', 11),
+('https://bizweb.dktcdn.net/thumb/grande/100/180/757/products/4648116quan-ao-bong-da-khong-logo-puma-speed-trang-jpeg.jpg?v=1487739238467', 12),
+('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1WsLVPdcginDSYszp9SOMPLODhRYlJN3xuvvVdL5gKgoKOYI2qrZClxvOxMDj4Jn5Ez4&usqp=CAU', 13),
+('https://vinsport.vn/my_uploads/2022/07/Bo-quan-ao-bong-da-doi-tuyen-quoc-gia-y-italia-jersey-trang-vien-xanh-moi-puma.jpg', 14),
+('https://down-vn.img.susercontent.com/file/f3c40a83a5aecf9c66a79e49bcec88b9', 15),
+('https://www.sport9.vn/images/uploaded/blog%206/adidas-x-crazyfast%20(5).jpg', 16),
+('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAQQGa7vw6cl38KplcicwiDbBsaShchzyfgw&s', 17),
+('https://product.hstatic.net/1000402257/product/giay_da_bong_predator_freak_3_d2c203ca889d401ea32ada3bf5fdfcc7_grande.jpg', 18),
+('https://pos.nvncdn.com/6a2bd9-54198/ps/20230817_hTUI4Zvic7.jpeg', 19),
+('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUqx6s_irzOMvHUcHr6T8auKmkXk5bnYdL0Q&s', 20),
+('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNNWzdyVcGB8wxoiMK6I52z8IztY-QWes5QQ&s', 21),
+('https://product.hstatic.net/1000061481/product/anh_sp_add_web_3-02-02-02_d327c394fb334b45a65d6ef60c6a9042_1024x1024.jpg', 22),
+('https://img.websosanh.vn/v2/users/root_product/images/giay-da-bong-nike-vapor-cv0978/j7qsz1xuhh03y.jpg', 23),
+('https://thuhiensport.com/wp-content/uploads/2019/04/giay-da-bong-nike.jpg', 24),
+('https://zocker.vn/pic/Images/Module/News/images/tai-sao-nen-chon-giay-da-bong-san-co-nhan-tao-nike-4.jpg', 25),
+('https://product.hstatic.net/200000601263/product/374e8129a09e400698398657ad80eeb9_6927eaab7a054094979292f6ece54cba.jpg', 26),
+('https://product.hstatic.net/200000601263/product/75b9d8dc4f5a44a8b8608e31f86a9a31_07cd36b015b24068bf825568d73bd8dd.jpg', 27),
+('https://bizweb.dktcdn.net/100/340/988/products/giay-da-bong-38-4201c148-5c3d-4c2b-b837-74d5505bbf0c.jpg?v=1625903205387', 28),
+('https://giaydabongtot.com/wp-content/uploads/2023/03/IMG_E0526.jpg', 29),
+('https://giaydabongtot.com/wp-content/uploads/2023/02/IMG_E0530-1000x1000.jpg', 30);
 
 -- Insert sample data into Role Table
 INSERT INTO Role (RoleName, RoleDesc)
 VALUES ('Admin', 'Administrator with full access.'),
+       ('Marketing', 'Marketing personnel with access to marketing operations.'),
+       ('Sale', 'Sales personnel with access to sales operations.'),
        ('Customer', 'Regular customer with limited access.');
 
 -- Insert sample data into User Table
-INSERT INTO `User` (Username, Password, RoleID, Avatar, FullName, Gender, Phone, Email, Address)
+INSERT INTO User (Username, Password, RoleID, Avatar, FullName, Gender, Phone, Email, Address)
 VALUES ('admin', 'adminpass', 1, 'avatar1.jpg', 'Admin User', 'Male', '111-222-3333', 'admin@example.com', '123 Admin St.'),
-       ('johndoe', 'johnpass', 2, 'avatar2.jpg', 'John Doe', 'Male', '444-555-6666', 'john.doe@example.com', '456 John St.');
+       ('johndoe', 'johnpass', 4, 'avatar2.jpg', 'John Doe', 'Male', '444-555-6666', 'john.doe@example.com', '456 John St.'),
+       ('sale1', 'sale1pass', 3, 'avatar3.jpg', 'Alice Brown', 'Female', '222-333-4444', 'alice.brown@example.com', '100 Sale St.'),
+       ('sale2', 'sale2pass', 3, 'avatar4.jpg', 'Bob Smith', 'Male', '333-444-5555', 'bob.smith@example.com', '101 Sale St.'),
+       ('sale3', 'sale3pass', 3, 'avatar5.jpg', 'Carol Johnson', 'Female', '444-555-6666', 'carol.johnson@example.com', '102 Sale St.'),
+       ('sale4', 'sale4pass', 3, 'avatar6.jpg', 'David Lee', 'Male', '555-666-7777', 'david.lee@example.com', '103 Sale St.'),
+       ('sale5', 'sale5pass', 3, 'avatar7.jpg', 'Eva Davis', 'Female', '666-777-8888', 'eva.davis@example.com', '104 Sale St.'),
+       ('marketing1', 'marketing1pass', 2, 'avatar8.jpg', 'Fiona Harris', 'Female', '777-888-9999', 'fiona.harris@example.com', '200 Marketing St.'),
+       ('marketing2', 'marketing2pass', 2, 'avatar9.jpg', 'George Clark', 'Male', '888-999-0000', 'george.clark@example.com', '201 Marketing St.'),
+       ('marketing3', 'marketing3pass', 2, 'avatar10.jpg', 'Hannah Scott', 'Female', '999-000-1111', 'hannah.scott@example.com', '202 Marketing St.'),
+       ('marketing4', 'marketing4pass', 2, 'avatar11.jpg', 'Ian Adams', 'Male', '000-111-2222', 'ian.adams@example.com', '203 Marketing St.'),
+       ('marketing5', 'marketing5pass', 2, 'avatar12.jpg', 'Jackie Thompson', 'Female', '111-222-3333', 'jackie.thompson@example.com', '204 Marketing St.');
 
 -- Insert sample data into Feedback Table
 INSERT INTO Feedback (UserID, ProductID, Rating, Content, Image, FeedbackDate, Status)
@@ -283,8 +337,37 @@ VALUES (2, 1),
 
 -- Insert sample data into UserCart Table
 INSERT INTO UserCart (UserID, ProductID, Quantity, TotalPrice)
-VALUES (2, 1, 2, 240.00),
-       (2, 2, 1, 180.00);
+VALUES 
+(2, 1, 1, 180.00),
+(2, 2, 1, 185.00),
+(2, 3, 1, 190.00),
+(2, 4, 1, 195.00),
+(2, 5, 1, 200.00),
+(2, 6, 1, 180.00),
+(2, 7, 1, 185.00),
+(2, 8, 1, 190.00),
+(2, 9, 1, 195.00),
+(2, 10, 1, 200.00),
+(2, 11, 1, 180.00),
+(2, 12, 1, 185.00),
+(2, 13, 1, 190.00),
+(2, 14, 1, 195.00),
+(2, 15, 1, 200.00),
+(2, 16, 1, 220.00),
+(2, 17, 1, 225.00),
+(2, 18, 1, 230.00),
+(2, 19, 1, 235.00),
+(2, 20, 1, 240.00),
+(2, 21, 1, 220.00),
+(2, 22, 1, 225.00),
+(2, 23, 1, 230.00),
+(2, 24, 1, 235.00),
+(2, 25, 1, 240.00),
+(2, 26, 1, 220.00),
+(2, 27, 1, 225.00),
+(2, 28, 1, 230.00),
+(2, 29, 1, 235.00),
+(2, 30, 1, 240.00);
 
 -- Insert sample data into OrderStatus Table
 INSERT INTO OrderStatus (Name, Description)
@@ -296,8 +379,8 @@ INSERT INTO PaymentMethod (Name, Description)
 VALUES ('Credit Card', 'Payment via credit card.'),
        ('PayPal', 'Payment via PayPal.');
 
--- Insert sample data into Order Table
-INSERT INTO `Order` (UserID, FullName, OrderDate, DeliverDate, Phone, Email, `Address`, PaymentMethodID, TotalPrice, StatusID)
+-- Insert sample data into `Order` Table
+INSERT INTO `Order` (UserID, FullName, OrderDate, DeliverDate, Phone, Email, Address, PaymentMethodID, TotalPrice, StatusID)
 VALUES (2, 'John Doe', CURDATE(), CURDATE() + INTERVAL 7 DAY, '4445556666', 'john.doe@example.com', '456 John St.', 1, 420.00, 1);
 
 -- Insert sample data into OrderDetail Table
