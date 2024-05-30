@@ -19,8 +19,8 @@ import java.sql.SQLException;
 /**
  * Servlet implementation class ValidateOtp
  */
-@WebServlet("/ValidateOtp")
-public class ValidateOtp extends HttpServlet {
+@WebServlet("/validateregisterOtp")
+public class ValidateRegisterOtp extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,7 +35,7 @@ public class ValidateOtp extends HttpServlet {
 
             request.setAttribute("email", request.getParameter("email"));
             request.setAttribute("status", "success");
-            dispatcher = request.getRequestDispatcher("login-register.jsp");
+            dispatcher = request.getRequestDispatcher("/view/home.jsp");
             dispatcher.forward(request, response);
 
         } else {
