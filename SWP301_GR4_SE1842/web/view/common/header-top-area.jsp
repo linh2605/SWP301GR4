@@ -17,7 +17,7 @@
                                 <ul>
                                     <li><a href="register.html">My Account</a></li>
                                     <li><a href="wishlist.html">My Wish List</a></li>
-                                    <li><a href="login.html">Sign In</a></li>
+                                    <li><a href="/SWP301_GR4_SE1842/auth/login">Sign In</a></li>
                                     <li class=""><a href="#">US Dollar<i class="fa fa-angle-down"> </i></a>
                                         <div class="dollar-submenu">
                                             <ul>
