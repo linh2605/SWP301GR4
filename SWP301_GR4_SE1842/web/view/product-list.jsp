@@ -129,7 +129,7 @@
                             <!-- Display the page numbers as links -->
                             <c:forEach var="pageNum" begin="1" end="${totalPages}">
                                 <li class="page-item <c:if test='${pageNum == currentPage}'>active</c:if>">
-                                    <a class="page-link" href="?brandId=${b.brandID}&&catId=${sessionScope.currCate}&&search=${sessionScope.currSearch}&amp;page=${pageNum}">${pageNum}</a>
+                                    <a class="page-link" href="?brandId=${sessionScope.currBrand}&&catId=${sessionScope.currCate}&&search=${sessionScope.currSearch}&amp;page=${pageNum}">${pageNum}</a>
                                 </li>
                             </c:forEach>
                         </ul>
