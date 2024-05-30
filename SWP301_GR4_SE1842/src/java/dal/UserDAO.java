@@ -8,6 +8,8 @@ import controller.auth.NewPassword;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import model.Blog;
 import model.User;
 
 /**
@@ -47,7 +49,8 @@ public class UserDAO extends DBContext {
 
     public boolean createUser(User u) {
 
-        String sql = "INSERT INTO User (Username, Password, RoleID, Avatar, FullName, Gender, Email) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO User (Username, Password, RoleID, Avatar, FullName, Gender, Phone, Email, Address) "
+                + "VALUES (?, ?,? , ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
@@ -57,7 +60,9 @@ public class UserDAO extends DBContext {
             st.setString(4, u.getAvatar());
             st.setString(5, u.getFullName());
             st.setString(6, u.getGender());
-            st.setString(7, u.getEmail());
+            st.setString(7, u.getPhone());
+            st.setString(8, u.getEmail());
+            st.setString(9, u.getAddress());
             st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,9 +72,9 @@ public class UserDAO extends DBContext {
     }
 
     public User updateUser(String email, String newPassword) {
-        String sql = "UPDATE [User]\n"
-                + "SET Password = ?\n"
-                + "WHERE Email = ? ";
+        String sql = "UPDATE User \n" +
+"                SET Password = ?\n" +
+"                WHERE Email = ?";
         try {
             PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setString(1, newPassword);
@@ -82,7 +87,7 @@ public class UserDAO extends DBContext {
     }
 
     public User getByEmail(String email) {
-        String sql = "SELECT * FROM dbo.[User] WHERE Email = ?";
+        String sql = "SELECT * FROM User WHERE Email = ?";
         try {
             PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setString(1, email);
@@ -204,5 +209,17 @@ public class UserDAO extends DBContext {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        UserDAO userDAO = new UserDAO();
+        User user = new User();
+        user.setEmail("dhcongminh@gmail.com");
+        user.setUsername("dhcongminh");
+        user.setPassword("asdfasdf");
+        user.setFullName("dddd");
+        user.setGender("Other");
+
+        System.out.println(userDAO.createUser(user));
     }
 }

@@ -4,6 +4,7 @@
  */
 package controller.auth;
 
+import dal.UserDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import model.User;
 
 /**
  * Servlet implementation class ValidateOtp
@@ -33,10 +35,16 @@ public class ValidateRegisterOtp extends HttpServlet {
 
         if (value == otp) {
 
-            request.setAttribute("email", request.getParameter("email"));
-            request.setAttribute("status", "success");
-            dispatcher = request.getRequestDispatcher("/view/home.jsp");
-            dispatcher.forward(request, response);
+            User user = (User) request.getSession().getAttribute("registerUser");
+            user.setPassword(Encode.toSHA1(user.getPassword()));
+            UserDAO ud = new UserDAO();
+            ud.createUser(user);
+            request.setAttribute("ms1", "You signed up successful");
+            request.getSession().removeAttribute("registerUser");
+
+            
+            session.setAttribute("usersession", ud.getUser(user.getUsername(), user.getPassword()));
+            response.sendRedirect("../view/home");
 
         } else {
             request.setAttribute("message", "wrong otp");

@@ -4,7 +4,7 @@ DROP DATABASE IF EXISTS SportShopOnline;
 -- Create the database
 CREATE DATABASE SportShopOnline;
 
--- Use the database
+-- Use the databaseuser
 USE SportShopOnline;
 
 -- CREATE TABLES
