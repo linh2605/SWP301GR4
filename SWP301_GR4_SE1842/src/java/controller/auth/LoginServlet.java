@@ -53,6 +53,7 @@ public class LoginServlet extends HttpServlet {
                 if(u.getRoleID() ==3){
                     response.sendRedirect("../sale/saleDashboard.jsp");
                 }
+
             } else {
                 response.sendRedirect("../view/home");
             }
