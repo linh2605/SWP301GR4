@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("usersession", u);
             if (u.getRoleID() != 4) {
-                response.sendRedirect("../dashboard");
+                response.sendRedirect("../view/dashboard.jsp");
             } else {
                 response.sendRedirect("../view/home");
             }
