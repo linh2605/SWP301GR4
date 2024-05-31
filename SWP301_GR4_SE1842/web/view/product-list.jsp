@@ -63,19 +63,38 @@
             <div class="container">
                 <div class="row pt-5">
                     <div class="col-md-4">
-                        <h5>CATEGORIES</h5>
+                        <div>
+                            <h5>CATEGORIES</h5>
+                            <div>
+                                <ul>
+                                <c:forEach items="${cList}" var="c">
+                                    <c:set var="cateActive" value="${(sessionScope.currCate != null && sessionScope.currCate != 0 && c.categoryID == sessionScope.currCate) ? 'active' : ''}" />
+                                    <li>
+                                        <a class="text-decoration-none sidebar-link ${cateActive}" href="?catId=${c.categoryID}&&brandId=${sessionScope.currBrand}&&search=${sessionScope.currSearch}">
+                                            <p>${c.categoryName}</p>
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>BRANDS</h5>
                         <div>
                             <ul>
-                            <c:forEach items="${cList}" var="c">
-                                <li>
-                                    <a href="?catId=${c.categoryID}">
-                                        <p>${c.categoryName}</p>
-                                    </a>
-                                </li>
-                            </c:forEach>
-                        </ul>
-
-
+                                <c:forEach items="${brList}" var="b">
+                                    <c:set var="brandActive" value="${(sessionScope.currBrand != null && sessionScope.currBrand != 0 && b.brandID == sessionScope.currBrand) ? 'active' : ''}" />
+                                    <li>
+                                        <a class="text-decoration-none sidebar-link ${brandActive}" href="?brandId=${b.brandID}&&catId=${sessionScope.currCate}&&search=${sessionScope.currSearch}">
+                                            <p>${b.brandName}</p>
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="clearFilterBtn" class="btn btn-danger">Clear Filter</button>
                     </div>
                 </div>
                 <div class="row col-md-8">
@@ -104,6 +123,17 @@
                             </div>
                         </div>
                     </c:forEach>
+
+                    <nav class="mt-3" aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <!-- Display the page numbers as links -->
+                            <c:forEach var="pageNum" begin="1" end="${totalPages}">
+                                <li class="page-item <c:if test='${pageNum == currentPage}'>active</c:if>">
+                                    <a class="page-link" href="?brandId=${sessionScope.currBrand}&&catId=${sessionScope.currCate}&&search=${sessionScope.currSearch}&amp;page=${pageNum}">${pageNum}</a>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </nav>
                 </div>
             </div>
 
@@ -183,24 +213,11 @@
 
 
         <script>
-                                    function addToCart(pId) {
-                                        console.log(pId)
-                                        fetch('AddToCartController', {
-                                            method: 'POST',
-                                            headers: {
-                                                'Content-Type': 'application/json'
-                                            },
-                                        })
-                                                .then(response => console.log(response.json()))
-                                                .then(data => {
-                                                    console.log('Success:', data);
-                                                    alert('Response received: ' + data.message);
-                                                })
-                                                .catch((error) => {
-                                                    console.error('Error:', error);
-                                                    alert('An error occurred: ' + error.message);
-                                                });
-                                    }
+            document.getElementById('clearFilterBtn').addEventListener('click', function () {
+                // Remove all query parameters from the URL
+                var url = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.location.href = url;
+            });
         </script>
 
 

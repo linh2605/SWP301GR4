@@ -100,6 +100,58 @@ public class ProductDAO extends DBContext {
         }
         return products;
     }
+    
+    
+        // Read all products
+    public List<Product> getAllProductsOnShop(String searchParam, Integer categoryId, int brandId) {
+        List<Product> products = new ArrayList<>();
+        List<Object> list = new ArrayList<>();
+        try {
+            StringBuilder query = new StringBuilder();
+            query.append("""
+                         Select p.*, c.CategoryName, i.Image from Product p
+                         JOIN ProductCategory pc ON p.ProductID = pc.ProductID
+                         JOIN Category c ON c.CategoryID = pc.CategoryID
+                         JOIN Images i ON i.ProductID = P.ProductID  where 1=1""");
+            if (searchParam != null && !searchParam.trim().isEmpty()) {
+                query.append(" AND productName LIKE ? ");
+                list.add("%" + searchParam + "%");
+            }
+            if (categoryId != null && categoryId != 0) {
+                query.append(" AND c.CategoryID = ? ");
+                list.add(categoryId);
+            }
+            if (brandId != 0) {
+                query.append(" AND BrandID = ? ");
+                list.add(brandId);
+            }
+            query.append(" ORDER BY p.ProductID DESC");
+            PreparedStatement preparedStatement;
+            preparedStatement = new DBContext().getConnection().prepareStatement(query.toString());
+            mapParams(preparedStatement, list);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    Product product = new Product();
+                    product.setProductID(rs.getInt("ProductID"));
+                    product.setProductName(rs.getString("ProductName"));
+                    product.setProductPrice(rs.getBigDecimal("ProductPrice"));
+                    product.setStock(rs.getInt("Stock"));
+                    product.setProductRating(rs.getInt("ProductRating"));
+                    product.setProductDesc(rs.getString("ProductDesc"));
+                    product.setBrandID(rs.getInt("BrandID"));
+                    product.setSupplierID(rs.getInt("SupplierID"));
+                    product.setImage(rs.getString("Image"));
+                    products.add(product);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return products;
+    }
+
+    
+    
     // Update a product
 
     public void updateProduct(Product product) {

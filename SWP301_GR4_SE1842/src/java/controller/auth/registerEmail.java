@@ -90,6 +90,7 @@ public class registerEmail extends HttpServlet {
         user.setFullName(fname);
         user.setUsername(u);
         user.setPassword(p);
+        user.setGender("Other");
         request.getSession().setAttribute("registerUser", user);
         RequestDispatcher dispatcher = null;
         int otpvalue = 0;

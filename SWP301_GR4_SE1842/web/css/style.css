@@ -5014,3 +5014,7 @@ p.checkout-coupon input[type="submit"] {
 	border-color: #e23e57;
 	color: #fff;
 }
+
+.sidebar-link.active {
+    color: tomato !important;
+}

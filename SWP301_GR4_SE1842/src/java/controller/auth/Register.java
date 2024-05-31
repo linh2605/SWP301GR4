@@ -37,7 +37,7 @@ public class Register extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Register</title>");            
+            out.println("<title>Servlet Register</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Register at " + request.getContextPath() + "</h1>");
@@ -72,18 +72,22 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("registerUser");
-        user.setPassword(Encode.toSHA1(user.getPassword()));
-        user.setGender("Other");
-        UserDAO ud = new UserDAO();
-        ud.createUser(user);
-        request.setAttribute("ms1", "You signed up successful");
-        request.getSession().removeAttribute("registerUser");
         
-        HttpSession session = request.getSession();
-        session.setAttribute("usersession", ud.getUser(user.getUsername(), user.getPassword()));
-        response.sendRedirect("../view/home");
     }
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        String fname = request.getParameter("fullname");
+//        String email = request.getParameter("email");
+//        String u = request.getParameter("username");
+//        String p = request.getParameter("password");
+//        Encode.toSHA1(p);
+//        User ac = new User(u, p, 4, "", fname, "Other", null, email, null);
+//        UserDAO ud = new UserDAO();
+//        System.out.println(fname + " " + email + " " + u + " " + p);
+//        ud.createUser(ac);
+//        request.setAttribute("ms1", "You signed up successful");
+//        request.getRequestDispatcher("login-register.jsp").forward(request, response);
+//    }
 
     /**
      * Returns a short description of the servlet.

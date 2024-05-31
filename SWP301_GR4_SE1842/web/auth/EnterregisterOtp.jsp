@@ -41,7 +41,7 @@ if(request.getAttribute("message")!=null)
 
                                 <div class="panel-body">
 
-                                    <form id="register-form" action="register" role="form" autocomplete="off"
+                                    <form id="register-form" action="validateregisterotp" role="form" autocomplete="off"
                                           class="form" method="post">
 
                                         <div class="form-group">
