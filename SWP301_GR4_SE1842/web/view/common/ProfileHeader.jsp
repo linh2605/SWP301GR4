@@ -57,7 +57,7 @@
                                                                                     <h6 class="mb-0">Old password</h6>
                                                                                 </div>
                                                                                 <div class="col-sm-9 text-secondary">
-                                                                                    <input type="password" id="OldPass" class="form-control" value="" placeholder="Old password">
+                                                                                    <input type="password" id="OldPass" class="form-control" value="" placeholder="Old password" onblur="togglePasswordVisibility(false, this)" onfocus="togglePasswordVisibility(true, this)">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row mb-3">
@@ -65,7 +65,7 @@
                                                                                     <h6 class="mb-0">New Password</h6>
                                                                                 </div>
                                                                                 <div class="col-sm-9 text-secondary">
-                                                                                    <input type="password" id="NewPass" class="form-control" value="" placeholder="New password">
+                                                                                    <input type="password" id="NewPass" class="form-control" value="" placeholder="New password" onblur="togglePasswordVisibility(false, this)" onfocus="togglePasswordVisibility(true, this)">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row mb-3">
@@ -73,7 +73,7 @@
                                                                                     <h6 class="mb-0">Confirm Password</h6>
                                                                                 </div>
                                                                                 <div class="col-sm-9 text-secondary">
-                                                                                    <input type="password" id="CFPassrs" class="form-control" value="" placeholder="Confirm password">
+                                                                                    <input type="password" id="CFPassrs" class="form-control" value="" placeholder="Confirm password" onblur="togglePasswordVisibility(false, this)" onfocus="togglePasswordVisibility(true, this)">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row mb-3 fade bg-success" id="changePassMessageBox">
@@ -119,7 +119,7 @@
                                                             <h6 class="mb-0">Phone</h6>
                                                         </div>
                                                         <div class="col-sm-9 text-secondary">
-                                                            <input id="phone" type="text" class="form-control" value="${sessionScope.usersession.phone}">
+                                                            <input id="phone" oninput="validateNumberInput(event)" pattern="\d{3}-\d{3}-\d{4}" title="Format: 444-555-6666" type="text" class="form-control" value="${sessionScope.usersession.phone}">
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3 d-flex">
