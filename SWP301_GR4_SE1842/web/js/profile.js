@@ -1,4 +1,4 @@
-function logout(){
+function logout() {
     $.ajax({
         url: "/SWP301_GR4_SE1842/Logout",
         method: "GET",
@@ -18,7 +18,7 @@ function ChangePass() {
     var boxMess = $('#changePassMessageBox');
     var Mess = $('#changePassMessage');
     var CFPass = $('#CFPassrs').val();
-    if(CFPass !== NewPass){
+    if (CFPass !== NewPass) {
         boxMess.removeClass("fade");
         boxMess.addClass("bg-danger");
         Mess.text("Confirm Password incorrect");
@@ -27,8 +27,8 @@ function ChangePass() {
         }, 3000)
         return;
     }
-    
-    if(!ValidatePassword(NewPass)){
+
+    if (!ValidatePassword(NewPass)) {
         boxMess.removeClass("fade");
         boxMess.addClass("bg-danger");
         Mess.text("Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&).");
@@ -37,7 +37,7 @@ function ChangePass() {
         }, 3000)
         return;
     }
-    
+
     if (OldPass == '' || NewPass == '') {
         boxMess.removeClass("fade")
         Mess.text("Please input your old password and new password!!");
@@ -68,7 +68,7 @@ function ChangePass() {
             } else {
                 boxMess.removeClass("bg-danger").addClass("bg-success")
             }
-            
+
             setTimeout(() => {
                 boxMess.addClass("fade")
             }, 3000)
@@ -126,4 +126,26 @@ function updateProfile() {
 function ValidatePassword(pass) {
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return passwordPattern.test(pass);
+}
+
+function validateNumberInput(event) {
+    const input = event.target;
+    let value = input.value.replace(/\D/g, '');
+    if (value.length > 3 && value.length <= 6) {
+        value = value.replace(/(\d{3})(\d+)/, '$1-$2');
+    } else if (value.length > 6) {
+        value = value.replace(/(\d{3})(\d{3})(\d+)/, '$1-$2-$3');
+    }
+    if (value.length > 12) {
+        value = value.substring(0, 12)
+    }
+    input.value = value;
+}
+
+function togglePasswordVisibility(isFocused, passwordInput) {
+    if (isFocused) {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
 }

@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.auth;
+package controller;
 
+import controller.auth.Encode;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,7 +32,7 @@ public class ProfileServlet extends HttpServlet {
         String action = request.getParameter("Action");
         switch (action) {
             case "ChangePass":
-                ChanePass(request, response);
+                ChangePass(request, response);
                 break;
             case "UpdateProfile":
                 UpdateProfile(request, response);
@@ -44,7 +45,7 @@ public class ProfileServlet extends HttpServlet {
         return "Short description";
     }
 
-    private void ChanePass(HttpServletRequest request, HttpServletResponse response)
+    private void ChangePass(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String oldPass = request.getParameter("OldPassword");
         String newPass = request.getParameter("NewPassword");
@@ -52,8 +53,8 @@ public class ProfileServlet extends HttpServlet {
         User u = (User) request.getSession().getAttribute("usersession");
         int uId = u.getId();
         
-        String oldPassHash = Encode.toSHA1(oldPass);
-        String newPassHash = Encode.toSHA1(newPass);
+        String oldPassHash = oldPass; //Encode.toSHA1(oldPass);
+        String newPassHash = newPass; //Encode.toSHA1(newPass);
         
         UserDAO udao = new UserDAO();
         String mess = udao.ChangePassword(uId, newPassHash, oldPassHash) ? "Change password successfully" : "Incorrect, Fail to change password, please check your old pass";
