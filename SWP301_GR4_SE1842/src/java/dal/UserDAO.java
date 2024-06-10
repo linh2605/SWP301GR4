@@ -8,8 +8,10 @@ import controller.auth.NewPassword;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import model.Blog;
+import model.Role;
 import model.User;
 
 /**
@@ -17,6 +19,40 @@ import model.User;
  * @author zzako
  */
 public class UserDAO extends DBContext {
+
+    public List<User> getAllUsers() {
+        String sqlString = "SELECT * FROM User";
+        List<User> userList = new ArrayList<>();
+
+        try {
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                Role role = new Role();
+                user.setId(rs.getInt("UserID"));
+                user.setUsername(rs.getString("Username"));
+                user.setPassword(rs.getString("Password"));
+                user.setRoleID(rs.getInt("RoleID"));
+                user.setAvatar(rs.getString("Avatar"));
+                user.setFullName(rs.getString("FullName"));
+                user.setGender(rs.getString("Gender"));
+                user.setPhone(rs.getString("Phone"));
+                user.setEmail(rs.getString("Email"));
+                user.setAddress(rs.getString("Address"));
+                userList.add(user);
+            }
+
+            rs.close();
+            st.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userList;
+    }
 
     public User getUser(String username, String password) {
         String sql = "SELECT * FROM User WHERE Username=? AND Password=?";
@@ -72,9 +108,9 @@ public class UserDAO extends DBContext {
     }
 
     public User updateUser(String email, String newPassword) {
-        String sql = "UPDATE User \n" +
-"                SET Password = ?\n" +
-"                WHERE Email = ?";
+        String sql = "UPDATE User \n"
+                + "                SET Password = ?\n"
+                + "                WHERE Email = ?";
         try {
             PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setString(1, newPassword);
@@ -189,9 +225,9 @@ public class UserDAO extends DBContext {
         }
         return false;
     }
-    
-    public boolean UpdateProfile(User u){
-        
+
+    public boolean UpdateProfile(User u) {
+
         String sqlQuery = "UPDATE User SET FullName = ?,Gender = ?,Phone = ?,Address = ? WHERE UserID=?";
         try {
             PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlQuery);
@@ -201,7 +237,7 @@ public class UserDAO extends DBContext {
             st.setString(4, u.getAddress());
             st.setInt(5, u.getId());
             return st.executeUpdate() > 0;
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -238,6 +274,7 @@ public class UserDAO extends DBContext {
         user.setFullName("dddd");
         user.setGender("Other");
 
-        System.out.println(userDAO.createUser(user));
+      //  System.out.println(userDAO.createUser(user));
+        System.out.println(userDAO.getAllUsers());
     }
 }
