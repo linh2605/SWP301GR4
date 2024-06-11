@@ -12,12 +12,15 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.AbstractList;
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Blog;
 import model.Order;
+import model.Role;
 import model.User;
 
 /**
@@ -25,6 +28,40 @@ import model.User;
  * @author zzako
  */
 public class UserDAO extends DBContext {
+
+    public List<User> getAllUsers() {
+        String sqlString = "SELECT * FROM User";
+        List<User> userList = new ArrayList<>();
+
+        try {
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                Role role = new Role();
+                user.setId(rs.getInt("UserID"));
+                user.setUsername(rs.getString("Username"));
+                user.setPassword(rs.getString("Password"));
+                user.setRoleID(rs.getInt("RoleID"));
+                user.setAvatar(rs.getString("Avatar"));
+                user.setFullName(rs.getString("FullName"));
+                user.setGender(rs.getString("Gender"));
+                user.setPhone(rs.getString("Phone"));
+                user.setEmail(rs.getString("Email"));
+                user.setAddress(rs.getString("Address"));
+                userList.add(user);
+            }
+
+            rs.close();
+            st.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userList;
+    }
 
     public User getUser(String username, String password) {
         String sql = "SELECT * FROM User WHERE Username=? AND Password=?";
@@ -312,5 +349,7 @@ public class UserDAO extends DBContext {
         } catch (ParseException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+      //  System.out.println(userDAO.createUser(user));
+//        System.out.println(userDAO.getAllUsers());
     }
 }
