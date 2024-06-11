@@ -5,11 +5,19 @@
 package dal;
 
 import controller.auth.NewPassword;
+import controller.customer.OrderDetail;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Blog;
+import model.Order;
 import model.User;
 
 /**
@@ -72,9 +80,9 @@ public class UserDAO extends DBContext {
     }
 
     public User updateUser(String email, String newPassword) {
-        String sql = "UPDATE User \n" +
-"                SET Password = ?\n" +
-"                WHERE Email = ?";
+        String sql = "UPDATE User \n"
+                + "                SET Password = ?\n"
+                + "                WHERE Email = ?";
         try {
             PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
             st.setString(1, newPassword);
@@ -136,6 +144,7 @@ public class UserDAO extends DBContext {
                         rs.getString(10)
                 );
             }
+            return u;
         } catch (SQLException e) {
 
             e.printStackTrace();
@@ -189,9 +198,9 @@ public class UserDAO extends DBContext {
         }
         return false;
     }
-    
-    public boolean UpdateProfile(User u){
-        
+
+    public boolean UpdateProfile(User u) {
+
         String sqlQuery = "UPDATE User SET FullName = ?,Gender = ?,Phone = ?,Address = ? WHERE UserID=?";
         try {
             PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlQuery);
@@ -201,7 +210,7 @@ public class UserDAO extends DBContext {
             st.setString(4, u.getAddress());
             st.setInt(5, u.getId());
             return st.executeUpdate() > 0;
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -229,15 +238,79 @@ public class UserDAO extends DBContext {
         return null;
     }
 
-    public static void main(String[] args) {
-        UserDAO userDAO = new UserDAO();
-        User user = new User();
-        user.setEmail("dhcongminh@gmail.com");
-        user.setUsername("dhcongminh");
-        user.setPassword("asdfasdf");
-        user.setFullName("dddd");
-        user.setGender("Other");
+    public List<Order> getOrderUser(int userId) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String sql = "SELECT \n"
+                + "    orders.*, \n"
+                + "    orderstatus.Name AS StatusName, \n"
+                + "    paymentmethod.Name AS PaymentMethodName\n"
+                + "FROM \n"
+                + "    sportshoponline.order AS orders\n"
+                + "INNER JOIN \n"
+                + "    sportshoponline.orderstatus AS orderstatus \n"
+                + "    ON orders.StatusID = orderstatus.StatusID\n"
+                + "INNER JOIN \n"
+                + "    sportshoponline.paymentmethod AS paymentmethod \n"
+                + "    ON orders.PaymentMethodID = paymentmethod.PaymentMethodID\n"
+                + "WHERE orders.UserID = ?;";
+        List<Order> orders = new ArrayList<>();
+        try {
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
+            st.setInt(1, userId);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                //orderId,userId,fullName,orderDate,deliverDate,phone,email,address,paymentName,totalPrice,statusNam
+                Order order = new Order(rs.getInt("OrderID"),
+                        rs.getInt("UserID"),
+                        rs.getString("FullName"),
+                        format.parse(rs.getString("OrderDate")),
+                        format.parse(rs.getString("DeliverDate")),
+                        rs.getString("Phone"),
+                        rs.getString("Email"),
+                        rs.getString("Address"),
+                        rs.getString("PaymentMethodName"),
+                        rs.getDouble("TotalPrice"),
+                        rs.getString("StatusName"));
+                order.setOrderDateString(format.format(format.parse(rs.getString("OrderDate"))));
+                order.setDeliverDateString(format.format(format.parse(rs.getString("DeliverDate"))));
+                orders.add(order);
+            }
+            return orders;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-        System.out.println(userDAO.createUser(user));
+    public List<OrderDetail> getOrderDetail(int orderId) {
+        String sql = "SELECT * FROM sportshoponline.orderdetail\n"
+                + "inner join sportshoponline.product on sportshoponline.orderdetail.ProductID = sportshoponline.orderdetail.ProductID\n"
+                + "inner join sportshoponline.productcategory on sportshoponline.product.ProductID = sportshoponline.productcategory.ProductID\n"
+                + "inner join sportshoponline.category on sportshoponline.category.CategoryID = sportshoponline.productcategory.CategoryID\n"
+                + "inner join sportshoponline.subcategory on sportshoponline.subcategory.sub = sportshoponline.productcategory.SubCategoryID";
+        List<OrderDetail> orderDetail = new ArrayList<>();
+        try {
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
+            st.setInt(1, orderId);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                //orderId,userId,fullName,orderDate,deliverDate,phone,email,address,paymentName,totalPrice,statusNam
+            }
+            return orderDetail;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        try {
+            UserDAO userDAO = new UserDAO();
+            for (Order arg : userDAO.getOrderUser(2)) {
+                System.out.println(arg);
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
