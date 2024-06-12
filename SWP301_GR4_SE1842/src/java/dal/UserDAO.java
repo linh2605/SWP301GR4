@@ -30,7 +30,7 @@ import model.User;
 public class UserDAO extends DBContext {
 
     public List<User> getAllUsers() {
-        String sqlString = "SELECT * FROM User";
+        String sqlString = "SELECT * FROM User WHERE RoleID = 4";
         List<User> userList = new ArrayList<>();
 
         try {
@@ -339,6 +339,130 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
+    public List<User> filterUsers(String keyword) {
+    String sqlString = "SELECT * FROM `user` WHERE `FullName` LIKE ? OR `Email` LIKE ? OR `Phone` LIKE ?";
+    List<User> userList = new ArrayList<>();
+
+    try {
+        PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
+        String searchPattern = "%" + keyword + "%";
+        st.setString(1, searchPattern);
+        st.setString(2, searchPattern);
+        st.setString(3, searchPattern);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+            User user = new User();
+            user.setId(rs.getInt("UserID"));
+            user.setUsername(rs.getString("Username"));
+            user.setPassword(rs.getString("Password"));
+            user.setRoleID(rs.getInt("RoleID"));
+            user.setAvatar(rs.getString("Avatar"));
+            user.setFullName(rs.getString("FullName"));
+            user.setGender(rs.getString("Gender"));
+            user.setPhone(rs.getString("Phone"));
+            user.setEmail(rs.getString("Email"));
+            user.setAddress(rs.getString("Address"));
+            userList.add(user);
+        }
+
+        rs.close();
+        st.close();
+        connection.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return userList;
+}
+    public List<User> getAllUsersSortedByName() {
+    String sqlString = "SELECT * FROM `user` ORDER BY `FullName` ASC";
+    List<User> userList = new ArrayList<>();
+
+    try {
+        PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+            User user = new User();
+            user.setId(rs.getInt("UserID"));
+            user.setUsername(rs.getString("Username"));
+            user.setPassword(rs.getString("Password"));
+            user.setRoleID(rs.getInt("RoleID"));
+            user.setAvatar(rs.getString("Avatar"));
+            user.setFullName(rs.getString("FullName"));
+            user.setGender(rs.getString("Gender"));
+            user.setPhone(rs.getString("Phone"));
+            user.setEmail(rs.getString("Email"));
+            user.setAddress(rs.getString("Address"));
+            userList.add(user);
+        }
+
+        rs.close();
+        st.close();
+        connection.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return userList;
+}
+    public void addUser(User user) {
+    String sqlString = "INSERT INTO `user` (Username, Password, RoleID, Avatar, FullName, Gender, Phone, Email, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    try (PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
+        ResultSet rs = st.executeQuery();) {
+
+        st.setString(1, user.getUsername());
+        st.setString(2, user.getPassword());
+        st.setInt(3, user.getRoleID());
+        st.setString(4, user.getAvatar());
+        st.setString(5, user.getFullName());
+        st.setString(6, user.getGender());
+        st.setString(7, user.getPhone());
+        st.setString(8, user.getEmail());
+        st.setString(9, user.getAddress());
+        
+        st.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+    public void updateUser(User user) {
+    String sqlString = "UPDATE `user` SET Username = ?, Password = ?, RoleID = ?, Avatar = ?, FullName = ?, Gender = ?, Phone = ?, Email = ?, Address = ? WHERE UserID = ?";
+    
+    try (PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
+        ResultSet rs = st.executeQuery();) {
+
+        st.setString(1, user.getUsername());
+        st.setString(2, user.getPassword());
+        st.setInt(3, user.getRoleID());
+        st.setString(4, user.getAvatar());
+        st.setString(5, user.getFullName());
+        st.setString(6, user.getGender());
+        st.setString(7, user.getPhone());
+        st.setString(8, user.getEmail());
+        st.setString(9, user.getAddress());
+        st.setInt(10, user.getId());
+        
+        st.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+    public void deleteUser(int userID) {
+    String sqlString = "DELETE FROM `user` WHERE UserID = ?";
+    
+    try (PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
+        ResultSet rs = st.executeQuery();) {
+
+        st.setInt(1, userID);
+        
+        st.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 
     public static void main(String[] args) {
         try {
