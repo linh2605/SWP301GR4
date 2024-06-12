@@ -116,21 +116,7 @@ public class UserDAO extends DBContext {
         return true;
     }
 
-    public User updateUser(String email, String newPassword) {
-        String sql = "UPDATE User \n"
-                + "                SET Password = ?\n"
-                + "                WHERE Email = ?";
-        try {
-            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
-            st.setString(1, newPassword);
-            st.setString(2, email);
-            st.execute();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        return getByEmail(email);
-    }
-
+   
     public User getByEmail(String email) {
         String sql = "SELECT * FROM User WHERE Email = ?";
         try {
@@ -238,18 +224,20 @@ public class UserDAO extends DBContext {
 
     public boolean UpdateProfile(User u) {
 
-        String sqlQuery = "UPDATE User SET FullName = ?,Gender = ?,Phone = ?,Address = ? WHERE UserID=?";
+        String sqlQuery = "UPDATE User SET FullName = ?, Gender = ?,Phone = ?,Address = ?, Email =? , Password = ?, Username = ? WHERE UserID=?";
         try {
             PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlQuery);
             st.setString(1, u.getFullName());
             st.setString(2, u.getGender());
             st.setString(3, u.getPhone());
             st.setString(4, u.getAddress());
-            st.setInt(5, u.getId());
+            st.setString(5, u.getEmail());
+            st.setString(6, u.getPassword());
+            st.setString(7, u.getUsername());            
+            st.setInt(8, u.getId());
             return st.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.out.println(e);
         }
         return false;
     }
@@ -407,49 +395,8 @@ public class UserDAO extends DBContext {
 
     return userList;
 }
-    public void addUser(User user) {
-    String sqlString = "INSERT INTO `user` (Username, Password, RoleID, Avatar, FullName, Gender, Phone, Email, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
-    try (PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
-        ResultSet rs = st.executeQuery();) {
-
-        st.setString(1, user.getUsername());
-        st.setString(2, user.getPassword());
-        st.setInt(3, user.getRoleID());
-        st.setString(4, user.getAvatar());
-        st.setString(5, user.getFullName());
-        st.setString(6, user.getGender());
-        st.setString(7, user.getPhone());
-        st.setString(8, user.getEmail());
-        st.setString(9, user.getAddress());
-        
-        st.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}
-    public void updateUser(User user) {
-    String sqlString = "UPDATE `user` SET Username = ?, Password = ?, RoleID = ?, Avatar = ?, FullName = ?, Gender = ?, Phone = ?, Email = ?, Address = ? WHERE UserID = ?";
     
-    try (PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
-        ResultSet rs = st.executeQuery();) {
-
-        st.setString(1, user.getUsername());
-        st.setString(2, user.getPassword());
-        st.setInt(3, user.getRoleID());
-        st.setString(4, user.getAvatar());
-        st.setString(5, user.getFullName());
-        st.setString(6, user.getGender());
-        st.setString(7, user.getPhone());
-        st.setString(8, user.getEmail());
-        st.setString(9, user.getAddress());
-        st.setInt(10, user.getId());
-        
-        st.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}
     public void deleteUser(int userID) {
     String sqlString = "DELETE FROM `user` WHERE UserID = ?";
     
@@ -465,15 +412,17 @@ public class UserDAO extends DBContext {
 }
 
     public static void main(String[] args) {
-        try {
-            UserDAO userDAO = new UserDAO();
-            for (Order arg : userDAO.getOrderUser(2)) {
-                System.out.println(arg);
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      //  System.out.println(userDAO.createUser(user));
+        
+       
+//        try {
+//            UserDAO userDAO = new UserDAO();
+//            for (Order arg : userDAO.getOrderUser(2)) {
+//                System.out.println(arg);
+//            }
+//        } catch (ParseException ex) {
+//            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//      //  System.out.println(userDAO.createUser(user));
 //        System.out.println(userDAO.getAllUsers());
     }
 }
