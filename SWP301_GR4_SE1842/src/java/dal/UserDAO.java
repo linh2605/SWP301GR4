@@ -62,6 +62,7 @@ public class UserDAO extends DBContext {
 
         return userList;
     }
+    
 
     public User getUser(String username, String password) {
         String sql = "SELECT * FROM User WHERE Username=? AND Password=?";
@@ -116,7 +117,20 @@ public class UserDAO extends DBContext {
         return true;
     }
 
-   
+   public User updateUser(String email, String newPassword) {
+        String sql = "UPDATE User \n"
+                + "                SET Password = ?\n"
+                + "                WHERE Email = ?";
+        try {
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
+            st.setString(1, newPassword);
+            st.setString(2, email);
+            st.execute();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return getByEmail(email);
+    }
     public User getByEmail(String email) {
         String sql = "SELECT * FROM User WHERE Email = ?";
         try {
@@ -425,4 +439,6 @@ public class UserDAO extends DBContext {
 //      //  System.out.println(userDAO.createUser(user));
 //        System.out.println(userDAO.getAllUsers());
     }
+
+   
 }
