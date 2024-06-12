@@ -25,18 +25,6 @@
         <servlet-class>controller.auth.NewPassword</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ProfileServlet</servlet-name>
-        <servlet-class>controller.ProfileServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>registerEmail</servlet-name>
-        <servlet-class>controller.auth.registerEmail</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ValidateRegisterOtp</servlet-name>
-        <servlet-class>controller.auth.ValidateRegisterOtp</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CustomerList</servlet-name>
         <servlet-class>controller.makerting.CustomerList</servlet-class>
     </servlet>
@@ -51,6 +39,22 @@
     <servlet>
         <servlet-name>CustomerListServlet</servlet-name>
         <servlet-class>controller.customer.CustomerListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerDetailServlet</servlet-name>
+        <servlet-class>controller.customer.CustomerDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>controller.auth.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>registerEmail</servlet-name>
+        <servlet-class>controller.auth.registerEmail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValidateRegisterOtp</servlet-name>
+        <servlet-class>controller.auth.ValidateRegisterOtp</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -104,7 +108,13 @@
         <servlet-name>CustomerListServlet</servlet-name>
         <url-pattern>/customerlist</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDetailServlet</servlet-name>
+        <url-pattern>/cusdetail</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
-        <welcome-file>/view/home.jsp</welcome-file>
+        <welcome-file>view/home</welcome-file>
+        <welcome-file>view/home</welcome-file>
     </welcome-file-list>
 </web-app>
