@@ -71,9 +71,9 @@
                     <a href="" class="payment-block">
                         <img style="max-width: 100%; width: 100%" src="${pageContext.request.contextPath}/assets/logo-page.png" alt="">
                     </a>
-                    <p class="copyright-text">Copyright © 2022 <a href="#" class="author"></a>. All Right Reserved.
+                    <p class="copyright-text">Copyright © 2022 <a href="#" class="author">Bookaholic</a>. All Right Reserved.
                         <br>
-                        Design By </p>
+                        Design By Bookaholic</p>
                 </div>
             </div>
         </footer>
