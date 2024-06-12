@@ -38,7 +38,7 @@
     </servlet>
     <servlet>
         <servlet-name>CustomerListServlet</servlet-name>
-        <servlet-class>controller.customer.CustomerListServlet</servlet-class>
+        <servlet-class>controller.makerting.CustomerListServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CustomerDetailServlet</servlet-name>
@@ -58,7 +58,7 @@
     </servlet>
     <servlet>
         <servlet-name>UpdateUserServlet</servlet-name>
-        <servlet-class>controller.customer.UpdateUserServlet</servlet-class>
+        <servlet-class>controller.makerting.UpdateUserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
