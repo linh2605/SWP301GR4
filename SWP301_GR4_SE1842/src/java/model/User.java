@@ -12,7 +12,7 @@ import java.util.List;
  * @author THTP
  */
 public class User {
-    
+
     private int id;
     private String username;
     private String password;
@@ -24,12 +24,17 @@ public class User {
     private String phone;
     private String email;
     private String address;
+    private String status;
 
+    public String getStatus() {
+        return status;
+    }
+        public void setStatus(String status) {
+        this.status = status;
+    }
     public User() {
     }
 
-    
-    
     public User(int id, String username, String password, Role role, String avatar, String fullName, String gender, String phone, String email, String address) {
         this.id = id;
         this.username = username;
@@ -87,7 +92,7 @@ public class User {
         this.phone = phone;
         this.address = address;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -137,7 +142,7 @@ public class User {
     }
 
     public String getGender() {
-        return gender ;
+        return gender;
     }
 
     public void setGender(String gender) {
@@ -176,11 +181,9 @@ public class User {
         this.role = role;
     }
 
-
     @Override
     public String toString() {
         return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", roleID=" + roleID + ", avatar=" + avatar + ", fullName=" + fullName + ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", address=" + address + '}';
     }
-    
-    
+
 }
