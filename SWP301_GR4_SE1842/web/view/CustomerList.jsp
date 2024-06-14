@@ -212,6 +212,9 @@
                 </li>
             </ul>
         </nav>
+        <div style="margin: 20px 0;">
+        <button onclick="window.location.href='add_customer'" class="btn btn-primary">Add New Customer</button>
+    </div>
         <h2>User List</h2>
         <table>
             <thead>
