@@ -12,13 +12,9 @@ public class OrderItem {
     int orderItemId;
     int orderId;
     // product ID
-    ProductCategory productCategory;
     Product product;
-    Category category;
-    Subcategory subcategory;
-    
+    String category;
     int quantity;
-    double price;
 
     public OrderItem() {
     }
@@ -39,13 +35,6 @@ public class OrderItem {
         this.orderId = orderId;
     }
 
-    public ProductCategory getProductCategory() {
-        return productCategory;
-    }
-
-    public void setProductCategory(ProductCategory productCategory) {
-        this.productCategory = productCategory;
-    }
 
     public Product getProduct() {
         return product;
@@ -55,20 +44,12 @@ public class OrderItem {
         this.product = product;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
-    }
-
-    public Subcategory getSubcategory() {
-        return subcategory;
-    }
-
-    public void setSubcategory(Subcategory subcategory) {
-        this.subcategory = subcategory;
     }
 
     public int getQuantity() {
@@ -78,14 +59,5 @@ public class OrderItem {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-    
     
 }

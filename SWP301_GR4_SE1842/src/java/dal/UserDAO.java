@@ -426,8 +426,6 @@ public class UserDAO extends DBContext {
 }
 
     public static void main(String[] args) {
-        
-       
 //        try {
 //            UserDAO userDAO = new UserDAO();
 //            for (Order arg : userDAO.getOrderUser(2)) {
@@ -439,6 +437,4 @@ public class UserDAO extends DBContext {
 //      //  System.out.println(userDAO.createUser(user));
 //        System.out.println(userDAO.getAllUsers());
     }
-
-   
 }
