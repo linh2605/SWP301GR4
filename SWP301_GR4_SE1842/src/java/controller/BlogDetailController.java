@@ -27,6 +27,7 @@ public class BlogDetailController extends HttpServlet {
         BlogDAO bdao = new BlogDAO();
         int id = Integer.parseInt(request.getParameter("id"));
         Blog blog = bdao.getBlogById(id);
+        System.out.println(blog);
         request.setAttribute("blog", blog);
         request.getRequestDispatcher("blog-detail.jsp").forward(request, response);
     }

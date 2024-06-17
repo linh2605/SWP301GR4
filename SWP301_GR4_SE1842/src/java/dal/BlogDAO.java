@@ -19,16 +19,16 @@ import model.Product;
  * @author ADMIN
  */
 public class BlogDAO extends DBContext {
-
+    
     public Blog getBlogById(int id) {
-        String sql = "select b.*, u.FullName from blog b JOIN [User] u On b.createBy = u.UserID WHERE blogId = ?";
+        String sql = "select b.*, u.FullName from blog b JOIN User u On b.createBy = u.UserID WHERE blogId = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Blog blog = new Blog();
                 blog.setId(rs.getInt("blogId"));
-                blog.setTitle(rs.getString("blog_title"));
+                blog.setTitle(rs.getString("blogTitle"));
                 blog.setContent(rs.getString("content"));
                 blog.setCreateAt(rs.getDate("createAt"));
                 blog.setCreator(rs.getInt("createBy"));
@@ -49,9 +49,9 @@ public class BlogDAO extends DBContext {
         try {
             StringBuilder query = new StringBuilder();
             query.append("""
-                         select b.*, u.FullName from blog b JOIN [User] u On b.createBy = u.UserID  where 1=1""");
+                         select b.*, u.FullName from blog b JOIN User u On b.createBy = u.UserID  where 1=1""");
             if (searchParam != null && !searchParam.trim().isEmpty()) {
-                query.append(" AND b.blog_title LIKE ? ");
+                query.append(" AND b.blogTitle LIKE ? ");
                 list.add("%" + searchParam + "%");
             }
             query.append(" ORDER BY b.createAt DESC");
@@ -62,7 +62,7 @@ public class BlogDAO extends DBContext {
                 while (rs.next()) {
                     Blog blog = new Blog();
                     blog.setId(rs.getInt("blogId"));
-                    blog.setTitle(rs.getString("blog_title"));
+                    blog.setTitle(rs.getString("blogTitle"));
                     blog.setContent(rs.getString("content"));
                     blog.setCreateAt(rs.getDate("createAt"));
                     blog.setCreator(rs.getInt("createBy"));
@@ -76,7 +76,7 @@ public class BlogDAO extends DBContext {
         }
         return blogs;
     }
-
+    
     public void mapParams(PreparedStatement ps, List<Object> args) throws SQLException {
         int i = 1;
         for (Object arg : args) {
@@ -93,22 +93,22 @@ public class BlogDAO extends DBContext {
             } else {
                 ps.setString(i++, (String) arg);
             }
-
+            
         }
     }
-
+    
     public List<Blog> Paging(List<Blog> blogs, int page, int pageSize) {
         int fromIndex = (page - 1) * pageSize;
         int toIndex = Math.min(fromIndex + pageSize, blogs.size());
-
+        
         if (fromIndex > toIndex) {
             // Handle the case where fromIndex is greater than toIndex
             fromIndex = toIndex;
         }
-
+        
         return blogs.subList(fromIndex, toIndex);
     }
-
+    
     public static void main(String[] args) {
         BlogDAO dao = new BlogDAO();
         List<Blog> l = dao.getAllBlogs("");

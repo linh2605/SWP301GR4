@@ -40,7 +40,7 @@
                              <h2 style="text-align: center">${blog.title}</h2>
                          </div>
                         <div class="post-img">
-                            <<img src="${pageContext.request.contextPath}/img/blog/${blog.image}.jpg" alt="post" />
+                          <img src="${pageContext.request.contextPath}/img/blog/${blog.image}.jpg" alt="post" />
                         </div>
                         <br>
                         <p style="text-align: center" class="post-meta">Posted by <span style=" color: red">${blog.creatorName}</span> ${blog.createAt}</p>
