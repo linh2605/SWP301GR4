@@ -31,10 +31,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Hello");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        password = Encode.toSHA1(password);
+ //       password = Encode.toSHA1(password);
         
         UserDAO ud = new UserDAO();
         User u = ud.getUser(username, password);
@@ -43,12 +42,25 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("login-register.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();
+            session.removeAttribute("carts");
             session.setAttribute("usersession", u);
             if (u.getRoleID() != 4) {
-                response.sendRedirect("../dashboard");
+
+
+                if(u.getRoleID()== 2){
+                    response.sendRedirect("../view/dashboard.jsp");
+                }
+                if(u.getRoleID() ==1){
+                    response.sendRedirect("../admin/adminDashboard.jsp");
+                }
+                if(u.getRoleID() ==3){
+                    response.sendRedirect("../sale/saleDashboard.jsp");
+                }
+
             } else {
-                response.sendRedirect("../homepage");
+                response.sendRedirect("../view/home");
             }
+
         }
     }
 

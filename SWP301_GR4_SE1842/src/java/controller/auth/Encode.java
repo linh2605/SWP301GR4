@@ -28,6 +28,10 @@ public class Encode {
         }
         return result;
     }   
+    
+    public static void main(String[] args) {
+        System.out.println(toSHA1("johnpass"));
+    }// a89asl2F0cuiewYeSw4LZbgyFeY=
 }
     
 

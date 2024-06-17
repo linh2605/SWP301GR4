@@ -10,23 +10,14 @@
             <div class="col-lg-12 col-md-12  " style="text-align: center">
                 <div class="main-menu-area">
                     <ul>
-                        <li class="active"><a href="index.html">Home<i class="fa fa-angle-down"></i></a>
-                            <div class="sub-menu">
-                                <ul>
-                                    <li><a href="index.html">Home-1</a></li>
-                                    <li><a href="index-2.html">Home-2</a></li>
-                                    <li><a href="index-3.html">Home-3</a></li>
-                                    <li><a href="index-4.html">Home-4</a></li>
-                                </ul>
-                            </div>
+                        <li class="active"><a href="${pageContext.request.contextPath}/view/home">Home<i class="fa fa-angle-down"></i></a>
                         </li>
                         <li><a href="#">page<i class="fa fa-angle-down"></i></a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li><a href="shop.html">shop</a></li>
+                                    <li><a href="products">shop</a></li>
                                     <li><a href="product-details.html">product-details</a></li>
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="blog-details.html">blog-details</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/blog">blog</a></li>
                                     <li><a href="contact.html">contact</a></li>
                                     <li><a href="about.html">about</a></li>
                                     <li><a href="login.html">login</a></li>
@@ -38,11 +29,11 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                        <li><a href="${pageContext.request.contextPath}/view/blog">Blog<i class="fa fa-angle-down"></i></a>
                             <div class="sub-menu">
                                 <ul>
-                                    <li><a href="blog.html">blog</a></li>
-                                    <li><a href="blog-details.html">blog-details</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/blog">blog</a></li>
+                                   
                                 </ul>
                             </div>
                         </li>
@@ -54,3 +45,4 @@
         </div>
     </div>
 </div>
+                                    

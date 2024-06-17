@@ -47,60 +47,83 @@
                 }
             }
         </style>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+
+        <!-- all css here -->
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+        <!-- animate css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
+        <!-- meanmenu css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/meanmenu.min.css">
+        <!-- owl.carousel css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.css">
+        <!-- font-awesome css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
+        <!-- material-design-iconic-font.css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/material-design-iconic-font.css">
+        <!-- chosen.min.css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/chosen.min.css">
+        <!-- flexslider.css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flexslider.css">
+        <!-- style css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+        <!-- responsive css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css">
     </head>
 
 
 
     <body>
         <div class="site-wrapper" id="top">
-            <div class="site-header header-3  d-none d-lg-block">
-                <jsp:include page="../client/component/header_0.jsp"></jsp:include>
-                </div>
-                <div class="site-mobile-menu">
-                <jsp:include page="../client/component/header_1.jsp"></jsp:include>
-                </div>
-                <div class="sticky-init fixed-header common-sticky">
-                <jsp:include page="../client/component/header_2.jsp"></jsp:include>
-                </div>
-                <script defer>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        Validator({
-                            form: '#login__form',
-                            formGroupSelector: '.form-group',
-                            errorSelector: '.form-message',
-                            rules: [
-                                Validator.isRequired('#username', 'Please enter username!'),
-                                Validator.isRequired('#password', 'Please enter password!')
-                            ]
-                        });
-
-                        Validator({
-                            form: '#signup__form',
-                            formGroupSelector: '.form-group',
-                            errorSelector: '.form-message',
-                            rules: [
-                                Validator.isRequired('#username', 'Please enter username!'),
-                                Validator.isRequired('#fullname', 'Please enter fullname!'),
-                                Validator.isRequired('#email', 'Please enter email!'),
-                                Validator.isRequired('#pass', 'Please enter password!'),
-                                Validator.minLength('#pass', 8),
-                                Validator.isRequired('#repass', 'Please enter repassword!'),
-                                Validator.isEmail('#email', 'Invalid email format!'),
-                                Validator.isRequired('#repass', 'Please enter username!'),
-                                Validator.isConfirmed('#repass', function () {
-                                    return document.querySelector('#signup__form #pass').value
-                                }, 'Password does not match!'),
-                            ]
-                        });
+            <script defer>
+                document.addEventListener('DOMContentLoaded', function () {
+                    Validator({
+                        form: '#login__form',
+                        formGroupSelector: '.form-group',
+                        errorSelector: '.form-message',
+                        rules: [
+                            Validator.isRequired('#username', 'Please enter username!'),
+                            Validator.isRequired('#password', 'Please enter password!')
+                        ]
                     });
-                </script>
 
+                    Validator({
+                        form: '#signup__form',
+                        formGroupSelector: '.form-group',
+                        errorSelector: '.form-message',
+                        rules: [
+                            Validator.isRequired('#username', 'Please enter username!'),
+                            Validator.isRequired('#fullname', 'Please enter fullname!'),
+                            Validator.isRequired('#email', 'Please enter email!'),
+                            Validator.isRequired('#pass', 'Please enter password!'),
+                            Validator.minLength('#pass', 8),
+                            Validator.isRequired('#repass', 'Please enter repassword!'),
+                            Validator.isEmail('#email', 'Invalid email format!'),
+                            Validator.isRequired('#repass', 'Please enter username!'),
+                            Validator.isConfirmed('#repass', function () {
+                                return document.querySelector('#signup__form #pass').value
+                            }, 'Password does not match!'),
+                        ]
+                    });
+                });
+            </script>
+
+
+
+            <header>
+                <!-- header-top-area-start -->
+                <jsp:include page= "../view/common/header-top-area.jsp"></jsp:include>
+                    <!-- header-top-area-end -->
+                </header>
                 <main class="page-section inner-page-sec-padding-bottom">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb--30 mb-lg--0">
                                 <!-- Login Form s-->
-                                <form action="register" method="Post" id="signup__form">
+                                <form action="registerEmail" method="Post" id="signup__form">
                                     <div class="login-form">
                                         <h4 class="login-title">New Customer</h4>
                                         <p><span class="font-weight-bold">I am a new customer</span></p>
@@ -164,7 +187,7 @@
                                                    placeholder="Enter your password">
                                             <span class="form-message"></span>
                                         </div>
-                                        <a href="${pageContext.request.contextPath}/reset-password">Forgot password?</a>
+                                        <a href="${pageContext.request.contextPath}/auth/forgotPassword.jsp">Forgot password?</a>
                                         <div class="col-md-12">
                                             <button type="submit" class="btn btn-outlined">Login</button>
                                         </div>
@@ -176,53 +199,6 @@
                 </div>
             </main>
         </div>
-        <!--=================================
-  Brands Slider
-===================================== -->
-        <section class="section-margin">
-            <h2 class="sr-only">Brand Slider</h2>
-            <div class="container">
-                <div class="brand-slider sb-slick-slider border-top border-bottom" data-slick-setting='{
-                     "autoplay": true,
-                     "autoplaySpeed": 8000,
-                     "slidesToShow": 6
-                     }' data-slick-responsive='[
-                     {"breakpoint":992, "settings": {"slidesToShow": 4} },
-                     {"breakpoint":768, "settings": {"slidesToShow": 3} },
-                     {"breakpoint":575, "settings": {"slidesToShow": 3} },
-                     {"breakpoint":480, "settings": {"slidesToShow": 2} },
-                     {"breakpoint":320, "settings": {"slidesToShow": 1} }
-                     ]'>
-                    <div class="single-slide">
-                        <img src="image/others/brand-1.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="image/others/brand-2.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="image/others/brand-3.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="image/others/brand-4.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="image/others/brand-5.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="image/others/brand-6.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="image/others/brand-1.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="image/others/brand-2.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
 
         <!--=================================
            Footer Area
