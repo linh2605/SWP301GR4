@@ -17,6 +17,6 @@ public class LogoutServlet extends HttpServlet {
         if (session != null) {
             session.invalidate(); // Invalidate the session if exists
         }
-        response.sendRedirect("home.html"); // Redirect to login page or home page
+        response.sendRedirect("view/home"); // Redirect to login page or home page
     }
 }
