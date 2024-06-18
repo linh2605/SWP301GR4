@@ -20,8 +20,6 @@ public class UserCart {
     public UserCart() {
     }
 
-    
-    
     public UserCart(int userCartId, User user, Product product, int quantity) {
         this.userCartId = userCartId;
         this.user = user;

@@ -53,8 +53,10 @@ public class ProfileServlet extends HttpServlet {
         User u = (User) request.getSession().getAttribute("usersession");
         int uId = u.getId();
         
-        String oldPassHash = oldPass; //Encode.toSHA1(oldPass);
-        String newPassHash = newPass; //Encode.toSHA1(newPass);
+        String oldPassHash = oldPass; 
+        String newPassHash = newPass; 
+        //oldPass = Encode.toSHA1(oldPass);
+        newPass = Encode.toSHA1(newPass);
         
         UserDAO udao = new UserDAO();
         String mess = udao.ChangePassword(uId, newPassHash, oldPassHash) ? "Change password successfully" : "Incorrect, Fail to change password, please check your old pass";

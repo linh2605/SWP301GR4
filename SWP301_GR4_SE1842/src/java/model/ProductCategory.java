@@ -9,7 +9,7 @@ package model;
  * @author ADMIN
  */
 public class ProductCategory {
-      private int productID;
+    private int productID;
     private int categoryID;
     private int subCategoryID;
 

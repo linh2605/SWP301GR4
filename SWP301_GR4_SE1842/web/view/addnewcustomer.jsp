@@ -99,9 +99,9 @@
                         <i class="fas fa-search"></i>
                     </a>
                     <div class="navbar-search-block">
-                        <form action="customerlist" class="form-inline">
+                        <form class="form-inline">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" name="search" type="text" placeholder="Search" aria-label="Search">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit">
                                         <i class="fas fa-search"></i>
@@ -212,54 +212,55 @@
                 </li>
             </ul>
         </nav>
-        <div style="margin: 20px 0;">
-            <button onclick="window.location.href = 'add_customer'" class="btn btn-primary">Add New Customer</button>
+        <div class="col-lg-3">
+            <c:if test="${not empty successMess}">
+                <h3 style="color: green">
+                    ${successMess}
+                </h3>
+            </c:if>
+            <c:if test="${not empty errorMess}">
+                <h3 style="color: red">
+                    ${errorMess}
+                </h3>
+            </c:if>
+            <form action="add_customer" method="post">
+                <input type="hidden" name="id" value="${user.id}">
+                <div class="form-group">
+                    <label>Fullname</label>
+                    <input type="text" class="form-control" placeholder="Fullname" name="name" value="${user.fullName}">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="Email" name="email" value="${user.email}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Phone number</label>
+                        <input type="text" class="form-control" placeholder="Phone number" name="phone" value="${user.phone}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select class="form-control" name="gender">
+                        <option value="Male" ${user.gender == 'Male' ? 'selected' : ''}>Male</option>
+                        <option value="Female" ${user.gender == 'Female' ? 'selected' : ''}>Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" class="form-control" placeholder="Address" name="address" value="${user.address}">
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="Username" name="username" value="${user.username}">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Password" name="pass">
+                </div>
+                <button type="submit" class="btn btn-primary">Add cusstomer</button>
+            </form>
         </div>
-        <h2>User List</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Role ID</th>
-                    <th>Avatar</th>
-                    <th>Full Name</th>
-                    <th>Gender</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="user" items="${listUser}">
-                    <tr>
-                        <td>${user.id}</td>
-                        <td>${user.username}</td>
-                        <td>${user.password}</td>
-                        <td>${user.roleID}</td>
-                        <td><img src="${user.avatar}" alt="Avatar" width="50" height="50"></td>
-                        <td>${user.fullName}</td>
-                        <td>${user.gender}</td>
-                        <td>${user.phone}</td>
-                        <td>${user.email}</td>
-                        <td>${user.address}</td>
-                        <td>
-                            <a href="update_user?id=${user.id}">Update</a>
-                        </td>
-                        <c:if test="${user.role == false}">
-
-                        </c:if>
-                        <c:if test="${user.role == true}">
-                            <td></td>
-                        </c:if>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-
         <script src="./plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

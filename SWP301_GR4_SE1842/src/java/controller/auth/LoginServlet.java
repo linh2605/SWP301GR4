@@ -33,7 +33,9 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-//        password = Encode.toSHA1(password);
+
+        password = Encode.toSHA1(password);
+
         
         UserDAO ud = new UserDAO();
         User u = ud.getUser(username, password);
@@ -44,8 +46,10 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("usersession", u);
             if (u.getRoleID() != 4) {
+
+
                 if(u.getRoleID()== 2){
-                    response.sendRedirect("../view/dashboard.jsp");
+                    response.sendRedirect("../view/mktdashboard.jsp");
                 }
                 if(u.getRoleID() ==1){
                     response.sendRedirect("../admin/adminDashboard.jsp");
@@ -57,6 +61,7 @@ public class LoginServlet extends HttpServlet {
             } else {
                 response.sendRedirect("../view/home");
             }
+
         }
     }
 

@@ -16,8 +16,10 @@
     </head>
 
     <body class="hold-transition sidebar-mini">
+        <jsp:include page= "common/ProfileHeader.jsp"></jsp:include>
         <div class="wrapper">
             <!-- Navbar -->
+            
             <nav class="main-header navbar navbar-expand navbar-white navbar-light">
                 <!-- Left navbar links -->
                 <ul class="navbar-nav">
@@ -32,6 +34,9 @@
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="../customerlist" class="nav-link">Customers List</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a href="#" class="nav-link" data-toggle="modal" data-target="#myModalProfile">My Account</a>
                     </li>
                 </ul>
 
