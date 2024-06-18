@@ -49,18 +49,16 @@ public class ProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         String oldPass = request.getParameter("OldPassword");
         String newPass = request.getParameter("NewPassword");
-        
+
         User u = (User) request.getSession().getAttribute("usersession");
         int uId = u.getId();
-        
-        String oldPassHash = oldPass; 
-        String newPassHash = newPass; 
-        //oldPass = Encode.toSHA1(oldPass);
-        newPass = Encode.toSHA1(newPass);
-        
+
+        String oldPassHash = Encode.toSHA1(oldPass);
+        String newPassHash = Encode.toSHA1(newPass);
+
         UserDAO udao = new UserDAO();
         String mess = udao.ChangePassword(uId, newPassHash, oldPassHash) ? "Change password successfully" : "Incorrect, Fail to change password, please check your old pass";
-        
+
         response.getWriter().write(mess);
     }
 
@@ -71,10 +69,10 @@ public class ProfileServlet extends HttpServlet {
         String userGender = request.getParameter("userGender");
         String userPhone = request.getParameter("userPhone");
         String userAddress = request.getParameter("userAddress");
-        
+
         User uUpdate = new User(userId, userName, userGender, userPhone, userAddress);
         UserDAO udao = new UserDAO();
-        
+
         boolean isSuccess = udao.UpdateProfile(uUpdate);
         String mess = isSuccess ? "Update profile successfully" : "Incorrect, Fail to update profile";
         response.getWriter().write(mess);

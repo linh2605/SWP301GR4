@@ -46,7 +46,7 @@
     </servlet>
     <servlet>
         <servlet-name>ProfileServlet</servlet-name>
-        <servlet-class>controller.auth.ProfileServlet</servlet-class>
+        <servlet-class>controller.ProfileServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>registerEmail</servlet-name>
