@@ -33,7 +33,7 @@
                         </li>
                         <c:if test="${sessionScope.usersession != null}">
                             <li>
-                                <button type="button" class="btn btn-primary" onclick="logout()"> Logout </button>
+                                <button type="button" class="btn btn-primary" onclick="logout()"><a href="${pageContext.request.contextPath}/logout"> Logout </a></button>
                             </li>
                         </c:if>
                     </ul>
