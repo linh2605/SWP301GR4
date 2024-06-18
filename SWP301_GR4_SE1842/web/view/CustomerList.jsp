@@ -99,9 +99,9 @@
                         <i class="fas fa-search"></i>
                     </a>
                     <div class="navbar-search-block">
-                        <form class="form-inline">
+                        <form action="customerlist" class="form-inline">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control form-control-navbar" name="search" type="text" placeholder="Search" aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit">
                                         <i class="fas fa-search"></i>
@@ -213,8 +213,8 @@
             </ul>
         </nav>
         <div style="margin: 20px 0;">
-        <button onclick="window.location.href='add_customer'" class="btn btn-primary">Add New Customer</button>
-    </div>
+            <button onclick="window.location.href = 'add_customer'" class="btn btn-primary">Add New Customer</button>
+        </div>
         <h2>User List</h2>
         <table>
             <thead>
@@ -223,7 +223,6 @@
                     <th>Username</th>
                     <th>Password</th>
                     <th>Role ID</th>
-                    <th>Role</th>
                     <th>Avatar</th>
                     <th>Full Name</th>
                     <th>Gender</th>
@@ -240,7 +239,6 @@
                         <td>${user.username}</td>
                         <td>${user.password}</td>
                         <td>${user.roleID}</td>
-                        <td>${user.role.roleName}</td>
                         <td><img src="${user.avatar}" alt="Avatar" width="50" height="50"></td>
                         <td>${user.fullName}</td>
                         <td>${user.gender}</td>
@@ -249,7 +247,6 @@
                         <td>${user.address}</td>
                         <td>
                             <a href="update_user?id=${user.id}">Update</a>
-                            <a href="customerlist?id=${user.id}">Delete</a>
                         </td>
                         <c:if test="${user.role == false}">
 
@@ -261,7 +258,7 @@
                 </c:forEach>
             </tbody>
         </table>
-        
+
 
         <script src="./plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap -->

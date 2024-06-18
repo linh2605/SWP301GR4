@@ -424,6 +424,37 @@ public class UserDAO extends DBContext {
         e.printStackTrace();
     }
 }
+    public List<User> getUsersByFullName(String fullname) {
+        List<User> uList = new ArrayList();
+        String sql = "SELECT * FROM User WHERE FullName Like ? AND RoleID = 4";
+        User u = null;
+
+        try {
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
+            st.setString(1, "%" + fullname + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                u = new User(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10)
+                );
+                uList.add(u);
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+
+        return uList;
+    }
 
     public static void main(String[] args) {
 //        try {
