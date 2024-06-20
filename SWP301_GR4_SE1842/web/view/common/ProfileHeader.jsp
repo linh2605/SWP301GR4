@@ -45,7 +45,7 @@
                                                                 Change Password
                                                             </button>
                                                             <c:if test="${sessionScope.usersession.roleID == 4}">
-                                                                <a href="../MyOrder" class="btn btn-outline-primary">My Orders</a>
+                                                                <a href="../MyOrder" class="btn btn-outline-primary">My Order</a>
                                                             </c:if>
                                                             <!-- Modal -->
                                                             <div class="modal fade" id="ModalChangePass" tabindex="-1" role="dialog" aria-labelledby="ModalChangePassLabel" aria-hidden="true">

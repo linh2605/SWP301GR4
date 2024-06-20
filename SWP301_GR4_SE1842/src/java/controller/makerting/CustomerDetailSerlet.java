@@ -19,7 +19,7 @@ import model.User;
  *
  * @author zzako
  */
-public class UpdateUserServlet extends HttpServlet {
+public class CustomerDetailSerlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -36,10 +36,10 @@ public class UpdateUserServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateUserServlet</title>");  
+            out.println("<title>Servlet CustomerDetailSerlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateUserServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet CustomerDetailSerlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +61,7 @@ public class UpdateUserServlet extends HttpServlet {
         UserDAO udao = new UserDAO();     
         User user = udao.GetUserById(id);
         request.setAttribute("user", user); 
-        request.getRequestDispatcher("view/updateUser.jsp").forward(request, response);
+        request.getRequestDispatcher("view/CustomerDetail.jsp").forward(request, response);
     } 
 
     /** 
@@ -73,7 +73,7 @@ public class UpdateUserServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {        
+    throws ServletException, IOException {
         String idraw = request.getParameter("id");
         int id = Integer.parseInt(idraw);
         String fullName = request.getParameter("name");
@@ -83,18 +83,10 @@ public class UpdateUserServlet extends HttpServlet {
         String address = request.getParameter("address");
         String username = request.getParameter("username");
         String pass = request.getParameter("pass");
-        boolean updatedUser = false;
+        
         pass = Encode.toSHA1(pass);
         UserDAO udao = new UserDAO();
-        User user =new User(id, username, pass, fullName, gender, phone, email, address);
-        updatedUser = udao.UpdateProfile(user);
-        
-        if (updatedUser) {
-            request.setAttribute("successMess", "Updated successful");
-        } else {
-            request.setAttribute("errorMess", "Updated Fails");
-        }
-        request.getRequestDispatcher("view/updateUser.jsp").forward(request, response);
+        request.getRequestDispatcher("view/CustomerDetail.jsp").forward(request, response);
     }
 
     /** 

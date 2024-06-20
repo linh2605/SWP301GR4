@@ -13,121 +13,75 @@
         <link rel="stylesheet" href="./dist/css/adminlte.min.css">
         <title>User List</title>
         <style>
-            .btn {
-                display: inline-block;
-                padding: 10px 20px;
-                font-size: 16px;
-                font-weight: 600;
-                text-align: center;
-                text-decoration: none;
-                color: #ffffff;
-                background-color: #007BFF;
-                border: none;
-                border-radius: 5px;
-                transition: background-color 0.3s, box-shadow 0.3s;
-                margin: 5px;
-            }
-
-            .btn:hover {
-                background-color: #0056b3;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
-
-            .btn:active {
-                background-color: #004494;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                transform: translateY(2px);
-            }
-
-            .btn-update {
-                background-color: #28a745;
-            }
-
-            .btn-update:hover {
-                background-color: #218838;
-            }
-
-            .btn-update:active {
-                background-color: #1e7e34;
-            }
-
-            .btn-detail {
-                background-color: #ffc107;
-                color: #000;
-            }
-
-            .btn-detail:hover {
-                background-color: #e0a800;
-            }
-
-            .btn-detail:active {
-                background-color: #c69500;
-            }
             body {
-                font-family: Arial, sans-serif;
-                background-color: #f8f9fa;
-                color: #343a40;
-                margin: 0;
-                padding: 20px;
-            }
-            h2 {
-                text-align: center;
-                color: #007bff;
-            }
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 20px;
-            }
-            th, td {
-                border: 1px solid #dee2e6;
-                padding: 12px;
-                text-align: left;
-            }
-            th {
-                background-color: #007bff;
-                color: white;
-            }
-            td img {
-                border-radius: 50%;
-            }
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-            tr:hover {
-                background-color: #e9ecef;
-            }
-            thead {
-                background-color: #343a40;
-                color: white;
-            }
-            @media screen and (max-width: 600px) {
-                table, th, td {
-                    display: block;
-                    width: 100%;
-                }
-                th {
-                    text-align: right;
-                }
-                th, td {
-                    padding: 10px;
-                    text-align: right;
-                }
-                th:after {
-                    content: ": ";
-                }
-                td {
-                    text-align: left;
-                    border-top: 0;
-                }
-            }
+                 body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-row .form-group {
+            width: 48%;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
         </style>
     </head>
     <body>
-          <jsp:include page= "common/ProfileHeader.jsp"></jsp:include>
+        <jsp:include page= "common/ProfileHeader.jsp"></jsp:include>
         <div class="wrapper">
             <!-- Navbar -->
-
+            
             <nav class="main-header navbar navbar-expand navbar-white navbar-light">
                 <!-- Left navbar links -->
                 <ul class="navbar-nav">
@@ -135,7 +89,7 @@
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="mktdashboard.jsp" class="nav-link">Home</a>
+                        <a href="dashboard.jsp" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="#" class="nav-link">Contact</a>
@@ -156,9 +110,9 @@
                             <i class="fas fa-search"></i>
                         </a>
                         <div class="navbar-search-block">
-                            <form action="customerlist" class="form-inline">
+                            <form class="form-inline">
                                 <div class="input-group input-group-sm">
-                                    <input class="form-control form-control-navbar" name="search" type="text" placeholder="Search" aria-label="Search">
+                                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                                     <div class="input-group-append">
                                         <button class="btn btn-navbar" type="submit">
                                             <i class="fas fa-search"></i>
@@ -269,55 +223,55 @@
                     </li>
                 </ul>
             </nav>
-        <div style="margin: 20px 0;">
-            <button onclick="window.location.href = 'add_customer'" class="btn btn-primary">Add New Customer</button>
+        <div class="col-lg-3">
+            <c:if test="${not empty successMess}">
+                <h3 style="color: green">
+                    ${successMess}
+                </h3>
+            </c:if>
+            <c:if test="${not empty errorMess}">
+                <h3 style="color: red">
+                    ${errorMess}
+                </h3>
+            </c:if>
+            <form action="detail_user" method="post">
+            <input type="hidden" name="id" value="${user.id}">
+            <div class="form-group">
+                <label>Fullname</label>
+                <input type="text" class="form-control" placeholder="Fullname" name="name" value="${user.fullName}">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" placeholder="Email" name="email" value="${user.email}">
+                </div>
+                <div class="form-group">
+                    <label>Phone number</label>
+                    <input type="text" class="form-control" placeholder="Phone number" name="phone" value="${user.phone}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <select class="form-control" name="gender">
+                    <option value="Male" ${user.gender == 'Male' ? 'selected' : ''}>Male</option>
+                    <option value="Female" ${user.gender == 'Female' ? 'selected' : ''}>Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" placeholder="Address" name="address" value="${user.address}">
+            </div>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" placeholder="Username" name="username" value="${user.username}">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="pass">
+            </div>
+           
+        </form>
         </div>
-        <h2>User List</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Role ID</th>
-                    <th>Avatar</th>
-                    <th>Full Name</th>
-                    <th>Gender</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="user" items="${listUser}">
-                    <tr>
-                        <td>${user.id}</td>
-                        <td>${user.username}</td>
-                        <td>${user.password}</td>
-                        <td>${user.roleID}</td>
-                        <td><img src="${user.avatar}" alt="Avatar" width="50" height="50"></td>
-                        <td>${user.fullName}</td>
-                        <td>${user.gender}</td>
-                        <td>${user.phone}</td>
-                        <td>${user.email}</td>
-                        <td>${user.address}</td>
-                        <td>
-                            <a href="update_user?id=${user.id}" class="btn btn-update">Update</a>
-                            <a href="detail_user?id=${user.id}" class="btn btn-detail">Detail</a>
-                        </td>
-                        <c:if test="${user.role == false}">
-
-                        </c:if>
-                        <c:if test="${user.role == true}">
-                            <td></td>
-                        </c:if>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-
         <script src="./plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -6,6 +6,7 @@ package dal;
 
 import controller.auth.NewPassword;
 import controller.customer.OrderDetail;
+import java.security.Timestamp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,12 +14,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.AbstractList;
 
-
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Blog;
+import model.CustomerUpdateHistory;
 import model.Order;
 import model.Role;
 import model.User;
@@ -62,7 +64,6 @@ public class UserDAO extends DBContext {
 
         return userList;
     }
-    
 
     public User getUser(String username, String password) {
         String sql = "SELECT * FROM User WHERE Username=? AND Password=?";
@@ -117,7 +118,7 @@ public class UserDAO extends DBContext {
         return true;
     }
 
-   public User updateUser(String email, String newPassword) {
+    public User updateUser(String email, String newPassword) {
         String sql = "UPDATE User \n"
                 + "                SET Password = ?\n"
                 + "                WHERE Email = ?";
@@ -131,6 +132,7 @@ public class UserDAO extends DBContext {
         }
         return getByEmail(email);
     }
+
     public User getByEmail(String email) {
         String sql = "SELECT * FROM User WHERE Email = ?";
         try {
@@ -247,7 +249,7 @@ public class UserDAO extends DBContext {
             st.setString(4, u.getAddress());
             st.setString(5, u.getEmail());
             st.setString(6, u.getPassword());
-            st.setString(7, u.getUsername());            
+            st.setString(7, u.getUsername());
             st.setInt(8, u.getId());
             return st.executeUpdate() > 0;
 
@@ -341,89 +343,90 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
+
     public List<User> filterUsers(String keyword) {
-    String sqlString = "SELECT * FROM `user` WHERE `FullName` LIKE ? OR `Email` LIKE ? OR `Phone` LIKE ?";
-    List<User> userList = new ArrayList<>();
+        String sqlString = "SELECT * FROM `user` WHERE `FullName` LIKE ? OR `Email` LIKE ? OR `Phone` LIKE ?";
+        List<User> userList = new ArrayList<>();
 
-    try {
-        PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
-        String searchPattern = "%" + keyword + "%";
-        st.setString(1, searchPattern);
-        st.setString(2, searchPattern);
-        st.setString(3, searchPattern);
-        ResultSet rs = st.executeQuery();
+        try {
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
+            String searchPattern = "%" + keyword + "%";
+            st.setString(1, searchPattern);
+            st.setString(2, searchPattern);
+            st.setString(3, searchPattern);
+            ResultSet rs = st.executeQuery();
 
-        while (rs.next()) {
-            User user = new User();
-            user.setId(rs.getInt("UserID"));
-            user.setUsername(rs.getString("Username"));
-            user.setPassword(rs.getString("Password"));
-            user.setRoleID(rs.getInt("RoleID"));
-            user.setAvatar(rs.getString("Avatar"));
-            user.setFullName(rs.getString("FullName"));
-            user.setGender(rs.getString("Gender"));
-            user.setPhone(rs.getString("Phone"));
-            user.setEmail(rs.getString("Email"));
-            user.setAddress(rs.getString("Address"));
-            userList.add(user);
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("UserID"));
+                user.setUsername(rs.getString("Username"));
+                user.setPassword(rs.getString("Password"));
+                user.setRoleID(rs.getInt("RoleID"));
+                user.setAvatar(rs.getString("Avatar"));
+                user.setFullName(rs.getString("FullName"));
+                user.setGender(rs.getString("Gender"));
+                user.setPhone(rs.getString("Phone"));
+                user.setEmail(rs.getString("Email"));
+                user.setAddress(rs.getString("Address"));
+                userList.add(user);
+            }
+
+            rs.close();
+            st.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        rs.close();
-        st.close();
-        connection.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return userList;
     }
 
-    return userList;
-}
     public List<User> getAllUsersSortedByName() {
-    String sqlString = "SELECT * FROM `user` ORDER BY `FullName` ASC";
-    List<User> userList = new ArrayList<>();
+        String sqlString = "SELECT * FROM `user` ORDER BY `FullName` ASC";
+        List<User> userList = new ArrayList<>();
 
-    try {
-        PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
-        ResultSet rs = st.executeQuery();
+        try {
+            PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
+            ResultSet rs = st.executeQuery();
 
-        while (rs.next()) {
-            User user = new User();
-            user.setId(rs.getInt("UserID"));
-            user.setUsername(rs.getString("Username"));
-            user.setPassword(rs.getString("Password"));
-            user.setRoleID(rs.getInt("RoleID"));
-            user.setAvatar(rs.getString("Avatar"));
-            user.setFullName(rs.getString("FullName"));
-            user.setGender(rs.getString("Gender"));
-            user.setPhone(rs.getString("Phone"));
-            user.setEmail(rs.getString("Email"));
-            user.setAddress(rs.getString("Address"));
-            userList.add(user);
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("UserID"));
+                user.setUsername(rs.getString("Username"));
+                user.setPassword(rs.getString("Password"));
+                user.setRoleID(rs.getInt("RoleID"));
+                user.setAvatar(rs.getString("Avatar"));
+                user.setFullName(rs.getString("FullName"));
+                user.setGender(rs.getString("Gender"));
+                user.setPhone(rs.getString("Phone"));
+                user.setEmail(rs.getString("Email"));
+                user.setAddress(rs.getString("Address"));
+                userList.add(user);
+            }
+
+            rs.close();
+            st.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        rs.close();
-        st.close();
-        connection.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return userList;
     }
 
-    return userList;
-}
-    
-    
     public void deleteUser(int userID) {
-    String sqlString = "DELETE FROM `user` WHERE UserID = ?";
-    
-    try (PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);
-        ResultSet rs = st.executeQuery();) {
+        String sqlString = "DELETE FROM `user` WHERE UserID = ?";
 
-        st.setInt(1, userID);
-        
-        st.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
+        try (PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString); ResultSet rs = st.executeQuery();) {
+
+            st.setInt(1, userID);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-}
+
     public List<User> getUsersByFullName(String fullname) {
         List<User> uList = new ArrayList();
         String sql = "SELECT * FROM User WHERE FullName Like ? AND RoleID = 4";
@@ -456,7 +459,36 @@ public class UserDAO extends DBContext {
         return uList;
     }
 
-    public static void main(String[] args) {
+    public List<CustomerUpdateHistory> listAllUpdates() throws SQLException {
+        List<CustomerUpdateHistory> listUpdates = new ArrayList<>();
+
+        String sql = "SELECT * FROM customer_update_history";
+        try(PreparedStatement st = new DBContext().getConnection().prepareStatement(sql); ResultSet rs = st.executeQuery();) {
+            while (rs.next()) {
+                int updateId = rs.getInt("update_id");
+                int customerId = rs.getInt("customer_id");
+                java.sql.Timestamp updateDate = rs.getTimestamp("update_date");
+                String updateDetails = rs.getString("update_details");
+
+                CustomerUpdateHistory update = new CustomerUpdateHistory();
+                update.setUpdateId(updateId);
+                update.setCustomerId(customerId);
+                update.setUpdateDate(new Date(updateDate.getTime()));
+                update.setUpdateDetails(updateDetails);
+
+                listUpdates.add(update);
+            }
+
+            rs.close();
+            rs.close();
+        } catch (Exception e) {
+        }
+
+        return listUpdates;
+    }
+
+
+public static void main(String[] args) {
 //        try {
 //            UserDAO userDAO = new UserDAO();
 //            for (Order arg : userDAO.getOrderUser(2)) {

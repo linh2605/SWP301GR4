@@ -46,7 +46,7 @@
     </servlet>
     <servlet>
         <servlet-name>ProfileServlet</servlet-name>
-        <servlet-class>controller.ProfileServlet</servlet-class>
+        <servlet-class>controller.auth.ProfileServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>registerEmail</servlet-name>
@@ -63,6 +63,10 @@
     <servlet>
         <servlet-name>AddCustomerServlet</servlet-name>
         <servlet-class>controller.makerting.AddCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerDetailSerlet</servlet-name>
+        <servlet-class>controller.makerting.CustomerDetailSerlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>AddCustomerServlet</servlet-name>
         <url-pattern>/add_customer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDetailSerlet</servlet-name>
+        <url-pattern>/detail_user</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>view/home</welcome-file>
