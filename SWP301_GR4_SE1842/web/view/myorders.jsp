@@ -190,21 +190,21 @@
                 <div class="container col-md-3">
                     <form method="post" action="./MyOrder">
                         <div class="mt-5">
-                        <div class="mb-2">
-                            <label for="dateOrder">Order date: </label>
-                            <input id="dateOrder" name="orderDate" type="date" value="${orderDate}" required/>
+                            <div class="mb-2">
+                                <label for="dateOrder">Order date: </label>
+                                <input id="dateOrder" name="orderDate" type="date" value="${orderDate}" required/>
                         </div>
                         <div class="mb-2">
                             <label for="dateDeliver">Deliver date: </label>
                             <input id="dateDeliver" name="deleverDate" type="date" value="${deliverDate}" required/>
                         </div>
-                            <button type="submit" class="btn btn-info">Search</button>
+                        <button type="submit" class="btn btn-info">Search</button>
                     </div>
-                    </form>
-                </div>
-                <div class="container col-md-9">
-                    <div class="row pt-5">
-                        <div id="productList" class="row col-md-8">
+                </form>
+            </div>
+            <div class="container col-md-9">
+                <div class="row pt-5">
+                    <div id="productList" class="row col-md-8">
                         <c:if test="${orders == null || orders.size() == 0}">
                             Empty!
                         </c:if>
@@ -226,6 +226,9 @@
                                 <div class="product-price">
                                     <p>Status: ${p.statusName}</p>
                                 </div>
+                                <div class="produc-price">
+                                    Payment Method: ${p.paymentName}
+                                </div>
                                 <div class="product-actions">
                                     <div class="action-row">
                                         <a href="./OrderDetail?orderID=${p.orderId}" class="action-icon"><i class="fa-solid fa-info-circle"></i></a>
@@ -233,17 +236,6 @@
                                 </div>
                             </div>
                         </c:forEach>
-
-                        <!--                <nav class="mt-3" aria-label="Page navigation example">
-                                            <ul class="pagination justify-content-center">
-                                                 Display the page numbers as links 
-                        <c:forEach var="pageNum" begin="1" end="${totalPages}">
-                            <li class="page-item <c:if test='${pageNum == currentPage}'>active</c:if>'">
-                                <a class="page-link" href="?brandId=${sessionScope.currBrand}&&catId=${sessionScope.currCate}&&search=${sessionScope.currSearch}&amp;page=${pageNum}">${pageNum}</a>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </nav>-->
                     </div>
                 </div>
             </div>

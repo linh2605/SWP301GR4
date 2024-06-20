@@ -19,7 +19,7 @@ import model.User;
  *
  * @author zzako
  */
-public class CustomerDetailSerlet extends HttpServlet {
+public class CustomerDetailServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

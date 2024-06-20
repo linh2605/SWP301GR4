@@ -28,7 +28,7 @@ public class BlogDAO extends DBContext {
             if (rs.next()) {
                 Blog blog = new Blog();
                 blog.setId(rs.getInt("blogId"));
-                blog.setTitle(rs.getString("blog_title"));
+                blog.setTitle(rs.getString("blogTitle"));
                 blog.setContent(rs.getString("content"));
                 blog.setCreateAt(rs.getDate("createAt"));
                 blog.setCreator(rs.getInt("createBy"));
@@ -51,7 +51,7 @@ public class BlogDAO extends DBContext {
             query.append("""
                          select b.*, u.FullName from blog b JOIN User u On b.createBy = u.UserID  where 1=1""");
             if (searchParam != null && !searchParam.trim().isEmpty()) {
-                query.append(" AND b.blog_title LIKE ? ");
+                query.append(" AND b.blogTitle LIKE ? ");
                 list.add("%" + searchParam + "%");
             }
             query.append(" ORDER BY b.createAt DESC");
@@ -62,7 +62,7 @@ public class BlogDAO extends DBContext {
                 while (rs.next()) {
                     Blog blog = new Blog();
                     blog.setId(rs.getInt("blogId"));
-                    blog.setTitle(rs.getString("blog_title"));
+                    blog.setTitle(rs.getString("blogTitle"));
                     blog.setContent(rs.getString("content"));
                     blog.setCreateAt(rs.getDate("createAt"));
                     blog.setCreator(rs.getInt("createBy"));

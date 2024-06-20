@@ -44,6 +44,7 @@ public class ValidateRegisterOtp extends HttpServlet {
 
             
             session.setAttribute("usersession", ud.getUser(user.getUsername(), user.getPassword()));
+            session.removeAttribute("carts");
             response.sendRedirect("../view/home");
 
         } else {

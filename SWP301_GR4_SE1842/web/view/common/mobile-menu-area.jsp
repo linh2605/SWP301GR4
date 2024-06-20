@@ -11,7 +11,7 @@
                     <nav id="mobile-menu-active">
                         <ul id="nav">
 
-                            <li><a href="home">Home</a>
+                            <li><a href="${pageContext.request.contextPath}/view/home">Home</a>
                             </li>
                             <li><a href="#">page<i class="fa fa-angle-down"></i></a>
                                 <div class="sub-menu">

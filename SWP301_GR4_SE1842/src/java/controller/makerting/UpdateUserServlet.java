@@ -5,7 +5,6 @@
 
 package controller.makerting;
 
-import controller.auth.Encode;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -84,11 +83,10 @@ public class UpdateUserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String pass = request.getParameter("pass");
         boolean updatedUser = false;
-        pass = Encode.toSHA1(pass);
+        
         UserDAO udao = new UserDAO();
         User user =new User(id, username, pass, fullName, gender, phone, email, address);
         updatedUser = udao.UpdateProfile(user);
-        
         if (updatedUser) {
             request.setAttribute("successMess", "Updated successful");
         } else {

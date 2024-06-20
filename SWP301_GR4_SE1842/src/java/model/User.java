@@ -4,6 +4,7 @@
  */
 package model;
 
+import dal.UserCartDAO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,15 @@ public class User {
     private String phone;
     private String email;
     private String address;
+    private List<UserCart> carts;
+
+    public List<UserCart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<UserCart> carts) {
+        this.carts = carts;
+    }
 
     public User() {
     }
@@ -76,6 +86,7 @@ public class User {
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.carts = new UserCartDAO().getUserCarts(id);
     }
 
     public User(int id, String fullName, String gender, String phone, String address) {

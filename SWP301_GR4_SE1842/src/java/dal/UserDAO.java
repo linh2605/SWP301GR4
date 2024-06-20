@@ -6,7 +6,6 @@ package dal;
 
 import controller.auth.NewPassword;
 import controller.customer.OrderDetail;
-import java.security.Timestamp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,12 +14,10 @@ import java.text.SimpleDateFormat;
 import java.util.AbstractList;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Blog;
-import model.CustomerUpdateHistory;
 import model.Order;
 import model.Role;
 import model.User;
@@ -459,36 +456,8 @@ public class UserDAO extends DBContext {
         return uList;
     }
 
-    public List<CustomerUpdateHistory> listAllUpdates() throws SQLException {
-        List<CustomerUpdateHistory> listUpdates = new ArrayList<>();
+    public static void main(String[] args) {
 
-        String sql = "SELECT * FROM customer_update_history";
-        try(PreparedStatement st = new DBContext().getConnection().prepareStatement(sql); ResultSet rs = st.executeQuery();) {
-            while (rs.next()) {
-                int updateId = rs.getInt("update_id");
-                int customerId = rs.getInt("customer_id");
-                java.sql.Timestamp updateDate = rs.getTimestamp("update_date");
-                String updateDetails = rs.getString("update_details");
-
-                CustomerUpdateHistory update = new CustomerUpdateHistory();
-                update.setUpdateId(updateId);
-                update.setCustomerId(customerId);
-                update.setUpdateDate(new Date(updateDate.getTime()));
-                update.setUpdateDetails(updateDetails);
-
-                listUpdates.add(update);
-            }
-
-            rs.close();
-            rs.close();
-        } catch (Exception e) {
-        }
-
-        return listUpdates;
-    }
-
-
-public static void main(String[] args) {
 //        try {
 //            UserDAO userDAO = new UserDAO();
 //            for (Order arg : userDAO.getOrderUser(2)) {
@@ -500,4 +469,5 @@ public static void main(String[] args) {
 //      //  System.out.println(userDAO.createUser(user));
 //        System.out.println(userDAO.getAllUsers());
     }
+
 }

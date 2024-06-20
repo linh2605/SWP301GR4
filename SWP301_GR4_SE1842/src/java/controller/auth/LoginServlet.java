@@ -33,9 +33,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
-        //password = Encode.toSHA1(password);
-
+ //       password = Encode.toSHA1(password);
         
         UserDAO ud = new UserDAO();
         User u = ud.getUser(username, password);
@@ -44,6 +42,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("login-register.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();
+            session.removeAttribute("carts");
             session.setAttribute("usersession", u);
             if (u.getRoleID() != 4) {
 

@@ -255,7 +255,7 @@
                                 </form>
                             </div>
                             <div class="action-row">
-                                <a href="ProductDetailsController?pId=${p.productID}" class="action-icon"><i class="fa-solid fa-info-circle"></i></a>
+                                <a href="product?pId=${p.productID}" class="action-icon"><i class="fa-solid fa-info-circle"></i></a>
                                 <a href="FeedbackController?pId=${p.productID}" class="action-icon"><i class="fa-solid fa-comment"></i></a>
                             </div>
                         </div>
