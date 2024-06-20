@@ -290,19 +290,11 @@
                                         </nav>	
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-9 col-md-12 col-12 ">
-                                <div class="header-search">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search for item..."/>
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                    </form>
-                                </div>
-                             
+                            </div>                                                     
                             </div>
                         </div>
                     </div>
-                </div>
+            
                 <!-- header-bottom-area-end -->
             </header>
             <!-- header-area-end -->
