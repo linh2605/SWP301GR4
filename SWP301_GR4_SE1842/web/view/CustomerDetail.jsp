@@ -46,7 +46,6 @@
         }
         .form-control {
             width: 100%;
-            padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
@@ -77,7 +76,7 @@
         }
         </style>
     </head>
-    <body>
+    <body class="hold-transition sidebar-mini">
         <jsp:include page= "common/ProfileHeader.jsp"></jsp:include>
         <div class="wrapper">
             <!-- Navbar -->
@@ -95,7 +94,7 @@
                         <a href="#" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="../customerlist" class="nav-link">Customers List</a>
+                        <a href="/SWP301_GR4_SE1842/customerlist" class="nav-link">Customers List</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#myModalProfile">My Account</a>
@@ -110,9 +109,9 @@
                             <i class="fas fa-search"></i>
                         </a>
                         <div class="navbar-search-block">
-                            <form class="form-inline">
+                            <form action="customerlist" class="form-inline">
                                 <div class="input-group input-group-sm">
-                                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                    <input class="form-control form-control-navbar" name="search" type="text" placeholder="Search" aria-label="Search">
                                     <div class="input-group-append">
                                         <button class="btn btn-navbar" type="submit">
                                             <i class="fas fa-search"></i>

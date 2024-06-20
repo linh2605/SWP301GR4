@@ -13,56 +13,7 @@
         <link rel="stylesheet" href="./dist/css/adminlte.min.css">
         <title>User List</title>
         <style>
-            .btn {
-                display: inline-block;
-                padding: 10px 20px;
-                font-size: 16px;
-                font-weight: 600;
-                text-align: center;
-                text-decoration: none;
-                color: #ffffff;
-                background-color: #007BFF;
-                border: none;
-                border-radius: 5px;
-                transition: background-color 0.3s, box-shadow 0.3s;
-                margin: 5px;
-            }
-
-            .btn:hover {
-                background-color: #0056b3;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
-
-            .btn:active {
-                background-color: #004494;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                transform: translateY(2px);
-            }
-
-            .btn-update {
-                background-color: #28a745;
-            }
-
-            .btn-update:hover {
-                background-color: #218838;
-            }
-
-            .btn-update:active {
-                background-color: #1e7e34;
-            }
-
-            .btn-detail {
-                background-color: #ffc107;
-                color: #000;
-            }
-
-            .btn-detail:hover {
-                background-color: #e0a800;
-            }
-
-            .btn-detail:active {
-                background-color: #c69500;
-            }
+            
             body {
                 font-family: Arial, sans-serif;
                 background-color: #f8f9fa;
@@ -135,13 +86,13 @@
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="mktdashboard.jsp" class="nav-link">Home</a>
+                        <a href="view/mktdashboard.jsp" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="#" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="../customerlist" class="nav-link">Customers List</a>
+                        <a href="/SWP301_GR4_SE1842/customerlist" class="nav-link">Customers List</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#myModalProfile">My Account</a>
