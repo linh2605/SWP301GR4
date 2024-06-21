@@ -25,7 +25,6 @@ public class User {
     private String phone;
     private String email;
     private String address;
-<<<<<<< HEAD
     private List<UserCart> carts;
 
     public List<UserCart> getCarts() {
@@ -35,10 +34,6 @@ public class User {
     public void setCarts(List<UserCart> carts) {
         this.carts = carts;
     }
-=======
-    private String status;
-
->>>>>>> thinhkc
 
     public User() {
     }
@@ -101,7 +96,6 @@ public class User {
         this.phone = phone;
         this.address = address;
     }
-
 
     public User(int id, String username, String password, String fullName, String gender, String phone, String email, String address) {
         this.id = id;
@@ -200,13 +194,6 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-    
-        public String getStatus() {
-        return status;
-    }
-        public void setStatus(String status) {
-        this.status = status;
     }
 
     @Override
