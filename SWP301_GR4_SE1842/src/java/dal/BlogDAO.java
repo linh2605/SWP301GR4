@@ -28,7 +28,7 @@ public class BlogDAO extends DBContext {
             if (rs.next()) {
                 Blog blog = new Blog();
                 blog.setId(rs.getInt("blogId"));
-                blog.setTitle(rs.getString("blogTitle"));
+                blog.setTitle(rs.getString("blog_title"));
                 blog.setContent(rs.getString("content"));
                 blog.setCreateAt(rs.getDate("createAt"));
                 blog.setCreator(rs.getInt("createBy"));
@@ -62,7 +62,7 @@ public class BlogDAO extends DBContext {
                 while (rs.next()) {
                     Blog blog = new Blog();
                     blog.setId(rs.getInt("blogId"));
-                    blog.setTitle(rs.getString("blogTitle"));
+                    blog.setTitle(rs.getString("blog_title"));
                     blog.setContent(rs.getString("content"));
                     blog.setCreateAt(rs.getDate("createAt"));
                     blog.setCreator(rs.getInt("createBy"));
