@@ -10,7 +10,7 @@ public class Feedback {
     private BigDecimal rating;
     private String comment;
     private Timestamp feedbackDate;
-
+    private Product product;
     // Constructors
     public Feedback() {}
 
@@ -21,6 +21,15 @@ public class Feedback {
         this.rating = rating;
         this.comment = comment;
         this.feedbackDate = feedbackDate;
+    }
+    public Feedback(int feedbackID, int productID, String userName, BigDecimal rating, String comment, Timestamp feedbackDate, Product product) {
+        this.feedbackID = feedbackID;
+        this.productID = productID;
+        this.userName = userName;
+        this.rating = rating;
+        this.comment = comment;
+        this.feedbackDate = feedbackDate;
+        this.product = product;
     }
 
     // Getters and Setters
@@ -71,4 +80,13 @@ public class Feedback {
     public void setFeedbackDate(Timestamp feedbackDate) {
         this.feedbackDate = feedbackDate;
     }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+    
 }

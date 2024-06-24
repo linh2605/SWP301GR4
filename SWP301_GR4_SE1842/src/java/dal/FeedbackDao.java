@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Feedback;
 import model.Feedbacks;
+import model.Product;
 
 public class FeedbackDao extends DBContext {
 
@@ -16,10 +17,16 @@ public class FeedbackDao extends DBContext {
             = "SELECT * FROM Feedback WHERE productID = ?";
     private static final String INSERT_FEEDBACK_SQL
             = "INSERT INTO Feedback (productID, UserID, rating, Content, feedbackDate, status ) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, 1)";
+    private static final String SELECT_FEEDBACK_BY_USER_ID
+            = """
+              SELECT f.* , u.Fullname FROM Feedback f JOIN user u 
+              ON f.userID = u.userID WHERE u.userID = ? LIMIT ? OFFSET ?""";
+    private static final String COUNT_FEEDBACK_BY_USER_ID
+            = "SELECT COUNT(*) FROM Feedback WHERE userID = ?";
 
     public List<Feedback> selectFeedbackByProductId(int productID) {
         List<Feedback> feedbackList = new ArrayList<>();
-        try ( PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FEEDBACK_BY_PRODUCT_ID)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FEEDBACK_BY_PRODUCT_ID)) {
             preparedStatement.setInt(1, productID);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -45,12 +52,11 @@ public class FeedbackDao extends DBContext {
         UserDAO userDAO = new UserDAO();
         ProductDAO productDAO = new ProductDAO();
         try {
-            String query = " SELECT * FROM feedback where ProductID =  ? and status = 1 ";
+            String query = "SELECT * FROM feedback WHERE ProductID = ? AND status = 1";
 
-            PreparedStatement preparedStatement;
-            preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, productId);
-            try ( ResultSet rs = preparedStatement.executeQuery()) {
+            try (ResultSet rs = preparedStatement.executeQuery()) {
                 while (rs.next()) {
                     Feedbacks feedback = new Feedbacks();
                     feedback.setFeedbackID(rs.getInt("FeedbackID"));
@@ -70,9 +76,9 @@ public class FeedbackDao extends DBContext {
         return feedbackses;
     }
 
-    public boolean addFeedback(int productID, int  userID, int rating, String content) {
+    public boolean addFeedback(int productID, int userID, int rating, String content) {
         boolean rowInserted = false;
-        try ( PreparedStatement preparedStatement = connection.prepareStatement(INSERT_FEEDBACK_SQL)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_FEEDBACK_SQL)) {
             preparedStatement.setInt(1, productID);
             preparedStatement.setInt(2, userID);
             preparedStatement.setInt(3, rating);
@@ -85,6 +91,47 @@ public class FeedbackDao extends DBContext {
         return rowInserted;
     }
 
+    // New methods for user-specific feedback and pagination
+    public List<Feedback> getFeedbackByUserId(int userId, int page, int pageSize) {
+        List<Feedback> feedbackList = new ArrayList<>();
+        ProductDAO productDAO = new ProductDAO();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FEEDBACK_BY_USER_ID)) {
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, pageSize);
+            preparedStatement.setInt(3, (page - 1) * pageSize);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int feedbackID = rs.getInt("feedbackID");
+                int productId = rs.getInt("productID");
+                String userName = rs.getString("fullName");
+                BigDecimal rating = rs.getBigDecimal("rating");
+                String comment = rs.getString("content");
+                java.sql.Timestamp feedbackDate = rs.getTimestamp("feedbackDate");
+                Product product = productDAO.getProductById(rs.getInt("productId"));
+                Feedback feedback = new Feedback(feedbackID, productId, userName, rating, comment, feedbackDate, product);
+                feedbackList.add(feedback);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return feedbackList;
+    }
+
+    public int getFeedbackCountByUserId(int userId) {
+        int count = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_FEEDBACK_BY_USER_ID)) {
+            preparedStatement.setInt(1, userId);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         FeedbackDao fd = new FeedbackDao();
         List<Feedbacks> l = fd.getAllFeedbackByProduct(1);
@@ -93,3 +140,4 @@ public class FeedbackDao extends DBContext {
         }
     }
 }
+

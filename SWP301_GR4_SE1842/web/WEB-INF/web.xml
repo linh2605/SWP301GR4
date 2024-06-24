@@ -57,28 +57,12 @@
         <servlet-class>controller.auth.ValidateRegisterOtp</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateUserServlet</servlet-name>
-        <servlet-class>controller.makerting.UpdateUserServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CustomerDetailServlet</servlet-name>
-        <servlet-class>controller.customer.CustomerDetailServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ProfileServlet</servlet-name>
-        <servlet-class>controller.auth.ProfileServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>registerEmail</servlet-name>
-        <servlet-class>controller.auth.registerEmail</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ValidateRegisterOtp</servlet-name>
-        <servlet-class>controller.auth.ValidateRegisterOtp</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ProductDetailController</servlet-name>
         <servlet-class>controller.ProductDetailController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>controller.makerting.UpdateUserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
