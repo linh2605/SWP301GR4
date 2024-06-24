@@ -340,5 +340,45 @@
             <script src="./dist/js/demo.js"></script>
             <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
             <script src="./dist/js/pages/dashboard3.js"></script>
+             <script>
+                const rowsPerPage = 10;
+                const rows = document.querySelectorAll('#userTable tbody tr');
+                const rowsCount = rows.length;
+                const pageCount = Math.ceil(rowsCount / rowsPerPage);
+                const pagination = document.getElementById('pagination');
+
+                function displayRows(start, end) {
+                    rows.forEach((row, index) => {
+                        row.style.display = index >= start && index < end ? '' : 'none';
+                    });
+                }
+
+                function createPagination() {
+                    for (let i = 1; i <= pageCount; i++) {
+                        const li = document.createElement('li');
+                        li.className = 'page-item';
+                        const a = document.createElement('a');
+                        a.className = 'page-link';
+                        a.href = '#';
+                        a.innerText = i;
+                        a.addEventListener('click', (event) => {
+                            event.preventDefault();
+                            displayRows((i - 1) * rowsPerPage, i * rowsPerPage);
+                            document.querySelectorAll('.page-item').forEach(item => item.classList.remove('active'));
+                            li.classList.add('active');
+                        });
+                        li.appendChild(a);
+                        pagination.appendChild(li);
+                    }
+                }
+
+                function initPagination() {
+                    createPagination();
+                    displayRows(0, rowsPerPage);
+                    pagination.firstChild.classList.add('active');
+                }
+
+                document.addEventListener('DOMContentLoaded', initPagination);
+            </script>
     </body>
 </html>
