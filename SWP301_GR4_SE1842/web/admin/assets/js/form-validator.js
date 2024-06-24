@@ -251,3 +251,4 @@ Validator.isPhone = function (selector, message) {
         }
     };
 };
+

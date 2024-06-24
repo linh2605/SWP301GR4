@@ -13,6 +13,48 @@
         <link rel="stylesheet" href="./dist/css/adminlte.min.css">
         <title>User List</title>
         <style>
+            :root {
+                --primary-color: #3498db; /* Màu chính cho nút Update */
+                --secondary-color: #2ecc71; /* Màu chính cho nút Detail */
+                --text-color: #ffffff; /* Màu chữ */
+            }
+
+            /* Thiết lập chung cho nút */
+            .btn {
+                display: inline-block;
+                padding: 12px 24px;
+                margin-right: 10px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: bold;
+                color: var(--text-color);
+                border-radius: 5px;
+                transition: background-color 0.3s ease, color 0.3s ease;
+                border: 2px solid transparent;
+            }
+
+            /* Màu và kiểu chữ cho nút Update */
+            .btn-update {
+                background-color: var(--primary-color);
+            }
+
+            .btn-update:hover {
+                background-color: transparent;
+                color: var(--primary-color);
+                border-color: var(--primary-color);
+            }
+
+            /* Màu và kiểu chữ cho nút Detail */
+            .btn-detail {
+                background-color: var(--secondary-color);
+            }
+
+            .btn-detail:hover {
+                background-color: transparent;
+                color: var(--secondary-color);
+                border-color: var(--secondary-color);
+            }
             body {
                 font-family: Arial, sans-serif;
                 background-color: #f8f9fa;
@@ -260,17 +302,36 @@
         </table>
         
 
-        <script src="./plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE -->
-        <script src="./dist/js/adminlte.js"></script>
+        <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Update History</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="customer" items="${listuser}">
+                <tr>
+                    <td>${customer.id}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.email}</td>
+                    <td>
+                        <ul>
+                            <c:forEach var="update" items="${customer.updateHistory}">
+                                <li>${update.updateDate}: ${update.updateDetails}</li>
+                            </c:forEach>
+                        </ul>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 
-        <!-- OPTIONAL SCRIPTS -->
-        <script src="./plugins/chart.js/Chart.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="./dist/js/demo.js"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="./dist/js/pages/dashboard3.js"></script>
-    </body>
-</html>
+            <!-- OPTIONAL SCRIPTS -->
+            <script src="./plugins/chart.js/Chart.min.js"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="./dist/js/demo.js"></script>
+            <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+            <script src="./dist/js/pages/dashboard3.js"></script>
