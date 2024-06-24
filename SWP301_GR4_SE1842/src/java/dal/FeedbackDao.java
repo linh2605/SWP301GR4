@@ -21,8 +21,14 @@ public class FeedbackDao extends DBContext {
             = """
               SELECT f.* , u.Fullname FROM Feedback f JOIN user u 
               ON f.userID = u.userID WHERE u.userID = ? LIMIT ? OFFSET ?""";
+    private static final String SELECT_FEEDBACK
+            = """
+              SELECT f.* , u.Fullname FROM Feedback f JOIN user u 
+              ON f.userID = u.userID LIMIT ? OFFSET ?""";
     private static final String COUNT_FEEDBACK_BY_USER_ID
             = "SELECT COUNT(*) FROM Feedback WHERE userID = ?";
+    private static final String COUNT_FEEDBACK
+            = "SELECT COUNT(*) FROM Feedback";
 
     public List<Feedback> selectFeedbackByProductId(int productID) {
         List<Feedback> feedbackList = new ArrayList<>();
@@ -117,11 +123,47 @@ public class FeedbackDao extends DBContext {
         }
         return feedbackList;
     }
+    public List<Feedback> getFeedbacks( int page, int pageSize) {
+        List<Feedback> feedbackList = new ArrayList<>();
+        ProductDAO productDAO = new ProductDAO();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FEEDBACK)) {
+            preparedStatement.setInt(1, pageSize);
+            preparedStatement.setInt(2, (page - 1) * pageSize);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int feedbackID = rs.getInt("feedbackID");
+                int productId = rs.getInt("productID");
+                String fullName = rs.getString("fullName");
+                BigDecimal rating = rs.getBigDecimal("rating");
+                String comment = rs.getString("content");
+                java.sql.Timestamp feedbackDate = rs.getTimestamp("feedbackDate");
+                Product product = productDAO.getProductById(rs.getInt("productId"));
+                Feedback feedback = new Feedback(feedbackID, productId, fullName, rating, comment, feedbackDate, product);
+                feedbackList.add(feedback);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return feedbackList;
+    }
 
     public int getFeedbackCountByUserId(int userId) {
         int count = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_FEEDBACK_BY_USER_ID)) {
             preparedStatement.setInt(1, userId);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+    public int getFeedbackCount() {
+        int count = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_FEEDBACK)) {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 count = rs.getInt(1);
