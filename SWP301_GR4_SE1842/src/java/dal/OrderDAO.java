@@ -1,178 +1,139 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dal;
 
-import controller.customer.OrderDetail;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import model.OrderStatus;
 import model.Order;
-import model.OrderItem;
-import model.Product;
-
-import model.OrderItem;
+import model.Orders;
+import model.User;
 
 /**
  *
- * @author Admin
+ * @author ADMIN
  */
-public class OrderDAO {
+public class OrderDAO extends DBContext {
 
-    public List<Order> getOrderUser(int userId) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String sql = "SELECT \n"
-                + "    orders.*, \n"
-                + "    orderstatus.Name AS StatusName, \n"
-                + "    paymentmethod.Name AS PaymentMethodName\n"
-                + "FROM \n"
-                + "    sportshoponline.order AS orders\n"
-                + "INNER JOIN \n"
-                + "    sportshoponline.orderstatus AS orderstatus \n"
-                + "    ON orders.StatusID = orderstatus.StatusID\n"
-                + "INNER JOIN \n"
-                + "    sportshoponline.paymentmethod AS paymentmethod \n"
-                + "    ON orders.PaymentMethodID = paymentmethod.PaymentMethodID\n"
-                + "WHERE orders.UserID = ?;";
-        List<Order> orders = new ArrayList<>();
+    // Read all products
+    public List<Orders> getAllOrderForUser(Integer userID, Integer statusId) {
+        List<Orders> orders = new ArrayList<>();
+        List<Object> list = new ArrayList<>();
+        UserDAO userDAO = new UserDAO();
         try {
-            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
-            st.setInt(1, userId);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                //orderId,userId,fullName,orderDate,deliverDate,phone,email,address,paymentName,totalPrice,statusNam
-                Order order = new Order(rs.getInt("OrderID"),
-                        rs.getInt("UserID"),
-                        rs.getString("FullName"),
-                        format.parse(rs.getString("OrderDate")),
-                        format.parse(rs.getString("DeliverDate")),
-                        rs.getString("Phone"),
-                        rs.getString("Email"),
-                        rs.getString("Address"),
-                        rs.getString("PaymentMethodName"),
-                        rs.getDouble("TotalPrice"),
-                        rs.getString("StatusName"));
-                order.setStatusId(rs.getInt("StatusID"));
-                order.setOrderDateString(format.format(format.parse(rs.getString("OrderDate"))));
-                order.setDeliverDateString(format.format(format.parse(rs.getString("DeliverDate"))));
-                orders.add(order);
+            StringBuilder query = new StringBuilder();
+            query.append("""
+                           SELECT o.*, od.Quantity, od.Price, p.ProductName,pm.name, s.name as sname FROM sportshoponline.order o
+                           join orderdetail od
+                           on o.OrderID = od.OrderID
+                           Join product p 
+                           on od.productId = p.productId
+                           JOIN orderstatus s on o.statusId = s.StatusID 
+                           JOIN paymentmethod pm on pm.PaymentMethodID = o.PaymentMethodID  where o.userID = ? """);
+
+            list.add(userID);
+            if (statusId != null) {
+                query.append("  and o.statusID = ? ");
+                list.add(statusId);
             }
-            return orders;
-        } catch (SQLException e) {
+            query.append(" ORDER BY o.orderID DESC");
+            PreparedStatement preparedStatement;
+            preparedStatement = connection.prepareStatement(query.toString());
+            mapParams(preparedStatement, list);
+
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    Orders order = new Orders();
+                    order.setOrderID(rs.getInt("OrderID"));
+                    User u = userDAO.GetUserById(rs.getInt("UserID"));
+                    order.setUser(u);
+                    order.setOrderDate(rs.getDate("OrderDate"));
+                    order.setDeliverDate(rs.getDate("DeliverDate"));
+                    order.setPhone(rs.getString("Phone"));
+                    order.setAddress(rs.getString("Address"));
+                    order.setPaymentMethodID(rs.getInt("PaymentMethodID"));
+                    order.setPaymentMethodName(rs.getString("name"));
+                    order.setPrice(rs.getFloat("TotalPrice"));
+                    order.setStatusName(rs.getString("sname"));
+                    order.setProductName(rs.getString("ProductName"));
+                    order.setStatusID(rs.getInt("StatusID"));
+                    order.setQuantity(rs.getInt("Quantity"));
+                    orders.add(order);
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return orders;
     }
 
-    public List<OrderItem> getOrderDetail(int orderId) {
-        String sql = "SELECT * FROM sportshoponline.orderdetail \n"
-                + "inner join sportshoponline.product on sportshoponline.product.ProductID = sportshoponline.orderdetail.ProductID\n"
-                + "inner join sportshoponline.productcategory on sportshoponline.product.ProductID = sportshoponline.productcategory.ProductID\n"
-                + "inner join sportshoponline.category on sportshoponline.category.CategoryID = sportshoponline.productcategory.CategoryID\n"
-                + "inner join sportshoponline.images on sportshoponline.images.ProductID = sportshoponline.product.ProductID\n"
-                + "Where OrderID = ?";
-        List<OrderItem> orderDetail = new ArrayList<>();
+    public List<OrderStatus> getAllOrderStatus() {
+        List<OrderStatus> orders = new ArrayList<>();
         try {
-            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
-            st.setInt(1, orderId);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                OrderItem detail = new OrderItem();
-                Product product = new Product();
-                product.setProductID(rs.getInt("ProductID"));
-                product.setProductName(rs.getString("ProductName"));
-                product.setProductPrice(rs.getBigDecimal("ProductPrice"));
-                product.setStock(rs.getInt("Stock"));
-                product.setProductRating(rs.getInt("ProductRating"));
-                product.setProductDesc(rs.getString("ProductDesc"));
-                product.setBrandID(rs.getInt("BrandID"));
-                product.setSupplierID(rs.getInt("SupplierID"));
-                product.setImage(rs.getString("Image"));
+            String query = "SELECT * FROM sportshoponline.orderstatus; ";
+            PreparedStatement preparedStatement;
+            preparedStatement = connection.prepareStatement(query);
 
-                detail.setProduct(product);
-                detail.setCategory(rs.getString("CategoryName"));
-                detail.setQuantity(rs.getInt("Quantity"));
-                //orderId,userId,fullName,orderDate,deliverDate,phone,email,address,paymentName,totalPrice,statusNam
-                orderDetail.add(detail);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    OrderStatus order = new OrderStatus();
+                    order.setId(rs.getInt("StatusID"));
+                    order.setName(rs.getString("Name"));
+                    order.setDescription(rs.getString("Description"));
+                    
+                    orders.add(order);
+                }
             }
-            return orderDetail;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return orders;
     }
 
-    public Order getOrderByID(int id) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String sql = "SELECT \n"
-                + "    orders.*, \n"
-                + "    orderstatus.Name AS StatusName, \n"
-                + "    paymentmethod.Name AS PaymentMethodName\n"
-                + "FROM \n"
-                + "    sportshoponline.order AS orders\n"
-                + "INNER JOIN \n"
-                + "    sportshoponline.orderstatus AS orderstatus \n"
-                + "    ON orders.StatusID = orderstatus.StatusID\n"
-                + "INNER JOIN \n"
-                + "    sportshoponline.paymentmethod AS paymentmethod \n"
-                + "    ON orders.PaymentMethodID = paymentmethod.PaymentMethodID\n"
-                + "WHERE orders.OrderID = ?;";
-        List<Order> orders = new ArrayList<>();
-        try {
-            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
-            st.setInt(1, id);
-            ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-                //orderId,userId,fullName,orderDate,deliverDate,phone,email,address,paymentName,totalPrice,statusNam
-                Order order = new Order(rs.getInt("OrderID"),
-                        rs.getInt("UserID"),
-                        rs.getString("FullName"),
-                        format.parse(rs.getString("OrderDate")),
-                        format.parse(rs.getString("DeliverDate")),
-                        rs.getString("Phone"),
-                        rs.getString("Email"),
-                        rs.getString("Address"),
-                        rs.getString("PaymentMethodName"),
-                        rs.getDouble("TotalPrice"),
-                        rs.getString("StatusName"));
-                order.setStatusId(rs.getInt("StatusID"));
-                order.setOrderDateString(format.format(format.parse(rs.getString("OrderDate"))));
-                order.setDeliverDateString(format.format(format.parse(rs.getString("DeliverDate"))));
-                return order;
+    public void mapParams(PreparedStatement ps, List<Object> args) throws SQLException {
+        int i = 1;
+        for (Object arg : args) {
+            if (arg instanceof Date) {
+                ps.setTimestamp(i++, new Timestamp(((Date) arg).getTime()));
+            } else if (arg instanceof Integer) {
+                ps.setInt(i++, (Integer) arg);
+            } else if (arg instanceof Long) {
+                ps.setLong(i++, (Long) arg);
+            } else if (arg instanceof Double) {
+                ps.setDouble(i++, (Double) arg);
+            } else if (arg instanceof Float) {
+                ps.setFloat(i++, (Float) arg);
+            } else {
+                ps.setString(i++, (String) arg);
             }
-            return null;
-        } catch (SQLException e) {
-            e.printStackTrace();
+
         }
-        return null;
     }
 
-    public void CancelOrder(int orderId) {
-        String sql = "UPDATE sportshoponline.order SET sportshoponline.order.StatusID = 3 Where OrderID =  ?";
-        try {
-            PreparedStatement st = new DBContext().getConnection().prepareStatement(sql);
-            st.setInt(1, orderId);
-            st.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public List<Orders> Paging(List<Orders> orders, int page, int pageSize) {
+        int fromIndex = (page - 1) * pageSize;
+        int toIndex = Math.min(fromIndex + pageSize, orders.size());
+
+        if (fromIndex > toIndex) {
+            // Handle the case where fromIndex is greater than toIndex
+            fromIndex = toIndex;
         }
+
+        return orders.subList(fromIndex, toIndex);
     }
 
     public static void main(String[] args) {
-
-        OrderDAO userDAO = new OrderDAO();
-        for (OrderItem arg : userDAO.getOrderDetail(1)) {
-            System.out.println(arg);
+        OrderDAO dao = new OrderDAO();
+        List<OrderStatus> l = dao.getAllOrderStatus();
+        for (OrderStatus b : l) {
+            System.out.println(b);
         }
-        //  System.out.println(userDAO.createUser(user));
-//        System.out.println(userDAO.getAllUsers());
     }
 }

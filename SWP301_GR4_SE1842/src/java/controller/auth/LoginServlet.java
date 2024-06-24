@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 
 
                 if(u.getRoleID()== 2){
-                    response.sendRedirect("../view/mktdashboard.jsp");
+                    response.sendRedirect("../view/dashboard.jsp");
                 }
                 if(u.getRoleID() ==1){
                     response.sendRedirect("../admin/adminDashboard.jsp");
