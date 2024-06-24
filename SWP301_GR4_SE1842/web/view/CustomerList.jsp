@@ -309,46 +309,30 @@
                 </tbody>
             </table>
 
-<<<<<<< Updated upstream
+            <nav class="mt-3" aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <!-- Display the page numbers as links -->
+                    <c:forEach var="pageNum" begin="1" end="${totalPages}">
+                        <li class="page-item <c:if test='${pageNum == currentPage}'>active</c:if>'">
+                            <a class="page-link" href="?brandId=${sessionScope.currBrand}&&catId=${sessionScope.currCate}&&search=${sessionScope.currSearch}&amp;page=${pageNum}">${pageNum}</a>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </nav>
 
             <script src="./plugins/jquery/jquery.min.js"></script>
             <!-- Bootstrap -->
             <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
             <!-- AdminLTE -->
             <script src="./dist/js/adminlte.js"></script>
-=======
-        <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Update History</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="customer" items="${listuser}">
-                <tr>
-                    <td>${customer.id}</td>
-                    <td>${customer.name}</td>
-                    <td>${customer.email}</td>
-                    <td>
-                        <ul>
-                            <c:forEach var="update" items="${customer.updateHistory}">
-                                <li>${update.updateDate}: ${update.updateDetails}</li>
-                            </c:forEach>
-                        </ul>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-        <script src="./plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE -->
-        <script src="./dist/js/adminlte.js"></script>
->>>>>>> Stashed changes
+
+
+            <script src="./plugins/jquery/jquery.min.js"></script>
+            <!-- Bootstrap -->
+            <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- AdminLTE -->
+            <script src="./dist/js/adminlte.js"></script>
+
 
             <!-- OPTIONAL SCRIPTS -->
             <script src="./plugins/chart.js/Chart.min.js"></script>

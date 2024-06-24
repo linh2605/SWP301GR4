@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.CustomerUpdateHistory;
 import model.User;
 
 /**
@@ -64,11 +63,6 @@ public class CustomerListServlet extends HttpServlet {
 
         UserDAO ud = new UserDAO();
         String search = request.getParameter("search");
-        for (User customer : userlist) {
-            List<CustomerUpdateHistory> updateHistory = udao.getUpdateHistoryByCustomerId(customer.getId());
-            customer.setUpdateHistory(updateHistory);
-        }
-        
         if (search != null && !search.trim().equals("")) {
             request.setAttribute("listUser", ud.getUsersByFullName(search));
             List<User> listfilter = udao.getAllUsersSortedByName();
@@ -76,6 +70,17 @@ public class CustomerListServlet extends HttpServlet {
             request.getRequestDispatcher("view/CustomerList.jsp").forward(request, response);
             return;
         }
+        int pageSize = 8;
+        int page = 1;
+        if (request.getParameter("page") != null) {
+            try {
+                page = Integer.parseInt(request.getParameter("page"));
+            } catch (Exception e) {
+                page = 1;
+            }
+        }
+        request.setAttribute("currentPage", page);
+        request.setAttribute("totalPages", userlist.size() % pageSize == 0 ? (userlist.size() / pageSize) : (userlist.size() / pageSize + 1));
 
         request.setAttribute("listUser", userlist);
         List<User> listfilter = udao.getAllUsersSortedByName();
