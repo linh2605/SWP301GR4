@@ -74,6 +74,26 @@
         </style>
     </head>
     <body>
+
+        <script defer>
+            document.addEventListener('DOMContentLoaded', function () {
+                Validator({
+                    form: '#addcustomer',
+                    formGroupSelector: '.form-group',
+                    errorSelector: '.form-message',
+                    rules: [
+                        Validator.isRequired('#fullname', 'Please enter username!'),
+                        Validator.isRequired('#email', 'Please enter password!'),
+                        Validator.isRequired('#phone', 'Please enter username!'),
+                        Validator.isRequired('#gender', 'Please enter password!'),
+                        Validator.isRequired('#address', 'Please enter username!'),
+                        Validator.isRequired('#username', 'Please enter username!'),
+                        Validator.isRequired('#password', 'Please enter password!'),
+                        Validator.minLength('#password', 8),
+                    ]
+                });
+            });
+        </script>
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
@@ -223,40 +243,46 @@
                     ${errorMess}
                 </h3>
             </c:if>
-            <form action="add_customer" method="post">
+            <form id="addcustomer" action="add_customer" method="post">
                 <input type="hidden" name="id" value="${user.id}">
                 <div class="form-group">
                     <label>Fullname</label>
-                    <input type="text" class="form-control" placeholder="Fullname" name="name" value="${user.fullName}">
+                    <input id="fullname" type="text" class="form-control" placeholder="Fullname" name="name" value="${user.fullName}">
+                    <span class="form-message"></span>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Email</label>
-                        <input type="email" class="form-control" placeholder="Email" name="email" value="${user.email}">
+                        <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="${user.email}">
+                        <span class="form-message"></span>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Phone number</label>
-                        <input type="text" class="form-control" placeholder="Phone number" name="phone" value="${user.phone}">
+                        <input id="phone" type="text" class="form-control" placeholder="Phone number" name="phone" value="${user.phone}">
+                        <span class="form-message"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Gender</label>
                     <select class="form-control" name="gender">
-                        <option value="Male" ${user.gender == 'Male' ? 'selected' : ''}>Male</option>
+                        <option selected="" value="Male" ${user.gender == 'Male' ? 'selected' : ''}>Male</option>
                         <option value="Female" ${user.gender == 'Female' ? 'selected' : ''}>Female</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Address</label>
-                    <input type="text" class="form-control" placeholder="Address" name="address" value="${user.address}">
+                    <input id="address" type="text" class="form-control" placeholder="Address" name="address" value="${user.address}">
+                    <span class="form-message"></span>
                 </div>
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" class="form-control" placeholder="Username" name="username" value="${user.username}">
+                    <input id="username" type="text" class="form-control" placeholder="Username" name="username" value="${user.username}">
+                    <span class="form-message"></span>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Password" name="pass">
+                    <input id="password" type="password" class="form-control" placeholder="Password" name="pass">
+                    <span class="form-message"></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Add cusstomer</button>
             </form>
@@ -267,6 +293,7 @@
         <!-- AdminLTE -->
         <script src="./dist/js/adminlte.js"></script>
 
+        <script src="${pageContext.request.contextPath}/admin/assets/js/form-validator.js"></script>
         <!-- OPTIONAL SCRIPTS -->
         <script src="./plugins/chart.js/Chart.min.js"></script>
         <!-- AdminLTE for demo purposes -->

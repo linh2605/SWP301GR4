@@ -33,7 +33,13 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+<<<<<<< Updated upstream
  //       password = Encode.toSHA1(password);
+=======
+
+        //password = Encode.toSHA1(password);
+
+>>>>>>> Stashed changes
         
         UserDAO ud = new UserDAO();
         User u = ud.getUser(username, password);
