@@ -177,14 +177,14 @@
                         <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                     </div>
                 </li>
-                <!-- Notifications Dropdown Menu -->
+                <!-- msgs Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
                         <span class="badge badge-warning navbar-badge">15</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <span class="dropdown-item dropdown-header">15 msgs</span>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
                             <i class="fas fa-envelope mr-2"></i> 4 new messages
@@ -201,7 +201,7 @@
                             <span class="float-right text-muted text-sm">2 days</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                        <a href="#" class="dropdown-item dropdown-footer">See All msgs</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -216,8 +216,8 @@
                 </li>
             </ul>
         </nav>
-
         <h2>Feedback List</h2>
+
         <form action="marketing-feedback" method="get">
             <div class="row">
                 <div class="col-md-6">
@@ -245,6 +245,24 @@
             <input type="hidden" name="status" value="${param.status}">
             <input type="hidden" name="page" value="1">
         </form>
+          <c:if test="${not empty sessionScope.msg}">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align: center">
+                ${sessionScope.msg}
+                <button type="button" class="btn-danger" data-dismiss="alert" aria-label="Close">X</button>
+            </div>
+            <%
+                session.removeAttribute("msg");
+            %>
+        </c:if>
+        <c:if test="${not empty sessionScope.err}">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert"  style="text-align: center">
+                ${sessionScope.err}
+                <button type="button" class="btn-danger" data-dismiss="alert" >X</button>
+            </div>
+            <%
+                session.removeAttribute("err");
+            %>
+        </c:if>
         <table>
             <thead>
                 <tr>
@@ -254,6 +272,8 @@
                     <th>Rating</th>
                     <th>Comment</th>
                     <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -267,6 +287,32 @@
                         <td>${f.rating}</td>
                         <td>${f.comment}</td>
                         <td><fmt:formatDate value="${f.feedbackDate}" pattern="dd/MM/yyyy"/></td>
+
+                        <td>
+                            <c:if test="${f.status == 1}">
+                                <span style="color: green">Active</span>
+                            </c:if>
+                            <c:if test="${f.status == 0}">
+                                <span style="color: red">In Active</span>
+                            </c:if>
+                        </td>
+                        <td>
+                            <form action="marketing-feedback" method="POST">
+                                <input type="hidden" name="id" value="${f.feedbackID}">
+                                <input type="hidden" name="status" value="${f.status}">
+                                <c:if test="${f.status == 1}">
+                                    <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Are you sure you want to deactivate this feedback?');">
+                                        De-active
+                                    </button>
+                                </c:if>
+                                <c:if test="${f.status == 0}">
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to activate this feedback?');">
+                                        Active
+                                    </button>
+                                </c:if>
+                            </form>
+
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>

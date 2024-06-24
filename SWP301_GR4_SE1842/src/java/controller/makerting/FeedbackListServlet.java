@@ -15,14 +15,12 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/view/marketing-feedback")
 public class FeedbackListServlet extends HttpServlet {
-
-   
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("usersession");
-
+        
         if (user != null) {
             String pageParam = request.getParameter("page");
             String searchParam = request.getParameter("search");
@@ -49,4 +47,26 @@ public class FeedbackListServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/auth/login");
         }
     }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("usersession");
+        FeedbackDao feedbackDao = new FeedbackDao();
+        if (user != null) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            int status = Integer.parseInt(request.getParameter("status"));
+            if (status == 1) {
+                feedbackDao.updateFeedbackStatus(id, 0);
+                session.setAttribute("msg", "De-active feedback successfullt");
+            }else{
+                feedbackDao.updateFeedbackStatus(id, 1);
+                session.setAttribute("msg", "active feedback successfullt");
+            }
+            response.sendRedirect("marketing-feedback");
+        } else {
+            response.sendRedirect(request.getContextPath() + "/auth/login");
+        }
+    }
+    
 }

@@ -16,7 +16,7 @@ import model.Product;
 public class FeedbackDao extends DBContext {
 
     private static final String SELECT_FEEDBACK_BY_PRODUCT_ID
-            = "SELECT * FROM Feedback WHERE productID = ?";
+            = "SELECT * FROM Feedback WHERE productID = ? and status = 1";
     private static final String INSERT_FEEDBACK_SQL
             = "INSERT INTO Feedback (productID, UserID, rating, Content, feedbackDate, status ) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, 1)";
     private static final String SELECT_FEEDBACK_BY_USER_ID
@@ -28,9 +28,10 @@ public class FeedbackDao extends DBContext {
               SELECT f.* , u.Fullname FROM Feedback f JOIN user u 
               ON f.userID = u.userID LIMIT ? OFFSET ?""";
     private static final String COUNT_FEEDBACK_BY_USER_ID
-            = "SELECT COUNT(*) FROM Feedback WHERE userID = ?";
+            = "SELECT COUNT(*) FROM Feedback WHERE userID = ? and status = 1";
     private static final String COUNT_FEEDBACK
             = "SELECT COUNT(*) FROM Feedback";
+    private static final String UPDATE_FEEDBACK_STATUS_SQL = "UPDATE Feedback SET status = ? WHERE feedbackID = ?";
 
     public List<Feedback> selectFeedbackByProductId(int productID) {
         List<Feedback> feedbackList = new ArrayList<>();
@@ -244,6 +245,19 @@ public class FeedbackDao extends DBContext {
         return count;
     }
 
+    public boolean updateFeedbackStatus(int feedbackID, int status) {
+        boolean rowUpdated = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_FEEDBACK_STATUS_SQL)) {
+            preparedStatement.setInt(1, status);
+            preparedStatement.setInt(2, feedbackID);
+
+            rowUpdated = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowUpdated;
+    }
+
     public int getFeedbackCount() {
         int count = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_FEEDBACK)) {
@@ -259,7 +273,7 @@ public class FeedbackDao extends DBContext {
 
     public static void main(String[] args) {
         FeedbackDao fd = new FeedbackDao();
-        List<Feedback> l = fd.getFeedbacksWithParam("",null);
+        List<Feedback> l = fd.getFeedbacksWithParam("", null);
         for (Feedback f : l) {
             System.out.println(f);
         }
