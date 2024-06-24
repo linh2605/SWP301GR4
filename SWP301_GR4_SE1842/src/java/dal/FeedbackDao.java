@@ -2,9 +2,11 @@ package dal;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import model.Feedback;
@@ -123,7 +125,8 @@ public class FeedbackDao extends DBContext {
         }
         return feedbackList;
     }
-    public List<Feedback> getFeedbacks( int page, int pageSize) {
+
+    public List<Feedback> getFeedbacks(int page, int pageSize) {
         List<Feedback> feedbackList = new ArrayList<>();
         ProductDAO productDAO = new ProductDAO();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FEEDBACK)) {
@@ -137,6 +140,7 @@ public class FeedbackDao extends DBContext {
                 String fullName = rs.getString("fullName");
                 BigDecimal rating = rs.getBigDecimal("rating");
                 String comment = rs.getString("content");
+                String status = rs.getString("status");
                 java.sql.Timestamp feedbackDate = rs.getTimestamp("feedbackDate");
                 Product product = productDAO.getProductById(rs.getInt("productId"));
                 Feedback feedback = new Feedback(feedbackID, productId, fullName, rating, comment, feedbackDate, product);
@@ -146,6 +150,84 @@ public class FeedbackDao extends DBContext {
             e.printStackTrace();
         }
         return feedbackList;
+    }
+
+    public List<Feedback> getFeedbacksWithParam(String searchParam, Integer status) {
+        List<Feedback> feedbackList = new ArrayList<>();
+        List<Object> list = new ArrayList<>();
+        ProductDAO productDAO = new ProductDAO();
+        try {
+            StringBuilder query = new StringBuilder();
+            query.append("""
+               SELECT f.* , u.Fullname FROM Feedback f JOIN user u 
+                ON f.userID = u.userID
+                WHERE 1 = 1
+            """);
+            if (searchParam != null && !searchParam.trim().isEmpty()) {
+                query.append(" AND  f.Content LIKE ? ");
+                list.add("%" + searchParam + "%");
+            }
+            if (status != null) {
+                query.append(" AND  f.status = ? ");
+                list.add(status);
+            }
+
+            query.append("""
+                    ORDER BY f.FeedbackID desc
+                """);
+            PreparedStatement preparedStatement;
+            preparedStatement = connection.prepareStatement(query.toString());
+            mapParams(preparedStatement, list);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    int feedbackID = rs.getInt("feedbackID");
+                    int productId = rs.getInt("productID");
+                    String fullName = rs.getString("fullName");
+                    BigDecimal rating = rs.getBigDecimal("rating");
+                    String comment = rs.getString("content");
+                    String statuss = rs.getString("status");
+                    java.sql.Timestamp feedbackDate = rs.getTimestamp("feedbackDate");
+                    Product product = productDAO.getProductById(rs.getInt("productId"));
+                    Feedback feedback = new Feedback(feedbackID, productId, fullName, rating, comment, statuss, feedbackDate, product);
+                    feedbackList.add(feedback);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return feedbackList;
+    }
+
+    public List<Feedback> Paging(List<Feedback> products, int page, int pageSize) {
+        int fromIndex = (page - 1) * pageSize;
+        int toIndex = Math.min(fromIndex + pageSize, products.size());
+
+        if (fromIndex > toIndex) {
+            // Handle the case where fromIndex is greater than toIndex
+            fromIndex = toIndex;
+        }
+
+        return products.subList(fromIndex, toIndex);
+    }
+
+    public void mapParams(PreparedStatement ps, List<Object> args) throws SQLException {
+        int i = 1;
+        for (Object arg : args) {
+            if (arg instanceof Date) {
+                ps.setTimestamp(i++, new Timestamp(((Date) arg).getTime()));
+            } else if (arg instanceof Integer) {
+                ps.setInt(i++, (Integer) arg);
+            } else if (arg instanceof Long) {
+                ps.setLong(i++, (Long) arg);
+            } else if (arg instanceof Double) {
+                ps.setDouble(i++, (Double) arg);
+            } else if (arg instanceof Float) {
+                ps.setFloat(i++, (Float) arg);
+            } else {
+                ps.setString(i++, (String) arg);
+            }
+
+        }
     }
 
     public int getFeedbackCountByUserId(int userId) {
@@ -161,6 +243,7 @@ public class FeedbackDao extends DBContext {
         }
         return count;
     }
+
     public int getFeedbackCount() {
         int count = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_FEEDBACK)) {
@@ -176,10 +259,9 @@ public class FeedbackDao extends DBContext {
 
     public static void main(String[] args) {
         FeedbackDao fd = new FeedbackDao();
-        List<Feedbacks> l = fd.getAllFeedbackByProduct(1);
-        for (Feedbacks f : l) {
+        List<Feedback> l = fd.getFeedbacksWithParam("",null);
+        for (Feedback f : l) {
             System.out.println(f);
         }
     }
 }
-

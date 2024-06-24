@@ -11,6 +11,8 @@ public class Feedback {
     private String comment;
     private Timestamp feedbackDate;
     private Product product;
+    private String status;
+    
     // Constructors
     public Feedback() {}
 
@@ -22,14 +24,15 @@ public class Feedback {
         this.comment = comment;
         this.feedbackDate = feedbackDate;
     }
+
     public Feedback(int feedbackID, int productID, String userName, BigDecimal rating, String comment, Timestamp feedbackDate, Product product) {
-        this.feedbackID = feedbackID;
-        this.productID = productID;
-        this.userName = userName;
-        this.rating = rating;
-        this.comment = comment;
-        this.feedbackDate = feedbackDate;
+        this(feedbackID, productID, userName, rating, comment, feedbackDate);
         this.product = product;
+    }
+
+    public Feedback(int feedbackID, int productID, String userName, BigDecimal rating, String comment, String status, Timestamp feedbackDate, Product product) {
+        this(feedbackID, productID, userName, rating, comment, feedbackDate, product);
+        this.status = status;
     }
 
     // Getters and Setters
@@ -89,4 +92,11 @@ public class Feedback {
         this.product = product;
     }
     
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
