@@ -15,14 +15,13 @@
             <div class="col-lg-8 col-md-8  col-12">
                 <div class="header-link ">
                     <ul>
-                        <li><a href="#" data-toggle="modal" data-target="#myModalProfile">My Account</a></li>
                         <li><a href="wishlist.html">My Wish List</a></li>
                             <c:if test="${usersession == null}">
                             <li><a href="/SWP301_GR4_SE1842/auth/login">Sign In</a></li>
                             </c:if>
                             <c:if test="${usersession != null}">
-                            <li><a href="#"> hello <strong>${usersession.fullName}</strong> </a></li>
-                            <li><a href="${pageContext.request.contextPath}/view/my-order"> My order</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#myModalProfile"> hello <strong>${usersession.fullName}</strong> </a></li>
+                            <li><a href="../MyOrder"> My order</a></li>
                             </c:if>
                         <li class=""><a href="#">US Dollar<i class="fa fa-angle-down"> </i></a>
                             <div class="dollar-submenu">
