@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import model.CustomerUpdateHistory;
 import model.User;
 
 /**
@@ -63,6 +64,11 @@ public class CustomerListServlet extends HttpServlet {
 
         UserDAO ud = new UserDAO();
         String search = request.getParameter("search");
+        for (User customer : userlist) {
+            List<CustomerUpdateHistory> updateHistory = udao.getUpdateHistoryByCustomerId(customer.getId());
+            customer.setUpdateHistory(updateHistory);
+        }
+        
         if (search != null && !search.trim().equals("")) {
             request.setAttribute("listUser", ud.getUsersByFullName(search));
             List<User> listfilter = udao.getAllUsersSortedByName();

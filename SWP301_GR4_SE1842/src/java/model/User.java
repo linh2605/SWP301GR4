@@ -25,6 +25,7 @@ public class User {
     private String phone;
     private String email;
     private String address;
+<<<<<<< Updated upstream
     private List<UserCart> carts;
 
     public List<UserCart> getCarts() {
@@ -35,6 +36,9 @@ public class User {
         this.carts = carts;
     }
 
+=======
+    private List<CustomerUpdateHistory> updateHistory;
+>>>>>>> Stashed changes
     public User() {
     }
 
@@ -194,6 +198,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+     public List<CustomerUpdateHistory> getUpdateHistory() {
+        return updateHistory;
+    }
+
+    public void setUpdateHistory(List<CustomerUpdateHistory> updateHistory) {
+        this.updateHistory = updateHistory;
     }
 
     @Override

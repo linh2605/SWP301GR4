@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Blog;
+import model.CustomerUpdateHistory;
 import model.Order;
 import model.Role;
 import model.User;
@@ -455,6 +456,31 @@ public class UserDAO extends DBContext {
 
         return uList;
     }
+    
+
+    public List<CustomerUpdateHistory> getUpdateHistoryByCustomerId(int customerId) {
+        List<CustomerUpdateHistory> historyList = new ArrayList<>();
+        String sqlString = "SELECT * FROM customer_update_history WHERE customer_id = ?";
+        
+        try (PreparedStatement st = new DBContext().getConnection().prepareStatement(sqlString);) {
+            st.setInt(1, customerId);
+            ResultSet rs = st.executeQuery();
+            
+            while (rs.next()) {
+                CustomerUpdateHistory history = new CustomerUpdateHistory();
+                history.setUpdateId(rs.getInt("update_id"));
+                history.setCustomerId(rs.getInt("customer_id"));
+                history.setUpdateDate(rs.getTimestamp("update_date"));
+                history.setUpdateDetails(rs.getString("update_details"));
+                historyList.add(history);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return historyList;
+    }
+
 
     public static void main(String[] args) {
 

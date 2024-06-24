@@ -309,12 +309,46 @@
                 </tbody>
             </table>
 
+<<<<<<< Updated upstream
 
             <script src="./plugins/jquery/jquery.min.js"></script>
             <!-- Bootstrap -->
             <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
             <!-- AdminLTE -->
             <script src="./dist/js/adminlte.js"></script>
+=======
+        <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Update History</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="customer" items="${listuser}">
+                <tr>
+                    <td>${customer.id}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.email}</td>
+                    <td>
+                        <ul>
+                            <c:forEach var="update" items="${customer.updateHistory}">
+                                <li>${update.updateDate}: ${update.updateDetails}</li>
+                            </c:forEach>
+                        </ul>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+        <script src="./plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE -->
+        <script src="./dist/js/adminlte.js"></script>
+>>>>>>> Stashed changes
 
             <!-- OPTIONAL SCRIPTS -->
             <script src="./plugins/chart.js/Chart.min.js"></script>
