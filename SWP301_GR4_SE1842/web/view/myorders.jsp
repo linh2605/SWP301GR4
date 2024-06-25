@@ -194,20 +194,19 @@
                                 <label for="dateOrder" class="form-label">Order Date:</label>
                                 <input id="dateOrder" name="orderDate" type="date" class="form-control" value="${orderDate}" required/>
                         </div>
-                        <div class="mb-3">
-                            <label for="dateDeliver" class="form-label">Deliver Date:</label>
-                            <input id="dateDeliver" name="deleverDate" type="date" class="form-control" value="${deliverDate}" required/>
-                        </div>
-                        <div class="mb-3">
-                            <label for="dateDeliver" class="form-label">Status:</label>
-                            <select class="form-control" name="status">
-                                <option value="0" ${selectStatus == 0 ? 'selected' : ''}>All</option>
-                                <option value="1" ${selectStatus == 1 ? 'selected' : ''}>Pending</option>
-                                <option value="2" ${selectStatus == 2 ? 'selected' : ''}>Shipped</option>
-                                <option value="3" ${selectStatus == 3 ? 'selected' : ''}>Cancelled</option>
-                            </select>
-                        </div>
-                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateDeliver" class="form-label">Deliver Date:</label>
+                        <input id="dateDeliver" name="deleverDate" type="date" class="form-control" value="${deliverDate}" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateDeliver" class="form-label">Status:</label>
+                        <select class="form-control" name="status">
+                            <option value="0" ${selectStatus == 0 ? 'selected' : ''}>All</option>
+                            <option value="1" ${selectStatus == 1 ? 'selected' : ''}>Pending</option>
+                            <option value="2" ${selectStatus == 2 ? 'selected' : ''}>Shipped</option>
+                            <option value="3" ${selectStatus == 3 ? 'selected' : ''}>Cancelled</option>
+                        </select>
                         <button type="submit" class="btn btn-info w-100">Search</button>
                     </div>
                 </form>
@@ -233,48 +232,49 @@
                                         <div class="d-flex justify-content-end">
                                             <a href="./OrderDetail?orderID=${p.orderId}" class="btn btn-info"><i class="fa-solid fa-info-circle"></i> Details</a>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         </c:forEach>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="banner-area-2">
-            <div class="container">
-                <div class="row border-b">
-                    <div class="col-lg-4 col-md-4 col-12">
-                        <div class="single-banner-2">
-                            <div class="banner-2-img">
-                                <a href="#"><i class="zmdi zmdi-remote-control-alt zmdi-hc-fw"></i></a>
-                            </div>
-                            <div class="banner-text-2">
-                                <h2>888 345 6789</h2>
-                                <p>Free support line!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-12">
-                        <div class="single-banner-2">
-                            <div class="banner-2-img">
-                                <a href="#"><i class="zmdi zmdi-email zmdi-hc-fw"></i></a>
-                            </div>
-                            <div class="banner-text-2">
-                                <h2>info@example.com</h2>
-                                <p>Orders Support!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-12">
-                        <div class="single-banner-2">
-                            <div class="banner-2-img">
-                                <a href="#"><i class="zmdi zmdi-time zmdi-hc-fw"></i></a>
-                            </div>
-                            <div class="banner-text-2">
-                                <h2>Mon - Fri / 8:00 - 18:00</h2>
-                                <p>Working Days/Hours!</p>
+                    <div class="banner-area-2">
+                        <div class="container">
+                            <div class="row border-b">
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="single-banner-2">
+                                        <div class="banner-2-img">
+                                            <a href="#"><i class="zmdi zmdi-remote-control-alt zmdi-hc-fw"></i></a>
+                                        </div>
+                                        <div class="banner-text-2">
+                                            <h2>888 345 6789</h2>
+                                            <p>Free support line!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="single-banner-2">
+                                        <div class="banner-2-img">
+                                            <a href="#"><i class="zmdi zmdi-email zmdi-hc-fw"></i></a>
+                                        </div>
+                                        <div class="banner-text-2">
+                                            <h2>info@example.com</h2>
+                                            <p>Orders Support!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="single-banner-2">
+                                        <div class="banner-2-img">
+                                            <a href="#"><i class="zmdi zmdi-time zmdi-hc-fw"></i></a>
+                                        </div>
+                                        <div class="banner-text-2">
+                                            <h2>Mon - Fri / 8:00 - 18:00</h2>
+                                            <p>Working Days/Hours!</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
