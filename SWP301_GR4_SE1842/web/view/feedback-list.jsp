@@ -2,16 +2,46 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User Feedback List</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-</head>
-<body>
-    <header>
-        <%@ include file="common/header-top-area.jsp" %>
-    </header>
+<html class="no-js" lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angara - Organic Sports Store HTML Template </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+
+        <!-- all css here -->
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+        <!-- animate css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
+        <!-- meanmenu css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/meanmenu.min.css">
+        <!-- owl.carousel css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.css">
+        <!-- font-awesome css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
+        <!-- material-design-iconic-font.css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/material-design-iconic-font.css">
+        <!-- chosen.min.css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/chosen.min.css">
+        <!-- flexslider.css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flexslider.css">
+        <!-- style css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+        <!-- responsive css -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css">
+
+    </head>
+    <body class="home-3">
+        <header>
+            <!-- header-top-area-start -->
+            <jsp:include page= "common/header-top-area.jsp"></jsp:include>
+                <!-- header-top-area-end -->
 
     <div class="container mt-5">
         <h1>User Feedback List</h1>
