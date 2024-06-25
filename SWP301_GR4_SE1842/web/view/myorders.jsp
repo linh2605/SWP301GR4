@@ -187,52 +187,51 @@
                 <!-- header-bottom-area-end -->
             </header>
             <div class="row">
-                <div class="container col-md-2">
+                <div class="container col-md-3">
                     <form method="post" action="./MyOrder">
                         <div class="mt-5">
-                            <div class="mb-3">
-                                <label for="dateOrder" class="form-label">Order Date:</label>
-                                <input id="dateOrder" name="orderDate" type="date" class="form-control" value="${orderDate}" required/>
+                            <div class="mb-2">
+                                <label for="dateOrder">Order date: </label>
+                                <input id="dateOrder" name="orderDate" type="date" value="${orderDate}" required/>
                         </div>
-                        <div class="mb-3">
-                            <label for="dateDeliver" class="form-label">Deliver Date:</label>
-                            <input id="dateDeliver" name="deleverDate" type="date" class="form-control" value="${deliverDate}" required/>
+                        <div class="mb-2">
+                            <label for="dateDeliver">Deliver date: </label>
+                            <input id="dateDeliver" name="deleverDate" type="date" value="${deliverDate}" required/>
                         </div>
-                        <div class="mb-3">
-                            <label for="dateDeliver" class="form-label">Status:</label>
-                            <select class="form-control" name="status">
-                                <option value="0" ${selectStatus == 0 ? 'selected' : ''}>All</option>
-                                <option value="1" ${selectStatus == 1 ? 'selected' : ''}>Pending</option>
-                                <option value="2" ${selectStatus == 2 ? 'selected' : ''}>Shipped</option>
-                                <option value="3" ${selectStatus == 3 ? 'selected' : ''}>Cancelled</option>
-                            </select>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-info w-100">Search</button>
+                        <button type="submit" class="btn btn-info">Search</button>
                     </div>
                 </form>
             </div>
-            <div class="container col-md-10">
+            <div class="container col-md-9">
                 <div class="row pt-5">
-                    <div id="productList" class="row col-md-12">
+                    <div id="productList" class="row col-md-8">
                         <c:if test="${orders == null || orders.size() == 0}">
-                            <div class="alert alert-warning" role="alert">
-                                Empty!
-                            </div>
+                            Empty!
                         </c:if>
                         <c:forEach items="${orders}" var="p">
-                            <div class="col-md-3 mb-3">
-                                <div class="card h-100">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Order ID: ${p.orderId}</h5>
-                                        <p class="card-text" style="color: #febd69;">Order Date: ${p.orderDateString}</p>
-                                        <p class="card-text">$ ${p.totalPrice}</p>
-                                        <p class="card-text" style="color: #febd69;">Deliver Date: ${p.deliverDateString}</p>
-                                        <p class="card-text">Status: ${p.statusName}</p>
-                                        <p class="card-text">Payment Method: ${p.paymentName}</p>
-                                        <div class="d-flex justify-content-end">
-                                            <a href="./OrderDetail?orderID=${p.orderId}" class="btn btn-info"><i class="fa-solid fa-info-circle"></i> Details</a>
-                                        </div>
+                            <div class="border col-md-4 product-item">
+                                <div class="product-overlay"></div>
+                                <div class="product-name">
+                                    <p>Order Id: ${p.orderId}</p>
+                                </div>
+                                <div style="color: #febd69">
+                                    Order date: ${p.orderDateString}</i>
+                                </div>
+                                <div class="product-price">
+                                    <p>$ ${p.totalPrice}</p>
+                                </div>
+                                <div style="color: #febd69">
+                                    Deliver date: ${p.deliverDateString}</i>
+                                </div>
+                                <div class="product-price">
+                                    <p>Status: ${p.statusName}</p>
+                                </div>
+                                <div class="produc-price">
+                                    Payment Method: ${p.paymentName}
+                                </div>
+                                <div class="product-actions">
+                                    <div class="action-row">
+                                        <a href="./OrderDetail?orderID=${p.orderId}" class="action-icon"><i class="fa-solid fa-info-circle"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -241,7 +240,6 @@
                 </div>
             </div>
         </div>
-
         <div class="banner-area-2">
             <div class="container">
                 <div class="row border-b">
