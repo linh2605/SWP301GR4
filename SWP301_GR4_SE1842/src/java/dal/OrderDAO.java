@@ -22,7 +22,7 @@ import model.User;
  */
 public class OrderDAO extends DBContext {
 
-    // Read all products
+    // Phương thức để lấy tất cả đơn hàng của người dùng
     public List<Orders> getAllOrderForUser(Integer userID, Integer statusId) {
         List<Orders> orders = new ArrayList<>();
         List<Object> list = new ArrayList<>();
@@ -30,7 +30,7 @@ public class OrderDAO extends DBContext {
         try {
             StringBuilder query = new StringBuilder();
             query.append("""
-                           SELECT o.*, od.Quantity, od.Price, p.ProductName,pm.name, s.name as sname FROM sportshoponline.order o
+                           SELECT o.*, od.Quantity, od.Price, p.ProductName, pm.name, s.name as sname FROM sportshoponline.order o
                            join orderdetail od
                            on o.OrderID = od.OrderID
                            Join product p 
@@ -74,6 +74,34 @@ public class OrderDAO extends DBContext {
         return orders;
     }
 
+    // Phương thức để xóa đơn hàng theo ID
+    public boolean deleteOrder(int orderID) {
+        boolean rowDeleted = false;
+        String sql = "DELETE FROM sportshoponline.order WHERE OrderID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, orderID);
+            rowDeleted = statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowDeleted;
+    }
+
+    // Phương thức để cập nhật đơn hàng (cần bổ sung các trường cập nhật)
+    public boolean updateOrder(Orders order) {
+        boolean rowUpdated = false;
+        String sql = "UPDATE sportshoponline.order SET ... WHERE OrderID = ?"; // Cần bổ sung chi tiết SQL
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            // Thiết lập các giá trị cho các tham số trong SQL
+            statement.setInt(1, order.getOrderID());
+            rowUpdated = statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowUpdated;
+    }
+
+
     public List<OrderStatus> getAllOrderStatus() {
         List<OrderStatus> orders = new ArrayList<>();
         try {
@@ -113,7 +141,6 @@ public class OrderDAO extends DBContext {
             } else {
                 ps.setString(i++, (String) arg);
             }
-
         }
     }
 

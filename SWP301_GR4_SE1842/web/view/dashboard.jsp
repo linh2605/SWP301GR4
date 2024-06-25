@@ -37,6 +37,9 @@
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="${pageContext.request.contextPath}/view/marketing-feedback" class="nav-link">Feedback List</a>
                     </li>
+                   <li class="nav-item d-none d-sm-inline-block">
+                        <a href="${pageContext.request.contextPath}/view/order-list" class="nav-link">Order List</a>
+                    </li>
                 </ul>
 
                 <!-- Right navbar links -->

@@ -21,6 +21,14 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css">
 
+        <!-- Thêm CSS cho hình ảnh -->
+        <style>
+            .post-img img {
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+            }
+        </style>
     </head>
     <body class="home-3">
         <header>
@@ -29,32 +37,30 @@
             <jsp:include page= "common/mobile-menu-area.jsp"></jsp:include>
              <jsp:include page= "common/header-bottom-area.jsp"></jsp:include>
         </header>
-     
 
-    <div class="blog-details-area mtb-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="single-post">
-                         <div class="newsletter-text ">
-                             <h2 style="text-align: center">${blog.title}</h2>
-                         </div>
-                        <div class="post-img">
-                          <img src="${pageContext.request.contextPath}/img/blog/${blog.image}.jpg" alt="post" />
-                        </div>
-                        <br>
-                        <p style="text-align: center" class="post-meta">Posted by <span style=" color: red">${blog.creatorName}</span> ${blog.createAt}</p>
-                        <div class=" ">
-                            
-                            <p style="margin-left: 30px">${blog.content}</p>
+        <div class="blog-details-area mtb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="single-post">
+                            <div class="newsletter-text ">
+                                <h2 style="text-align: center">${blog.title}</h2>
+                            </div>
+                            <div class="post-img">
+                                <img src="${pageContext.request.contextPath}/img/blog/${blog.image}.jpg" alt="post" />
+                            </div>
+                            <br>
+                            <p style="text-align: center" class="post-meta">Posted by <span style=" color: red">${blog.creatorName}</span> ${blog.createAt}</p>
+                            <div class=" ">
+                                <p style="margin-left: 30px">${blog.content}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-      <footer>
+        <footer>
             <jsp:include page= "common/footer.jsp"></jsp:include>
         </footer>
         <script src="${pageContext.request.contextPath}/js/vendor/jquery.min.js"></script>
@@ -72,5 +78,4 @@
         <script src="${pageContext.request.contextPath}/js/main.js"></script>
         <script src="${pageContext.request.contextPath}/js/vendor/modernizr-3.11.2.min.js"></script>
     </body>
-
 </html>

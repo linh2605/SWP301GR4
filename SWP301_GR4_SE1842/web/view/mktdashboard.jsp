@@ -15,8 +15,7 @@
         <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     </head>
 
-    <body class="hold-transition sidebar-mini">
-        <jsp:include page= "common/ProfileHeader.jsp"></jsp:include>
+    <body class="hold-transition sidebar-mini ">
         <div class="wrapper">
             <!-- Navbar -->
             
@@ -27,7 +26,7 @@
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="dashboard.jsp" class="nav-link">Home</a>
+                        <a href="${pageContext.request.contextPath}/view/home" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="#" class="nav-link">Contact</a>
@@ -36,7 +35,10 @@
                         <a href="../customerlist" class="nav-link">Customers List</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="#" class="nav-link" data-toggle="modal" data-target="#myModalProfile">My Account</a>
+                        <a href="${pageContext.request.contextPath}/view/marketing-feedback" class="nav-link">Feedback List</a>
+                    </li>
+                   <li class="nav-item d-none d-sm-inline-block">
+                        <a href="${pageContext.request.contextPath}/view/OrderList.jsp" class="nav-link">Order List</a>
                     </li>
                 </ul>
 

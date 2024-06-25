@@ -20,7 +20,7 @@
                         </c:if>
                         <c:if test="${sessionScope.usersession != null}">
                             <li><a href="#">Hello <strong>${sessionScope.usersession.fullName}</strong></a></li>
-                            <li><a href="${pageContext.request.contextPath}/view/my-order">My Order</a></li>
+                            <li><a href="${pageContext.request.contextPath}/view/myorders.jsp">My Order</a></li>
                         </c:if>
                         <li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a>
                             <div class="dollar-submenu">
