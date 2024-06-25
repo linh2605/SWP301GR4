@@ -57,12 +57,34 @@ public class CustomerListServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {          
+            throws ServletException, IOException {
         UserDAO udao = new UserDAO();
         List<User> userlist = udao.getAllUsers();
+
+        UserDAO ud = new UserDAO();
+        String search = request.getParameter("search");
+        if (search != null && !search.trim().equals("")) {
+            request.setAttribute("listUser", ud.getUsersByFullName(search));
+            List<User> listfilter = udao.getAllUsersSortedByName();
+            request.setAttribute("listfilter", listfilter);
+            request.getRequestDispatcher("view/CustomerList.jsp").forward(request, response);
+            return;
+        }
+        int pageSize = 8;
+        int page = 1;
+        if (request.getParameter("page") != null) {
+            try {
+                page = Integer.parseInt(request.getParameter("page"));
+            } catch (Exception e) {
+                page = 1;
+            }
+        }
+        request.setAttribute("currentPage", page);
+        request.setAttribute("totalPages", userlist.size() % pageSize == 0 ? (userlist.size() / pageSize) : (userlist.size() / pageSize + 1));
+
         request.setAttribute("listUser", userlist);
         List<User> listfilter = udao.getAllUsersSortedByName();
-        request.setAttribute("listfilter", listfilter);     
+        request.setAttribute("listfilter", listfilter);
         request.getRequestDispatcher("view/CustomerList.jsp").forward(request, response);
     }
 
@@ -77,7 +99,7 @@ public class CustomerListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
