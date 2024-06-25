@@ -15,61 +15,67 @@
         <style>
             body {
                 font-family: Arial, sans-serif;
-                background-color: #f8f9fa;
+                background-image: url('https://treobangron.com.vn/wp-content/uploads/2022/11/background-bong-da-6.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
                 color: #343a40;
                 margin: 0;
                 padding: 20px;
+
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
             }
-            h2 {
-                text-align: center;
-                color: #007bff;
+            .center-block {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
             }
-            table {
+
+            .form-container {
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
                 width: 100%;
-                border-collapse: collapse;
-                margin-top: 20px;
+                max-width: 600px;
             }
-            th, td {
-                border: 1px solid #dee2e6;
-                padding: 12px;
-                text-align: left;
+            .form-group {
+                margin-bottom: 20px;
             }
-            th {
+            .form-group label {
+                font-weight: bold;
+            }
+            .form-control {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            .form-control:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+            .btn-primary {
                 background-color: #007bff;
                 color: white;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                border-radius: 4px;
+                font-size: 16px;
             }
-            td img {
-                border-radius: 50%;
+            .btn-primary:hover {
+                background-color: #0056b3;
             }
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-            tr:hover {
-                background-color: #e9ecef;
-            }
-            thead {
-                background-color: #343a40;
-                color: white;
-            }
-            @media screen and (max-width: 600px) {
-                table, th, td {
-                    display: block;
-                    width: 100%;
-                }
-                th {
-                    text-align: right;
-                }
-                th, td {
-                    padding: 10px;
-                    text-align: right;
-                }
-                th:after {
-                    content: ": ";
-                }
-                td {
-                    text-align: left;
-                    border-top: 0;
-                }
+            .form-message {
+                color: red;
+                font-size: 12px;
             }
         </style>
     </head>
@@ -232,7 +238,7 @@
                 </li>
             </ul>
         </nav>
-        <div class="col-lg-3">
+        <div class="col-lg-3 center-block">
             <c:if test="${not empty successMess}">
                 <h3 style="color: green">
                     ${successMess}
@@ -243,49 +249,57 @@
                     ${errorMess}
                 </h3>
             </c:if>
-            <form id="addcustomer" action="add_customer" method="post">
-                <input type="hidden" name="id" value="${user.id}">
-                <div class="form-group">
-                    <label>Fullname</label>
-                    <input id="fullname" type="text" class="form-control" placeholder="Fullname" name="name" value="${user.fullName}">
-                    <span class="form-message"></span>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Email</label>
-                        <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="${user.email}">
+            <div class="form-container">
+                <c:if test="${not empty successMess}">
+                    <h3 style="color: green">${successMess}</h3>
+                </c:if>
+                <c:if test="${not empty errorMess}">
+                    <h3 style="color: red">${errorMess}</h3>
+                </c:if>
+                <form id="addcustomer" action="add_customer" method="post">
+                    <input type="hidden" name="id" value="${user.id}">
+                    <div class="form-group">
+                        <label>Fullname</label>
+                        <input id="fullname" type="text" class="form-control" placeholder="Fullname" name="name" value="${user.fullName}">
                         <span class="form-message"></span>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>Phone number</label>
-                        <input id="phone" type="text" class="form-control" placeholder="Phone number" name="phone" value="${user.phone}">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Email</label>
+                            <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="${user.email}">
+                            <span class="form-message"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Phone number</label>
+                            <input id="phone" type="text" class="form-control" placeholder="Phone number" name="phone" value="${user.phone}">
+                            <span class="form-message"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select class="form-control" name="gender">
+                            <option selected="" value="Male" ${user.gender == 'Male' ? 'selected' : ''}>Male</option>
+                            <option value="Female" ${user.gender == 'Female' ? 'selected' : ''}>Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input id="address" type="text" class="form-control" placeholder="Address" name="address" value="${user.address}">
                         <span class="form-message"></span>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>Gender</label>
-                    <select class="form-control" name="gender">
-                        <option selected="" value="Male" ${user.gender == 'Male' ? 'selected' : ''}>Male</option>
-                        <option value="Female" ${user.gender == 'Female' ? 'selected' : ''}>Female</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Address</label>
-                    <input id="address" type="text" class="form-control" placeholder="Address" name="address" value="${user.address}">
-                    <span class="form-message"></span>
-                </div>
-                <div class="form-group">
-                    <label>Username</label>
-                    <input id="username" type="text" class="form-control" placeholder="Username" name="username" value="${user.username}">
-                    <span class="form-message"></span>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input id="password" type="password" class="form-control" placeholder="Password" name="pass">
-                    <span class="form-message"></span>
-                </div>
-                <button type="submit" class="btn btn-primary">Add cusstomer</button>
-            </form>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input id="username" type="text" class="form-control" placeholder="Username" name="username" value="${user.username}">
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input id="password" type="password" class="form-control" placeholder="Password" name="pass">
+                        <span class="form-message"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add customer</button>
+                </form>
+            </div>
         </div>
         <script src="./plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap -->
