@@ -25,8 +25,15 @@ public class User {
     private String phone;
     private String email;
     private String address;
-<<<<<<< Updated upstream
+
     private List<UserCart> carts;
+    
+
+    
+    private String status;
+    public String getStatus() {
+        return status;
+    }
 
     public List<UserCart> getCarts() {
         return carts;
@@ -35,10 +42,10 @@ public class User {
     public void setCarts(List<UserCart> carts) {
         this.carts = carts;
     }
+    
 
-=======
     private List<CustomerUpdateHistory> updateHistory;
->>>>>>> Stashed changes
+
     public User() {
     }
 
@@ -207,9 +214,14 @@ public class User {
         this.updateHistory = updateHistory;
     }
 
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", roleID=" + roleID + ", avatar=" + avatar + ", fullName=" + fullName + ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", address=" + address + '}';
+    public void setStatus(String status) {
+        this.status = status;
     }
+        @Override
+        public String toString
+        
+            () {
+        return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", roleID=" + roleID + ", avatar=" + avatar + ", fullName=" + fullName + ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", address=" + address + '}';
+        }
 
-}
+    }

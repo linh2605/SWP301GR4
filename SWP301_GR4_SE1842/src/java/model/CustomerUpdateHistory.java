@@ -4,21 +4,14 @@
  */
 package model;
 
-<<<<<<< Updated upstream
+
 import java.util.Date;
 
-=======
->>>>>>> Stashed changes
-/**
- *
- * @author zzako
- */
-<<<<<<< Updated upstream
-=======
+
 import java.util.Date;
 
->>>>>>> Stashed changes
 public class CustomerUpdateHistory {
+
     private int updateId;
     private int customerId;
     private Date updateDate;
@@ -57,7 +50,3 @@ public class CustomerUpdateHistory {
         this.updateDetails = updateDetails;
     }
 }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes

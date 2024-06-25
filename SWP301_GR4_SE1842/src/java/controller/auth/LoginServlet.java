@@ -33,14 +33,8 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-<<<<<<< Updated upstream
- //       password = Encode.toSHA1(password);
-=======
-
-        //password = Encode.toSHA1(password);
-
->>>>>>> Stashed changes
-        
+        // Mã băm cho mật khẩu
+        password = Encode.toSHA1(password);
         UserDAO ud = new UserDAO();
         User u = ud.getUser(username, password);
         if (u == null) {
@@ -52,14 +46,13 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("usersession", u);
             if (u.getRoleID() != 4) {
 
-
-                if(u.getRoleID()== 2){
+                if (u.getRoleID() == 2) {
                     response.sendRedirect("../view/mktdashboard.jsp");
                 }
-                if(u.getRoleID() ==1){
+                if (u.getRoleID() == 1) {
                     response.sendRedirect("../admin/adminDashboard.jsp");
                 }
-                if(u.getRoleID() ==3){
+                if (u.getRoleID() == 3) {
                     response.sendRedirect("../sale/saleDashboard.jsp");
                 }
 
