@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+		<link rel="pingback" href="https://thegreatbritishbookworm.wordpress.com/xmlrpc.php">
+		<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>The Artist by Ed Vere &#8211; The Great British Bookworm</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//wordpress.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="The Great British Bookworm &raquo; Feed" href="https://thegreatbritishbookworm.wordpress.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Great British Bookworm &raquo; Comments Feed" href="https://thegreatbritishbookworm.wordpress.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Great British Bookworm &raquo; The Artist by Ed&nbsp;Vere Comments Feed" href="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+	<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1677072837i&ver=6.3.2-alpha-56786"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff","\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style>
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-1' href='https://s0.wp.com/_static/??-eJytkF1OAzEMhC9E4gZVS3lAnCWbWCGt86PEacnt2V2VpRRBQeLF0sgzn8aGUxYmRcbIEJrI1JyPFfbIWZvDWUNIaR62EVbgFwwoOCWqYFLImoFPU75X/8qIUZpa7+Dv3IKkGa3IqfKV+glJ/oAf4EV9sb97XZvkiMVNm4JwVIPcyQ2MzZOFkdICGIsuHSp3wv8ALe9aQT4aanYuXCGg9RppWs8XXYhMumMRhE6bLoOPt+PT7lJ/Cn1ffml68TzdU2Phire/vv8KUTT76OqNuEnn2L1UO6lE9SETioJHuQXrK68OsYKew5MaHh82w6CU2r8BGVUElw==&cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+.wp-block-cover__image-background.has-parallax {
+	background-size: cover;
+}
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-2-1' href='https://s0.wp.com/_static/??-eJx9jcEKg0AMRH+oaVhorR7Eb9E16IpZg8min2889FZ6GYbhPQYPgbhlo2zIBWQtU8qKcdvJd5be0AmmMfW0Ejv2jKoP/K0daZzIXNdvB6PzvyJ+A8MgO6mCJ6fCYLN/6e113IZXU9WfUL/DcgHSTkDo&cssminify=yes' type='text/css' media='all' />
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #fff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--dark-gray: #1a1a1a;--wp--preset--color--medium-gray: #686868;--wp--preset--color--light-gray: #e5e5e5;--wp--preset--color--blue-gray: #4d545c;--wp--preset--color--bright-blue: #007acc;--wp--preset--color--light-blue: #9adffd;--wp--preset--color--dark-brown: #402b30;--wp--preset--color--medium-brown: #774e24;--wp--preset--color--dark-red: #640c1f;--wp--preset--color--bright-red: #ff675f;--wp--preset--color--yellow: #ffef8e;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-family--albert-sans: 'Albert Sans';--wp--preset--font-family--alegreya: Alegreya;--wp--preset--font-family--arvo: Arvo;--wp--preset--font-family--bodoni-moda: 'Bodoni Moda';--wp--preset--font-family--cabin: Cabin;--wp--preset--font-family--chivo: Chivo;--wp--preset--font-family--commissioner: Commissioner;--wp--preset--font-family--cormorant: Cormorant;--wp--preset--font-family--courier-prime: 'Courier Prime';--wp--preset--font-family--crimson-pro: 'Crimson Pro';--wp--preset--font-family--dm-mono: 'DM Mono';--wp--preset--font-family--dm-sans: 'DM Sans';--wp--preset--font-family--domine: Domine;--wp--preset--font-family--eb-garamond: 'EB Garamond';--wp--preset--font-family--epilogue: Epilogue;--wp--preset--font-family--figtree: Figtree;--wp--preset--font-family--fira-sans: 'Fira Sans';--wp--preset--font-family--fraunces: Fraunces;--wp--preset--font-family--ibm-plex-mono: 'IBM Plex Mono';--wp--preset--font-family--ibm-plex-sans: 'IBM Plex Sans';--wp--preset--font-family--inter: Inter;--wp--preset--font-family--josefin-sans: 'Josefin Sans';--wp--preset--font-family--jost: Jost;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville';--wp--preset--font-family--libre-franklin: 'Libre Franklin';--wp--preset--font-family--literata: Literata;--wp--preset--font-family--lora: Lora;--wp--preset--font-family--merriweather: Merriweather;--wp--preset--font-family--montserrat: Montserrat;--wp--preset--font-family--newsreader: Newsreader;--wp--preset--font-family--nunito: Nunito;--wp--preset--font-family--open-sans: 'Open Sans';--wp--preset--font-family--overpass: Overpass;--wp--preset--font-family--petrona: Petrona;--wp--preset--font-family--piazzolla: Piazzolla;--wp--preset--font-family--playfair-display: 'Playfair Display';--wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans';--wp--preset--font-family--poppins: Poppins;--wp--preset--font-family--raleway: Raleway;--wp--preset--font-family--roboto-slab: 'Roboto Slab';--wp--preset--font-family--roboto: Roboto;--wp--preset--font-family--rubik: Rubik;--wp--preset--font-family--sora: Sora;--wp--preset--font-family--source-sans-pro: 'Source Sans Pro';--wp--preset--font-family--source-serif-pro: 'Source Serif Pro';--wp--preset--font-family--space-mono: 'Space Mono';--wp--preset--font-family--texturina: Texturina;--wp--preset--font-family--work-sans: 'Work Sans';--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-4-1' href='https://s0.wp.com/_static/??-eJyNUNEOAUEM/CGnQSI8iE+RvVXUbbuXbc/x93pOPCAifelMZqaTQt9WMYuhGHBXtak7kihcsNQdw57UgGSP12lUncB3cczMTlWJGnSkb8xoJZBs5G59LR+ZdkL2hLarwXonbkpXQxQ4uECBsRTqMbisDMe14oF3NtiISYbcnIKFX4XPaG2IzRMD5yywcy8cUbCMJb+u/zdWuyX8Xz48rU45No8TW97Mlmuf1WI1P98BEsSfzQ==&cssminify=yes' type='text/css' media='all' />
+<!--[if lt IE 10]>
+<link rel='stylesheet' id='twentysixteen-ie-css' href='https://s0.wp.com/wp-content/themes/pub/twentysixteen/css/ie.css?m=1448353951i&#038;ver=20170530' media='all' />
+<![endif]-->
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentysixteen-ie8-css' href='https://s0.wp.com/wp-content/themes/pub/twentysixteen/css/ie8.css?m=1493067000i&#038;ver=20170530' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentysixteen-ie7-css' href='https://s0.wp.com/wp-content/themes/pub/twentysixteen/css/ie7.css?m=1448353951i&#038;ver=20170530' media='all' />
+<![endif]-->
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-10-1' href='https://s0.wp.com/_static/??-eJx9jUEOwjAMBD+EMRGtxAXxljYyISixo9pR2t+TcgEu3HZWGg22Al7YiA3tQZkUS53RWj82jasRMXpVVNsSQSte8rHzAb/EXKGkGiIrBhJI4ieLwj8A9zTF5Z+60Jwk9BnewQ/u0i1f3eiG8XR27vJ8AeH3Q6k=&cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-12-1' href='https://s0.wp.com/_static/??-eJyNjcEKwjAQRH/IuAakpQfxU2RNQpK62Q1uQvHvbYsX8eJlmAfDG1iqccItcIPSTaUeMyvMoVV0jw9DEdnCdwoKmvAZPHr/2mvmeHSqB/jfdMvsQMVlJEMSRb/gx9ZSKOtvOkMkuSNtg2u52GEaT4OdRju/AVFiSS0=&cssminify=yes' type='text/css' media='all' />
+<script id='jetpack_related-posts-js-extra'>
+var related_posts_js_options = {"post_heading":"h4"};
+</script>
+<script id='media-video-jwt-bridge-js-extra'>
+var videopressAjax = {"ajaxUrl":"https:\/\/thegreatbritishbookworm.wordpress.com\/wp-admin\/admin-ajax.php","bridgeUrl":"\/wp-content\/mu-plugins\/jetpack-plugin\/moon\/jetpack_vendor\/automattic\/jetpack-videopress\/build\/lib\/token-bridge.js","post_id":"3609"};
+</script>
+<script id='wpcom-actionbar-placeholder-js-extra'>
+var actionbardata = {"siteID":"127784662","postID":"3609","siteURL":"http:\/\/thegreatbritishbookworm.wordpress.com","xhrURL":"https:\/\/thegreatbritishbookworm.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"d03bcd0063","isLoggedIn":"","statusMessage":"","subsEmailDefault":"instantly","proxyScriptUrl":"https:\/\/s0.wp.com\/wp-content\/js\/wpcom-proxy-request.js?ver=20211021","shortlink":"https:\/\/wp.me\/p8EaCW-Wd","i18n":{"followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/read\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar"}};
+</script>
+<script crossorigin='anonymous' type='text/javascript' src='https://s0.wp.com/_static/??-eJyVj81OAzEMhF+I1CqCVj0gHqXKj9l6m9hR7Gy7b0+QVgh6QOI4oxl/HrhVF4UN2WBWKBIoo+uKzU/Dc8Qfspv1CX7kSnc194lYYUarPl43PerCcCaOEDrlBA2zN0yuipr+VrtC/Hh4PNCyudrkvv4BXbCFXiCt7AtFl8UnbI95u2BBhdoD2G0Yq9LdEPkLcrGSX/+5avPOC3KSBr6bFG9G8Tu9UEKpDVW39ZkGW67ILjRKEw7ie3nbH077l+fj8XCaPwG5kI8n'></script>
+<script id="rlt-proxy-js-after">
+	window.addEventListener( 'DOMContentLoaded', function() {
+		rltInitialize( {"token":null,"iframeOrigins":["https:\/\/widgets.wp.com"]} );
+	} );
+</script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://thegreatbritishbookworm.wordpress.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/" />
+<link rel='shortlink' href='https://wp.me/p8EaCW-Wd' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fthegreatbritishbookworm.wordpress.com%2F2023%2F04%2F30%2Fthe-artist-by-ed-vere%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fthegreatbritishbookworm.wordpress.com%2F2023%2F04%2F30%2Fthe-artist-by-ed-vere%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The Artist by Ed Vere" />
+<meta property="og:url" content="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/" />
+<meta property="og:description" content="Ed Vere is one of the modern day picture book masters. His work will be known by everyone as it is always fun and eye-catching. However, none have had the heart that The Artist does. And my word do…" />
+<meta property="article:published_time" content="2023-04-30T14:53:39+00:00" />
+<meta property="article:modified_time" content="2023-04-30T14:53:39+00:00" />
+<meta property="og:site_name" content="The Great British Bookworm" />
+<meta property="og:image" content="https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg" />
+<meta property="og:image:width" content="2560" />
+<meta property="og:image:height" content="1691" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta property="fb:app_id" content="249643311490" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+<meta name="twitter:text:title" content="The Artist by Ed&nbsp;Vere" />
+<meta name="twitter:image" content="https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg?w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s0.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="https://s0.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon" href="https://s0.wp.com/i/webclip.png" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://thegreatbritishbookworm.wordpress.com/osd.xml" title="The Great British Bookworm" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<meta name="theme-color" content="#e6ddd0" />
+<meta name="application-name" content="The Great British Bookworm" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="Brilliant books for children - Teacher reviews" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://thegreatbritishbookworm.wordpress.com/feed/;icon-uri=https://s0.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s0.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s0.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s0.wp.com/i/favicon.ico" /><meta name="description" content="Ed Vere is one of the modern day picture book masters. His work will be known by everyone as it is always fun and eye-catching. However, none have had the heart that The Artist does. And my word does it have heart! The story is a simple one - an artist who wants to just&hellip;" />
+<style id="custom-background-css">
+body.custom-background { background-color: #e6ddd0; }
+</style>
+	<style type="text/css" id="custom-colors-css">	input[type="text"],
+	input[type="email"],
+	input[type="url"],
+	input[type="password"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="number"],
+	textarea {
+		background: #f7f7f7;
+		color: #686868;
+	}
+
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="url"]:focus,
+	input[type="password"]:focus,
+	input[type="search"]:focus,
+	input[type="tel"]:focus,
+	input[type="number"]:focus,
+	textarea:focus {
+		background-color: #fff;
+		color: #1a1a1a;
+	}
+body { background-color: #e6ddd0;}
+.site,
+		.main-navigation ul ul li { background-color: #eee9e1;}
+body #infinite-footer .container { background-color: #eee9e1;}
+body #infinite-footer .container { background-color: rgba( 238, 233, 225, 0.9 );}
+.main-navigation ul ul:after { border-top-color: #eee9e1;}
+.main-navigation ul ul:after { border-bottom-color: #eee9e1;}
+mark,
+		ins,
+		button,
+		button[disabled]:hover,
+		button[disabled]:focus,
+		input[type="button"],
+		input[type="button"][disabled]:hover,
+		input[type="button"][disabled]:focus,
+		input[type="reset"],
+		input[type="reset"][disabled]:hover,
+		input[type="reset"][disabled]:focus,
+		input[type="submit"],
+		input[type="submit"][disabled]:hover,
+		input[type="submit"][disabled]:focus,
+		.menu-toggle.toggled-on,
+		.menu-toggle.toggled-on:hover,
+		.menu-toggle.toggled-on:focus,
+		.pagination .prev,
+		.pagination .next,
+		.pagination .prev:hover,
+		.pagination .prev:focus,
+		.pagination .next:hover,
+		.pagination .next:focus,
+		.pagination .nav-links:before,
+		.pagination .nav-links:after,
+		.widget_calendar tbody a,
+		.widget_calendar tbody a:hover,
+		.widget_calendar tbody a:focus,
+		.page-links a,
+		.page-links a:hover,
+		.page-links a:focus,
+		.site-main #infinite-handle span,
+		.wp-block-button .wp-block-button__link:active,
+		.wp-block-button .wp-block-button__link:focus,
+		.wp-block-button .wp-block-button__link:hover,
+		.is-style-outline>.wp-block-button__link:not(.has-text-color):active,
+		.is-style-outline>.wp-block-button__link:not(.has-text-color):focus,
+		.is-style-outline>.wp-block-button__link:not(.has-text-color):hover { color: #eee9e1;}
+.menu-toggle:hover,
+		.menu-toggle:focus,
+		a,
+		.main-navigation a:hover,
+		.main-navigation a:focus,
+		.dropdown-toggle:hover,
+		.dropdown-toggle:focus,
+		.social-navigation a:hover:before,
+		.social-navigation a:focus:before,
+		.post-navigation a:hover .post-title,
+		.post-navigation a:focus .post-title,
+		.tagcloud a:hover,
+		.tagcloud a:focus,
+		.site-branding .site-title a:hover,
+		.site-branding .site-title a:focus,
+		.entry-title a:hover,
+		.entry-title a:focus,
+		.entry-footer a:hover,
+		.entry-footer a:focus,
+		.comment-metadata a:hover,
+		.comment-metadata a:focus,
+		.pingback .comment-edit-link:hover,
+		.pingback .comment-edit-link:focus,
+		.comment-reply-link,
+		.comment-reply-link:hover,
+		.comment-reply-link:focus,
+		.required,
+		.site-info a:hover,
+		.site-info a:focus,
+		.main-navigation li:hover > a,
+		.main-navigation li.focus > a,
+		.comments-area #respond .comment-form-service a,
+		.widget_flickr #flickr_badge_uber_wrapper a,
+		.widget_flickr #flickr_badge_uber_wrapper a:link,
+		.widget_flickr #flickr_badge_uber_wrapper a:active,
+		.widget_flickr #flickr_badge_uber_wrapper a:visited,
+		.wp_widget_tag_cloud a:hover,
+		.wp_widget_tag_cloud a:focus,
+		body #infinite-footer .blog-info a:hover,
+		body #infinite-footer .blog-info a:focus,
+		body #infinite-footer .blog-info a:hover,
+		body #infinite-footer .blog-info a:focus,
+		body #infinite-footer .blog-credits a:hover,
+		body #infinite-footer .blog-credits a:focus,
+		.is-style-outline>.wp-block-button__link:not(.has-text-color) { color: #CF1A1A;}
+mark,
+		ins,
+		button:hover,
+		button:focus,
+		input[type="button"]:hover,
+		input[type="button"]:focus,
+		input[type="reset"]:hover,
+		input[type="reset"]:focus,
+		input[type="submit"]:hover,
+		input[type="submit"]:focus,
+		.pagination .prev:hover,
+		.pagination .prev:focus,
+		.pagination .next:hover,
+		.pagination .next:focus,
+		.widget_calendar tbody a,
+		.page-links a:hover,
+		.page-links a:focus,
+		#infinite-handle span:hover,
+		#infinite-handle span:focus,
+		.wp-block-button .wp-block-button__link { background-color: #CF1A1A;}
+input[type="text"]:focus,
+		input[type="email"]:focus,
+		input[type="url"]:focus,
+		input[type="password"]:focus,
+		input[type="search"]:focus,
+		textarea:focus,
+		.tagcloud a:hover,
+		.tagcloud a:focus,
+		.menu-toggle:hover,
+		.menu-toggle:focus,
+		.comments-area #respond #comment-form-comment.active,
+		.comments-area #comment-form-share-text-padder.active,
+		.comments-area #respond .comment-form-fields div.comment-form-input.active,
+		.wp_widget_tag_cloud a:hover,
+		.wp_widget_tag_cloud a:focus,
+		.wp-block-button .wp-block-button__link { border-color: #CF1A1A;}
+body,
+		blockquote cite,
+		blockquote small,
+		.main-navigation a,
+		.menu-toggle,
+		.dropdown-toggle,
+		.social-navigation a,
+		.post-navigation a,
+		.widget-title a,
+		.site-branding .site-title a,
+		.entry-title a,
+		.page-links > .page-links-title,
+		.comment-author,
+		.comment-reply-title small a:hover,
+		.comment-reply-title small a:focus { color: #595959;}
+blockquote,
+		.menu-toggle.toggled-on,
+		.menu-toggle.toggled-on:hover,
+		.menu-toggle.toggled-on:focus,
+		.post-navigation,
+		.post-navigation div + div,
+		.pagination,
+		.widget,
+		.page-header,
+		.page-links a,
+		.comments-title,
+		.comment-reply-title,
+		.wp-block-button .wp-block-button__link:active,
+		.wp-block-button .wp-block-button__link:focus,
+		.wp-block-button .wp-block-button__link:hover,
+		.is-style-outline>.wp-block-button__link:not(.has-text-color):active,
+		.is-style-outline>.wp-block-button__link:not(.has-text-color):focus,
+		.is-style-outline>.wp-block-button__link:not(.has-text-color):hover { border-color: #595959;}
+button,
+		button[disabled]:hover,
+		button[disabled]:focus,
+		input[type="button"],
+		input[type="button"][disabled]:hover,
+		input[type="button"][disabled]:focus,
+		input[type="reset"],
+		input[type="reset"][disabled]:hover,
+		input[type="reset"][disabled]:focus,
+		input[type="submit"],
+		input[type="submit"][disabled]:hover,
+		input[type="submit"][disabled]:focus,
+		.menu-toggle.toggled-on,
+		.menu-toggle.toggled-on:hover,
+		.menu-toggle.toggled-on:focus,
+		.pagination:before,
+		.pagination:after,
+		.pagination .prev,
+		.pagination .next,
+		.page-links a,
+		.site-main #infinite-handle span,
+		.wp-block-button .wp-block-button__link:active,
+		.wp-block-button .wp-block-button__link:focus,
+		.wp-block-button .wp-block-button__link:hover,
+		.is-style-outline>.wp-block-button__link:not(.has-text-color):active,
+		.is-style-outline>.wp-block-button__link:not(.has-text-color):focus,
+		.is-style-outline>.wp-block-button__link:not(.has-text-color):hover { background-color: #595959;}
+fieldset,
+		pre,
+		abbr,
+		acronym,
+		table,
+		th,
+		td,
+		input[type="text"],
+		input[type="email"],
+		input[type="url"],
+		input[type="password"],
+		input[type="search"],
+		textarea,
+		.main-navigation li,
+		.main-navigation .primary-menu,
+		.menu-toggle,
+		.dropdown-toggle:after,
+		.social-navigation a,
+		.image-navigation,
+		.comment-navigation,
+		.tagcloud a,
+		.entry-content,
+		.entry-summary,
+		.page-links a,
+		.page-links > span,
+		.comment-list article,
+		.comment-list .pingback,
+		.comment-list .trackback,
+		.comment-reply-link,
+		.no-comments,
+		.main-navigation ul ul,
+		.main-navigation ul ul li,
+		.comments-area #respond #comment-form-comment,
+		.comments-area #comment-form-share-text-padder,
+		.comments-area #respond .comment-form-fields div.comment-form-input,
+		.comments-area #respond .comment-form-service,
+		.wp_widget_tag_cloud a,
+		body #infinite-footer .container { border-color: #595959;}
+fieldset,
+		pre,
+		abbr,
+		acronym,
+		table,
+		th,
+		td,
+		input[type="text"],
+		input[type="email"],
+		input[type="url"],
+		input[type="password"],
+		input[type="search"],
+		textarea,
+		.main-navigation li,
+		.main-navigation .primary-menu,
+		.menu-toggle,
+		.dropdown-toggle:after,
+		.social-navigation a,
+		.image-navigation,
+		.comment-navigation,
+		.tagcloud a,
+		.entry-content,
+		.entry-summary,
+		.page-links a,
+		.page-links > span,
+		.comment-list article,
+		.comment-list .pingback,
+		.comment-list .trackback,
+		.comment-reply-link,
+		.no-comments,
+		.main-navigation ul ul,
+		.main-navigation ul ul li,
+		.comments-area #respond #comment-form-comment,
+		.comments-area #comment-form-share-text-padder,
+		.comments-area #respond .comment-form-fields div.comment-form-input,
+		.comments-area #respond .comment-form-service,
+		.wp_widget_tag_cloud a,
+		body #infinite-footer .container { border-color: rgba( 89, 89, 89, 0.2 );}
+.main-navigation ul ul:before { border-top-color: #595959;}
+.main-navigation ul ul:before { border-top-color: rgba( 89, 89, 89, 0.2 );}
+.main-navigation ul ul:before { border-bottom-color: #595959;}
+.main-navigation ul ul:before { border-bottom-color: rgba( 89, 89, 89, 0.2 );}
+hr,
+		code { background-color: #595959;}
+hr,
+		code { background-color: rgba( 89, 89, 89, 0.2 );}
+blockquote,
+		.post-password-form label,
+		a:hover,
+		a:focus,
+		a:active,
+		.post-navigation .meta-nav,
+		.image-navigation,
+		.comment-navigation,
+		.widget_recent_entries .post-date,
+		.widget_rss .rss-date,
+		.widget_rss cite,
+		.site-description,
+		body:not(.search-results) .entry-summary,
+		.author-bio,
+		.entry-footer,
+		.entry-footer a,
+		.sticky-post,
+		.taxonomy-description,
+		.entry-caption,
+		.comment-metadata,
+		.pingback .edit-link,
+		.comment-metadata a,
+		.pingback .comment-edit-link,
+		.comment-form label,
+		.comment-notes,
+		.comment-awaiting-moderation,
+		.logged-in-as,
+		.form-allowed-tags,
+		.site-info,
+		.site-info a,
+		.wp-caption .wp-caption-text,
+		.gallery-caption,
+		.jp-relatedposts-post-aoverlay:hover .jp-relatedposts-post-title a,
+		.jp-relatedposts-post-aoverlay:focus .jp-relatedposts-post-title a,
+		.comments-area #respond .comment-form-fields label,
+		.comments-area #respond .comment-form-fields label span.required,
+		.comments-area #respond .comment-form-fields label span.nopublish,
+		.comments-area #respond .comment-form-service a:hover,
+		.comments-area #respond .comment-form-service a:focus,
+		.comments-area #respond .comment-form-fields p.comment-form-posting-as,
+		.comments-area #respond .comment-form-fields p.comment-form-log-out,
+		.comments-area #respond #comment-form-identity #comment-form-nascar p,
+		.comments-area #respond #comment-form-subscribe p,
+		.comment-content p.comment-likes span.comment-like-feedback,
+		.widget_flickr #flickr_badge_uber_wrapper a:focus,
+		.widget_flickr #flickr_badge_uber_wrapper a:hover,
+		.top_rated div > p,
+		body #infinite-footer .blog-info a,
+		body #infinite-footer .blog-credits,
+		body #infinite-footer .blog-credits a { color: #686868;}
+#respond.js .comment-form-fields label,
+		#respond.js .comment-form-fields label span.required,
+		#respond.js .comment-form-fields label span.nopublish { color: #757575;}
+.widget_calendar tbody a:hover,
+		.widget_calendar tbody a:focus { background-color: #686868;}
+</style>
+</head>
+
+<body class="post-template-default single single-post postid-3609 single-format-standard custom-background wp-embed-responsive customizer-styles-applied">
+<div id="page" class="site">
+	<div class="site-inner">
+		<a class="skip-link screen-reader-text" href="#content">
+			Skip to content		</a>
+
+		<header id="masthead" class="site-header">
+			<div class="site-header-main">
+				<div class="site-branding">
+					<a href="https://thegreatbritishbookworm.wordpress.com/" class="site-logo-link" rel="home" itemprop="url"></a>
+											<p class="site-title"><a href="https://thegreatbritishbookworm.wordpress.com/" rel="home">The Great British Bookworm</a></p>
+												<p class="site-description">Brilliant books for children &#8211; Teacher reviews</p>
+									</div><!-- .site-branding -->
+
+									<button id="menu-toggle" class="menu-toggle">Menu</button>
+
+					<div id="site-header-menu" class="site-header-menu">
+													<nav id="site-navigation" class="main-navigation" aria-label="Primary Menu">
+								<div class="menu-primary-container"><ul id="menu-primary" class="primary-menu"><li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8"><a href="/">Home</a></li>
+<li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9"><a href="https://thegreatbritishbookworm.wordpress.com/about/">This is me!</a></li>
+<li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10"><a href="https://thegreatbritishbookworm.wordpress.com/contact/">Contact</a></li>
+</ul></div>							</nav><!-- .main-navigation -->
+						
+													<nav id="social-navigation" class="social-navigation" aria-label="Social Links Menu">
+								<div class="menu-social-links-container"><ul id="menu-social-links" class="social-links-menu"><li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11"><a href="https://twitter.com/"><span class="screen-reader-text">Twitter</span></a></li>
+<li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a href="https://www.facebook.com/"><span class="screen-reader-text">Facebook</span></a></li>
+<li id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a href="http://plus.google.com"><span class="screen-reader-text">Google+</span></a></li>
+<li id="menu-item-14" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"><a href="http://github.com"><span class="screen-reader-text">GitHub</span></a></li>
+<li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15"><a href="http://wordpress.com"><span class="screen-reader-text">WordPress.com</span></a></li>
+</ul></div>							</nav><!-- .social-navigation -->
+											</div><!-- .site-header-menu -->
+							</div><!-- .site-header-main -->
+
+											<div class="header-image">
+					<a href="https://thegreatbritishbookworm.wordpress.com/" rel="home">
+						<img src="https://defaultcustomheadersdata.files.wordpress.com/2016/07/design2.jpg?resize=1200,280" srcset="" sizes="" width="1200" height="280" alt="The Great British Bookworm">
+					</a>
+				</div><!-- .header-image -->
+					</header><!-- .site-header -->
+
+		<div id="content" class="site-content">
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main">
+		
+<article id="post-3609" class="post-3609 post type-post status-publish format-standard hentry category-uncategorized">
+	<header class="entry-header">
+		<h1 class="entry-title">The Artist by Ed&nbsp;Vere</h1>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<div class="wp-block-image">
+<figure class="aligncenter size-large"><img data-attachment-id="3612" data-permalink="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/oip-3/" data-orig-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/oip-3.jpg" data-orig-size="474,623" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="oip-3" data-image-description="" data-image-caption="" data-medium-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/oip-3.jpg?w=228" data-large-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/oip-3.jpg?w=474" width="474" height="623" src="https://thegreatbritishbookworm.files.wordpress.com/2023/04/oip-3.jpg?w=474" alt="" class="wp-image-3612" srcset="https://thegreatbritishbookworm.files.wordpress.com/2023/04/oip-3.jpg 474w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/oip-3.jpg?w=114 114w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/oip-3.jpg?w=228 228w" sizes="(max-width: 474px) 85vw, 474px" /></figure></div>
+
+
+<p>Ed Vere is one of the modern day picture book masters.  His work will be known by everyone as it is always fun and eye-catching.  However, none have had the heart that The Artist does.  And my word does it have heart!</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img data-attachment-id="3619" data-permalink="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/915mvnyricl/" data-orig-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg" data-orig-size="2560,1691" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="915mvnyricl" data-image-description="" data-image-caption="" data-medium-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg?w=300" data-large-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg?w=840" width="2560" height="1691" src="https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg?w=1024" alt="" class="wp-image-3619" srcset="https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg?w=1024 1024w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg 2560w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg?w=150 150w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg?w=300 300w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/915mvnyricl.jpg?w=768 768w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px" /></figure></div>
+
+
+<p>The story is a simple one &#8211; an artist who wants to just create.  Take an idea and let it flow.  See what happens when they put pen, pencil, crayon, paint&#8230;whatever they wish to paper, cardboard, brick&#8230;and so on.  Then one day, the Artist travels to find a larger audience for her artwork and this is when she faces her real challenge.  A challenge of self-belief. </p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img data-attachment-id="3615" data-permalink="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/91o5vcasyzl/" data-orig-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/91o5vcasyzl.jpg" data-orig-size="2560,1691" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="91o5vcasyzl" data-image-description="" data-image-caption="" data-medium-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/91o5vcasyzl.jpg?w=300" data-large-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/91o5vcasyzl.jpg?w=840" width="2560" height="1691" src="https://thegreatbritishbookworm.files.wordpress.com/2023/04/91o5vcasyzl.jpg?w=1024" alt="" class="wp-image-3615" srcset="https://thegreatbritishbookworm.files.wordpress.com/2023/04/91o5vcasyzl.jpg?w=1024 1024w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/91o5vcasyzl.jpg 2560w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/91o5vcasyzl.jpg?w=150 150w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/91o5vcasyzl.jpg?w=300 300w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/91o5vcasyzl.jpg?w=768 768w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px" /></figure></div>
+
+
+<p>The artwork is a joy and the story packs just the right amount of punch.  Ed Vere has gotten everything spot on! I adore the little things in the book:  the &#8216;tape&#8217; on the page, the fact the dinosaur is a she or the change of colour to match her mood.  Even the first page, with its mix of photography and doodles makes me smile.  This is the work of a creator at the top of their game.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img data-attachment-id="3617" data-permalink="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/91lbcpglb0l/" data-orig-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/91lbcpglb0l.jpg" data-orig-size="2560,1691" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="91lbcpglb0l" data-image-description="" data-image-caption="" data-medium-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/91lbcpglb0l.jpg?w=300" data-large-file="https://thegreatbritishbookworm.files.wordpress.com/2023/04/91lbcpglb0l.jpg?w=840" loading="lazy" width="2560" height="1691" src="https://thegreatbritishbookworm.files.wordpress.com/2023/04/91lbcpglb0l.jpg?w=1024" alt="" class="wp-image-3617" srcset="https://thegreatbritishbookworm.files.wordpress.com/2023/04/91lbcpglb0l.jpg?w=1024 1024w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/91lbcpglb0l.jpg 2560w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/91lbcpglb0l.jpg?w=150 150w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/91lbcpglb0l.jpg?w=300 300w, https://thegreatbritishbookworm.files.wordpress.com/2023/04/91lbcpglb0l.jpg?w=768 768w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px" /></figure></div>
+
+
+<p>Now for the teacher bit.  Much like <a href="https://thegreatbritishbookworm.wordpress.com/2020/03/12/ish-by/">Ish</a>, this book is a must to share as a part of your primary arts curriculum as it gets to the heart of what it means to be an artist.  It is about the mindset of being an artist, something that all children start with but many sadly lose on their way.  If you want a class filled with children willing to try out ideas, be brave to explore and ok with making mistakes, then you must share this book.</p>
+
+
+
+<p>Art matters!</p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-3609" class="share-twitter sd-button share-icon" href="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/?share=twitter" target="_blank" title="Click to share on Twitter" ><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-3609" class="share-facebook sd-button share-icon" href="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/?share=facebook" target="_blank" title="Click to share on Facebook" ><span>Facebook</span></a></li><li class="share-end"></li></ul></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-127784662-3609-6527f0b875db0' data-src='//widgets.wp.com/likes/index.html?ver=20230906#blog_id=127784662&amp;post_id=3609&amp;origin=thegreatbritishbookworm.wordpress.com&amp;obj_id=127784662-3609-6527f0b875db0' data-name='like-post-frame-127784662-3609-6527f0b875db0' data-title='Like or Reblog'><h3 class='sd-title'>Like this:</h3><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class="loading">Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt='' src='https://2.gravatar.com/avatar/8f2ff10f61cf455b62fa161071a5b70c7e67f428c35942ce213d46e755881cef?s=49&#038;d=identicon&#038;r=G' srcset='https://2.gravatar.com/avatar/8f2ff10f61cf455b62fa161071a5b70c7e67f428c35942ce213d46e755881cef?s=49&#038;d=identicon&#038;r=G 1x, https://2.gravatar.com/avatar/8f2ff10f61cf455b62fa161071a5b70c7e67f428c35942ce213d46e755881cef?s=74&#038;d=identicon&#038;r=G 1.5x, https://2.gravatar.com/avatar/8f2ff10f61cf455b62fa161071a5b70c7e67f428c35942ce213d46e755881cef?s=98&#038;d=identicon&#038;r=G 2x, https://2.gravatar.com/avatar/8f2ff10f61cf455b62fa161071a5b70c7e67f428c35942ce213d46e755881cef?s=147&#038;d=identicon&#038;r=G 3x, https://2.gravatar.com/avatar/8f2ff10f61cf455b62fa161071a5b70c7e67f428c35942ce213d46e755881cef?s=196&#038;d=identicon&#038;r=G 4x' class='avatar avatar-49' height='49' width='49' loading='lazy' decoding='async' /><span class="screen-reader-text">Author </span> <a class="url fn n" href="https://thegreatbritishbookworm.wordpress.com/author/teachingfromadarkplace/">North East Teacher</a></span></span><span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/" rel="bookmark"><time class="entry-date published updated" datetime="2023-04-30T14:53:39+00:00">April 30, 2023</time></a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-3609 -->
+
+<div id="comments" class="comments-area">
+
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2023/04/30/the-artist-by-ed-vere/#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://thegreatbritishbookworm.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+
+
+<div id="comment-form__verbum" class="transparent"></div><div class="verbum-form-meta"><input type='hidden' name='comment_post_ID' value='3609' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+
+			<input type="hidden" name="highlander_comment_nonce" id="highlander_comment_nonce" value="784f8e1e27" /></div><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="8a584e04d0" /></p><p style="display: none !important;"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="55"/><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	
+</div><!-- .comments-area -->
+
+	<nav class="navigation post-navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://thegreatbritishbookworm.wordpress.com/2023/04/16/the-laugh-by-fay-evans-and-ayse-klinge/" rel="prev"><span class="meta-nav" aria-hidden="true">Previous</span> <span class="screen-reader-text">Previous post:</span> <span class="post-title">The Laugh by Fay Evans and Ayse&nbsp;Klinge</span></a></div><div class="nav-next"><a href="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-best-bear-tracker-by-john-condon-julia-christians/" rel="next"><span class="meta-nav" aria-hidden="true">Next</span> <span class="screen-reader-text">Next post:</span> <span class="post-title">The Best Bear Tracker by John Condon &amp; Julia&nbsp;Christians</span></a></div></div>
+	</nav>
+	</main><!-- .site-main -->
+
+	<aside id="content-bottom-widgets" class="content-bottom-widgets">
+			<div class="widget-area">
+			
+		<section id="recent-posts-1" class="widget widget_recent_entries">
+		<h2 class="widget-title">Recent Posts</h2><nav aria-label="Recent Posts">
+		<ul>
+											<li>
+					<a href="https://thegreatbritishbookworm.wordpress.com/2023/10/01/cotton-cloud-refuses-to-rain-by-elizabeth-f-hill-hannah-george/">Cotton Cloud Refuses to Rain by Elizabeth F. Hill &amp; Hannah&nbsp;George</a>
+											<span class="post-date">October 1, 2023</span>
+									</li>
+											<li>
+					<a href="https://thegreatbritishbookworm.wordpress.com/2023/10/01/how-to-make-a-book-by-becky-davies-patricia-hu/">How to Make a Book by Becky Davies &amp; Patricia&nbsp;Hu</a>
+											<span class="post-date">October 1, 2023</span>
+									</li>
+											<li>
+					<a href="https://thegreatbritishbookworm.wordpress.com/2023/09/11/the-council-of-good-friends-by-nikesh-shukla/">The Council of Good Friends by Nikesh&nbsp;Shukla</a>
+											<span class="post-date">September 11, 2023</span>
+									</li>
+											<li>
+					<a href="https://thegreatbritishbookworm.wordpress.com/2023/09/09/food-fight-by-alex-latimer/">Food Fight by Alex&nbsp;Latimer</a>
+											<span class="post-date">September 9, 2023</span>
+									</li>
+											<li>
+					<a href="https://thegreatbritishbookworm.wordpress.com/2023/09/09/wild-by-ele-fountain/">Wild by Ele&nbsp;Fountain</a>
+											<span class="post-date">September 9, 2023</span>
+									</li>
+					</ul>
+
+		</nav></section>		</div><!-- .widget-area -->
+	
+	</aside><!-- .content-bottom-widgets -->
+
+</div><!-- .content-area -->
+
+
+	<aside id="secondary" class="sidebar widget-area">
+		<section id="text-1" class="widget widget_text"><h2 class="widget-title">Text Widget</h2>			<div class="textwidget"><p><a href="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&#038;OneJS=1&#038;Operation=GetAdHtml&#038;MarketPlace=GB&#038;source=ac&#038;ref=qf_sp_asin_til&#038;ad_type=product_link&#038;tracking_id=greatbritishb-21&#038;marketplace=amazon&#038;region=GB&#038;placement=1474924166&#038;asins=1474924166&#038;linkId=18a40c8713c3a9fa535df78e2de98539&#038;show_border=false&#038;link_opens_in_new_window=false&#038;price_color=333333&#038;title_color=0066c0&#038;bg_color=ffffff">//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&#038;OneJS=1&#038;Operation=GetAdHtml&#038;MarketPlace=GB&#038;source=ac&#038;ref=qf_sp_asin_til&#038;ad_type=product_link&#038;tracking_id=greatbritishb-21&#038;marketplace=amazon&#038;region=GB&#038;placement=1474924166&#038;asins=1474924166&#038;linkId=18a40c8713c3a9fa535df78e2de98539&#038;show_border=false&#038;link_opens_in_new_window=false&#038;price_color=333333&#038;title_color=0066c0&#038;bg_color=ffffff</a></p>
+</div>
+		</section><section id="search-1" class="widget widget_search">
+<form role="search" method="get" class="search-form" action="https://thegreatbritishbookworm.wordpress.com/">
+	<label>
+		<span class="screen-reader-text">
+			Search for:		</span>
+		<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+	</label>
+	<button type="submit" class="search-submit"><span class="screen-reader-text">
+		Search	</span></button>
+</form>
+</section>	</aside><!-- .sidebar .widget-area -->
+
+		</div><!-- .site-content -->
+
+		<footer id="colophon" class="site-footer">
+							<nav class="main-navigation" aria-label="Footer Primary Menu">
+					<div class="menu-primary-container"><ul id="menu-primary-1" class="primary-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8"><a href="/">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9"><a href="https://thegreatbritishbookworm.wordpress.com/about/">This is me!</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10"><a href="https://thegreatbritishbookworm.wordpress.com/contact/">Contact</a></li>
+</ul></div>				</nav><!-- .main-navigation -->
+			
+							<nav class="social-navigation" aria-label="Footer Social Links Menu">
+					<div class="menu-social-links-container"><ul id="menu-social-links-1" class="social-links-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11"><a href="https://twitter.com/"><span class="screen-reader-text">Twitter</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a href="https://www.facebook.com/"><span class="screen-reader-text">Facebook</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a href="http://plus.google.com"><span class="screen-reader-text">Google+</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"><a href="http://github.com"><span class="screen-reader-text">GitHub</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15"><a href="http://wordpress.com"><span class="screen-reader-text">WordPress.com</span></a></li>
+</ul></div>				</nav><!-- .social-navigation -->
+			
+			<div class="site-info">
+								<span class="site-title"><a href="https://thegreatbritishbookworm.wordpress.com/" rel="home">The Great British Bookworm</a></span>
+								<a href="https://wordpress.com/?ref=footer_website" rel="nofollow">Create a free website or blog at WordPress.com.</a>
+			</div><!-- .site-info -->
+		</footer><!-- .site-footer -->
+	</div><!-- .site-inner -->
+</div><!-- .site -->
+
+<!--  -->
+<script src='//0.gravatar.com/js/hovercards/hovercards.min.js?ver=202341aeb24331352c11f5446dd670d75325a3c4e3b8a6bd7f92ee1c88f8b8636d4d9c' id='grofiles-cards-js'></script>
+<script id='wpgroho-js-extra'>
+var WPGroHo = {"my_hash":""};
+</script>
+<script crossorigin='anonymous' type='text/javascript' src='https://s0.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1610363240i'></script>
+
+	<script>
+		// Initialize and attach hovercards to all gravatars
+		( function() {
+			function init() {
+				if ( typeof Gravatar === 'undefined' ) {
+					return;
+				}
+
+				if ( typeof Gravatar.init !== 'function' ) {
+					return;
+				}
+
+				Gravatar.profile_cb = function ( hash, id ) {
+					WPGroHo.syncProfileData( hash, id );
+				};
+
+				Gravatar.my_hash = WPGroHo.my_hash;
+				Gravatar.init(
+					'body',
+					'#wp-admin-bar-my-account',
+					{
+						i18n: {
+							'Edit your profile': 'Edit your profile',
+							'View profile': 'View profile',
+							'Sorry, we are unable to load this Gravatar profile.': 'Sorry, we are unable to load this Gravatar profile.',
+							'Sorry, we are unable to load this Gravatar profile. Please check your internet connection.': 'Sorry, we are unable to load this Gravatar profile. Please check your internet connection.',
+						},
+					}
+				);
+			}
+
+			if ( document.readyState !== 'loading' ) {
+				init();
+			} else {
+				document.addEventListener( 'DOMContentLoaded', init );
+			}
+		} )();
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-630bf81f53e80c6c5f894dd94836b274">
+	</div>
+	</div>
+	<div id="actionbar" style="display: none;"
+			class="actnbr-pub-twentysixteen actnbr-has-follow">
+		<ul>
+								<li class="actnbr-btn actnbr-hidden">
+						<a class="actnbr-action actnbr-actn-comment" href="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/#respond">
+							<svg class="gridicon gridicons-comment" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M12 16l-5 5v-5H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v9c0 1.1-.9 2-2 2h-7z"/></g></svg>							<span>Comment						</span>
+						</a>
+					</li>
+									<li class="actnbr-btn actnbr-hidden">
+								<a class="actnbr-action actnbr-actn-follow " href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Follow</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Following</span>
+		</a>
+							<div class="actnbr-popover tip tip-top-left actnbr-notice" id="follow-bubble">
+							<div class="tip-arrow"></div>
+							<div class="tip-inner actnbr-follow-bubble">
+															<ul>
+											<li class="actnbr-sitename">
+			<a href="https://thegreatbritishbookworm.wordpress.com">
+				<img alt='' src='https://s0.wp.com/i/logo/wpcom-gray-white.png' srcset='https://s0.wp.com/i/logo/wpcom-gray-white.png 1x' class='avatar avatar-50' height='50' width='50' />				The Great British Bookworm			</a>
+		</li>
+										<form method="post" action="https://subscribe.wordpress.com" accept-charset="utf-8" style="display: none;">
+																						<div class="actnbr-follow-count">Join 62 other followers</div>
+																					<div>
+										<input type="email" name="email" placeholder="Enter your email address" class="actnbr-email-field" aria-label="Enter your email address" />
+										</div>
+										<input type="hidden" name="action" value="subscribe" />
+										<input type="hidden" name="blog_id" value="127784662" />
+										<input type="hidden" name="source" value="https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/" />
+										<input type="hidden" name="sub-type" value="actionbar-follow" />
+										<input type="hidden" id="_wpnonce" name="_wpnonce" value="562de4d04b" />										<div class="actnbr-button-wrap">
+											<button type="submit" value="Sign me up">
+												Sign me up											</button>
+										</div>
+									</form>
+									<li class="actnbr-login-nudge">
+										<div>
+											Already have a WordPress.com account? <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fthegreatbritishbookworm.wordpress.com%2F2023%2F04%2F30%2Fthe-artist-by-ed-vere%2F&#038;signup_flow=account">Log in now.</a>										</div>
+									</li>
+								</ul>
+															</div>
+						</div>
+					</li>
+							<li class="actnbr-ellipsis actnbr-hidden">
+				<svg class="gridicon gridicons-ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M7 12c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm12-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm-7 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z"/></g></svg>				<div class="actnbr-popover tip tip-top-left actnbr-more">
+					<div class="tip-arrow"></div>
+					<div class="tip-inner">
+						<ul>
+									<li class="actnbr-sitename">
+			<a href="https://thegreatbritishbookworm.wordpress.com">
+				<img alt='' src='https://s0.wp.com/i/logo/wpcom-gray-white.png' srcset='https://s0.wp.com/i/logo/wpcom-gray-white.png 1x' class='avatar avatar-50' height='50' width='50' />				The Great British Bookworm			</a>
+		</li>
+								<li class="actnbr-folded-customize">
+								<a href="https://thegreatbritishbookworm.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fthegreatbritishbookworm.wordpress.com%2F2023%2F04%2F30%2Fthe-artist-by-ed-vere%2F">
+									<svg class="gridicon gridicons-customize" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z"/></g></svg>									<span>Customize</span>
+								</a>
+							</li>
+																<li class="actnbr-folded-follow">
+												<a class="actnbr-action actnbr-actn-follow " href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Follow</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Following</span>
+		</a>
+										</li>
+																	<li class="actnbr-signup"><a href="https://wordpress.com/start/">Sign up</a></li>
+									<li class="actnbr-login"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fthegreatbritishbookworm.wordpress.com%2F2023%2F04%2F30%2Fthe-artist-by-ed-vere%2F&#038;signup_flow=account">Log in</a></li>
+																	<li class="actnbr-shortlink"><a href="https://wp.me/p8EaCW-Wd">Copy shortlink</a></li>
+																	<li class="flb-report">
+										<a href="http://en.wordpress.com/abuse/?report_url=https://thegreatbritishbookworm.wordpress.com/2023/04/30/the-artist-by-ed-vere/" target="_blank">
+											Report this content										</a>
+									</li>
+																	<li class="actnbr-reader">
+										<a href="https://wordpress.com/read/blogs/127784662/posts/3609">
+											View post in Reader										</a>
+									</li>
+																	<li class="actnbr-subs">
+										<a href="https://subscribe.wordpress.com/">Manage subscriptions</a>
+									</li>
+																		<li class="actnbr-fold"><a href="">Collapse this bar</a></li>
+															</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+<script>
+window.addEventListener( "load", function( event ) {
+	var link = document.createElement( "link" );
+	link.href = "https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.css?v=20210915";
+	link.type = "text/css";
+	link.rel = "stylesheet";
+	document.head.appendChild( link );
+
+	var script = document.createElement( "script" );
+	script.src = "https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.js?v=20220329";
+	script.defer = true;
+	document.body.appendChild( script );
+} );
+</script>
+
+			<div id="jp-carousel-loading-overlay">
+			<div id="jp-carousel-loading-wrapper">
+				<span id="jp-carousel-library-loading">&nbsp;</span>
+			</div>
+		</div>
+		<div class="jp-carousel-overlay" style="display: none;">
+
+		<div class="jp-carousel-container">
+			<!-- The Carousel Swiper -->
+			<div
+				class="jp-carousel-wrap swiper-container jp-carousel-swiper-container jp-carousel-transitions"
+				itemscope
+				itemtype="https://schema.org/ImageGallery">
+				<div class="jp-carousel swiper-wrapper"></div>
+				<div class="jp-swiper-button-prev swiper-button-prev">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskPrev" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="9" height="12">
+							<path d="M16.2072 16.59L11.6496 12L16.2072 7.41L14.8041 6L8.8335 12L14.8041 18L16.2072 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskPrev)">
+							<rect x="0.579102" width="23.8823" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+				<div class="jp-swiper-button-next swiper-button-next">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskNext" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="8" height="12">
+							<path d="M8.59814 16.59L13.1557 12L8.59814 7.41L10.0012 6L15.9718 12L10.0012 18L8.59814 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskNext)">
+							<rect x="0.34375" width="23.8822" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+			</div>
+			<!-- The main close buton -->
+			<div class="jp-carousel-close-hint">
+				<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<mask id="maskClose" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="15" height="14">
+						<path d="M19.3166 6.41L17.9135 5L12.3509 10.59L6.78834 5L5.38525 6.41L10.9478 12L5.38525 17.59L6.78834 19L12.3509 13.41L17.9135 19L19.3166 17.59L13.754 12L19.3166 6.41Z" fill="white"/>
+					</mask>
+					<g mask="url(#maskClose)">
+						<rect x="0.409668" width="23.8823" height="24" fill="#FFFFFF"/>
+					</g>
+				</svg>
+			</div>
+			<!-- Image info, comments and meta -->
+			<div class="jp-carousel-info">
+				<div class="jp-carousel-info-footer">
+					<div class="jp-carousel-pagination-container">
+						<div class="jp-swiper-pagination swiper-pagination"></div>
+						<div class="jp-carousel-pagination"></div>
+					</div>
+					<div class="jp-carousel-photo-title-container">
+						<h2 class="jp-carousel-photo-caption"></h2>
+					</div>
+					<div class="jp-carousel-photo-icons-container">
+						<a href="#" class="jp-carousel-icon-btn jp-carousel-icon-info" aria-label="Toggle photo metadata visibility">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskInfo" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M12.7537 2C7.26076 2 2.80273 6.48 2.80273 12C2.80273 17.52 7.26076 22 12.7537 22C18.2466 22 22.7046 17.52 22.7046 12C22.7046 6.48 18.2466 2 12.7537 2ZM11.7586 7V9H13.7488V7H11.7586ZM11.7586 11V17H13.7488V11H11.7586ZM4.79292 12C4.79292 16.41 8.36531 20 12.7537 20C17.142 20 20.7144 16.41 20.7144 12C20.7144 7.59 17.142 4 12.7537 4C8.36531 4 4.79292 7.59 4.79292 12Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskInfo)">
+										<rect x="0.8125" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+							</span>
+						</a>
+												<a href="#" class="jp-carousel-icon-btn jp-carousel-icon-comments" aria-label="Toggle photo comments visibility">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskComments" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M4.3271 2H20.2486C21.3432 2 22.2388 2.9 22.2388 4V16C22.2388 17.1 21.3432 18 20.2486 18H6.31729L2.33691 22V4C2.33691 2.9 3.2325 2 4.3271 2ZM6.31729 16H20.2486V4H4.3271V18L6.31729 16Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskComments)">
+										<rect x="0.34668" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+
+								<span class="jp-carousel-has-comments-indicator" aria-label="This image has comments."></span>
+							</span>
+						</a>
+											</div>
+				</div>
+				<div class="jp-carousel-info-extra">
+					<div class="jp-carousel-info-content-wrapper">
+						<div class="jp-carousel-photo-title-container">
+							<h2 class="jp-carousel-photo-title"></h2>
+						</div>
+						<div class="jp-carousel-comments-wrapper">
+															<div id="jp-carousel-comments-loading">
+									<span>Loading Comments...</span>
+								</div>
+								<div class="jp-carousel-comments"></div>
+								<div id="jp-carousel-comment-form-container">
+									<span id="jp-carousel-comment-form-spinner">&nbsp;</span>
+									<div id="jp-carousel-comment-post-results"></div>
+																														<form id="jp-carousel-comment-form">
+												<label for="jp-carousel-comment-form-comment-field" class="screen-reader-text">Write a Comment...</label>
+												<textarea
+													name="comment"
+													class="jp-carousel-comment-form-field jp-carousel-comment-form-textarea"
+													id="jp-carousel-comment-form-comment-field"
+													placeholder="Write a Comment..."
+												></textarea>
+												<div id="jp-carousel-comment-form-submit-and-info-wrapper">
+													<div id="jp-carousel-comment-form-commenting-as">
+																													<fieldset>
+																<label for="jp-carousel-comment-form-email-field">Email (Required)</label>
+																<input type="text" name="email" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-email-field" />
+															</fieldset>
+															<fieldset>
+																<label for="jp-carousel-comment-form-author-field">Name (Required)</label>
+																<input type="text" name="author" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-author-field" />
+															</fieldset>
+															<fieldset>
+																<label for="jp-carousel-comment-form-url-field">Website</label>
+																<input type="text" name="url" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-url-field" />
+															</fieldset>
+																											</div>
+													<input
+														type="submit"
+														name="submit"
+														class="jp-carousel-comment-form-button"
+														id="jp-carousel-comment-form-button-submit"
+														value="Post Comment" />
+												</div>
+											</form>
+																											</div>
+													</div>
+						<div class="jp-carousel-image-meta">
+							<div class="jp-carousel-title-and-caption">
+								<div class="jp-carousel-photo-info">
+									<h3 class="jp-carousel-caption" itemprop="caption description"></h3>
+								</div>
+
+								<div class="jp-carousel-photo-description"></div>
+							</div>
+							<ul class="jp-carousel-image-exif" style="display: none;"></ul>
+							<a class="jp-carousel-image-download" href="#" target="_blank" style="display: none;">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="19" height="18">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.84615 5V19H19.7775V12H21.7677V19C21.7677 20.1 20.8721 21 19.7775 21H5.84615C4.74159 21 3.85596 20.1 3.85596 19V5C3.85596 3.9 4.74159 3 5.84615 3H12.8118V5H5.84615ZM14.802 5V3H21.7677V10H19.7775V6.41L9.99569 16.24L8.59261 14.83L18.3744 5H14.802Z" fill="white"/>
+									</mask>
+									<g mask="url(#mask0)">
+										<rect x="0.870605" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+								<span class="jp-carousel-download-text"></span>
+							</a>
+							<div class="jp-carousel-image-map" style="display: none;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+		
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/thegreatbritishbookworm.wordpress.com\/2023\/04\/30\/the-artist-by-ed-vere\/":3609};
+	</script>
+				<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-2' href='https://s0.wp.com/_static/??-eJyljEsKgDAMBS9kDUUquhDPom0Qaz/BNHh9KdgTuBl4w2PgIWVzKpgKRFEU5DgTg8dCm72+DTHnCicBGex2Z2EMwM9JeKtdkgvYW+YOftTaqYkaXOOix8noQU+z8S9MR0BZ&cssminify=yes' type='text/css' media='all' />
+<script id='comment-like-js-extra'>
+var comment_like_text = {"loading":"Loading...","swipeUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/comment-likes\/js\/lib\/swipe.js?ver=20131008"};
+</script>
+<script id='coblocks-loader-js-extra'>
+var wpcom_coblocks_js = {"coblocks_masonry_js":"https:\/\/s0.wp.com\/wp-content\/plugins\/coblocks\/2.18.1-simple-rev.4\/dist\/js\/coblocks-masonry.min.js","coblocks_lightbox_js":"https:\/\/s0.wp.com\/wp-content\/plugins\/coblocks\/2.18.1-simple-rev.4\/dist\/js\/coblocks-lightbox.min.js","jquery_core_js":"\/wp-includes\/js\/jquery\/jquery.min.js","jquery_migrate_js":"\/wp-includes\/js\/jquery\/jquery-migrate.min.js","masonry_js":"\/wp-includes\/js\/masonry.min.js","imagesloaded_js":"\/wp-includes\/js\/imagesloaded.min.js"};
+var coblocksLigthboxData = {"closeLabel":"Close Gallery","leftLabel":"Previous","rightLabel":"Next"};
+</script>
+<script id='twentysixteen-script-js-extra'>
+var screenReaderText = {"expand":"expand child menu","collapse":"collapse child menu"};
+</script>
+<script id='jetpack-carousel-js-extra'>
+var jetpackSwiperLibraryPath = {"url":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/jetpack-plugin\/moon\/_inc\/build\/carousel\/swiper-bundle.min.js"};
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/thegreatbritishbookworm.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"23f6f6070a","display_exif":"1","display_comments":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/thegreatbritishbookworm.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fthegreatbritishbookworm.wordpress.com%2F2023%2F04%2F30%2Fthe-artist-by-ed-vere%2F","blog_id":"127784662","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"stats_query_args":"blog=127784662&v=wpcom&tz=0&user_id=0&subd=thegreatbritishbookworm","is_public":"1"};
+</script>
+<script id='sharing-js-js-extra'>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script id="verbum-settings-js-before">
+window.VerbumComments = {"Log in or provide your name and email to leave a reply.":"Log in or provide your name and email to leave a reply.","Receive web and mobile notifications for posts on this site.":"Receive web and mobile notifications for posts on this site.","Name":"Name","Email (address never made public)":"Email (address never made public)","Website (optional)":"Website (optional)","Leave a reply. (log in optional)":"Leave a reply. (log in optional)","Log in to leave a reply.":"Log in to leave a reply.","Logged in via %s":"Logged in via %s","Log out":"Log out","Email":"Email","(Address never made public)":"(Address never made public)","Instantly":"Instantly","Daily":"Daily","Reply":"Reply","WordPress":"WordPress","Weekly":"Weekly","Notify me of new posts":"Notify me of new posts","Email me new posts":"Email me new posts","Email me new comments":"Email me new comments","Cancel":"Cancel","Write a comment\u2026":"Write a Comment...","Website":"Website","Optional":"Optional","siteId":127784662,"mustLogIn":false,"requireNameEmail":true,"commentRegistration":false,"connectURL":"https:\/\/thegreatbritishbookworm.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"https:\/\/thegreatbritishbookworm.wordpress.com\/wp-login.php?action=logout&_wpnonce=78260abfb1","homeURL":"https:\/\/thegreatbritishbookworm.wordpress.com\/","subscribeToBlog":true,"subscribeToComment":true,"isJetpackCommentsLoggedIn":false,"jetpackUsername":"","jetpackUserId":0,"jetpackSignature":"","jetpackAvatar":"https:\/\/0.gravatar.com\/avatar\/?s=96&amp;d=identicon&amp;r=G"}
+</script>
+<script crossorigin='anonymous' type='text/javascript' src='https://s0.wp.com/_static/??-eJydUe1OhDAQfCFLDyV4f4yPYkq7HEs/7bZyvL31AD3xYqL/upOZ2ZktnwKT3iVwidvMgskndMQNaiD+miHDIJwyEKuR7vhtsvTWFogtonEH7IVfqs54qYnfV/WxqhmhDQZYhLeq4QopLU4LiRkvVAlh0e390gC2rA2542kqwEx4TgDuQ04aQ0nhNOu9zMR6PG9ydNJk9T1vhGDmv+7os5MJvftR9OpCI6QgpF5nbr13/KUk4F1Go7gU0WcC88nbgFtZrmyFRrKQ2EN1WOw2oI8Xsvrt09YVbAql/m78fxUaRAQllJovT3SntcOzfarbY/vYtHVzGN8BZNTrrA=='></script>
+<script id="sharing-js-js-after">
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-twitter' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-twitter' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-facebook' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-facebook' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+						return false;
+					}
+				} );
+			} )();
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>	<iframe src='https://widgets.wp.com/likes/master.html?ver=20230906#ver=20230906&amp;origin=https://thegreatbritishbookworm.wordpress.com' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+	<div id='likes-other-gravatars'>
+		<div class="likes-text">
+			<span>%d</span> bloggers like this:		</div>
+		<ul class="wpl-avatars sd-like-gravatars"></ul>
+	</div>
+
+		<script src="//stats.wp.com/w.js?63" defer></script> <script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'127784662','blog_tz':'0','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'127784662','v':'wpcom','tz':'0','user_id':'0','post':'3609','subd':'thegreatbritishbookworm'}]);
+_stq.push(['extra', {'crypt':'UE5tW3cvZGQ/JUs1UEo9WXFZM2k9fDlzc2JWP3hETzFRNDFNOT11fjNqYVJdS3BRJnMxSTNjM1hUTFVMYW1fLmhfSVFSWXNJTUg/RVhOdHVYRm12b0I3UWR1VV1rTFRlVzl0V3lLfFgsa2kvbU9naHFnSWxzcHN2N3BsWWxjZ3VpNXwvJls4OTN+bjYuPXRYJm1+SVhaOGxRQyxMQj9BNnNSPWdjSXVHfFcrPSZxVXBGRF9BfmFVSFBFTi00RUlXc003Qmhy'}]);
+_stq.push([ 'clickTrackerInit', '127784662', '3609' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+<script>
+(function() {
+	'use strict';
+
+	const fetches = {};
+	const promises = {};
+	const urls = {
+		'verbum': 'https://s0.wp.com/wp-content/mu-plugins/verbum/dist/index.js?m=1697065056i&ver=1697065056'
+	};
+	const loaders = {
+		'verbum': () => {
+			fetchExternalScript('verbum');
+			promises['verbum'] = promises['verbum'] || loadWPScript('verbum');
+			return promises['verbum'];
+		},
+		
+	};
+	const scriptExtras = {
+		
+	};
+
+	window.WP_Enqueue_Dynamic_Script = {
+		loadScript: (handle) => {
+			if (!loaders[handle]) {
+				console.error('WP_Enqueue_Dynamic_Script: unregistered script `' + handle + '`.');
+			}
+			return loaders[handle]();
+		}
+	};
+
+	function fetchExternalScript(handle) {
+		if (!urls[handle]) {
+			return Promise.resolve();
+		}
+
+		fetches[handle] = fetches[handle] || fetch(urls[handle], { mode: 'no-cors' });
+		return fetches[handle];
+	}
+
+	function runExtraScript(handle, type, index) {
+		const id = 'wp-enqueue-dynamic-script:' + handle + ':' + type + ':' + (index + 1);
+		const template = document.getElementById(id);
+		if (!template) {
+			return Promise.reject();
+		}
+
+		const script = document.createElement( 'script' );
+		script.innerHTML = template.innerHTML;
+		document.body.appendChild( script );
+		return Promise.resolve();
+	}
+
+	function loadExternalScript(handle) {
+		if (!urls[handle]) {
+			return Promise.resolve();
+		}
+
+		return fetches[handle].then(() => {
+			return new Promise((resolve, reject) => {
+				const script = document.createElement('script');
+				script.onload = () => resolve();
+				script.onerror = (e) => reject(e);
+				script.src = urls[handle];
+				document.body.appendChild(script);
+			});
+		});
+	}
+
+	function loadExtra(handle, pos) {
+		const count = (scriptExtras[handle] && scriptExtras[handle][pos]) || 0;
+		let promise = Promise.resolve();
+
+		for (let i = 0; i < count; i++) {
+			promise = promise.then(() => runExtraScript(handle, pos, i));
+		}
+
+		return promise;
+	}
+
+	function loadWPScript(handle) {
+		return loadExtra(handle, 'before')
+			.then(() => loadExternalScript(handle))
+			.then(() => loadExtra(handle, 'after'));
+	}
+} )();
+</script>
+</body>
+</html>
