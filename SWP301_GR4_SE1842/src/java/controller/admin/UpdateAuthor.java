@@ -45,7 +45,7 @@ public class UpdateAuthor extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         User us = (User) session.getAttribute("usersession");
-        if (us == null || us.getRoleID() == 4) {
+        if (us == null || us.getRoleID() == 4|| us.getRoleID() == 3) {
             response.sendError(404);
             return;
         }
