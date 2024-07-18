@@ -7,7 +7,7 @@
         <div class="row align-items-sm-end align-items-center">
             <div class="col-md-4 col-7">
                 <a href="homepage" class="site-brand">
-                    <img src="${pageContext.request.contextPath}/assets/logo-text.png" alt="">
+                    <img src="${pageContext.request.contextPath}/assets/sportshoplogo.png" alt="">
                 </a>
             </div>
             <div class="col-md-5 order-3 order-md-2">
@@ -62,7 +62,7 @@
                 <input type="text" placeholder="Search Here">
                 <button class="search-btn"><i class="ion-ios-search-strong"></i></button>
             </form>
-            
+
         </div>
         <!-- search box end -->
         <!-- mobile menu start -->
@@ -73,6 +73,9 @@
                     <li class="menu-item">
                         <a href="${pageContext.request.contextPath}/homepage">Home</a>
 
+                    </li>
+                    <li class="menu-item">
+                        <a href="${pageContext.request.contextPath}/Blog">Blog</a>
                     </li>
                     <li class="menu-item">
                         <a href="${pageContext.request.contextPath}/shop">Shop</a>
@@ -94,7 +97,7 @@
                         <a href="#">My Account <i class="fas fa-angle-down"></i></a>
                         <ul class="sub-menu">
                             <li><a href="my-account">My Account</a></li>
-                           
+
 
                         </ul>
                     </li>
