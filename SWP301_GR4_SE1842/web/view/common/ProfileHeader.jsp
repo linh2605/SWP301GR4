@@ -14,12 +14,12 @@
     <body>
         <c:if test="${sessionScope.usersession != null}">
             <div class="d-flex border container justify-content-end">
-<!--                <h1>
-                    <button type="button" class="btn btn-primary ml-5 text-secondary bg-white textFullName" data-toggle="modal" data-target="#myModalProfile">
-                        ${sessionScope.usersession.fullName}
-                    </button>
-                </h1>-->
-<!--                <button type="button" class="btn btn-primary" onclick="logout()"> Logout </button>-->
+                <!--                <h1>
+                                    <button type="button" class="btn btn-primary ml-5 text-secondary bg-white textFullName" data-toggle="modal" data-target="#myModalProfile">
+                ${sessionScope.usersession.fullName}
+            </button>
+        </h1>-->
+                <!--                <button type="button" class="btn btn-primary" onclick="logout()"> Logout </button>-->
 
                 <!-- Modal -->
                 <div class="modal fade" id="myModalProfile" tabindex="-1" role="dialog" aria-labelledby="myModalProfileLabel" aria-hidden="true">
@@ -131,15 +131,15 @@
                                                                 <option <c:if test="${sessionScope.usersession.gender == 'Male'}">selected=""</c:if> value="Male">Male</option>
                                                                 <option <c:if test="${sessionScope.usersession.gender == 'Female'}">selected=""</c:if> value="Female">Female</option>
                                                                 <option <c:if test="${sessionScope.usersession.gender == 'Other'}">selected=""</c:if> value="Other">Other</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>                        
-                                                    <div class="row mb-3">
-                                                        <div class="col-sm-3">
-                                                            <h6 class="mb-0">Address</h6>
-                                                        </div>
-                                                        <div class="col-sm-9 text-secondary">
-                                                            <input id="address" type="text" class="form-control" value="${sessionScope.usersession.address}">
+                                                                </select>
+                                                            </div>
+                                                        </div>                        
+                                                        <div class="row mb-3">
+                                                            <div class="col-sm-3">
+                                                                <h6 class="mb-0">Address</h6>
+                                                            </div>
+                                                            <div class="col-sm-9 text-secondary">
+                                                                <input id="address" type="text" class="form-control" value="${sessionScope.usersession.address}">
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -170,5 +170,33 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- thư viện css boostrap -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="../js/profile.js"></script>
+        <script>
+                                                                function ValidatePassword(pass) {
+                                                                    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                                                                    return passwordPattern.test(pass);
+                                                                }
+
+                                                                function validateNumberInput(event) {
+                                                                    const input = event.target;
+                                                                    let value = input.value.replace(/\D/g, '');
+                                                                    if (value.length > 3 && value.length <= 6) {
+                                                                        value = value.replace(/(\d{3})(\d+)/, '$1-$2');
+                                                                    } else if (value.length > 6) {
+                                                                        value = value.replace(/(\d{3})(\d{3})(\d+)/, '$1-$2-$3');
+                                                                    }
+                                                                    if (value.length > 12) {
+                                                                        value = value.substring(0, 12)
+                                                                    }
+                                                                    input.value = value;
+                                                                }
+
+                                                                function togglePasswordVisibility(isFocused, passwordInput) {
+                                                                    if (isFocused) {
+                                                                        passwordInput.type = 'text';
+                                                                    } else {
+                                                                        passwordInput.type = 'password';
+                                                                    }
+                                                                }
+        </script>
     </body>
 </html>

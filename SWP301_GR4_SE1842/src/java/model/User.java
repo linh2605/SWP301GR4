@@ -13,7 +13,7 @@ import java.util.List;
  * @author THTP
  */
 public class User {
-
+    
     private int id;
     private String username;
     private String password;
@@ -25,19 +25,17 @@ public class User {
     private String phone;
     private String email;
     private String address;
-    private List<UserCart> carts;
-
-    public List<UserCart> getCarts() {
-        return carts;
-    }
-
-    public void setCarts(List<UserCart> carts) {
-        this.carts = carts;
-    }
+    private List<Book> wishList;
+    private List<CartItem> carts;
 
     public User() {
     }
 
+      public User(int user_id, String fullname) {
+        this.id = user_id;
+        this.fullName = fullname;
+    }
+    
     public User(int id, String username, String password, Role role, String avatar, String fullName, String gender, String phone, String email, String address) {
         this.id = id;
         this.username = username;
@@ -50,7 +48,9 @@ public class User {
         this.email = email;
         this.address = address;
     }
-
+ public int getUser_id() {
+        return id;
+    }
     public User(String username, String password, Role role, String avatar, String fullName, String gender, String phone, String email, String address) {
         this.username = username;
         this.password = password;
@@ -86,26 +86,75 @@ public class User {
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.carts = new UserCartDAO().getUserCarts(id);
     }
-
-    public User(int id, String fullName, String gender, String phone, String address) {
-        this.id = id;
-        this.fullName = fullName;
-        this.gender = gender;
-        this.phone = phone;
-        this.address = address;
-    }
-
-    public User(int id, String username, String password, String fullName, String gender, String phone, String email, String address) {
+    
+    public User(int id, String username, String password, int roleID, String avatar, String fullName, String gender, String phone, String email, String address, List<Book> wishList) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.roleID = roleID;
+        this.avatar = avatar;
         this.fullName = fullName;
         this.gender = gender;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.wishList = wishList;
+        this.carts = new UserCartDAO().getCarts(this.id + "");
+        if (this.carts.isEmpty()) {
+            this.carts = null;
+        }
+    }
+    
+    public int getCartQuantity() {
+        if (this.carts == null) return 0;
+        return this.carts.size();
+    }
+    
+    public int getBookQuantityInCart() {
+        if (this.carts == null) return 0;
+        int sum = 0;
+        for (CartItem c : this.carts) {
+            sum += c.getQuantity();
+        }
+        return sum;
+    }
+    
+    public String getTotalPriceInCart() {
+        if (this.carts == null) return "0";
+        float total = 0;
+        for (CartItem c : this.carts) {
+            total += (c.getBook().getFinalCost() * c.getQuantity());
+        }
+        return String.format("%.2f", total);
+    }
+
+    public List<CartItem> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<CartItem> carts) {
+        this.carts = carts;
+    }
+    
+    
+
+    public List<Book> getWishList() {
+        if (this.wishList == null) {
+            return new ArrayList<>();
+        }
+        return wishList;
+    }
+
+    public void setWishList(List<Book> wishList) {
+        this.wishList = wishList;
+    }
+    
+    public int wishListSize() {
+        if (this.wishList == null) {
+            return 0;
+        }
+        return this.wishList.size();
     }
 
     public int getId() {
@@ -157,7 +206,7 @@ public class User {
     }
 
     public String getGender() {
-        return gender;
+        return gender ;
     }
 
     public void setGender(String gender) {
@@ -196,9 +245,11 @@ public class User {
         this.role = role;
     }
 
+
     @Override
     public String toString() {
         return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", roleID=" + roleID + ", avatar=" + avatar + ", fullName=" + fullName + ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", address=" + address + '}';
     }
-
+    
+    
 }

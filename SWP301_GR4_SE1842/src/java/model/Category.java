@@ -4,38 +4,86 @@
  */
 package model;
 
+import java.util.List;
+
 /**
  *
- * @author ADMIN
+ * @author ACER
  */
 public class Category {
-    private int categoryID;
-    private String categoryName;
-    private String categoryDesc;
 
-    public Category() {}
+    private int id;
+    private String name;
+    private String desc;
+    private List<SubCategory> scList;
 
-    public int getCategoryID() {
-        return categoryID;
+    public Category(String name) {
+        this.name = name;
+    }
+    
+    public Category(int id) {
+        this.id = id;
+    }
+    
+    public Category() {
     }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
+    @Override
+    public String toString() {
+        return "Category{" + "id=" + id + ", name=" + name + ", desc=" + desc + ", scList=" + scList + '}';
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public Category(int id, String name, String desc, List<SubCategory> scList) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.scList = scList;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public Category(int id, String name, String desc) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+    }
+    
+    
+
+    public int getId() {
+        return id;
     }
 
-    public String getCategoryDesc() {
-        return categoryDesc;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setCategoryDesc(String categoryDesc) {
-        this.categoryDesc = categoryDesc;
+    public String getName() {
+        return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public List<SubCategory> getScList() {
+        return scList;
+    }
+
+    public void setScList(List<SubCategory> scList) {
+        this.scList = scList;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Category c = (Category) obj;
+        return this.id == c.id;
+    }
+
 }

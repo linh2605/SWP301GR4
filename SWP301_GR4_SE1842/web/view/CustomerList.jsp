@@ -2,78 +2,149 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- Google Font: Source Sans Pro -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-        <!-- Font Awesome Icons -->
-        <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
-        <!-- IonIcons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="./dist/css/adminlte.min.css">
-        <title>User List</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f8f9fa;
-                color: #343a40;
-                margin: 0;
-                padding: 20px;
-            }
-            h2 {
-                text-align: center;
-                color: #007bff;
-            }
-            table {
+<head>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+    <title>User List</title>
+    <style>
+        :root {
+            --primary-color: #3498db; /* Màu chính cho nút Update */
+            --secondary-color: #2ecc71; /* Màu chính cho nút Detail */
+            --text-color: #ffffff; /* Màu chữ */
+            --header-color: #6c757d; /* Màu cho tiêu đề bảng */
+            --row-hover-color: #f8d7da; /* Màu nền khi hover trên hàng */
+            --even-row-bg-color: #e9ecef; /* Màu nền cho hàng chẵn */
+            --odd-row-bg-color: #f8f9fa; /* Màu nền cho hàng lẻ */
+            --highlight-color: #ffc107; /* Màu cho các thành phần nổi bật */
+        }
+
+        /* Thiết lập chung cho nút */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-right: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-color);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        /* Màu và kiểu chữ cho nút Update */
+        .btn-update {
+            background-color: var(--primary-color);
+        }
+
+        .btn-update:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* Màu và kiểu chữ cho nút Detail */
+        .btn-detail {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-detail:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #343a40;
+            margin: 0;
+            padding: 20px;
+            background-image: url('https://lichvietpro.com/images/dc/wallpaper/football/1387853.jpg');
+            background-size: cover; /* Ensures the background image covers the entire page */
+            background-repeat: no-repeat; /* Prevents the background image from repeating */
+            background-attachment: fixed; /* Keeps the background image fixed in place */
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--highlight-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--header-color);
+            color: var(--text-color);
+        }
+
+        td img {
+            border-radius: 50%;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--even-row-bg-color);
+        }
+
+        tr:nth-child(odd) {
+            background-color: var(--odd-row-bg-color);
+        }
+
+        tr:hover {
+            background-color: var(--row-hover-color);
+        }
+
+        thead {
+            background-color: var(--header-color);
+            color: var(--text-color);
+        }
+
+        @media screen and (max-width: 600px) {
+            table, th, td {
+                display: block;
                 width: 100%;
-                border-collapse: collapse;
-                margin-top: 20px;
             }
-            th, td {
-                border: 1px solid #dee2e6;
-                padding: 12px;
-                text-align: left;
-            }
+
             th {
-                background-color: #007bff;
-                color: white;
+                text-align: right;
             }
-            td img {
-                border-radius: 50%;
+
+            th, td {
+                padding: 10px;
+                text-align: right;
             }
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
+
+            th:after {
+                content: ": ";
             }
-            tr:hover {
-                background-color: #e9ecef;
+
+            td {
+                text-align: left;
+                border-top: 0;
             }
-            thead {
-                background-color: #343a40;
-                color: white;
-            }
-            @media screen and (max-width: 600px) {
-                table, th, td {
-                    display: block;
-                    width: 100%;
-                }
-                th {
-                    text-align: right;
-                }
-                th, td {
-                    padding: 10px;
-                    text-align: right;
-                }
-                th:after {
-                    content: ": ";
-                }
-                td {
-                    text-align: left;
-                    border-top: 0;
-                }
-            }
-        </style>
-    </head>
-    <body>
+        }
+    </style>
+</head>
+<body>
+    <jsp:include page="common/ProfileHeader.jsp"></jsp:include>
+    <div class="wrapper">
+        <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
@@ -81,13 +152,16 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/SWP301_GR4_SE1842/view/dashboard.jsp" class="nav-link">Home</a>
+                    <a href="view/mktdashboard.jsp" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="/SWP301_GR4_SE1842/customerlist" class="nav-link">Customers List</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#myModalProfile">My Account</a>
                 </li>
             </ul>
 
@@ -99,9 +173,9 @@
                         <i class="fas fa-search"></i>
                     </a>
                     <div class="navbar-search-block">
-                        <form class="form-inline">
+                        <form action="customerlist" class="form-inline">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control form-control-navbar" name="search" type="text" placeholder="Search" aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit">
                                         <i class="fas fa-search"></i>
@@ -212,6 +286,9 @@
                 </li>
             </ul>
         </nav>
+        <div style="margin: 20px 0;">
+            <button onclick="window.location.href = 'add_customer'" class="btn btn-primary">Add New Customer</button>
+        </div>
         <h2>User List</h2>
         <table>
             <thead>
@@ -220,7 +297,6 @@
                     <th>Username</th>
                     <th>Password</th>
                     <th>Role ID</th>
-                    <th>Role</th>
                     <th>Avatar</th>
                     <th>Full Name</th>
                     <th>Gender</th>
@@ -237,7 +313,6 @@
                         <td>${user.username}</td>
                         <td>${user.password}</td>
                         <td>${user.roleID}</td>
-                        <td>${user.role.roleName}</td>
                         <td><img src="${user.avatar}" alt="Avatar" width="50" height="50"></td>
                         <td>${user.fullName}</td>
                         <td>${user.gender}</td>
@@ -245,32 +320,77 @@
                         <td>${user.email}</td>
                         <td>${user.address}</td>
                         <td>
-                            <a href="update_user?id=${user.id}">Update</a>
-                            <a href="customerlist?id=${user.id}">Delete</a>
+                            <a href="update_user?id=${user.id}" class="btn btn-update">Update</a>
+                            <a href="detail_user?id=${user.id}" class="btn btn-detail">Detail</a>
                         </td>
-                        <c:if test="${user.role == false}">
-
-                        </c:if>
-                        <c:if test="${user.role == true}">
-                            <td></td>
-                        </c:if>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
-        
+    </div>
 
-        <script src="./plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE -->
-        <script src="./dist/js/adminlte.js"></script>
+    <nav class="mt-3" aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <!-- Display the page numbers as links -->
+            <c:forEach var="pageNum" begin="1" end="${totalPages}">
+                <li class="page-item <c:if test='${pageNum == currentPage}'>active</c:if>'">
+                    <a class="page-link" href="?brandId=${sessionScope.currBrand}&&catId=${sessionScope.currCate}&&search=${sessionScope.currSearch}&amp;page=${pageNum}">${pageNum}</a>
+                </li>
+            </c:forEach>
+        </ul>
+    </nav>
+    <script>
+        const rowsPerPage = 10;
+        const rows = document.querySelectorAll('tbody tr');
+        const rowsCount = rows.length;
+        const pageCount = Math.ceil(rowsCount / rowsPerPage);
+        const pagination = document.querySelector('.pagination');
 
-        <!-- OPTIONAL SCRIPTS -->
-        <script src="./plugins/chart.js/Chart.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="./dist/js/demo.js"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="./dist/js/pages/dashboard3.js"></script>
-    </body>
+        function displayRows(start, end) {
+            rows.forEach((row, index) => {
+                row.style.display = index >= start && index < end ? '' : 'none';
+            });
+        }
+
+        function createPagination() {
+            for (let i = 2; i <= pageCount; i++) {
+                const li = document.createElement('li');
+                li.className = 'page-item';
+                const a = document.createElement('a');
+                a.className = 'page-link';
+                a.href = '#';
+                a.innerText = i;
+                a.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    displayRows((i - 1) * rowsPerPage, i * rowsPerPage);
+                    document.querySelectorAll('.page-item').forEach(item => item.classList.remove('active'));
+                    li.classList.add('active');
+                });
+                li.appendChild(a);
+                pagination.appendChild(li);
+            }
+        }
+
+        function initPagination() {
+            createPagination();
+            displayRows(0, rowsPerPage);
+            pagination.firstChild.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', initPagination);
+    </script>
+    <script src="./plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="./dist/js/adminlte.js"></script>
+
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="./plugins/chart.js/Chart.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="./dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="./dist/js/pages/dashboard3.js"></script>
+    
+</body>
 </html>

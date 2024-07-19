@@ -7,133 +7,279 @@ package dal;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import model.OrderStatus;
 import model.Order;
-import model.Orders;
+import model.OrderStatus;
+import model.PayMethod;
 import model.User;
 
 /**
  *
- * @author ADMIN
+ * @author ACER
  */
 public class OrderDAO extends DBContext {
 
-    // Read all products
-    public List<Orders> getAllOrderForUser(Integer userID, Integer statusId) {
-        List<Orders> orders = new ArrayList<>();
-        List<Object> list = new ArrayList<>();
-        UserDAO userDAO = new UserDAO();
+    PreparedStatement stm;
+    ResultSet rs;
+    List<Order> list;
+
+    public OrderDAO() {
+    }
+
+    public List<Order> getAll() {
+        list = new ArrayList<>();
         try {
-            StringBuilder query = new StringBuilder();
-            query.append("""
-                           SELECT o.*, od.Quantity, od.Price, p.ProductName,pm.name, s.name as sname FROM sportshoponline.order o
-                           join orderdetail od
-                           on o.OrderID = od.OrderID
-                           Join product p 
-                           on od.productId = p.productId
-                           JOIN orderstatus s on o.statusId = s.StatusID 
-                           JOIN paymentmethod pm on pm.PaymentMethodID = o.PaymentMethodID  where o.userID = ? """);
-
-            list.add(userID);
-            if (statusId != null) {
-                query.append("  and o.statusID = ? ");
-                list.add(statusId);
-            }
-            query.append(" ORDER BY o.orderID DESC");
-            PreparedStatement preparedStatement;
-            preparedStatement = connection.prepareStatement(query.toString());
-            mapParams(preparedStatement, list);
-
-            try (ResultSet rs = preparedStatement.executeQuery()) {
-                while (rs.next()) {
-                    Orders order = new Orders();
-                    order.setOrderID(rs.getInt("OrderID"));
-                    User u = userDAO.GetUserById(rs.getInt("UserID"));
-                    order.setUser(u);
-                    order.setOrderDate(rs.getDate("OrderDate"));
-                    order.setDeliverDate(rs.getDate("DeliverDate"));
-                    order.setPhone(rs.getString("Phone"));
-                    order.setAddress(rs.getString("Address"));
-                    order.setPaymentMethodID(rs.getInt("PaymentMethodID"));
-                    order.setPaymentMethodName(rs.getString("name"));
-                    order.setPrice(rs.getFloat("TotalPrice"));
-                    order.setStatusName(rs.getString("sname"));
-                    order.setProductName(rs.getString("ProductName"));
-                    order.setStatusID(rs.getInt("StatusID"));
-                    order.setQuantity(rs.getInt("Quantity"));
-                    orders.add(order);
+            String query = "SELECT * FROM [Order]";
+            stm = connection.prepareCall(query);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                User user = null;
+                if (rs.getString("UserID") != null && !rs.getString("UserID").trim().equals("")) {
+                    user = new UserDao().getById(rs.getInt("UserID"));
                 }
+                Order order = new Order(
+                        rs.getString(1),
+                        user,
+                        rs.getDate("OrderDate"),
+                        rs.getString("Phone"),
+                        rs.getString("Address"),
+                        new PayMethodDAO().getById(rs.getString("PayMethodID")),
+                        rs.getFloat("TotalPrice"),
+                        new OrderStatusDAO().getById(rs.getString("StatusID")),
+                        rs.getDate("DeliverDate"),
+                        rs.getString("CusFullname"),
+                        rs.getString("cusEmail")
+                );
+                list.add(
+                        order
+                );
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return orders;
+        return list;
     }
 
-    public List<OrderStatus> getAllOrderStatus() {
-        List<OrderStatus> orders = new ArrayList<>();
+    public void updateStatus(int odid, int statusid) {
         try {
-            String query = "SELECT * FROM sportshoponline.orderstatus; ";
-            PreparedStatement preparedStatement;
-            preparedStatement = connection.prepareStatement(query);
+            String query = "update [order] set statusId = ? where ID = ?";
+            stm = connection.prepareCall(query);
+            stm.setInt(1, statusid);
+            stm.setInt(2, odid);
+            stm.execute();
+        } catch (Exception e) {
+        }
+    }
 
-            try (ResultSet rs = preparedStatement.executeQuery()) {
-                while (rs.next()) {
-                    OrderStatus order = new OrderStatus();
-                    order.setId(rs.getInt("StatusID"));
-                    order.setName(rs.getString("Name"));
-                    order.setDescription(rs.getString("Description"));
-                    
-                    orders.add(order);
+    public int maxID() {
+        try {
+            String query = "select max(ID) as max from [order]";
+            stm = connection.prepareCall(query);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("max");
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public Order getById(String id) {
+        list = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM [Order] o, PaymentMethod p, OrderStatus s\n"
+                    + "WHERE o.PayMethodID = p.PaymentMethodID\n"
+                    + "AND o.StatusID = s.StatusID\n"
+                    + "AND o.ID = ?";
+            stm = connection.prepareCall(query);
+            stm.setString(1, id);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                User user = null;
+                if (rs.getString("UserID") != null && !rs.getString("UserID").trim().equals("")) {
+                    user = new UserDao().getById(rs.getInt("UserID"));
                 }
+                return (new Order(
+                        rs.getString(1),
+                        user,
+                        rs.getDate("OrderDate"),
+                        rs.getString("Phone"),
+                        rs.getString("Address"),
+                        new PayMethodDAO().getById(rs.getString("PayMethodID")),
+                        rs.getFloat("TotalPrice"),
+                        new OrderStatusDAO().getById(rs.getString("StatusID")),
+                        rs.getDate("DeliverDate"),
+                        rs.getString("CusFullname"),
+                        rs.getString("cusEmail")
+                ));
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return orders;
+        return null;
     }
 
-    public void mapParams(PreparedStatement ps, List<Object> args) throws SQLException {
-        int i = 1;
-        for (Object arg : args) {
-            if (arg instanceof Date) {
-                ps.setTimestamp(i++, new Timestamp(((Date) arg).getTime()));
-            } else if (arg instanceof Integer) {
-                ps.setInt(i++, (Integer) arg);
-            } else if (arg instanceof Long) {
-                ps.setLong(i++, (Long) arg);
-            } else if (arg instanceof Double) {
-                ps.setDouble(i++, (Double) arg);
-            } else if (arg instanceof Float) {
-                ps.setFloat(i++, (Float) arg);
+    public int Count() {
+        try {
+            String query = "select count(*) as cnt from [order]";
+            stm = connection.prepareCall(query);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("cnt");
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public float getIncome() {
+        try {
+            String query = "select sum(Price) as income from [Order] o\n"
+                    + "join OrderDetail od on o.ID = od.OrderID\n"
+                    + "where o.StatusID = 3";
+            stm = connection.prepareCall(query);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getFloat("income");
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public float getLost() {
+        try {
+            String query = "select sum(Price) as lost from refund r\n"
+                    + "join orderdetail od on r.OrderDetalID = od.OrderDetalID\n"
+                    + "Where r.RefundStatus = 1";
+            stm = connection.prepareCall(query);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getFloat("lost");
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public List<Order> getOrdersOfACustomer(int userid) {
+        list = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM [Order] Where UserID = ?";
+            stm = connection.prepareCall(query);
+            stm.setInt(1, userid);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                User user = null;
+                if (rs.getString("UserID") != null && !rs.getString("UserID").trim().equals("")) {
+                    user = new UserDao().getById(rs.getInt("UserID"));
+                }
+                list.add(
+                        (new Order(
+                                rs.getString(1),
+                                user,
+                                rs.getDate("OrderDate"),
+                                rs.getString("Phone"),
+                                rs.getString("Address"),
+                                new PayMethodDAO().getById(rs.getString("PayMethodID")),
+                                rs.getFloat("TotalPrice"),
+                                new OrderStatusDAO().getById(rs.getString("StatusID")),
+                                rs.getDate("DeliverDate"),
+                                rs.getString("CusFullname"),
+                                rs.getString("cusEmail")
+                        ))
+                );
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list;
+    }
+
+    public HashMap<Order, Integer> getOrderThatHasRefundBook() {
+        HashMap<Order, Integer> refundsIncludeStatus = new HashMap<>();
+        try {
+            String query = "SELECT distinct u.UserID, [Order].ID, [Order].CusFullname, r.RefundStatus FROM\n"
+                    + "Refund r\n"
+                    + "left join (SELECT OrderDetalID, OrderID,  b.BookID, Quantity, Price,\n"
+                    + "BookTitle, BookCost, Stock, BookRate, BookDesc, a.AuthorID, AuthorName,\n"
+                    + "Bio, p.PublisherID, PublisherName, PublisherEmail, PublisherPhone\n"
+                    + "FROM OrderDetail o, Book b, Publisher p, Author a\n"
+                    + "WHERE b.AuthorID = a.AuthorID\n"
+                    + "AND b.PublisherID = p.PublisherID\n"
+                    + "AND o.BookID = b.BookID) od on r.OrderDetalID = od.OrderDetalID\n"
+                    + ", [Order]\n"
+                    + "left join [User] u on u.UserID = [Order].UserID\n"
+                    + "WHERE [Order].ID = od.OrderID";
+            stm = connection.prepareCall(query);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                Order order = new Order(
+                        rs.getString(2),
+                        new UserDao().getById(rs.getInt(1)),
+                        null,
+                        null,
+                        null,
+                        null,
+                        0,
+                        null,
+                        null,
+                        rs.getString("CusFullname"),
+                        null
+                );
+                int refundStatus = rs.getInt("RefundStatus");
+                refundsIncludeStatus.put(order, refundStatus);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return refundsIncludeStatus;
+    }
+
+    public void placeOrder(Order order) {
+        try {
+            String query = "INSERT INTO dbo.[Order] (UserID, CusFullname, OrderDate, Phone, CusEmail, Address, PayMethodID, TotalPrice, StatusID)\n"
+                    + "VALUES\n"
+                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            stm = connection.prepareCall(query);
+            if (order.getUser() != null) {
+                stm.setInt(1, order.getUser().getId());
             } else {
-                ps.setString(i++, (String) arg);
+                stm.setNull(1, Types.INTEGER);
             }
 
+            stm.setString(2, order.getCusFullname());
+            stm.setDate(3, (Date) order.getOrderDate());
+            stm.setString(4, order.getPhone());
+            stm.setString(5, order.getCusEmail());
+            stm.setString(6, order.getAddress());
+            stm.setString(7, order.getPaymethod().getId());
+            stm.setFloat(8, order.getTotalPrice());
+            stm.setString(9, "1");
+            stm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    public List<Orders> Paging(List<Orders> orders, int page, int pageSize) {
-        int fromIndex = (page - 1) * pageSize;
-        int toIndex = Math.min(fromIndex + pageSize, orders.size());
 
-        if (fromIndex > toIndex) {
-            // Handle the case where fromIndex is greater than toIndex
-            fromIndex = toIndex;
-        }
-
-        return orders.subList(fromIndex, toIndex);
-    }
-
-    public static void main(String[] args) {
-        OrderDAO dao = new OrderDAO();
-        List<OrderStatus> l = dao.getAllOrderStatus();
-        for (OrderStatus b : l) {
-            System.out.println(b);
+    public void Delete(String oid) {
+        try {
+            String query = "DELETE From [Order] Where ID = ?";
+            stm = connection.prepareCall(query);
+            stm.setString(1, oid);
+            stm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

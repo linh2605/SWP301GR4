@@ -6,27 +6,27 @@ package model;
 
 /**
  *
- * @author ADMIN
+ * @author ACER
  */
 public class OrderStatus {
-    private int id;
+    private String id;
     private String name;
-    private String description;
+    private String desc;
 
     public OrderStatus() {
     }
 
-    public OrderStatus(int id, String name, String description) {
+    public OrderStatus(String id, String name, String desc) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.desc = desc;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -38,12 +38,12 @@ public class OrderStatus {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
     
     

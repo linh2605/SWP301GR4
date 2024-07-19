@@ -56,7 +56,7 @@
         <div class="row align-items-center">
             <div class="col-lg-3">
                 <a href="${pageContext.request.contextPath}/homepage" class="site-brand">
-                    <img src="${pageContext.request.contextPath}/assets/logo-text.png" alt="">
+                    <img src="${pageContext.request.contextPath}\assets\sportshoplogo.png" alt="">
                 </a>
             </div>
             <div class="col-lg-5">
@@ -68,7 +68,7 @@
                         </form>
                     </div>
                     <div class="dropdown-menu" id="suggestions">
-                        <div id="suggestions-content">Content goes here</div>
+                        <div id="suggestions-content">Loading...</div>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="cart-dropdown-block" style="text-align: center">
                                     <c:if test="${sessionScope.cart eq null || sessionScope.cart.getQuantity() == 0}">
-                                        <span style="margin-bottom: 1rem">There is no cart!</span>
+                                        <span style="margin-bottom: 1rem">There is no item in cart!</span>
                                     </c:if>
                                     <c:if test="${sessionScope.cart.getQuantity() ne null}">
                                         <div style="height: 10rem ;overflow-y: auto">
@@ -109,7 +109,7 @@
                                                 <div class=" single-cart-block ">
                                                     <div class="cart-product">
                                                         <a href="detail?bid=${cart.book.id}" class="image">
-                                                            <img src="${cart.book.img0}?ran=123">
+                                                            <img src="${cart.book.img0}?ran=<%= Math.random() %>">
                                                         </a>
                                                         <div class="content">
                                                             <h3 class="title"><a href="detail?bid=${cart.book.id}">${cart.book.title}</a></h3>
@@ -245,6 +245,9 @@
                         <!-- Shop -->
                         <li class="menu-item">
                             <a href="shop">shop</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="Blog">Blog</a>
                         </li>
                         <li class="menu-item">
                             <a href="${pageContext.request.contextPath}/Contact">Contact</a>

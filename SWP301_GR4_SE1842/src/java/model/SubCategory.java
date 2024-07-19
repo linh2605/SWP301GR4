@@ -6,45 +6,82 @@ package model;
 
 /**
  *
- * @author ADMIN
+ * @author ACER
  */
-public class Subcategory {
-      private int subCategoryID;
-    private String subCategoryName;
-    private String subCategoryDesc;
-    private int categoryID;
+public class SubCategory {
+    private int id;
+    private String name;
+    private String desc;
+    private Category category;
 
-    public Subcategory() {}
-
-    public int getSubCategoryID() {
-        return subCategoryID;
+    public SubCategory() {
     }
 
-    public void setSubCategoryID(int subCategoryID) {
-        this.subCategoryID = subCategoryID;
+    @Override
+    public String toString() {
+        return "SubCategory{" + "id=" + id + ", name=" + name + ", desc=" + desc + ", category=" + category + '}';
     }
 
-    public String getSubCategoryName() {
-        return subCategoryName;
+    public SubCategory(String name, String desc, Category category) {
+        this.name = name;
+        this.desc = desc;
+        this.category = category;
     }
 
-    public void setSubCategoryName(String subCategoryName) {
-        this.subCategoryName = subCategoryName;
+    public SubCategory(int id, String name, String desc) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
     }
 
-    public String getSubCategoryDesc() {
-        return subCategoryDesc;
+    public SubCategory(int id, String name, String desc, Category category) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.category = category;
+    }
+    
+
+    public int getId() {
+        return id;
     }
 
-    public void setSubCategoryDesc(String subCategoryDesc) {
-        this.subCategoryDesc = subCategoryDesc;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getCategoryID() {
-        return categoryID;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    
+    
+    @Override
+    public boolean equals(Object obj) {
+        SubCategory s = (SubCategory) obj;
+        return this.id == s.id;
+    }
+    
+    
+    
 }
