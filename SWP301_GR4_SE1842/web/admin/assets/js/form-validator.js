@@ -185,7 +185,6 @@ Validator.minLength = function (selector, min, message) {
     };
 };
 
-
 Validator.minLengthAllowNull = function (selector, min, message) {
     return {
         selector: selector,
@@ -217,12 +216,20 @@ Validator.isDigit = function (selector, message) {
     };
 };
 
-Validator.isDigitValid = function (selector, min, max, message) {
+Validator.isDigitValid = function (selector, max, message) {
     return {
         selector: selector,
         test: function (value) {
-            return(value.length >= min && value.length <= max) ? undefined : message;
-
+            var digitRegex = /^\d+$/;
+            if (digitRegex.test(value)) {
+                if (parseInt(value) < max) {
+                    return undefined;  // Valid input
+                } else {
+                    return message || 'Value must be smaller than ' + max + '!';  // Invalid input
+                }
+            } else {
+                return message || 'Invalid value!';
+            }
         }
     };
 };
@@ -230,9 +237,8 @@ Validator.isDigitFloat = function (selector, message) {
     return {
         selector: selector,
         test: function (value) {
-            var digitRegex = /^\d*\.?\d+$/;
-//            var digitRegex = /[1-9]+(\.\d{1,2})?/;
-            return digitRegex.test(value) ? undefined : message;
+            var digitRegex = /^-?\d*\.?\d+$/;
+            return digitRegex.test(value) ? undefined : message || 'Invalid value!';
         }
     };
 };
@@ -240,9 +246,7 @@ Validator.isPhone = function (selector, message) {
     return {
         selector: selector,
         test: function (value) {
-            // Bắt đầu từ số 0, có độ dài từ 9 đến 12 số
-            var phoneRegex = /^0\d{8,11}$/;
-
+            var phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g;
             return phoneRegex.test(value) ? undefined : message || 'Invalid phone number!';
         }
     };

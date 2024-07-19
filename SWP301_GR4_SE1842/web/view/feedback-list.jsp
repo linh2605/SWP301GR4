@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <%@ include file="common/header-top-area.jsp" %>
+        <%@ include file="../common/header-top-area.jsp" %>
     </header>
 
     <div class="container mt-5">
@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th>Feedback ID</th>
-                        <th>Product</th>
+                        <th>Product ID</th>
                         <th>Comment</th>
                         <th>Rating</th>
                         <th>Date</th>
@@ -30,10 +30,8 @@
                 <tbody>
                     <c:forEach var="feedback" items="${feedbacks}">
                         <tr>
-                            <td>${feedback.feedbackID}</td>
-                            <td> 
-                                <a href="${pageContext.request.contextPath}/view/product?pId=${feedback.product.productID}"> ${feedback.product.productName}</a>
-                            </td>
+                            <td>${feedback.id}</td>
+                            <td>${feedback.productId}</td>
                             <td>${feedback.comment}</td>
                             <td>${feedback.rating}</td>
                             <td>${feedback.feedbackDate}</td>
@@ -71,7 +69,7 @@
     </div>
 
     <footer>
-        <%@ include file="common/footer.jsp" %>
+        <%@ include file="../common/footer.jsp" %>
     </footer>
 
     <!-- all js here -->

@@ -1,7 +1,3 @@
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <html>
     <head>
 
@@ -20,23 +16,6 @@
             .form-gap {
                 padding-top: 70px;
             }
-            .loader {
-                border-top: 2px solid #3498db; /* Blue */
-                border-radius: 50%;
-                width: 12px;
-                height: 12px;
-                animation: spin 1s linear infinite;
-            }
-
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-
         </style>
     </head>
 
@@ -52,30 +31,36 @@
                                     <i class="fa fa-lock fa-4x"></i>
                                 </h3>
                                 <h2 class="text-center">Enter OTP</h2>
+                                <%
+if(request.getAttribute("message")!=null)
+{
+        out.print("<p class='text-danger ml-1'>"+request.getAttribute("message")+"</p>");
+}
+		  
+                                %>
+
                                 <div class="panel-body">
-                                    <form id="register-form" role="form" autocomplete="off"
+
+                                    <form id="register-form" action="ValidateOtp" role="form" autocomplete="off"
                                           class="form" method="post">
 
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i
-                                                        class="glyphicon glyphicon-envelope color-blue"></i></span> 
-                                                <input value="${otpInputted}"
-                                                       id="opt" name="otp" placeholder="Enter OTP"
-                                                       class="form-control" type="text" required="required">
+                                                        class="glyphicon glyphicon-envelope color-blue"></i></span> <input
+                                                    id="opt" name="otp" placeholder="Enter OTP"
+                                                    class="form-control" type="text" required="required">
                                             </div>
-                                            <span id="err__container"></span>
                                         </div>
                                         <div class="form-group">
-                                            <div onclick="verifyOTP('${pageContext.request.contextPath}/verify-otp')" class="btn btn-lg btn-primary btn-block">Submit</div>
+                                            <input name="recover-submit"
+                                                   class="btn btn-lg btn-primary btn-block"
+                                                   value="Reset Password" type="submit">
                                         </div>
 
+                                        <input type="hidden" class="hide" name="token" id="token"
+                                               value="">
                                     </form>
-
-                                    <div id="resend__container">
-                                        <button onclick="resendOTP()" id="resendBtn" class="btn btn-sm btn-secondary" disabled style="display: none;">Resend OTP</button>
-                                        <span id="timer">Resend in 30 seconds</span>
-                                    </div>
 
                                 </div>
                             </div>
@@ -84,72 +69,5 @@
                 </div>
             </div>
         </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                startTimer();
-            });
-
-            function startTimer() {
-                let countdown = 30; // 30 seconds
-                const resendBtn = document.getElementById('resendBtn');
-                const timerElement = document.getElementById('timer');
-
-                const interval = setInterval(function () {
-                    countdown--;
-
-                    if (countdown <= 0) {
-                        clearInterval(interval);
-                        resendBtn.removeAttribute('disabled');
-                        resendBtn.style.display = 'block'; // Show the button
-                        timerElement.style.display = 'none'; // Hide the timer text
-                    } else {
-                        timerElement.textContent = 'Resend in ' + countdown + ' seconds';
-                    }
-                }, 1000); // Run every second
-            }
-
-            function resendOTP() {
-                // Show the loader and disable the button while processing
-                const resendBtn = document.getElementById('resendBtn');
-                resendBtn.innerHTML = '<span class="loader"></span> Resending...';
-                resendBtn.setAttribute('disabled', true);
-
-                $.ajax({
-                    type: 'POST',
-                    data: {},
-                    url: 'ResendOTP',
-                    success: function (result) {
-                        document.querySelector('#resend__container').innerHTML = result;
-                        startTimer();
-                    },
-                    error: function (error) {
-                        // Handle any errors if needed
-                        console.error('Error while resending OTP:', error);
-                        resendBtn.innerHTML = 'Resend OTP';
-                        resendBtn.removeAttribute('disabled');
-                    }
-                });
-            }
-
-            function verifyOTP(url) {
-                $.ajax({
-                    type: 'POST',
-                    data: {otp: document.getElementById('opt').value},
-                    url: url,
-                    dataType: 'json',
-                    success: function (response) {
-                        if (response.status === 'success-forgotpassword') {
-                            window.location.href = 'reset-password'; 
-                        } else if (response.status === 'success-emailverification') {
-                            window.location.href = 'signup';
-                        } else {
-                            document.querySelector('#err__container').innerHTML = response.message;
-                        }
-                    }
-                });
-            }
-        </script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     </body>
 </html>

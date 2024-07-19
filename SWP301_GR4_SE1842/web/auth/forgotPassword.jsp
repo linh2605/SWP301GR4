@@ -1,13 +1,9 @@
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!doctype html>
 <html>
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <title>Snippet - BBBootstrap</title>
+        <title>Reset your password</title>
         <link
             href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'
             rel='stylesheet'>
@@ -53,27 +49,6 @@
                 outline: 0;
                 box-shadow: 0 0 0 0px #28a745
             }
-            .loader {
-                border: 4px solid #f3f3f3;
-                border-top: 4px solid #28a745;  /* #28a745 is the color for .btn-success in Bootstrap */
-                border-radius: 50%;
-                width: 20px;
-                height: 20px;
-                animation: spin 1s linear infinite;
-                display: inline-block;
-                vertical-align: middle;
-                margin-right: 8px;
-            }
-
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-
         </style>
     </head>
     <body oncontextmenu='return false' class='snippet-body'>
@@ -93,13 +68,11 @@
                                 next page</li>
                         </ol>
                     </div>
-                    <form class="card mt-4" action="reset-password" method="POST">
+                    <form class="card mt-4" action="forgotPassword" method="POST">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="email-for-pass">Enter your email address</label> 
-                                <input value="${emailInputted}" class="form-control" type="text" name="email" id="email-for-pass" required="">
-                                <span style="margin-top:.2rem;color:tomato;font-size:.8rem">${err}</span>
-                                <small
+                                <label for="email-for-pass">Enter your email address</label> <input
+                                    class="form-control" type="text" name="email" id="email-for-pass" required=""><small
                                     class="form-text text-muted">Enter the registered email address . Then we'll
                                     email a OTP to this address.</small>
                             </div>
@@ -107,8 +80,8 @@
                         <div class="card-footer">
                             <button class="btn btn-success" type="submit">Get New
                                 Password</button>
-                            <a href="auth/login" class="btn btn-danger">Back to
-                                Login</a>
+                            <button class="btn btn-danger" type="submit">Back to
+                                Login</button>
                         </div>
                     </form>
                 </div>
@@ -116,14 +89,8 @@
         </div>
         <script type='text/javascript'
         src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
-        <script>
-            document.querySelector('.card').addEventListener('submit', function () {
-                const btn = document.querySelector('.btn-success');
-                btn.setAttribute('disabled', 'true');  // Disable the button to prevent multiple submissions
-                btn.innerHTML = '<span class="loader"></span> Sending...';  // Add the loader and change button text
-            });
-
-        </script>
-
+        <script type='text/javascript' src=''></script>
+        <script type='text/javascript' src=''></script>
+        <script type='text/Javascript'></script>
     </body>
 </html>

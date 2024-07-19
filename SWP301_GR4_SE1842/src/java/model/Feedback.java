@@ -1,126 +1,74 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
-import java.sql.Date;
 
-/**
- *
- * @author 84375
- */
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+
 public class Feedback {
-    private int fbId;
-    private int fbCusId;
-    private int fbProId;
-    private int fbStar;
-    private String fbContent;
-    private String fbImage;
-    private Date fbDate;
-    private int fbStatus;
-    private User user;
-    private Book book;
+    private int feedbackID;
+    private int productID;
+    private String userName;
+    private BigDecimal rating;
+    private String comment;
+    private Timestamp feedbackDate;
 
-    public Feedback() {
+    // Constructors
+    public Feedback() {}
+
+    public Feedback(int feedbackID, int productID, String userName, BigDecimal rating, String comment, Timestamp feedbackDate) {
+        this.feedbackID = feedbackID;
+        this.productID = productID;
+        this.userName = userName;
+        this.rating = rating;
+        this.comment = comment;
+        this.feedbackDate = feedbackDate;
     }
 
-    public Feedback(int fbId, int fbCusId, int fbProId, int fbStar, String fbContent, String fbImage, Date fbDate, int fbStatus) {
-        this.fbId = fbId;
-        this.fbCusId = fbCusId;
-        this.fbProId = fbProId;
-        this.fbStar = fbStar;
-        this.fbContent = fbContent;
-        this.fbImage = fbImage;
-        this.fbDate = fbDate;
-        this.fbStatus = fbStatus;
+    // Getters and Setters
+    public int getFeedbackID() {
+        return feedbackID;
     }
 
- 
-
-    public int getFbId() {
-        return fbId;
+    public void setFeedbackID(int feedbackID) {
+        this.feedbackID = feedbackID;
     }
 
-    public int getFbCusId() {
-        return fbCusId;
+    public int getProductID() {
+        return productID;
     }
 
-    public int getFbProId() {
-        return fbProId;
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 
-    public int getFbStar() {
-        return fbStar;
+    public String getUserName() {
+        return userName;
     }
 
-    public User getUser() {
-        return user;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public BigDecimal getRating() {
+        return rating;
     }
 
-    public Book getBook() {
-        return book;
+    public void setRating(BigDecimal rating) {
+        this.rating = rating;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public String getComment() {
+        return comment;
     }
 
-
-    public String getFbContent() {
-        return fbContent;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public String getFbImage() {
-        return fbImage;
+    public Timestamp getFeedbackDate() {
+        return feedbackDate;
     }
 
-    public Date getFbDate() {
-        return fbDate;
+    public void setFeedbackDate(Timestamp feedbackDate) {
+        this.feedbackDate = feedbackDate;
     }
-
-    public int getFbStatus() {
-        return fbStatus;
-    }
-
-    public void setFbId(int fbId) {
-        this.fbId = fbId;
-    }
-
-    public void setFbCusId(int fbCusId) {
-        this.fbCusId = fbCusId;
-    }
-
-    public void setFbProId(int fbProId) {
-        this.fbProId = fbProId;
-    }
-
-    public void setFbStar(int fbStar) {
-        this.fbStar = fbStar;
-    }
-
-    public void setFbContent(String fbContent) {
-        this.fbContent = fbContent;
-    }
-
-    public void setFbImage(String fbImage) {
-        this.fbImage = fbImage;
-    }
-
-    public void setFbDate(Date fbDate) {
-        this.fbDate = fbDate;
-    }
-
-    public void setFbStatus(int fbStatus) {
-        this.fbStatus = fbStatus;
-    }
-    
-    @Override
-    public String toString() {
-        return "Feedback{" + "cfbId=" + fbId + ", fbCusId=" + fbCusId + ", fbProID=" + fbProId + ", fbStar=" + fbStar + ", fbContent=" + fbContent + ", fbImage=" + fbImage + ", fbDate=" + fbDate + ", fbStatus=" + fbStatus + '}';
-    }
-    
 }

@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     </head>
 
-    <body class="hold-transition sidebar-mini ">
+    <body class="hold-transition sidebar-mini">
         <div class="wrapper">
             <!-- Navbar -->
             
@@ -33,9 +33,6 @@
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
                         <a href="../customerlist" class="nav-link">Customers List</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="${pageContext.request.contextPath}/view/marketing-feedback" class="nav-link">Feedback List</a>
                     </li>
                 </ul>
 

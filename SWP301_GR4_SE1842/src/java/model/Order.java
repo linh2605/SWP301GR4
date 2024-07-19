@@ -4,86 +4,101 @@
  */
 package model;
 
-import dal.OrderDetailDAO;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
 public class Order {
-    private String id;
-    private User user;
-    private String cusFullname;
-    private Date orderDate;
-    private Date deliverDate;
-    private String phone;
-    private String cusEmail;
-    private String address;
-    private PayMethod paymethod;
-    private float totalPrice;
-    private OrderStatus status;
-    private List<OrderDetail> odList;
+    int orderId;
+    int userId;
+    String fullName;
+    Date orderDate;
+    String orderDateString;
+    Date deliverDate;
+    String deliverDateString;
+    String phone;
+    String email;
+    String address;
+    int paymentMethodId;
+    String  paymentName;
+    double totalPrice;
+    int statusId;
+    String statusName;
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     public Order() {
     }
 
-    public Order(String id, User user, Date orderDate, String phone, String Address, PayMethod paymethod, float totalPrice, OrderStatus status, Date deliverDate, String cusFullname, String email) {
-        this.id = id;
-        this.user = user;
+    public Order(int orderId, int userId, String fullName, Date orderDate, Date deliverDate, String phone, String email, String address, int paymentMethodId, String paymentName, double totalPrice, int statusId, String statusName) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.fullName = fullName;
         this.orderDate = orderDate;
+        this.deliverDate = deliverDate;
         this.phone = phone;
-        this.address = Address;
-        this.paymethod = paymethod;
+        this.email = email;
+        this.address = address;
+        this.paymentMethodId = paymentMethodId;
+        this.paymentName = paymentName;
         this.totalPrice = totalPrice;
-        this.status = status;
+        this.statusId = statusId;
+        this.statusName = statusName;
+    }
+
+    public Order(int orderId, int userId, String fullName, Date orderDate, Date deliverDate, String phone, String email, String address, String paymentName, double totalPrice, String statusName) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.fullName = fullName;
+        this.orderDate = orderDate;
         this.deliverDate = deliverDate;
-        this.cusFullname = cusFullname;
-        this.cusEmail = email;
-        this.odList = new OrderDetailDAO().getByOrder(this.id);
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.paymentName = paymentName;
+        this.totalPrice = totalPrice;
+        this.statusName = statusName;
     }
 
-    public String getCusFullname() {
-        return cusFullname;
+    public String getOrderDateString() {
+        return orderDateString;
     }
 
-    public void setCusFullname(String cusFullname) {
-        this.cusFullname = cusFullname;
+    public void setOrderDateString(String orderDateString) {
+        this.orderDateString = orderDateString;
     }
 
-    public String getCusEmail() {
-        return cusEmail;
+    public String getDeliverDateString() {
+        return deliverDateString;
     }
 
-    public void setCusEmail(String cusEmail) {
-        this.cusEmail = cusEmail;
+    public void setDeliverDateString(String deliverDateString) {
+        this.deliverDateString = deliverDateString;
     }
 
-
-    public Date getDeliverDate() {
-        return deliverDate;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setDeliverDate(Date deliverDate) {
-        this.deliverDate = deliverDate;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
-    
-    
-    public String getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public User getUser() {
-        return user;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public Date getOrderDate() {
@@ -94,6 +109,14 @@ public class Order {
         this.orderDate = orderDate;
     }
 
+    public Date getDeliverDate() {
+        return deliverDate;
+    }
+
+    public void setDeliverDate(Date deliverDate) {
+        this.deliverDate = deliverDate;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -102,48 +125,66 @@ public class Order {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String Address) {
-        this.address = Address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public PayMethod getPaymethod() {
-        return paymethod;
+    public int getPaymentMethodId() {
+        return paymentMethodId;
     }
 
-    public void setPaymethod(PayMethod paymethod) {
-        this.paymethod = paymethod;
+    public void setPaymentMethodId(int paymentMethodId) {
+        this.paymentMethodId = paymentMethodId;
     }
 
-    public float getTotalPrice() {
+    public String getPaymentName() {
+        return paymentName;
+    }
+
+    public void setPaymentName(String paymentName) {
+        this.paymentName = paymentName;
+    }
+
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(float totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
-    public OrderStatus getStatus() {
-        return status;
+    public int getStatusId() {
+        return statusId;
     }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
 
-    public List<OrderDetail> getOdList() {
-        return odList;
+    public String getStatusName() {
+        return statusName;
     }
 
-    public void setOdList(List<OrderDetail> odList) {
-        this.odList = odList;
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Order{" + "orderId=" + orderId + ", userId=" + userId + ", fullName=" + fullName + ", orderDate=" + orderDateString + ", deliverDate=" + deliverDateString + ", phone=" + phone + ", email=" + email + ", address=" + address + ", paymentMethodId=" + paymentMethodId + ", paymentName=" + paymentName + ", totalPrice=" + totalPrice + ", statusId=" + statusId + ", statusName=" + statusName + '}';
+    }
     
     
 }

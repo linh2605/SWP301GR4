@@ -1,8 +1,4 @@
 <!doctype html>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <html>
     <head>
         <meta charset='utf-8'>
@@ -25,10 +21,6 @@
                 background-color: #dee2e6;
                 border: #dee2e6
             }
-            .form-group .span {
-                color:tomato;
-                font-size: .8rem;
-            }
         </style>
     </head>
     <body oncontextmenu='return false' class='snippet-body bg-info'>
@@ -48,22 +40,20 @@
                                 </h1>
                             </div>
                             <div class="pt-3 pb-3">
-                                <form id="resetpass__form" class="form-horizontal" action="set-new-pass" method="POST">
+                                <form class="form-horizontal" action="newPassword" method="POST">
                                     <!-- User Name Input -->
-                                    <div class="row justify-content-center px-3">
-                                        <div class="form-group col-9 px-0">
-                                            <input id="pass" type="password" name="newPassword" placeholder="&#xf084; &nbsp; New Password"
+                                    <div class="form-group row justify-content-center px-3">
+                                        <div class="col-9 px-0">
+                                            <input type="text" name="password" placeholder="&#xf084; &nbsp; New Password"
                                                    class="form-control border-info placeicon">
-                                            <span class="form-message"></span>
                                         </div>
                                     </div>
                                     <!-- Password Input -->
-                                    <div class="row justify-content-center px-3">
-                                        <div class="form-group col-9 px-0">
-                                            <input id="repass" type="password" name="confPassword"
+                                    <div class="form-group row justify-content-center px-3">
+                                        <div class="col-9 px-0">
+                                            <input type="password" name="confPassword"
                                                    placeholder="&#xf084; &nbsp; Confirm New Password"
                                                    class="form-control border-info placeicon">
-                                            <span class="form-message"></span>
                                         </div>
                                     </div>
 
@@ -106,23 +96,6 @@
         </div>
         <script type='text/javascript'
         src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                Validator({
-                    form: '#resetpass__form',
-                    formGroupSelector: '.form-group',
-                    errorSelector: '.form-message',
-                    rules: [
-                        Validator.isRequired('#pass', 'Please enter new password!'),
-                        Validator.isRequired('#repass', 'Please confirm your password!'),
-                        Validator.minLength('#pass', 8),
-                        Validator.isConfirmed('#repass', function () {
-                            return document.querySelector('#resetpass__form #pass').value
-                        }, 'Password does not match!')
-                    ]
-                });
-            });
-        </script>
-        <script src="${pageContext.request.contextPath}/admin/assets/js/form-validator.js"></script>
+
     </body>
 </html>

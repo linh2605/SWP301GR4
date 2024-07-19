@@ -4,62 +4,102 @@
  */
 package dal;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.math.BigDecimal;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import model.CartItem;
+import model.Product;
+import model.User;
+import model.UserCart;
 
 /**
  *
- * @author ACER
+ * @author auiri
  */
 public class UserCartDAO extends DBContext {
 
     private PreparedStatement stm;
     private ResultSet rs;
-    private List<CartItem> list;
 
-    public List<CartItem> getCarts(String userid) {
-        list = new ArrayList<>();
+    public List<UserCart> getUserCarts(int id) {
+        List<UserCart> list = new ArrayList<>();
+        String sql = "SELECT *\n"
+                + "         FROM UserCart\n"
+                + "          JOIN Product ON UserCart.ProductID = Product.ProductID\n"
+                + "            JOIN User ON UserCart.UserID = User.UserID\n"
+                + "            where User.UserID = ?";
         try {
-            String q = "SELECT * FROM UserCart WHERE UserID = ?";
-            stm = connection.prepareCall(q);
-            stm.setString(1, userid);
-            rs = stm.executeQuery();
-            while (rs.next()) {
-                list.add(
-                        new CartItem(
-                                new BookDAO().getById(rs.getInt("BookID")),
-                                rs.getInt("quantity"))
-                );
+            connection = new DBContext().getConnection();
+            if (connection == null) {
+                System.err.println("Database connection is null.");
+                return null;
             }
-        } catch (Exception e) {
-        }
-        return list;
-    }
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id + "");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                UserCart cart = new UserCart();
+                Product product = new Product();
+                User user = new User();
 
-    public void updateCart(String userid, String bookid, int quantity) {
-        try {
-            String q = "UPDATE usercart SET Quantity = ?, TotalPrice = ? WHERE UserID = ? AND BookID = ?";
-            stm = connection.prepareCall(q);
-            stm.setInt(1, quantity);
-            stm.setFloat(2, new BookDAO().getById(Integer.valueOf(bookid)).getFinalCost() * quantity);
-            stm.setString(3, userid);
-            stm.setString(4, bookid);
-            stm.execute();
-        } catch (Exception e) {
+                product.setProductID(rs.getInt("ProductID"));
+                product.setProductPrice(rs.getBigDecimal("ProductPrice"));
+                product.setProductName(rs.getString("ProductName"));
+                product.setStock(rs.getInt("Stock"));
+                product.setProductRating(rs.getInt("ProductRating"));
+                product.setProductDesc(rs.getString("ProductDesc"));
+                product.setBrandID(rs.getInt("BrandID"));
+                product.setSupplierID(rs.getInt("SupplierID"));
+
+                user.setId(rs.getInt("UserId"));
+                user.setUsername(rs.getString("Username"));
+                user.setPassword(rs.getString("Password"));
+                user.setRoleID(rs.getInt("RoleID"));
+                user.setAvatar(rs.getString("Avatar"));
+                user.setFullName(rs.getString("FullName"));
+                user.setGender(rs.getString("Gender"));
+                user.setPhone(rs.getString("Phone"));
+                user.setEmail(rs.getString("Email"));
+                user.setAddress(rs.getString("Address"));
+
+                cart.setUserCartId(rs.getInt("UserCartID"));
+                cart.setProduct(product);
+                cart.setUser(user);
+                cart.setQuantity(rs.getInt("Quantity"));
+                cart.setTotalPrice(product.getProductPrice().multiply(new BigDecimal(cart.getQuantity())));
+                list.add(cart);
+            }
+
+            return list;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
-    public void addCart(String userid, String bookid, int quantity, float subtotal) {
+    public void updateCart(String userId, List<UserCart> carts) {
+        if (carts == null || carts.isEmpty()) {
+            clearCart(userId);
+            return;
+        }
+
+        clearCart(userId);
+
+        for (UserCart cart : carts) {
+            Product product = cart.getProduct();
+            if (product != null) {
+                addCart(userId, product.getProductID() + "", cart.getQuantity(), product.getProductPrice().multiply(BigDecimal.valueOf(cart.getQuantity())).floatValue());
+            }
+        }
+    }
+
+    public void addCart(String userid, String pid, int quantity, float subtotal) {
         try {
-            String q = "INSERT INTO UserCart (UserID, BookID, Quantity, TotalPrice) VALUES \n"
+            String q = "INSERT INTO UserCart (UserID, ProductID, Quantity, TotalPrice)  VALUES \n"
                     + "(?, ?, ?, ?)";
             stm = connection.prepareCall(q);
             stm.setString(1, userid);
-            stm.setString(2, bookid);
+            stm.setString(2, pid);
             stm.setInt(3, quantity);
             stm.setFloat(4, subtotal);
             stm.execute();
@@ -67,19 +107,7 @@ public class UserCartDAO extends DBContext {
             e.printStackTrace();
         }
     }
-    
-    public void deleteCart(String bookid, String userid) {
-        try {
-            String q = "DELETE FROM usercart WHERE BookID = ? AND UserID = ?";
-            stm = connection.prepareCall(q);
-            stm.setString(1, bookid);
-            stm.setString(2, userid);
-            stm.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
+
     public void clearCart(String userid) {
         try {
             String q = "DELETE FROM usercart WHERE UserID = ?";
@@ -92,6 +120,6 @@ public class UserCartDAO extends DBContext {
     }
 
     public static void main(String[] args) {
-        new UserCartDAO().deleteCart("1", "8");
+        System.out.println(new UserCartDAO().getUserCarts(2));
     }
 }

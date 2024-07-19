@@ -1,248 +1,139 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dal;
 
-import java.sql.Date;
+import java.math.BigDecimal;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.*;
+import java.util.List;
+import model.Feedback;
+import model.Feedbacks;
 
-/**
- *
- * @author 84375
- */
-public class FeedbackDAO extends DBContext {
+public class FeedbackDao extends DBContext {
+
+    private static final String SELECT_FEEDBACK_BY_PRODUCT_ID
+            = "SELECT * FROM Feedback WHERE productID = ?";
+    private static final String INSERT_FEEDBACK_SQL
+            = "INSERT INTO Feedback (productID, UserID, rating, Content, feedbackDate, status ) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, 1)";
+    private static final String SELECT_FEEDBACK_BY_USER_ID
+            = "SELECT * FROM Feedback WHERE userID = ? LIMIT ? OFFSET ?";
+    private static final String COUNT_FEEDBACK_BY_USER_ID
+            = "SELECT COUNT(*) FROM Feedback WHERE userID = ?";
+
+    public List<Feedback> selectFeedbackByProductId(int productID) {
+        List<Feedback> feedbackList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FEEDBACK_BY_PRODUCT_ID)) {
+            preparedStatement.setInt(1, productID);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int feedbackID = rs.getInt("feedbackID");
+                int productId = rs.getInt("productID");
+                String userName = rs.getString("fullName");
+                BigDecimal rating = rs.getBigDecimal("rating");
+                String comment = rs.getString("comment");
+                java.sql.Timestamp feedbackDate = rs.getTimestamp("feedbackDate");
+
+                Feedback feedback = new Feedback(feedbackID, productId, userName, rating, comment, feedbackDate);
+                feedbackList.add(feedback);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return feedbackList;
+    }
+
+    public List<Feedbacks> getAllFeedbackByProduct(int productId) {
+        List<Feedbacks> feedbackses = new ArrayList<>();
+        UserDAO userDAO = new UserDAO();
+        ProductDAO productDAO = new ProductDAO();
+        try {
+            String query = "SELECT * FROM feedback WHERE ProductID = ? AND status = 1";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, productId);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    Feedbacks feedback = new Feedbacks();
+                    feedback.setFeedbackID(rs.getInt("FeedbackID"));
+                    feedback.setUser(userDAO.GetUserById(rs.getInt("UserID")));
+                    feedback.setContent(rs.getString("Content"));
+                    feedback.setRating(rs.getInt("Rating"));
+                    feedback.setImage(rs.getString("Image"));
+                    feedback.setFeedbackDate(rs.getDate("feedbackDate"));
+                    feedback.setStatus(rs.getInt("Status"));
+                    feedback.setProduct(productDAO.getProductById(rs.getInt("ProductID")));
+                    feedbackses.add(feedback);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return feedbackses;
+    }
+
+    public boolean addFeedback(int productID, int userID, int rating, String content) {
+        boolean rowInserted = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_FEEDBACK_SQL)) {
+            preparedStatement.setInt(1, productID);
+            preparedStatement.setInt(2, userID);
+            preparedStatement.setInt(3, rating);
+            preparedStatement.setString(4, content);
+
+            rowInserted = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowInserted;
+    }
+
+    // New methods for user-specific feedback and pagination
+    public List<Feedback> getFeedbackByUserId(int userId, int page, int pageSize) {
+        List<Feedback> feedbackList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FEEDBACK_BY_USER_ID)) {
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, pageSize);
+            preparedStatement.setInt(3, (page - 1) * pageSize);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int feedbackID = rs.getInt("feedbackID");
+                int productId = rs.getInt("productID");
+                String userName = rs.getString("fullName");
+                BigDecimal rating = rs.getBigDecimal("rating");
+                String comment = rs.getString("comment");
+                java.sql.Timestamp feedbackDate = rs.getTimestamp("feedbackDate");
+
+                Feedback feedback = new Feedback(feedbackID, productId, userName, rating, comment, feedbackDate);
+                feedbackList.add(feedback);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return feedbackList;
+    }
+
+    public int getFeedbackCountByUserId(int userId) {
+        int count = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_FEEDBACK_BY_USER_ID)) {
+            preparedStatement.setInt(1, userId);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 
     public static void main(String[] args) {
-        FeedbackDAO feedbackDAO = new FeedbackDAO();
-
-        // Test data
-        String pid = "1"; 
-        int uid = 1; 
-        String content = "Great product!";
-        String rate = "4"; // Star rating
-        String img = "img.png"; // Image path
-
-        // Call the insertFeedback method
-        feedbackDAO.insertFeedback(pid, uid, content, rate, img);
-        System.out.println("Feedback inserted successfully.");
-
-    }
-
-    public ArrayList<Feedback> getListFeedback(String status, String search, String star) {
-
-        if (star.isEmpty()) {
-            star = "-1";
+        FeedbackDao fd = new FeedbackDao();
+        List<Feedbacks> l = fd.getAllFeedbackByProduct(1);
+        for (Feedbacks f : l) {
+            System.out.println(f);
         }
-        if (status.isEmpty()) {
-            status = "-1";
-        }
-        ArrayList<Feedback> listF = new ArrayList<>();
-        String sql = " select * from Feedback f  left join [User] u on f.fbCusID =u.UserID\n"
-                + " left join Book p on f.fbProID = p.BookID  "
-                + "	where ( -1 = " + star + " or  f.fbStar =  " + star + " ) and ( -1 = " + status + " or  f.fbStatus =  " + status + " )\n"
-                + " and (u.Username like '%" + search + "%' or p.BookTitle like '%" + search + "%') ";
-        System.out.println(sql);
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                int fbId = rs.getInt(1);
-                int fbCusId = rs.getInt(2);
-                int fbProId = rs.getInt(3);
-                int fbStar = (int) rs.getFloat(4);
-                String fbContent = rs.getString(5);
-                String fbImage = rs.getString(6);
-                Date fbDate = rs.getDate(7);
-                int fbStatus = rs.getInt(8);
-                Feedback F = new Feedback(fbId, fbCusId, fbProId, fbStar, fbContent, fbImage, fbDate, fbStatus);
-                Book b = new Book();
-                b.setTitle(rs.getString("BookTitle"));
-                User u = new User();
-                u.setUsername(rs.getString("Username"));
-                u.setEmail(rs.getString("UserEmail"));
-                F.setBook(b);
-                F.setUser(u);
-                listF.add(F);
-            }
-        } catch (Exception e) {
-            System.out.println("ListFeedbeck: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return listF;
-    }
-
-    public ArrayList<Feedback> getListFeedbackByBook(String bid) {
-
-        ArrayList<Feedback> listF = new ArrayList<>();
-        String sql = " select * from Feedback f  left join [User] u on f.fbCusID =u.UserID\n"
-                + " left join Book p on f.fbProID = p.BookID  "
-                //                + "	where  p.BookID = " + bid;
-                + "	where  p.BookID = " + bid + " and f.[fbStatus] = 1 ";
-//        System.out.println(sql);
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                int fbId = rs.getInt(1);
-                int fbCusId = rs.getInt(2);
-                int fbProId = rs.getInt(3);
-                int fbStar = (int) rs.getFloat(4);
-                String fbContent = rs.getString(5);
-                String fbImage = rs.getString(6);
-                Date fbDate = rs.getDate(7);
-                int fbStatus = rs.getInt(8);
-                Feedback F = new Feedback(fbId, fbCusId, fbProId, fbStar, fbContent, fbImage, fbDate, fbStatus);
-                Book b = new Book();
-                b.setTitle(rs.getString("BookTitle"));
-                User u = new User();
-                u.setEmail(rs.getString("UserEmail"));
-
-                u.setUsername(rs.getString("Username"));
-                F.setBook(b);
-                F.setUser(u);
-                listF.add(F);
-            }
-        } catch (Exception e) {
-            System.out.println("ListFeedbeck: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return listF;
-    }
-
-    public Feedback getFeedbackByid(String Fid) {
-        String sql = " select * from Feedback f  left join [User] u on f.fbCusID =u.UserID\n"
-                + " left join Book p on f.fbProID = p.BookID  where f.[fbID] = " + Fid;
-        System.out.println(sql);
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                int fbId = rs.getInt(1);
-                int fbCusId = rs.getInt(2);
-                int fbProId = rs.getInt(3);
-                int fbStar = (int) rs.getFloat(4);
-                String fbContent = rs.getString(5);
-                String fbImage = rs.getString(6);
-                Date fbDate = rs.getDate(7);
-                int fbStatus = rs.getInt(8);
-                Feedback F = new Feedback(fbId, fbCusId, fbProId, fbStar, fbContent, fbImage, fbDate, fbStatus);
-                Book b = new Book();
-                b.setTitle(rs.getString("BookTitle"));
-                User u = new User();
-                u.setUsername(rs.getString("Username"));
-                u.setEmail(rs.getString("UserEmail"));
-
-                F.setBook(b);
-                F.setUser(u);
-                return F;
-            }
-        } catch (Exception e) {
-            System.out.println("ListFeedbeck: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public ArrayList<Contact> getAllContact() {
-        ArrayList<Contact> users = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM [Contact]";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                users.add(new Contact(
-                        rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4)
-                ));
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return users;
-    }
-
-    public int countFeedbackByPid(String pid) {
-        try {
-            String sql = "  select count(*) from [Feedback] where fbProID = " + pid;
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
-
-    public String avgFeedbackByPid(String pid) {
-        try {
-            String sql = "  select avg([fbStar]) from [Feedback] where fbProID = " + pid;
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                return rs.getString(1);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "0";
-    }
-
-    public void insertFeedback(String pid, int uid, String content, String rate, String img) {
-        String sql = "INSERT INTO Feedback "
-                + "(fbCusID, fbProID, fbStar, fbContent, fbImage, fbDate, fbStatus) "
-                + "VALUES (?, ?, ?, ?, ?, NOW(), 1)";
-
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, uid);
-            st.setString(2, pid);
-            st.setInt(3, Integer.parseInt(rate)); // Convert rate to int
-            st.setString(4, content);
-            st.setString(5, img);
-            st.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("insertFeedback: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-    public void deleteFeedback(int feedbackId) {
-        String sql = "DELETE FROM [dbo].[Feedback] WHERE [fbID] = ?";
-
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, feedbackId);
-            st.executeUpdate();
-            System.out.println("Feedback with ID " + feedbackId + " deleted successfully.");
-        } catch (SQLException e) {
-            System.out.println("deleteFeedback: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    public void changeStatusFeedback(String fid, String ss) {
-        String sql = "UPDATE [dbo].[Feedback]  SET [fbStatus] = ?\n"
-                + " WHERE [fbID] = ? ";
-
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, ss);
-            st.setString(2, fid);
-            st.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("insertFeedback: " + e.getMessage());
-            e.printStackTrace();
-
-        }
-
     }
 }
+

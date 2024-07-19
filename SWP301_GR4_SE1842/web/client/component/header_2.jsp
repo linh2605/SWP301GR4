@@ -2,7 +2,7 @@
     <div class="row align-items-center">
         <div class="col-lg-4">
             <a href="homepage" class="site-brand">
-                <img src="assets\sportshoplogo.png" alt="">
+                <img src="assets/logo-text.png" alt="">
             </a>
         </div>
         <div class="col-lg-8">

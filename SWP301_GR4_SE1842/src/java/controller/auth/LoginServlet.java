@@ -4,8 +4,7 @@
  */
 package controller.auth;
 
-import controller.customer.Header;
-import dal.UserDao;
+import dal.UserDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -26,7 +25,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Header.Load(request, response);
         request.getRequestDispatcher("login-register.jsp").forward(request, response);
     }
 
@@ -35,21 +33,34 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        password = Encode.toSHA1(password);
+ //       password = Encode.toSHA1(password);
         
-        UserDao ud = new UserDao();
+        UserDAO ud = new UserDAO();
         User u = ud.getUser(username, password);
         if (u == null) {
             request.setAttribute("errmsg", "Username or password is incorrect!");
             request.getRequestDispatcher("login-register.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();
+            session.removeAttribute("carts");
             session.setAttribute("usersession", u);
             if (u.getRoleID() != 4) {
-                response.sendRedirect("../dashboard");
+
+
+                if(u.getRoleID()== 2){
+                    response.sendRedirect("../view/dashboard.jsp");
+                }
+                if(u.getRoleID() ==1){
+                    response.sendRedirect("../admin/adminDashboard.jsp");
+                }
+                if(u.getRoleID() ==3){
+                    response.sendRedirect("../sale/saleDashboard.jsp");
+                }
+
             } else {
-                response.sendRedirect("../homepage");
+                response.sendRedirect("../view/home");
             }
+
         }
     }
 
