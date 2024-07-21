@@ -150,10 +150,6 @@ public class DiscountDAO extends DBContext {
             return 0;
         }
     }
-    
-    public static void main(String[] args) {
-        DiscountDAO lmeo = new DiscountDAO();
-        System.out.println(lmeo.getAllDiscount());
-    }
+
 
 }

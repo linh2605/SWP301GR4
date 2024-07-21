@@ -69,7 +69,7 @@ public class PaymentServlet extends HttpServlet {
         request.getSession().removeAttribute("cart");
                 String host = context.Config.host;
         String link = host + request.getContextPath() + "/order?oid=" + Base64.getEncoder().encodeToString(order.getId().getBytes());
-        EmailServices.send(order.getCusEmail(), "Detail for your order in Bookaholic (BaH" + order.getId() + ")",
+        EmailServices.send(order.getCusEmail(), "Detail for your order in RonaldoSportShop (BaH" + order.getId() + ")",
                 String.format("Dear %s,\n"
                         + "<br>"
                         + "Thank you so much for placing an order on %s! We appreciate your business.<br>"
@@ -82,7 +82,7 @@ public class PaymentServlet extends HttpServlet {
                         + "Thanks again for shopping with us. We strive to make your experience a great one and look forward to getting your new book(s) out to you soon!<br>"
                         + "<br>"
                         + "Sincerely,\n"
-                        + "%s", order.getCusFullname(), "Bookaholic", link, "Bookaholic"));
+                        + "%s", order.getCusFullname(), "RonaldoSportShop", link, "RonaldoSportShop"));
         response.sendRedirect(paymentUrl);
     }
 

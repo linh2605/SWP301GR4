@@ -13,67 +13,34 @@ import java.sql.Date;
  */
 public class Blog {
 
-    private int blog_id;
-    private String blog_title;
+    private int blogId;
+    private String blogTitle;
     private String description;
-    private String image;
-    private int author_id;
-    private Date post_date;
-    private String blogCategory;
-    private int status;
-    private boolean active;
-    private String userName;
+    private String img;
+    private int authorId;
+    private Date postDate;
+    private int blogCategoryId;
+    private String status;
+    private int views;
+    private int active;
 
     public Blog() {
     }
 
-    public Blog(String blog_title, String userName, String image, Date post_date, String blog_category, String description) {
-        this.blog_title = blog_title;
-        this.description = description;
-        this.image = image;
-        this.userName = userName;
-        this.post_date = post_date;
-        this.blogCategory = blog_category;
+    public int getBlogId() {
+        return blogId;
     }
 
-    public Blog(String blog_title, String img, Date post_date, String blog_category, String description) {
-        this.blog_title = blog_title;
-        this.description = description;
-        this.post_date = post_date;
-        this.image = img;
-        this.blogCategory = blog_category;
-    }
-    public Blog(String blog_title, String description, String img, int blog_id) {
-        this.blog_title = blog_title;
-        this.description = description;
-        this.blog_id = blog_id;
-        this.image = img;
-    }
-    
-    public Blog(int blog_id,String blog_title,String description,String img,boolean active,String value,String fullname){
-        this.blog_id = blog_id;
-        this.blog_title = blog_title;
-        this.description = description;
-        this.image = img;
-        this.active = active;
-        this.blogCategory = value;
-        this.userName = fullname;
+    public void setBlogId(int blogId) {
+        this.blogId = blogId;
     }
 
-    public int getBlog_id() {
-        return blog_id;
+    public String getBlogTitle() {
+        return blogTitle;
     }
 
-    public void setBlog_id(int blog_id) {
-        this.blog_id = blog_id;
-    }
-
-    public String getBlog_title() {
-        return blog_title;
-    }
-
-    public void setBlog_title(String blog_title) {
-        this.blog_title = blog_title;
+    public void setBlogTitle(String blogTitle) {
+        this.blogTitle = blogTitle;
     }
 
     public String getDescription() {
@@ -84,72 +51,60 @@ public class Blog {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
+    public String getImg() {
+        return img;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImg(String img) {
+        this.img = img;
     }
 
-    public int getAuthor_id() {
-        return author_id;
+    public int getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 
-    public Date getPost_date() {
-        return post_date;
+    public Date getPostDate() {
+        return postDate;
     }
 
-    public void setPost_date(Date post_date) {
-        this.post_date = post_date;
+    public void setPostDate(Date postDate) {
+        this.postDate = postDate;
     }
 
-    public String getBlogCategory() {
-        return blogCategory;
+    public int getBlogCategoryId() {
+        return blogCategoryId;
     }
 
-    public void setBlogCategory(String blogCategory) {
-        this.blogCategory = blogCategory;
+    public void setBlogCategoryId(int blogCategoryId) {
+        this.blogCategoryId = blogCategoryId;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public boolean isActive() {
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
+    public int getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(int active) {
         this.active = active;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    @Override
-    public String toString() {
-        return "Blog{" + "blog_id=" + blog_id + ", blog_title=" + blog_title + ", description=" + description + ", image=" + image + ", author_id=" + author_id + ", post_date=" + post_date + ", blogCategory=" + blogCategory + ", status=" + status + ", active=" + active + ", userName=" + userName + '}';
-    }
-
-
-
-
-    
-    
 }
-
-

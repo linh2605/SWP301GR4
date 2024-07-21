@@ -13,12 +13,19 @@ public class BookReivewDAO extends DBContext {
         try {
             String sql = "SELECT * FROM BookReview WHERE 1=1";
             if (!star.isEmpty()) {
-                sql += " AND Rate = " + star;
+                sql += " AND Rate = ?";
             }
             if (!searchString.isEmpty()) {
-                sql += " AND Comment LIKE '%" + searchString + "%'";
+                sql += " AND Comment LIKE ?";
             }
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            int index = 1;
+            if (!star.isEmpty()) {
+                preparedStatement.setString(index++, star);
+            }
+            if (!searchString.isEmpty()) {
+                preparedStatement.setString(index++, "%" + searchString + "%");
+            }
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 reviews.add(new BookReview(
@@ -37,7 +44,7 @@ public class BookReivewDAO extends DBContext {
     public ArrayList<BookReview> getBookReviewAllById(int id) {
         ArrayList<BookReview> reviews = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM BookReview WHERE BookID = ?";
+            String sql = "SELECT * FROM feedback WHERE fbProID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
@@ -98,8 +105,23 @@ public class BookReivewDAO extends DBContext {
         return true;
     }
 
+    public int count(String txtSearch) {
+        try {
+            String query = "SELECT * FROM feedback WHERE fbContent like ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, "%" + txtSearch + "%");
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
-        BookReivewDAO reviewDAO = new BookReivewDAO();
-        System.out.println(reviewDAO.getBookReviewAll("5", "vai"));
+        BookReivewDAO dao = new BookReivewDAO();
+        int count = dao.count("");
+        System.out.println(count);
     }
 }

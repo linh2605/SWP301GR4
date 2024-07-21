@@ -93,7 +93,7 @@ public class SendFeedback extends HttpServlet {
         Object o = session.getAttribute("usersession");
         User user = (User) o;
         userId = user.getId();
-
+        System.out.println(img);
         // Log giá trị của proid để kiểm tra
         System.out.println("Received PID: " + proid);
 

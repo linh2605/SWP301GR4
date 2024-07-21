@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
 import model.User;
 
 /**
@@ -61,8 +62,13 @@ public class UserListServlet extends HttpServlet {
                 return;
             }
         }
+        String fullnamesearch = request.getParameter("fullnamesearch");
+        List<User> uList = new UserDao().getAll();
+        if (fullnamesearch != null) {
+            uList = new UserDao().getUserByFullName(fullnamesearch);
+        }
 
-        request.setAttribute("uList", new UserDao().getAll());
+        request.setAttribute("uList", uList);
         request.getRequestDispatcher("admin/user_list.jsp").forward(request, response);
     }
 

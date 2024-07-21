@@ -175,7 +175,7 @@ public class PlaceOrderServlet extends HttpServlet {
                         + "Thank you so much for placing an order on %s! We appreciate your business.<br>"
                         + "<br>"
                         + "We're currently processing your order and will send a confirmation email with all the details shortly. "
-                        + "<br>In the meantime, your order information is <a href=\"%s\">HERE</a> - feel free to reference this in any communication with us about your order.<br>"
+                        + "<br>In the meantime, your order information is <a href=\"my-account#account-info\">HERE</a> - feel free to reference this in any communication with us about your order.<br>"
                         + "<br>"
                         + "If you have any questions or need to make any changes to your order.<br>"
                         + "<br>"

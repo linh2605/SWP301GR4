@@ -4,12 +4,12 @@
                     <div class=" col-xl-3 col-lg-4 col-sm-6">
                         <div class="single-footer pb--40">
                             <div class="brand-footer footer-title">
-                                <img src="${pageContext.request.contextPath}/assets/logo-text.png" alt="">
+                                <img src="${pageContext.request.contextPath}/assets/sportshoplogo.png" alt="">
                             </div>
                             <div class="footer-contact">
                                 <p><span class="label">Address:</span><span class="text">Ha Noi , Viet Nam </span></p>
                                 <p><span class="label">Phone:</span><span class="text">0942850163</span></p>
-                                <p><span class="label">Email:</span><span class="text">bookaholic@gmail.com</span></p>
+                                <p><span class="label">Email:</span><span class="text">SportShop@gmail.com</span></p>
                             </div>
                         </div>
                     </div>
@@ -69,11 +69,11 @@
                     <p class="copyright-heading">Suspendisse in auctor augue. Cras fermentum est ac fermentum tempor. Etiam
                         vel magna volutpat, posuere eros</p>
                     <a href="" class="payment-block">
-                        <img style="max-width: 100%; width: 100%" src="${pageContext.request.contextPath}/assets/logo-page.png" alt="">
+                        <img style="max-width: 100%; width: 100%" src="${pageContext.request.contextPath}/assets/sportshoplogo.png" alt="">
                     </a>
-                    <p class="copyright-text">Copyright © 2022 <a href="#" class="author">Bookaholic</a>. All Right Reserved.
+                    <p class="copyright-text">Copyright © 2022 <a href="#" class="author">SportShop</a>. All Right Reserved.
                         <br>
-                        Design By Bookaholic</p>
+                        SportShop</p>
                 </div>
             </div>
         </footer>

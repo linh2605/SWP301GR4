@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dal;
 
 import java.sql.PreparedStatement;
@@ -19,10 +15,6 @@ import model.Publisher;
 import model.RefundBook;
 import model.User;
 
-/**
- *
- * @author ACER
- */
 public class OrderDetailDAO extends DBContext {
 
     PreparedStatement stm;
@@ -34,8 +26,8 @@ public class OrderDetailDAO extends DBContext {
 
     public OrderDetail getById(String id) {
         try {
-            String query = "SELECT * FROM OrderDetail WHERE OrderDetalID = ?";
-            stm = connection.prepareCall(query);
+            String query = "SELECT * FROM OrderDetail WHERE OrderDetailID = ?";
+            stm = connection.prepareStatement(query);
             stm.setString(1, id);
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -54,8 +46,8 @@ public class OrderDetailDAO extends DBContext {
     public List<OrderDetail> getByOrder(String orderid) {
         list = new ArrayList<>();
         try {
-            String query = "SELECT * FROM OrderDetail where OrderID = ?";
-            stm = connection.prepareCall(query);
+            String query = "SELECT * FROM OrderDetail WHERE OrderID = ?";
+            stm = connection.prepareStatement(query);
             stm.setString(1, orderid);
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -76,19 +68,17 @@ public class OrderDetailDAO extends DBContext {
     public List<RefundBook> getAllRefund() {
         List<RefundBook> list = new ArrayList<>();
         try {
-            String query = "SELECT * FROM \n"
-                    + "                    Refund r, \n"
-                    + "                    (SELECT OrderDetalID, OrderID,  b.BookID, Quantity, Price, \n"
-                    + "                    BookTitle, BookCost, Stock, BookRate, BookDesc, a.AuthorID, AuthorName, \n"
-                    + "                    Bio, p.PublisherID, PublisherName, PublisherEmail, PublisherPhone, b.BookStatus\n"
-                    + "                    FROM OrderDetail o, Book b, Publisher p, Author a \n"
-                    + "                    WHERE b.AuthorID = a.AuthorID \n"
-                    + "                    AND b.PublisherID = p.PublisherID \n"
-                    + "                    AND o.BookID = b.BookID) od, [User] u, [Order]\n"
-                    + "                    WHERE r.OrderDetalID = od.OrderDetalID\n"
-                    + "                    AND [Order].ID = od.OrderID\n"
-                    + "                    AND u.UserID = [Order].UserID";
-            stm = connection.prepareCall(query);
+            String query = "SELECT * FROM Refund r \n" +
+"                    JOIN (SELECT OrderDetailID, OrderID, b.BookID, Quantity, Price, \n" +
+"                    BookTitle, BookCost, Stock, BookRate, BookDesc, a.AuthorID, AuthorName, \n" +
+"                    Bio, p.PublisherID, PublisherName, PublisherEmail, PublisherPhone, b.BookStatus \n" +
+"                    FROM OrderDetail o JOIN Book b ON o.BookID = b.BookID \n" +
+"                    JOIN Publisher p ON b.PublisherID = p.PublisherID \n" +
+"                    JOIN Author a ON b.AuthorID = a.AuthorID) od \n" +
+"                    ON r.OrderDetailID = od.OrderDetailID \n" +
+"                    JOIN `Order` o ON o.ID = od.OrderID\n" +
+"                    JOIN `User` u ON u.UserID = o.UserID ";
+            stm = connection.prepareStatement(query);
             rs = stm.executeQuery();
             while (rs.next()) {
                 list.add(new RefundBook(
@@ -134,15 +124,15 @@ public class OrderDetailDAO extends DBContext {
                                                 rs.getString("PublisherName"),
                                                 rs.getString("PublisherEmail"),
                                                 rs.getString("PublisherPhone")
-                                        ), rs.getInt("BookStatus")),
+                                        ), 
+                                        rs.getInt("BookStatus")),
                                 rs.getInt("Quantity")
                         ),
                         rs.getTimestamp("RefundDate").toLocalDateTime(),
                         rs.getString("Reason"),
                         rs.getString("image"),
                         rs.getInt("RefundStatus")
-                )
-                );
+                ));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -153,21 +143,13 @@ public class OrderDetailDAO extends DBContext {
     public List<RefundBook> getRefundsByOrderId(String oid) {
         List<RefundBook> list = new ArrayList<>();
         try {
-            String query = "SELECT \n"
-                    + "r.OrderDetalID,\n"
-                    + "od.OrderID,\n"
-                    + "od.BookID,\n"
-                    + "od.Quantity,\n"
-                    + "r.RefundDate,\n"
-                    + "r.Reason,\n"
-                    + "r.[Image],\n"
-                    + "r.RefundStatus,\n"
-                    + "r.DeclineReason\n"
-                    + "FROM refund r\n"
-                    + "join OrderDetail od ON od.OrderDetalID = r.OrderDetalID\n"
-                    + "join [Order] o ON od.OrderID = o.ID\n"
-                    + "where od.OrderID = ?";
-            stm = connection.prepareCall(query);
+            String query = "SELECT r.OrderDetailID, od.OrderID, od.BookID, od.Quantity, " +
+                    "r.RefundDate, r.Reason, r.Image, r.RefundStatus, r.DeclineReason " +
+                    "FROM Refund r " +
+                    "JOIN OrderDetail od ON od.OrderDetailID = r.OrderDetailID " +
+                    "JOIN `Order` o ON od.OrderID = o.ID " +
+                    "WHERE od.OrderID = ?";
+            stm = connection.prepareStatement(query);
             stm.setString(1, oid);
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -193,21 +175,13 @@ public class OrderDetailDAO extends DBContext {
 
     public RefundBook getRefundById(String rid) {
         try {
-            String query = "SELECT \n"
-                    + "r.OrderDetalID,\n"
-                    + "od.OrderID,\n"
-                    + "od.BookID,\n"
-                    + "od.Quantity,\n"
-                    + "r.RefundDate,\n"
-                    + "r.Reason,\n"
-                    + "r.[Image],\n"
-                    + "r.RefundStatus,\n"
-                    + "r.DeclineReason\n"
-                    + "FROM refund r\n"
-                    + "join OrderDetail od ON od.OrderDetalID = r.OrderDetalID\n"
-                    + "join [Order] o ON od.OrderID = o.ID\n"
-                    + "where r.OrderDetalID = ?";
-            stm = connection.prepareCall(query);
+            String query = "SELECT r.OrderDetailID, od.OrderID, od.BookID, od.Quantity, " +
+                    "r.RefundDate, r.Reason, r.Image, r.RefundStatus, r.DeclineReason " +
+                    "FROM Refund r " +
+                    "JOIN OrderDetail od ON od.OrderDetailID = r.OrderDetailID " +
+                    "JOIN `Order` o ON od.OrderID = o.ID " +
+                    "WHERE r.OrderDetailID = ?";
+            stm = connection.prepareStatement(query);
             stm.setString(1, rid);
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -234,20 +208,17 @@ public class OrderDetailDAO extends DBContext {
     public List<RefundBook> getAllRefundOfAUser(String userid) {
         List<RefundBook> list = new ArrayList<>();
         try {
-            String query = "SELECT * FROM \n"
-                    + "Refund r, \n"
-                    + "(SELECT OrderDetalID, OrderID,  b.BookID, Quantity, Price, \n"
-                    + "BookTitle, BookCost, Stock, BookRate, BookDesc, a.AuthorID, AuthorName, \n"
-                    + "Bio, p.PublisherID, PublisherName, PublisherEmail, PublisherPhone, b.BookStatus\n"
-                    + "FROM OrderDetail o, Book b, Publisher p, Author a \n"
-                    + "WHERE b.AuthorID = a.AuthorID \n"
-                    + "AND b.PublisherID = p.PublisherID \n"
-                    + "AND o.BookID = b.BookID) od, [User] u, [Order]\n"
-                    + "WHERE r.OrderDetalID = od.OrderDetalID\n"
-                    + "AND [Order].ID = od.OrderID\n"
-                    + "AND u.UserID = [Order].UserID\n"
-                    + "AND u.UserID = ?";
-            stm = connection.prepareCall(query);
+            String query = "SELECT * FROM Refund r " +
+                    "JOIN (SELECT OrderDetailID, OrderID, b.BookID, Quantity, Price, " +
+                    "BookTitle, BookCost, Stock, BookRate, BookDesc, a.AuthorID, AuthorName, " +
+                    "Bio, p.PublisherID, PublisherName, PublisherEmail, PublisherPhone, b.BookStatus " +
+                    "FROM OrderDetail o JOIN Book b ON o.BookID = b.BookID " +
+                    "JOIN Publisher p ON b.PublisherID = p.PublisherID " +
+                    "JOIN Author a ON b.AuthorID = a.AuthorID) od ON r.OrderDetailID = od.OrderDetailID " +
+                    "JOIN `User` u ON u.UserID = od.UserID " +
+                    "JOIN `Order` o ON o.ID = od.OrderID " +
+                    "WHERE u.UserID = ?";
+            stm = connection.prepareStatement(query);
             stm.setString(1, userid);
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -294,7 +265,8 @@ public class OrderDetailDAO extends DBContext {
                                                 rs.getString("PublisherName"),
                                                 rs.getString("PublisherEmail"),
                                                 rs.getString("PublisherPhone")
-                                        ), rs.getInt("BookStatus")),
+                                        ), 
+                                        rs.getInt("BookStatus")),
                                 rs.getInt("Quantity")
                         ),
                         rs.getTimestamp("RefundDate").toLocalDateTime(),
@@ -310,9 +282,9 @@ public class OrderDetailDAO extends DBContext {
     }
 
     public void addRefund(String odid, String reason, String image) {
-        String query = "INSERT INTO Refund (OrderDetalID, Reason, [Image], RefundStatus) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO Refund (OrderDetailID, Reason, Image, RefundStatus) VALUES (?, ?, ?, ?)";
         try {
-            stm = connection.prepareCall(query);
+            stm = connection.prepareStatement(query);
             stm.setString(1, odid);
             stm.setString(2, reason);
             stm.setString(3, image);
@@ -320,7 +292,7 @@ public class OrderDetailDAO extends DBContext {
             stm.execute();
         } catch (Exception e) {
             try {
-                stm = connection.prepareCall("update Refund set RefundStatus = 0 where OrderDetalID = ?");
+                stm = connection.prepareStatement("UPDATE Refund SET RefundStatus = 0 WHERE OrderDetailID = ?");
                 stm.setString(1, odid);
                 stm.execute();
             } catch (SQLException ex) {
@@ -330,9 +302,9 @@ public class OrderDetailDAO extends DBContext {
     }
 
     public void updateRefund(String odid, String reason, String image) {
-        String query = "UPDATE Refund SET Reason = ?, [Image] = ? WHERE OrderDetalID = ?";
+        String query = "UPDATE Refund SET Reason = ?, Image = ? WHERE OrderDetailID = ?";
         try {
-            stm = connection.prepareCall(query);
+            stm = connection.prepareStatement(query);
             stm.setString(1, reason);
             stm.setString(2, image);
             stm.setString(3, odid);
@@ -343,11 +315,9 @@ public class OrderDetailDAO extends DBContext {
     }
 
     public void actionRefund(String odid, int status, String refundReason) {
-        String query = "UPDATE Refund \n"
-                + "SET RefundStatus = ?, DeclineReason = ?\n"
-                + "WHERE OrderDetalID = ?";
+        String query = "UPDATE Refund SET RefundStatus = ?, DeclineReason = ? WHERE OrderDetailID = ?";
         try {
-            stm = connection.prepareCall(query);
+            stm = connection.prepareStatement(query);
             stm.setInt(1, status);
             stm.setString(2, refundReason);
             stm.setString(3, odid);
@@ -358,11 +328,9 @@ public class OrderDetailDAO extends DBContext {
     }
 
     public void add(OrderDetail od) {
-        String query = "INSERT INTO dbo.OrderDetail (OrderID, BookID, Quantity, Price)\n"
-                + "VALUES \n"
-                + "(?, ?, ?, ?)";
+        String query = "INSERT INTO OrderDetail (OrderID, BookID, Quantity, Price) VALUES (?, ?, ?, ?)";
         try {
-            stm = connection.prepareCall(query);
+            stm = connection.prepareStatement(query);
             stm.setString(1, od.getOrder().getId());
             stm.setInt(2, od.getBook().getId());
             stm.setInt(3, od.getQuantity());
@@ -375,18 +343,17 @@ public class OrderDetailDAO extends DBContext {
 
     public static void main(String[] args) {
         OrderDetailDAO d = new OrderDetailDAO();
-        System.out.println(d.getRefundById("15"));
+        System.out.println(d.getAllRefund());
     }
 
     public void Delete(String oid) {
         try {
-            String query = "DELETE From OrderDetail Where OrderID = ?";
-            stm = connection.prepareCall(query);
+            String query = "DELETE FROM OrderDetail WHERE OrderID = ?";
+            stm = connection.prepareStatement(query);
             stm.setString(1, oid);
             stm.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }

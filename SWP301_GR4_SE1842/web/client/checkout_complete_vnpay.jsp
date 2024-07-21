@@ -1,9 +1,3 @@
-<%-- 
-    Document   : checkout
-    Created on : Sep 28, 2023, 11:51:37 PM
-    Author     : ACER
---%>
-
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bookaholic - Check out</title>
+    <title>RonaldoSportShop - Check out</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Use Minified Plugins Version For Fast Page Load -->
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/client/assets/css/plugins.css" />
@@ -59,8 +53,8 @@
                         <ul class="order-details-list">
                             <li>Order Number: <strong>BaH${sessionScope.ordersession.id}</strong></li>
                             <li>Date: <strong>${sessionScope.ordersession.orderDate}</strong></li>
-                            <fmt:formatNumber value="${sessionScope.ordersession.totalPrice}" pattern="0.00" var="totalprice" />
-                            <li>Total: <strong>$${totalprice}</strong></li>
+                            <fmt:formatNumber value="${Math.ceil(sessionScope.ordersession.totalPrice * 25000)}" pattern="0" var="totalpriceVND" />
+                            <li>Total: <strong>${totalpriceVND} VNĐ</strong></li>
                             <li>Payment Method: <strong>${sessionScope.ordersession.paymethod.name} (${sessionScope.ordersession.paymethod.desc})</strong></li>
                             <li>Order Status: <strong>${sessionScope.ordersession.status.name}</strong></li>
                         </ul>
@@ -78,16 +72,16 @@
                                     <c:forEach items="${sessionScope.ordersession.odList}" var="od">
                                         <tr>
                                             <td><a href="single-product.html">${od.book.title}</a> <strong>× ${od.quantity}</strong></td>
-                                            <fmt:formatNumber value="${od.price}" pattern="0.00" var="totalprice" />
-                                            <td><span>$${totalprice}</span></td>
+                                            <fmt:formatNumber value="${Math.ceil(od.price * 25000)}" pattern="0" var="totalpriceVND" />
+                                            <td><span>${totalpriceVND} VNĐ</span></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Subtotal:</th>
-                                        <fmt:formatNumber value="${sessionScope.ordersession.totalPrice}" pattern="0.00" var="totalprice" />
-                                        <td><span>$${totalprice}</span></td>
+                                        <fmt:formatNumber value="${Math.ceil(sessionScope.ordersession.totalPrice * 25000)}" pattern="0" var="subtotalVND" />
+                                        <td><span>${subtotalVND} VNĐ</span></td>
                                     </tr>
                                     <tr>
                                         <th>Payment Method:</th>
@@ -95,7 +89,7 @@
                                     </tr>
                                     <tr>
                                         <th>Total:</th>
-                                        <td><span>$${totalprice}</span></td>
+                                        <td><span>${totalpriceVND} VNĐ</span></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -164,5 +158,4 @@
         <script src="${pageContext.request.contextPath}/client/assets/js/custom.js"></script>
     </body>
 
-    <!-- Mirrored from htmldemo.net/pustok/pustok/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Sep 2023 14:17:16 GMT -->
 </html>

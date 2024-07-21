@@ -183,9 +183,16 @@
                                                                 </div>
                                                             </a>
                                                             <div class="hover-btns">
-                                                                <div onclick="controlCart(${b.id})" class="single-btn">
-                                                                    <i class="fas fa-shopping-basket"></i>
-                                                                </div>
+                                                                <c:if test="${sessionScope.usersession ne null}">
+                                                                    <div onclick="controlCart(${b.id})" class="single-btn">
+                                                                        <i class="fas fa-shopping-basket"></i>
+                                                                    </div>
+                                                                </c:if>
+                                                                <c:if test="${sessionScope.usersession eq null}">
+                                                                    <a href="${pageContext.request.contextPath}/auth/login" class="single-btn">
+                                                                        <i class="fas fa-shopping-basket"></i>
+                                                                    </a>
+                                                                </c:if>
                                                                 <c:if test="${sessionScope.usersession ne null}">
                                                                     <div onclick="toggleWishList(${b.id}, this)" class="single-btn">
                                                                         <i <c:if test="${sessionScope.usersession.wishList.contains(b)}">style="color:tomato"</c:if> class="fas fa-heart"></i>
@@ -209,8 +216,8 @@
                                                         <c:if test="${b.getDiscount() == 0}">
                                                             <c:set var="finalCost" value="${b.getCost()}" />
                                                         </c:if>
-                                                         <fmt:formatNumber value="${finalCost}" pattern="0.00" var="fmtfinalCost" />
-                                                <span class="price">$${fmtfinalCost}</span>
+                                                        <fmt:formatNumber value="${finalCost}" pattern="0.00" var="fmtfinalCost" />
+                                                        <span class="price">$${fmtfinalCost}</span>
                                                         <c:if test="${b.getDiscount() != 0}">
                                                             <del class="price-old">${b.getCost()}</del>
                                                             <span class="price-discount">-${b.getDiscount()}%</span>

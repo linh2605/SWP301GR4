@@ -39,7 +39,7 @@ public class OrderStatusDAO extends DBContext  {
     
     public OrderStatus getById(String pid) {
         try {
-            String q = "select * from OrderStatus where statusid = ?";
+            String q = "select * from OrderStatus where StatusID = ?";
             stm = connection.prepareCall(q);
             stm.setString(1, pid);
             rs = stm.executeQuery();

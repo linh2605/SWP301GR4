@@ -21,42 +21,67 @@
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="iq-menu">
                 <li <c:if test="${currentmenu eq 'Management'}">class="active active-menu"</c:if>>
-                        <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false">
-                            <span class="ripple rippleEffect"></span>
-                            <i class="las la-home iq-arrow-left"></i>
-                            <span>Management</span>
-                            <i class="ri-arrow-right-s-line iq-arrow-right"></i>
-                        </a>
-                        <ul id="admin" class="iq-submenu collapse <c:if test="${currentmenu eq 'Management'}">show</c:if>" data-parent="#iq-sidebar-toggle">
-                        <li <c:if test="${currentpage eq 'Dashboard'}">class="active"</c:if>><a href="dashboard"><i class="las la-house-damage"></i>Dashboard</a></li>
-                            <c:if test="${sessionScope.usersession.roleID != 2 && sessionScope.usersession.roleID != 3}">
-
-                            <li <c:if test="${currentpage eq 'Books Category'}">class="active"</c:if>><a href="categories"><i class="ri-function-line"></i>Product Category</a></li>
-                            <li <c:if test="${currentpage eq 'Author'}">class="active"</c:if>><a href="designers"><i class="ri-book-line"></i>Designer</a></li>
-                            <li <c:if test="${currentpage eq 'Publisher'}">class="active"</c:if>><a href="publishers"><i class="ri-book-line"></i>Branch</a></li>
-                            </c:if>
-                        <li <c:if test="${currentpage eq 'Books'}">class="active"</c:if>><a href="products"><i class="ri-file-pdf-line"></i>Products</a></li>
-                        <li <c:if test="${currentpage eq 'FeedbackList'}">class="active"</c:if>><a href="FeedbacksList"><i class="las la-th-list"></i>Marketing site</a></li>
-                        </ul>
-                    </li>
-                    <li <c:if test="${currentmenu eq 'User'}">class="active active-menu"</c:if>>
-                        <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false">
-                            <span class="ripple rippleEffect"></span>
-                            <i class="las la-user-tie iq-arrow-left"></i>
-                            <span>User</span>
-                            <i class="ri-arrow-right-s-line iq-arrow-right"></i>
-                        </a>
-                        <ul id="userinfo" class="iq-submenu collapse <c:if test="${currentmenu eq 'User'}">show</c:if>" data-parent="#iq-sidebar-toggle" style="">
+                    <a href="#admin" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false">
+                        <span class="ripple rippleEffect"></span>
+                        <i class="las la-home iq-arrow-left"></i>
+                        <span>Management</span>
+                        <i class="ri-arrow-right-s-line iq-arrow-right"></i>
+                    </a>
+                    <ul id="admin" class="iq-submenu collapse <c:if test="${currentmenu eq 'Management'}">show</c:if>" data-parent="#iq-sidebar-toggle">
+                        <li <c:if test="${currentpage eq 'Dashboard'}">class="active"</c:if>>
+                            <a href="dashboard"><i class="las la-house-damage"></i>Dashboard</a>
+                        </li>
+                        <c:if test="${sessionScope.usersession.roleID != 2 && sessionScope.usersession.roleID != 3}">
+                            <li <c:if test="${currentpage eq 'Books Category'}">class="active"</c:if>>
+                                <a href="categories"><i class="ri-function-line"></i>Product Category</a>
+                            </li>
+                            <li <c:if test="${currentpage eq 'Author'}">class="active"</c:if>>
+                                <a href="designers"><i class="ri-book-line"></i>Designer</a>
+                            </li>
+                            <li <c:if test="${currentpage eq 'Publisher'}">class="active"</c:if>>
+                                <a href="publishers"><i class="ri-book-line"></i>Branch</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${sessionScope.usersession.roleID != 3}">
+                            <li <c:if test="${currentpage eq 'Books'}">class="active"</c:if>>
+                                <a href="products"><i class="ri-file-pdf-line"></i>Products</a>
+                            </li>
+                            <li <c:if test="${currentpage eq 'Slider'}">class="active"</c:if>>
+                                <a href="sliders"><i class="ri-slideshow-line"></i>Slider
+                                </a>
+                            </li>
+                            <li <c:if test="${currentpage eq 'FeedbackList'}">class="active"</c:if>>
+                                <a href="FeedbacksList"><i class="las la-th-list"></i>Marketing site</a>
+                            </li>
+                        </c:if>
+                    </ul>
+                </li>
+                <li <c:if test="${currentmenu eq 'User'}">class="active active-menu"</c:if>>
+                    <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false">
+                        <span class="ripple rippleEffect"></span>
+                        <i class="las la-user-tie iq-arrow-left"></i>
+                        <span>User</span>
+                        <i class="ri-arrow-right-s-line iq-arrow-right"></i>
+                    </a>
+                    <ul id="userinfo" class="iq-submenu collapse <c:if test="${currentmenu eq 'User'}">show</c:if>" data-parent="#iq-sidebar-toggle">
                         <c:if test="${sessionScope.usersession.roleID == 1}">
-                            <li <c:if test="${currentpage eq 'User Add'}">class="active"</c:if>><a href="users?action=add"><i class="las la-plus-circle"></i>User Add</a></li>
-                            </c:if>
-                            <c:if test="${sessionScope.usersession.roleID != 2}">
-                            <li <c:if test="${currentpage eq 'Orders'}">class="active"</c:if>><a href="orders"><i class="las la-th-list"></i>Orders</a></li>
-                            </c:if>
-                            <c:if test="${sessionScope.usersession.roleID != 3}">
-                            <li <c:if test="${currentpage eq 'Users'}">class="active"</c:if>><a href="users"><i class="las la-th-list"></i>User List</a></li>
-                            <li <c:if test="${currentpage eq 'All refund books'}">class="active"</c:if>><a href="refunds"><i class="las la-th-list"></i>All refund products</a></li>
-                            </c:if>
+                            <li <c:if test="${currentpage eq 'User Add'}">class="active"</c:if>>
+                                <a href="users?action=add"><i class="las la-plus-circle"></i>User Add</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${sessionScope.usersession.roleID != 2}">
+                            <li <c:if test="${currentpage eq 'Orders'}">class="active"</c:if>>
+                                <a href="orders"><i class="las la-th-list"></i>Orders</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${sessionScope.usersession.roleID != 3}">
+                            <li <c:if test="${currentpage eq 'Users'}">class="active"</c:if>>
+                                <a href="users"><i class="las la-th-list"></i>User List</a>
+                            </li>
+                            <li <c:if test="${currentpage eq 'All refund books'}">class="active"</c:if>>
+                                <a href="refunds"><i class="las la-th-list"></i>All refund products</a>
+                            </li>
+                        </c:if>
                     </ul>
                 </li>
             </ul>

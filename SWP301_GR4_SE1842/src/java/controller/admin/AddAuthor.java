@@ -49,7 +49,7 @@ public class AddAuthor extends HttpServlet {
 
         AuthorDAO ad = new AuthorDAO();
         ad.add(aname, abio);
-        response.sendRedirect("authors");
+        response.sendRedirect("designers");
 
     }
 

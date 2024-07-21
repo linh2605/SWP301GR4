@@ -28,7 +28,7 @@ public class CancelOrderServlet extends HttpServlet {
     throws ServletException, IOException {
         String oid = request.getParameter("oid");
         new OrderDetailDAO().Delete(oid);
-        new OrderDAO().Delete(oid);
+        new OrderDAO().delete(oid);
         response.sendRedirect("homepage");
     } 
 

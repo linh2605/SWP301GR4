@@ -67,7 +67,7 @@ public class EmailServices {
         String subject = "Password Reset Request for " + user.getFullName() + "\n";
         String message = "Dear " + user.getFullName() + ",\n"
                 + "\n"
-                + "We received a request to reset your password for Bookaholic.\n"
+                + "We received a request to reset your password for RonaldoSportShop.\n"
                 + "\n"
                 + "Your OTP: " + OTP + "\n"
                 + "\n"
@@ -78,7 +78,7 @@ public class EmailServices {
                 + "Thank you .\n"
                 + "\n"
                 + "Best regards,\n"
-                + "Bookaholic";
+                + "RonaldoSportShop";
         if (send(user.getEmail(), subject, message)) {
             return OTP;
         }
@@ -124,7 +124,7 @@ public class EmailServices {
         String subject = "Your verify code is " + OTP + "\n";
         String message = "Dear " + user.getFullName() + ",\n"
                 + "\n"
-                + "Use this OTP to verify your account in Bookaholic.\n"
+                + "Use this OTP to verify your account in RonaldoSportShop.\n"
                 + "\n"
                 + "Your OTP: " + OTP + "\n"
                 + "\n"
@@ -135,7 +135,7 @@ public class EmailServices {
                 + "Thank you .\n"
                 + "\n"
                 + "Best regards,\n"
-                + "Bookaholic";
+                + "RonaldoSportShop";
         if (send(user.getEmail(), subject, message)) {
             return OTP;
         }

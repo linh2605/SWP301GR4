@@ -18,7 +18,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Bookaholic</title>
+        <title>RonaldoSportShop</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Use Minified Plugins Version For Fast Page Load -->
         <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/client/assets/css/plugins.css" />
@@ -389,4 +389,3 @@
 
     <!-- Mirrored from htmldemo.net/pustok/pustok/shop-grid-left-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Sep 2023 14:17:16 GMT -->
 </html>
-x

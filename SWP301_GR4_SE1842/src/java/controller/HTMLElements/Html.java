@@ -266,7 +266,7 @@ public class Html {
                     + "            <p>You can expect the refund to reflect in your original payment method within the next 5-7 business days. If there's anything else you'd like to know, feel free to get in touch.</p>\n"
                     + "        </div>\n"
                     + "        <div class=\"footer\">\n"
-                    + "            <p>&copy; 2023 Bookaholic. All rights reserved.</p>\n"
+                    + "            <p>&copy; 2023 RonaldoSportShop. All rights reserved.</p>\n"
                     + "        </div>\n"
                     + "    </div>\n";
         } else if (status == -1) {
@@ -277,7 +277,7 @@ public class Html {
                     + "            <p>If you have any questions or need further clarification on our decision, we're here to help. Please don't hesitate to contact our support team for any assistance or further information.</p>\n"
                     + "        </div>\n"
                     + "        <div class=\"footer\">\n"
-                    + "            <p>&copy; 2023 Bookaholic. All rights reserved.</p>\n"
+                    + "            <p>&copy; 2023 RonaldoSportShop. All rights reserved.</p>\n"
                     + "        </div>\n"
                     + "    </div>\n";
             return html;

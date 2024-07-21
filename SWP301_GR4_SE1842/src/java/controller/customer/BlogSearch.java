@@ -14,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 import model.Blog;
 
 /**
@@ -22,6 +23,8 @@ import model.Blog;
  */
 @WebServlet(name = "BlogSearch", urlPatterns = {"/BlogSearch"})
 public class BlogSearch extends HttpServlet {
+
+    private static final int PAGE_SIZE = 6;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,30 +38,6 @@ public class BlogSearch extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int total = new BlogDAO().getTotalSearchPost(request.getParameter("blogName"));
-        ArrayList<Blog> bloList = new BlogDAO().getAllSearchPost(request.getParameter("blogName"));
-
-        int pageSize = 9;
-        int page = 0;
-        if (request.getParameter("page") == null) {
-            page = 1;
-        } else {
-            page = Integer.parseInt(request.getParameter("page"));
-        }
-        request.setAttribute("totalPage", (total / pageSize) + 1);
-
-        if (page != (total / pageSize) + 1) {
-            request.setAttribute("bloList", bloList.subList((page - 1) * pageSize, page * pageSize));
-        } else {
-            request.setAttribute("bloList", bloList.subList((page - 1) * pageSize, total));
-
-        }
-        request.setAttribute("blogName", request.getParameter("blogName"));
-        ArrayList<Blog> reList = new BlogDAO().getRecentPost();
-        ArrayList<String> catList = new BlogDAO().getCatPost();
-        request.setAttribute("reList", reList);
-        request.setAttribute("catList", catList);
-        request.getRequestDispatcher("blogsearch.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,7 +52,31 @@ public class BlogSearch extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        String searchQuery = request.getParameter("query");
+        int page = 1;
+
+        if (request.getParameter("page") != null) {
+            page = Integer.parseInt(request.getParameter("page"));
+        }
+        BlogDAO blogDAO = new BlogDAO();
+        if (searchQuery != null && !searchQuery.isEmpty()) {
+            // Lấy tổng số bài đăng tương ứng với tiêu đề
+            int totalBlogs = blogDAO.countBlogsByTitle(searchQuery);
+
+            // Tính số trang
+            int totalPages = (int) Math.ceil((double) totalBlogs / PAGE_SIZE);
+
+            // Lấy danh sách bài đăng cho trang hiện tại
+            List<Blog> foundBlogs = blogDAO.getBlogsByTitle(searchQuery, page, PAGE_SIZE);
+
+            request.setAttribute("foundBlogs", foundBlogs);
+            request.setAttribute("searchQuery", searchQuery);
+            request.setAttribute("totalPages", totalPages);
+            request.setAttribute("currentPage", page);
+        }
+
+        request.getRequestDispatcher("/search-result.jsp").forward(request, response);
     }
 
     /**

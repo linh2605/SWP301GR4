@@ -15,7 +15,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Bookaholic - Homepage</title>
+        <title>RonaldoSportShop - Homepage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Use Minified Plugins Version For Fast Page Load -->
         <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/client/assets/css/plugins.css" />
@@ -102,11 +102,11 @@
                                 <div class="contact_form">
                                     <h1 style="text-align: center;margin-bottom: 25px;">Send feedback</h1>
                                     <h3 style="text-align: center;margin-bottom: 25px;">Book title: ${product.title}</h3>
-                                <form action="SendFeedback" method="post" onsubmit="return checkInput();">
+                                  <form action="SendFeedback" method="post" onsubmit="return checkInput();">
                                     <span><b>Feedback content:</b></span>
-                                    <input name="pid" value="${product.id}" type="hidden">
+                                    <input name="pid" value="${param["proID"]}" type="hidden">
                                     <textarea style="width: 100%; padding: 5px;" class="form-control" name="feedbackContent" id="feedbackContent"></textarea>
-                                  <div><b>Feedback Rate: </b></div>
+                                    <div><b>Feedback Rate: </b></div>
                                     <div style="margin-right: 20px">
                                         <div class="rate">
                                             <input type="radio" id="star5" name="rate" value="5" />
@@ -117,7 +117,7 @@
                                             <label for="star3" title="text">3 stars</label>
                                             <input type="radio" id="star2" name="rate" value="2" />
                                             <label for="star2" title="text">2 stars</label>
-                                            <input checked="" type="radio" id="star1" name="rate" value="1"  />
+                                            <input type="radio" id="star1" name="rate" value="1"  />
                                             <label for="star1" title="text">1 star</label>
                                         </div>
                                     </div>
@@ -127,12 +127,13 @@
 
                                     <input name="proimage" id="imageadd" value="" type="hidden" >
                                     <br><!-- comment -->
-                                    
                                     <image  src="" id="demoimgadd" style="margin-top: 5px;" width="30%">
 
                                     <br><!-- comment -->
                                     <button type="submit" style="padding: 8px; font-size: 12px" class="btn btn-primary">Submit</button>
                                 </form>
+
+
 
 
                                 <div class="form-output">
@@ -260,6 +261,7 @@
                         fileReader.onload = function () {
                             document.getElementById("imageadd").value = (fileReader.result);
                             document.getElementById("demoimgadd").src = (fileReader.result);
+                            console.log(fileReader.result);
                         }
                     } else {
                         uploadError();

@@ -17,7 +17,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Bookaholic - Check out</title>
+        <title>RonaldoSportShop - Check out</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Use Minified Plugins Version For Fast Page Load -->
         <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/client/assets/css/plugins.css" />
@@ -62,12 +62,14 @@
                                 <ul class="order-details-list">
                                     <li>Order Number: <strong>BaH${order.id}</strong></li>
                                 <li>Date: <strong>${order.orderDate}</strong></li>
-                                    <fmt:formatNumber value="${order.totalPrice}" pattern="0.00" var="totalprice" />
-                                <li>Total: <strong>$${totalprice}</strong></li>
+
+                                <li>Total:  <fmt:formatNumber value="${Math.ceil(order.totalPrice * 25000)}" pattern="0" var="totalprice" />
+                                    <strong>${totalprice} VNĐ</strong></li>
+
                                 <li>Payment Method: <strong>${order.paymethod.name} (${order.paymethod.desc})</strong></li>
                                 <li>Order Status: <strong>${order.status.name}</strong></li>
                             </ul>
-                            
+
                             <h3 class="order-table-title">Order Details</h3>
                             <div class="table-responsive">
                                 <table class="table order-details-table">
@@ -89,8 +91,8 @@
                                     <tfoot>
                                         <tr>
                                             <th>Subtotal:</th>
-                                                <fmt:formatNumber value="${order.totalPrice}" pattern="0.00" var="totalprice" />
-                                            <td><span>$${totalprice}</span></td>
+                                                <fmt:formatNumber value="${Math.ceil(order.totalPrice * 25000)}" pattern="0" var="subtotal" />
+                                            <td><span>${subtotal} VNĐ</span></td>
                                         </tr>
                                         <tr>
                                             <th>Payment Method:</th>
@@ -98,9 +100,10 @@
                                         </tr>
                                         <tr>
                                             <th>Total:</th>
-                                            <td><span>$${totalprice}</span></td>
+                                            <td><span>${totalprice} VNĐ</span></td>
                                         </tr>
                                     </tfoot>
+
                                 </table>
                                 <c:if test="${order.status.id == 1}">
                                     <a href="${pageContext.request.contextPath}/cancel-order?oid=${order.id}" style="padding:1rem 3rem;;cursor: pointer; margin-top: 2rem" class="btn--primary">Cancel order</a>

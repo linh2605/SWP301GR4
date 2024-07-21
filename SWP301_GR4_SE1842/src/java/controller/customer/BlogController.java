@@ -6,6 +6,7 @@
 package controller.customer;
 
 import dal.BlogDAO;
+import dal.CategoryBlogDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Blog;
+import model.CategoryBlog;
 
 /**
  *
@@ -36,70 +38,31 @@ public class BlogController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-              String[] value = (request.getParameterValues("value") == null) ? new String[]{"", "", ""} : request.getParameterValues("value");
-        String order = request.getParameter("order")==null?"NTO":request.getParameter("order");
-        ArrayList<Blog> bloList = new BlogDAO().getAllPost(value, order);
-        int pageSize = 9;
-        int page;
-        if (request.getParameter("page") == null) {
-            page = 1;
-        } else {
+
+        int page = 1;
+        int pageSize = 6;
+
+        if (request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
         }
-        request.setAttribute("totalPage", (bloList.size() / pageSize) + 1);
-        List<Blog> pageList;
-        try {
-            pageList = (List<Blog>) bloList.subList((page - 1) * pageSize, page * pageSize);
-        } catch (Exception e) {
-            pageList = (List<Blog>) bloList.subList((page - 1) * pageSize, bloList.size());
-        }
 
-        request.setAttribute("bloList", pageList);
-        ArrayList<Blog> reList = new BlogDAO().getRecentPost();
-        ArrayList<String> catList = new BlogDAO().getCatPost();
-        request.setAttribute("reList", reList);
-        request.setAttribute("catList", catList);
-        boolean[] checkValue = new boolean[catList.size()];
+        BlogDAO blogDAO = new BlogDAO();
+        CategoryBlogDAO categoryBlogDAO = new CategoryBlogDAO();
+        List<Blog> blogs = blogDAO.getAllBlogs(page, pageSize);
+        List<CategoryBlog> categoryBlogs = categoryBlogDAO.getAllCategories();
+        List<Blog> latestBlog = blogDAO.getLatestBlogs(5);
 
-        for (int i = 0; i < checkValue.length; i++) {
-            if (checkBox(catList.get(i), value)) {
-                checkValue[i] = true;
-            } else {
-                checkValue[i] = false;
-            }
-        }
-        request.setAttribute("checkValue", checkValue);
-        if (value != null) {
-            request.setAttribute("value", value);
-            if (order.equals("NTO")) {
-                request.setAttribute("order", "NTO");
-            } else {
-                request.setAttribute("order", "OTN");
-            }
-        }
-        if (order != null) {
-            if (order.equals("NTO")) {
-                request.setAttribute("NTO", "checked");
-            } else {
-                request.setAttribute("OTN", "checked");
-            }
-        }
+        request.setAttribute("bloList", blogs);
+        request.setAttribute("categoryBlogs", categoryBlogs);
+        request.setAttribute("latestBlogs", latestBlog);
 
-        request.setAttribute("page", page);
-//        request.setAttribute("value", value);
+        request.setAttribute("currentPage", page);
+        request.setAttribute("pageSize", pageSize);
+        int totalBlogs = blogDAO.getTotalBlogs();
+        int totalPages = (int) Math.ceil((double) totalBlogs / pageSize);
+        request.setAttribute("totalPages", totalPages);
+
         request.getRequestDispatcher("./client/blog.jsp").forward(request, response);
-    }
-
-    private static boolean checkBox(String s, String[] arrString) {
-        if (arrString == null) {
-            return false;
-        }
-        for (int i = 0; i < arrString.length; i++) {
-            if (arrString[i].equals(s)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

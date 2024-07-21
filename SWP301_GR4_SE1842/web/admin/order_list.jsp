@@ -16,7 +16,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Bookaholic - List of books</title>
+        <title>RonaldoSportShop - List of books</title>
         <!-- Favicon -->
         <link rel="shortcut icon" href="images/favicon.ico" />
         <!-- Bootstrap CSS -->
@@ -249,81 +249,57 @@
         <script src="${pageContext.request.contextPath}/admin/assets/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.dataTables.min.js"></script>
         <script src="${pageContext.request.contextPath}/admin/assets/js/dataTables.bootstrap4.min.js"></script>
-        <!-- Appear JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.appear.js"></script>
-        <!-- Countdown JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/countdown.min.js"></script>
-        <!-- Counterup JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/waypoints.min.js"></script>
         <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.counterup.min.js"></script>
-        <!-- Wow JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/wow.min.js"></script>
-        <!-- Apexcharts JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/apexcharts.js"></script>
-        <!-- Slick JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/slick.min.js"></script>
-        <!-- Select2 JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/select2.min.js"></script>
-        <!-- Owl Carousel JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/owl.carousel.min.js"></script>
-        <!-- Magnific Popup JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.magnific-popup.min.js"></script>
-        <!-- Smooth Scrollbar JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/smooth-scrollbar.js"></script>
-        <!-- lottie JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/lottie.js"></script>
-        <!-- am core JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/core.js"></script>
-        <!-- am charts JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/charts.js"></script>
-        <!-- am animated JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/animated.js"></script>
-        <!-- am kelly JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/kelly.js"></script>
-        <!-- am maps JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/maps.js"></script>
-        <!-- am worldLow JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/worldLow.js"></script>
-        <!-- Raphael-min JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/raphael-min.js"></script>
-        <!-- Morris JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/morris.js"></script>
-        <!-- Morris min JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/morris.min.js"></script>
-        <!-- Flatpicker Js -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/flatpickr.js"></script>
-        <!-- Style Customizer -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/style-customizer.js"></script>
-        <!-- Chart Custom JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/chart-custom.js"></script>
-        <!-- Custom JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/custom.js"></script>
         <script>
-                                                                                function loadOrderDetail(param) {
-                                                                                    $.ajax({
-                                                                                        type: 'POST',
-                                                                                        data: {orderid: param},
-                                                                                        url: 'LoadOrderDetailJQuery',
-                                                                                        success: function (result) {
-                                                                                            document.querySelector('#order-detail__container').innerHTML = result;
-                                                                                        }
-                                                                                    });
-                                                                                }
-                                                                                function updateOrderStatus(select, oid) {
-                                                                                    $.ajax({
-                                                                                        type: 'POST',
-                                                                                        data: {
-                                                                                            oid: oid,
-                                                                                            sid: select.value
-                                                                                        },
-                                                                                        url: 'UpdateOrderStatusJquery',
-                                                                                        success: function (result) {
-                                                                                            window.location.reload();
-                                                                                        }
-                                                                                    });
-                                                                                }
+                                                                                            function loadOrderDetail(param) {
+                                                                                                $.ajax({
+                                                                                                    type: 'POST',
+                                                                                                    data: {orderid: param},
+                                                                                                    url: 'LoadOrderDetailJQuery',
+                                                                                                    success: function (result) {
+                                                                                                        document.querySelector('#order-detail__container').innerHTML = result;
+                                                                                                    }
+                                                                                                });
+                                                                                            }
+                                                                                            function updateOrderStatus(select, oid) {
+                                                                                                $.ajax({
+                                                                                                    type: 'POST',
+                                                                                                    data: {
+                                                                                                        oid: oid,
+                                                                                                        sid: select.value
+                                                                                                    },
+                                                                                                    url: 'UpdateOrderStatusJquery',
+                                                                                                    success: function (result) {
+                                                                                                        window.location.reload();
+                                                                                                    }
+                                                                                                });
+                                                                                            }
         </script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     </body>
 
     <!-- Mirrored from templates.iqonic.design/booksto/html/admin-books.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Sep 2023 14:19:33 GMT -->

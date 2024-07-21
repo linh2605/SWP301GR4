@@ -23,6 +23,14 @@
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="./marketing/css/style.css" rel="stylesheet" type="text/css" />
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
+        <!-- DataTables JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
         <style type="text/css">
             td{
@@ -102,7 +110,7 @@
                                 <i class="fa fa-circle"></i> <span>Blog List</span>
                             </a>
                         </li>
-                         <li class="">
+                        <li class="">
                             <a href="ContactList">
                                 <i class="fa fa-circle"></i> <span>Contact List</span>
                             </a>
@@ -140,23 +148,23 @@
 
                                             <div class="col-sm-10">
                                                 <form style="display: flex; justify-content: space-around; align-items: center; width: 100%;" method="get" action="FeedbackList">
-<!--                                                    <label style="margin-right: 5px;"> Status:</label> <select class="form-control" name="status">
-                                                        <option value="" ${param['status']==""?"selected":""}>All</option>     
-                                                        <option value="1" ${param['status']=="1"?"selected":""}>Active</option>
-                                                        <option value="0" ${param['status']=="0"?"selected":""}>Inactive</option>
-                                                    </select>
-                                                    <label style="margin-right: 5px;">Sort: </label>
-                                                    <select name="star" class="form-control">
-                                                        <option value="" ${param['star']==""?"selected":""}>All</option>     
-                                                        <option value="1" ${param['star']=="1"?"selected":""}>1</option>     
-                                                        <option value="2" ${param['star']=="2"?"selected":""}>2</option>     
-                                                        <option value="3" ${param['star']=="3"?"selected":""}>3</option>     
-                                                        <option value="4" ${param['star']=="4"?"selected":""}>4</option>     
-                                                        <option value="5" ${param['star']=="5"?"selected":""}>5</option>     
-                                                    </select>
-                                                    <label style="margin-right: 5px;"> Search:</label> 
-                                                    <input style="margin-right: 5px;" type="text" maxlength="50" value="${param['search']}"  placeholder="Search UserName or ProductName" name="search" class="form-control">
-                                                    <button type="submit" class="btn btn-primary">Search</button>-->
+                                                    <!--                                                    <label style="margin-right: 5px;"> Status:</label> <select class="form-control" name="status">
+                                                                                                            <option value="" ${param['status']==""?"selected":""}>All</option>     
+                                                                                                            <option value="1" ${param['status']=="1"?"selected":""}>Active</option>
+                                                                                                            <option value="0" ${param['status']=="0"?"selected":""}>Inactive</option>
+                                                                                                        </select>
+                                                                                                        <label style="margin-right: 5px;">Sort: </label>
+                                                                                                        <select name="star" class="form-control">
+                                                                                                            <option value="" ${param['star']==""?"selected":""}>All</option>     
+                                                                                                            <option value="1" ${param['star']=="1"?"selected":""}>1</option>     
+                                                                                                            <option value="2" ${param['star']=="2"?"selected":""}>2</option>     
+                                                                                                            <option value="3" ${param['star']=="3"?"selected":""}>3</option>     
+                                                                                                            <option value="4" ${param['star']=="4"?"selected":""}>4</option>     
+                                                                                                            <option value="5" ${param['star']=="5"?"selected":""}>5</option>     
+                                                                                                        </select>
+                                                                                                        <label style="margin-right: 5px;"> Search:</label> 
+                                                                                                        <input style="margin-right: 5px;" type="text" maxlength="50" value="${param['search']}"  placeholder="Search UserName or ProductName" name="search" class="form-control">
+                                                                                                        <button type="submit" class="btn btn-primary">Search</button>-->
                                                 </form>
                                             </div>
                                         </div>
@@ -184,7 +192,7 @@
                                                         <td>${f.fbDate}</td>
                                                         <td>${f.fbStatus==1?"Active":"Inactive"}</td>
                                                         <td><a href="FeedbackDetail?fid=${f.fbId}" class="btn btn-primary">Detail</a></td>
-                                                         <td><a href="DeleteFeedback?fid=${f.fbId}" class="btn btn-primary">Delete</a></td>       
+                                                        <td><a href="DeleteFeedback?fid=${f.fbId}" class="btn btn-primary">Delete</a></td>       
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -207,11 +215,13 @@
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
         <script>
             $(document).ready(function () {
-                $("#tablepro").DataTable({bFilter: false, bInfo: false, paging: true, lengthChange: false});
+                $("#tablepro").DataTable({
+                    bFilter: true,
+                    bInfo: true,
+                    paging: true,
+                    lengthChange: true
+                });
             });
-        </script>
-        <script>
-
         </script>
         <!-- Bootstrap -->
         <script src="./marketing/js/bootstrap.min.js" type="text/javascript"></script>
@@ -219,5 +229,4 @@
         <script src="./marketing/js/Director/app.js" type="text/javascript"></script>
     </body>
 </html>
-
 

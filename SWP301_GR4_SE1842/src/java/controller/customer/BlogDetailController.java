@@ -35,15 +35,7 @@ public class BlogDetailController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        response.setContentType("text/html;charset=UTF-8");
-        ArrayList<Blog> reList = new BlogDAO().getRecentPost();
-        int id = Integer.parseInt(request.getParameter("id"));
-        ArrayList<String> catList = new BlogDAO().getCatPost();
-        Blog blog = new BlogDAO().getDetailPost(id);
-        request.setAttribute("reList", reList);
-        request.setAttribute("catList", catList);
-        request.setAttribute("blog", blog);
+
         request.getRequestDispatcher("./client/blogdetails.jsp").forward(request, response);
     }
 

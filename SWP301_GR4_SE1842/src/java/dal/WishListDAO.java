@@ -22,7 +22,7 @@ public class WishListDAO extends DBContext {
 
     public List<Book> getWishListObject(String userid) {
         list = new ArrayList<>();
-        String query = "select * from UsersWishList where userid = ?";
+        String query = "select * from UsersWishList where UserID = ?";
         try {
             stm = connection.prepareCall(query);
             stm.setString(1, userid);
@@ -42,7 +42,7 @@ public class WishListDAO extends DBContext {
 
     public List<String> getWishListString(String userid) {
         List<String> bList = new ArrayList<>();
-        String query = "select * from UsersWishList where userid = ?";
+        String query = "select * from UsersWishList where UserID = ?";
         try {
             stm = connection.prepareCall(query);
             stm.setString(1, userid);
@@ -90,7 +90,7 @@ public class WishListDAO extends DBContext {
 
     public List<Book> listMostWishedFor() {
         list = new ArrayList<>();
-        String query = "select BookID, count(BookID) as cnt from UsersWishList\n"
+        String query = "select BookID, count(BookID) as cnt from userswishlist\n"
                 + "group by BookID";
         try {
             stm = connection.prepareCall(query);
@@ -109,6 +109,6 @@ public class WishListDAO extends DBContext {
 
     public static void main(String[] args) {
 
-        System.out.println(new WishListDAO().addToWishList("8", "1"));
+        System.out.println(new WishListDAO().addToWishList("4", "1"));
     }
 }

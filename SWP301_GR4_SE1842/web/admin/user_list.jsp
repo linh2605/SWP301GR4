@@ -14,11 +14,12 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Booksto - Responsive Bootstrap 4 Admin Dashboard Template</title>
+        <title>RonaldoSportShop - List of books</title>
         <!-- Favicon -->
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/admin/assets/images/favicon.ico" />
+        <link rel="shortcut icon" href="images/favicon.ico" />
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/assets/css/dataTables.bootstrap4.min.css">
         <!-- Typography CSS -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/assets/css/typography.css">
         <!-- Style CSS -->
@@ -55,11 +56,7 @@
                                             <div class="row justify-content-between">
                                                 <div class="col-sm-12 col-md-6">
                                                     <div id="user_list_datatable_info" class="dataTables_filter">
-                                                        <form class="mr-3 position-relative">
-                                                            <div class="form-group mb-0">
-                                                                <input type="search" class="form-control" id="exampleInputSearch" placeholder="Search" aria-controls="user-list-table">
-                                                            </div>
-                                                        </form>
+                                           
                                                     </div>
                                                 </div>
                                             </div>
@@ -199,52 +196,76 @@
                 document.querySelector('#u-id').value = uid;
             }
         </script>
-        <script src="https://kit.fontawesome.com/ff0d738c65.js" crossorigin="anonymous"></script>
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.min.js"></script>
+       <script src="https://kit.fontawesome.com/ff0d738c65.js" crossorigin="anonymous"></script>
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/admin/assets/js/popper.min.js"></script>
         <script src="${pageContext.request.contextPath}/admin/assets/js/bootstrap.min.js"></script>
-        <!-- Appear JavaScript -->
+        <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.dataTables.min.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/js/dataTables.bootstrap4.min.js"></script>
         <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.appear.js"></script>
-        <!-- Countdown JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/countdown.min.js"></script>
-        <!-- Counterup JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/waypoints.min.js"></script>
         <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.counterup.min.js"></script>
-        <!-- Wow JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/wow.min.js"></script>
-        <!-- Apexcharts JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/apexcharts.js"></script>
-        <!-- Slick JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/slick.min.js"></script>
-        <!-- Select2 JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/select2.min.js"></script>
-        <!-- Owl Carousel JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/owl.carousel.min.js"></script>
-        <!-- Magnific Popup JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.magnific-popup.min.js"></script>
-        <!-- Smooth Scrollbar JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/smooth-scrollbar.js"></script>
-        <!-- lottie JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/lottie.js"></script>
-        <!-- am core JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/core.js"></script>
-        <!-- am charts JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/charts.js"></script>
-        <!-- am animated JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/animated.js"></script>
-        <!-- am kelly JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/kelly.js"></script>
-        <!-- am maps JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/maps.js"></script>
-        <!-- am worldLow JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/worldLow.js"></script>
-        <!-- Style Customizer -->
+        <script src="${pageContext.request.contextPath}/admin/assets/js/raphael-min.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/js/morris.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/js/morris.min.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/js/flatpickr.js"></script>
         <script src="${pageContext.request.contextPath}/admin/assets/js/style-customizer.js"></script>
-        <!-- Chart Custom JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/chart-custom.js"></script>
-        <!-- Custom JavaScript -->
         <script src="${pageContext.request.contextPath}/admin/assets/js/custom.js"></script>
+         <script>
+            $(document).ready(function() {
+                $('#user-list-table').DataTable({
+                    "paging": true,
+                    "searching": true,
+                    "info": true,
+                    "lengthChange": true,
+                    "language": {
+                        "search": "Search:",
+                        "lengthMenu": "Show _MENU_ entries",
+                        "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                        "infoEmpty": "No entries available",
+                        "infoFiltered": "(filtered from _MAX_ total entries)",
+                        "paginate": {
+                            "first": "First",
+                            "last": "Last",
+                            "next": "Next",
+                            "previous": "Previous"
+                        }
+                    }
+                });
+            });
+
+            function deleteAccount(uId) {
+                $.ajax({
+                    type: 'POST',
+                    data: {uid: uId},
+                    url: 'delete-user',
+                    success: function (response) {
+                        window.location.reload();
+                    }
+                });
+            }
+
+            function loadUid(uid) {
+                document.querySelector('#u-id').value = uid;
+            }
+        </script>
     </body>
 
     <!-- Mirrored from templates.iqonic.design/booksto/html/user-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Sep 2023 14:19:34 GMT -->

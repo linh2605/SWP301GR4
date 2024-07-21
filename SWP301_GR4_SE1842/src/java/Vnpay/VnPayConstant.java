@@ -11,9 +11,9 @@ package Vnpay;
 public abstract class VnPayConstant {
     public static String vnp_Version = "2.1.0";
     public static String vnp_Command = "2.1.0";
-    public static String vnp_TmnCode = "BD5AW60D";
+    public static String vnp_TmnCode = "MOM9ILHL";
 
-    public static String vnp_HashSecret = "OMYGGTYGTJVDUFFHYOWUUJSLLLHIHXEU";
+    public static String vnp_HashSecret = "GEA5X9P0GEJMCSYLJM32K5C3LMRL1QL7";
 
     public static String vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
     public static String vnp_BankCode = "NCB";

@@ -133,9 +133,16 @@
                                                         </div>
                                                     </a>
                                                     <div class="hover-btns">
-                                                        <div onclick="controlCart(${b.id})" class="single-btn">
-                                                            <i class="fas fa-shopping-basket"></i>
-                                                        </div>
+                                                        <c:if test="${sessionScope.usersession ne null}">
+                                                            <div onclick="controlCart(${b.id})" class="single-btn">
+                                                                <i class="fas fa-shopping-basket"></i>
+                                                            </div>
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.usersession eq null}">
+                                                            <a href="${pageContext.request.contextPath}/auth/login" class="single-btn">
+                                                                <i class="fas fa-shopping-basket"></i>
+                                                            </a>
+                                                        </c:if>
                                                         <c:if test="${sessionScope.usersession ne null}">
                                                             <div onclick="toggleWishList(${b.id}, this)" class="single-btn">
                                                                 <i <c:if test="${sessionScope.usersession.wishList.contains(b)}">style="color:tomato"</c:if> class="fas fa-heart"></i>
@@ -204,62 +211,69 @@
                          ]'>
                         <c:forEach var="b" items="${list2}"  begin="0" end="6">
                             <c:if test="${b.status == 1}">
-                            <div class="single-slide">
-                                <div class="product-card">
-                                    <div class="product-card--body">
-                                        <div class="card-image1">
-                                            <img src="${b.img0}?ran=<%= Math.random() %>">
-                                            <div class="hover-contents">
-                                                <a href="detail?bid=${b.id}" class="hover-image">
-                                                    <div class="img-hover-minh__container">
-                                                        <img class="img-hover-minh" src="${b.img1}?ran=<%= Math.random() %>">
-                                                    </div>
-                                                </a>
-                                                <div class="hover-btns">
-                                                    <div onclick="controlCart(${b.id})" class="single-btn">
-                                                        <i class="fas fa-shopping-basket"></i>
-                                                    </div>
-                                                    <c:if test="${sessionScope.usersession ne null}">
-                                                        <div onclick="toggleWishList(${b.id}, this)" class="single-btn">
-                                                            <i <c:if test="${sessionScope.usersession.wishList.contains(b)}">style="color:tomato"</c:if> class="fas fa-heart"></i>
-                                                            </div>
-                                                    </c:if>
-                                                    <c:if test="${sessionScope.usersession eq null}">
-                                                        <a href="${pageContext.request.contextPath}/auth/login" class="single-btn">
-                                                            <i class="fas fa-heart"></i>
-                                                        </a>
-                                                    </c:if>
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#bookdetailmodel"
-                                                       class="single-btn">
-                                                        <i id="view-bookdetail__btn" onclick="loadBookDetail(${b.id})" class="fas fa-eye"></i>
-                                                        <input id="bookid__input__${b.id}" type="text" value="${b.id}" hidden>
+                                <div class="single-slide">
+                                    <div class="product-card">
+                                        <div class="product-card--body">
+                                            <div class="card-image1">
+                                                <img src="${b.img0}?ran=<%= Math.random() %>">
+                                                <div class="hover-contents">
+                                                    <a href="detail?bid=${b.id}" class="hover-image">
+                                                        <div class="img-hover-minh__container">
+                                                            <img class="img-hover-minh" src="${b.img1}?ran=<%= Math.random() %>">
+                                                        </div>
                                                     </a>
+                                                    <div class="hover-btns">
+                                                        <c:if test="${sessionScope.usersession ne null}">
+                                                            <div onclick="controlCart(${b.id})" class="single-btn">
+                                                                <i class="fas fa-shopping-basket"></i>
+                                                            </div>
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.usersession eq null}">
+                                                            <a href="${pageContext.request.contextPath}/auth/login" class="single-btn">
+                                                                <i class="fas fa-shopping-basket"></i>
+                                                            </a>
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.usersession ne null}">
+                                                            <div onclick="toggleWishList(${b.id}, this)" class="single-btn">
+                                                                <i <c:if test="${sessionScope.usersession.wishList.contains(b)}">style="color:tomato"</c:if> class="fas fa-heart"></i>
+                                                                </div>
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.usersession eq null}">
+                                                            <a href="${pageContext.request.contextPath}/auth/login" class="single-btn">
+                                                                <i class="fas fa-heart"></i>
+                                                            </a>
+                                                        </c:if>
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bookdetailmodel"
+                                                           class="single-btn">
+                                                            <i id="view-bookdetail__btn" onclick="loadBookDetail(${b.id})" class="fas fa-eye"></i>
+                                                            <input id="bookid__input__${b.id}" type="text" value="${b.id}" hidden>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="price-block">
-                                            <a href="#" class="author">
-                                                ${b.getAuthor().getName()}
-                                            </a>
-                                            <c:if test="${b.getDiscount() != 0}">
-                                                <c:set var="finalCost" value="${b.getFinalCost()}" />
-                                            </c:if>
-                                            <c:if test="${b.getDiscount() == 0}">
-                                                <c:set var="finalCost" value="${b.getCost()}" />
-                                            </c:if>
-                                              <fmt:formatNumber value="${finalCost}" pattern="0.00" var="fmtfinalCost" />
+                                            <div class="price-block">
+                                                <a href="#" class="author">
+                                                    ${b.getAuthor().getName()}
+                                                </a>
+                                                <c:if test="${b.getDiscount() != 0}">
+                                                    <c:set var="finalCost" value="${b.getFinalCost()}" />
+                                                </c:if>
+                                                <c:if test="${b.getDiscount() == 0}">
+                                                    <c:set var="finalCost" value="${b.getCost()}" />
+                                                </c:if>
+                                                <fmt:formatNumber value="${finalCost}" pattern="0.00" var="fmtfinalCost" />
                                                 <span class="price">$${fmtfinalCost}</span>
-                                            <c:if test="${b.getDiscount() != 0}">
-                                                <del class="price-old">${b.getCost()}</del>
-                                                <span class="price-discount">-${b.getDiscount()}%</span>
-                                            </c:if>
-                                        </div>
-                                        <div class="product-header">
-                                            <h3><a href="detail?bid=${b.id}">${b.getTitle()}</a></h3>
+                                                <c:if test="${b.getDiscount() != 0}">
+                                                    <del class="price-old">${b.getCost()}</del>
+                                                    <span class="price-discount">-${b.getDiscount()}%</span>
+                                                </c:if>
+                                            </div>
+                                            <div class="product-header">
+                                                <h3><a href="detail?bid=${b.id}">${b.getTitle()}</a></h3>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             </c:if>
                         </c:forEach>
                     </div>
@@ -287,62 +301,69 @@
                          ]'>
                         <c:forEach var="b" items="${list3}" begin="0" end="6">
                             <c:if test="${b.status == 1}">
-                            <div class="single-slide">
-                                <div class="product-card">
-                                    <div class="product-card--body">
-                                        <div class="card-image1">
-                                            <img src="${b.img0}?ran=<%= Math.random() %>">
-                                            <div class="hover-contents">
-                                                <a href="detail?bid=${b.id}" class="hover-image">
-                                                    <div class="img-hover-minh__container">
-                                                        <img class="img-hover-minh" src="${b.img1}?ran=<%= Math.random() %>">
-                                                    </div>
-                                                </a>
-                                                <div class="hover-btns">
-                                                    <div onclick="controlCart(${b.id})" class="single-btn">
-                                                        <i class="fas fa-shopping-basket"></i>
-                                                    </div>
-                                                    <c:if test="${sessionScope.usersession ne null}">
-                                                        <div onclick="toggleWishList(${b.id}, this)" class="single-btn">
-                                                            <i <c:if test="${sessionScope.usersession.wishList.contains(b)}">style="color:tomato"</c:if> class="fas fa-heart"></i>
-                                                            </div>
-                                                    </c:if>
-                                                    <c:if test="${sessionScope.usersession eq null}">
-                                                        <a href="${pageContext.request.contextPath}/auth/login" class="single-btn">
-                                                            <i class="fas fa-heart"></i>
-                                                        </a>
-                                                    </c:if>
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#bookdetailmodel"
-                                                       class="single-btn">
-                                                        <i id="view-bookdetail__btn" onclick="loadBookDetail(${b.id})" class="fas fa-eye"></i>
-                                                        <input id="bookid__input__${b.id}" type="text" value="${b.id}" hidden>
+                                <div class="single-slide">
+                                    <div class="product-card">
+                                        <div class="product-card--body">
+                                            <div class="card-image1">
+                                                <img src="${b.img0}?ran=<%= Math.random() %>">
+                                                <div class="hover-contents">
+                                                    <a href="detail?bid=${b.id}" class="hover-image">
+                                                        <div class="img-hover-minh__container">
+                                                            <img class="img-hover-minh" src="${b.img1}?ran=<%= Math.random() %>">
+                                                        </div>
                                                     </a>
+                                                    <div class="hover-btns">
+                                                        <c:if test="${sessionScope.usersession ne null}">
+                                                            <div onclick="controlCart(${b.id})" class="single-btn">
+                                                                <i class="fas fa-shopping-basket"></i>
+                                                            </div>
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.usersession eq null}">
+                                                            <a href="${pageContext.request.contextPath}/auth/login" class="single-btn">
+                                                                <i class="fas fa-shopping-basket"></i>
+                                                            </a>
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.usersession ne null}">
+                                                            <div onclick="toggleWishList(${b.id}, this)" class="single-btn">
+                                                                <i <c:if test="${sessionScope.usersession.wishList.contains(b)}">style="color:tomato"</c:if> class="fas fa-heart"></i>
+                                                                </div>
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.usersession eq null}">
+                                                            <a href="${pageContext.request.contextPath}/auth/login" class="single-btn">
+                                                                <i class="fas fa-heart"></i>
+                                                            </a>
+                                                        </c:if>
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bookdetailmodel"
+                                                           class="single-btn">
+                                                            <i id="view-bookdetail__btn" onclick="loadBookDetail(${b.id})" class="fas fa-eye"></i>
+                                                            <input id="bookid__input__${b.id}" type="text" value="${b.id}" hidden>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="price-block">
-                                            <a href="#" class="author">
-                                                ${b.getAuthor().getName()}
-                                            </a>
-                                            <c:if test="${b.getDiscount() != 0}">
-                                                <c:set var="finalCost" value="${b.getFinalCost()}" />
-                                            </c:if>
-                                            <c:if test="${b.getDiscount() == 0}">
-                                                <c:set var="finalCost" value="${b.getCost()}" />
-                                            </c:if>
-                                              <fmt:formatNumber value="${finalCost}" pattern="0.00" var="fmtfinalCost" />
+                                            <div class="price-block">
+                                                <a href="#" class="author">
+                                                    ${b.getAuthor().getName()}
+                                                </a>
+                                                <c:if test="${b.getDiscount() != 0}">
+                                                    <c:set var="finalCost" value="${b.getFinalCost()}" />
+                                                </c:if>
+                                                <c:if test="${b.getDiscount() == 0}">
+                                                    <c:set var="finalCost" value="${b.getCost()}" />
+                                                </c:if>
+                                                <fmt:formatNumber value="${finalCost}" pattern="0.00" var="fmtfinalCost" />
                                                 <span class="price">$${fmtfinalCost}</span>
-                                            <c:if test="${b.getDiscount() != 0}">
-                                                <del class="price-old">${b.getCost()}</del>
-                                                <span class="price-discount">-${b.getDiscount()}%</span>
-                                            </c:if>
-                                        </div>
-                                        <div class="product-header">
-                                            <h3><a href="detail?bid=${b.id}">${b.getTitle()}</a></h3>
+                                                <c:if test="${b.getDiscount() != 0}">
+                                                    <del class="price-old">${b.getCost()}</del>
+                                                    <span class="price-discount">-${b.getDiscount()}%</span>
+                                                </c:if>
+                                            </div>
+                                            <div class="product-header">
+                                                <h3><a href="detail?bid=${b.id}">${b.getTitle()}</a></h3>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             </c:if>
                         </c:forEach>
                     </div>
@@ -493,8 +514,8 @@
                                                             <c:if test="${soBook.getDiscount() == 0}">
                                                                 <c:set var="finalCost" value="${soBook.getCost()}" />
                                                             </c:if>
-                                                              <fmt:formatNumber value="${finalCost}" pattern="0.00" var="fmtfinalCost" />
-                                                <span class="price">$${fmtfinalCost}</span>
+                                                            <fmt:formatNumber value="${finalCost}" pattern="0.00" var="fmtfinalCost" />
+                                                            <span class="price">$${fmtfinalCost}</span>
                                                             <c:if test="${soBook.getDiscount() != 0}">
                                                                 <del class="price-old">${soBook.getCost()}</del>
                                                                 <span class="price-discount">-${soBook.getDiscount()}%</span>
@@ -556,34 +577,34 @@
 
                                                 <c:forEach var="b" items="${list}" begin="0" end="10">
                                                     <c:if test="${b.status == 1}">
-                                                    <div class="single-slide">
-                                                        <div class="product-card card-style-list">
-                                                            <div class="card-image">
-                                                                <img  src="${b.img0}?ran=<%= Math.random() %>" alt="">
-                                                            </div>
-                                                            <div class="product-card--body">
-                                                                <div class="product-header">
-                                                                    <a href="#" class="author">
-                                                                        ${b.getAuthor().getName()}
-                                                                    </a>
-                                                                    <h3><a  href="detail?bid=${b.id}">${b.getTitle()}</a></h3>
+                                                        <div class="single-slide">
+                                                            <div class="product-card card-style-list">
+                                                                <div class="card-image">
+                                                                    <img  src="${b.img0}?ran=<%= Math.random() %>" alt="">
                                                                 </div>
-                                                                <div class="price-block">
-                                                                    <c:if test="${b.getDiscount() != 0}">
-                                                                        <c:set var="finalCost" value="${b.getFinalCost()}" />
-                                                                    </c:if>
-                                                                    <c:if test="${b.getDiscount() == 0}">
-                                                                        <c:set var="finalCost" value="${b.getCost()}" />
-                                                                    </c:if>
-                                                                    <span class="price">$${finalCost}</span>
-                                                                    <c:if test="${b.getDiscount() != 0}">
-                                                                        <del class="price-old">${b.getCost()}</del>
-                                                                        <span class="price-discount">-${b.getDiscount()}%</span>
-                                                                    </c:if>
+                                                                <div class="product-card--body">
+                                                                    <div class="product-header">
+                                                                        <a href="#" class="author">
+                                                                            ${b.getAuthor().getName()}
+                                                                        </a>
+                                                                        <h3><a  href="detail?bid=${b.id}">${b.getTitle()}</a></h3>
+                                                                    </div>
+                                                                    <div class="price-block">
+                                                                        <c:if test="${b.getDiscount() != 0}">
+                                                                            <c:set var="finalCost" value="${b.getFinalCost()}" />
+                                                                        </c:if>
+                                                                        <c:if test="${b.getDiscount() == 0}">
+                                                                            <c:set var="finalCost" value="${b.getCost()}" />
+                                                                        </c:if>
+                                                                        <span class="price">$${finalCost}</span>
+                                                                        <c:if test="${b.getDiscount() != 0}">
+                                                                            <del class="price-old">${b.getCost()}</del>
+                                                                            <span class="price-discount">-${b.getDiscount()}%</span>
+                                                                        </c:if>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
                                                     </c:if>                
                                                 </c:forEach>
                                             </div>
@@ -605,34 +626,34 @@
                                                  ]'>
                                                 <c:forEach var="b" items="${sortedRate}" begin="0" end="10">
                                                     <c:if test="${b.status == 1}">
-                                                    <div class="single-slide">
-                                                        <div class="product-card card-style-list">
-                                                            <div class="card-image">
-                                                                <img src="${b.img0}?ran=<%= Math.random() %>" alt="">
-                                                            </div>
-                                                            <div class="product-card--body">
-                                                                <div class="product-header">
-                                                                    <a href="#" class="author">
-                                                                        ${b.getAuthor().getName()}
-                                                                    </a>
-                                                                    <h3><a href="detail?bid=${b.id}">${b.getTitle()}</a></h3>
+                                                        <div class="single-slide">
+                                                            <div class="product-card card-style-list">
+                                                                <div class="card-image">
+                                                                    <img src="${b.img0}?ran=<%= Math.random() %>" alt="">
                                                                 </div>
-                                                                <div class="price-block">
-                                                                    <c:if test="${b.getDiscount() != 0}">
-                                                                        <c:set var="finalCost" value="${b.getFinalCost()}" />
-                                                                    </c:if>
-                                                                    <c:if test="${b.getDiscount() == 0}">
-                                                                        <c:set var="finalCost" value="${b.getCost()}" />
-                                                                    </c:if>
-                                                                    <span class="price">$${finalCost}</span>
-                                                                    <c:if test="${b.getDiscount() != 0}">
-                                                                        <del class="price-old">${b.getCost()}</del>
-                                                                        <span class="price-discount">-${b.getDiscount()}%</span>
-                                                                    </c:if>
+                                                                <div class="product-card--body">
+                                                                    <div class="product-header">
+                                                                        <a href="#" class="author">
+                                                                            ${b.getAuthor().getName()}
+                                                                        </a>
+                                                                        <h3><a href="detail?bid=${b.id}">${b.getTitle()}</a></h3>
+                                                                    </div>
+                                                                    <div class="price-block">
+                                                                        <c:if test="${b.getDiscount() != 0}">
+                                                                            <c:set var="finalCost" value="${b.getFinalCost()}" />
+                                                                        </c:if>
+                                                                        <c:if test="${b.getDiscount() == 0}">
+                                                                            <c:set var="finalCost" value="${b.getCost()}" />
+                                                                        </c:if>
+                                                                        <span class="price">$${finalCost}</span>
+                                                                        <c:if test="${b.getDiscount() != 0}">
+                                                                            <del class="price-old">${b.getCost()}</del>
+                                                                            <span class="price-discount">-${b.getDiscount()}%</span>
+                                                                        </c:if>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
                                                     </c:if>                
                                                 </c:forEach>
                                             </div>

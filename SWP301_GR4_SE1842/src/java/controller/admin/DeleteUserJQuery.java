@@ -41,7 +41,7 @@ public class DeleteUserJQuery extends HttpServlet {
         
         ud.deleteWishlist(Integer.valueOf(uid));
         ud.deleteRefund(Integer.valueOf(uid));
-        ud.deleteOderDetail(Integer.valueOf(uid));
+        ud.deleteOrderDetail(Integer.valueOf(uid));
         ud.deleteOrder(Integer.valueOf(uid));
         ud.deleteFeedback(Integer.valueOf(uid));
         ud.deleteCart(Integer.valueOf(uid));
